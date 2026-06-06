@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# Project artifacts
+data/cache/
+models/artifacts/
+
+# Config overrides (copy config.yaml.example → config.yaml to customize)
+config.yaml
+
+# Editors / tools
+.vscode/
+.idea/
+*.swp
+.claude/

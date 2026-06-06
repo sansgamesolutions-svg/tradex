@@ -1,0 +1,11 @@
+# Copy this file to config.yaml to override defaults.
+# config.yaml is gitignored. All keys can also be set as env vars:
+# TRADEX_LOOKBACK_PERIODS=90 tradex predict ...
+
+default_timeframe: "1d"
+lookback_periods: 60
+prediction_horizon: 1
+train_test_split: 0.8
+signal_threshold: 0.55
+model_weight: 0.6
+ta_weight: 0.4
