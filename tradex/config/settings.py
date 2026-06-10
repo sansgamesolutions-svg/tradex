@@ -30,15 +30,22 @@ class Settings:
     storage_backend: str = "local"
     s3_bucket: str = ""
     s3_prefix: str = "tradex"
-    s3_endpoint_url: str = ""   # empty = real AWS; set to http://minio:9000 for MinIO
+    s3_endpoint_url: str = ""  # empty = real AWS; set to http://minio:9000 for MinIO
 
     # Scheduler (comma-separated assets for daily batch predictions)
     schedule_assets: list[str] = field(default_factory=list)
     schedule_hour: int = 9
     schedule_model: str = "xgboost"
 
+    # Interactive Brokers TWS / Gateway
+    ibkr_host: str = "127.0.0.1"
+    ibkr_port: int = 7497
+    ibkr_client_id: int = 10
+    ibkr_account: str = ""
+    ibkr_timeout: float = 4.0
+
     @classmethod
-    def load(cls) -> "Settings":
+    def load(cls) -> Settings:
         cfg_file = ROOT / "config.yaml"
         data: dict = {}
         if cfg_file.exists():

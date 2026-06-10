@@ -9,3 +9,10 @@ train_test_split: 0.8
 signal_threshold: 0.55
 model_weight: 0.6
 ta_weight: 0.4
+
+# Interactive Brokers TWS paper trading defaults
+ibkr_host: "127.0.0.1"
+ibkr_port: 7497
+ibkr_client_id: 10
+ibkr_account: ""
+ibkr_timeout: 4.0
