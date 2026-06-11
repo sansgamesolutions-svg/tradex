@@ -44,6 +44,11 @@ class Settings:
     ibkr_account: str = ""
     ibkr_timeout: float = 4.0
 
+    # Kraken spot trading
+    kraken_api_key: str = ""
+    kraken_api_secret: str = ""
+    kraken_timeout: int = 10_000
+
     @classmethod
     def load(cls) -> Settings:
         cfg_file = ROOT / "config.yaml"

@@ -135,7 +135,7 @@ def train(asset: str, timeframe: str, model: str, start: str | None, end: str | 
     type=click.Choice(["MARKET", "LIMIT"], case_sensitive=False),
 )
 @click.option("--limit-price", type=click.FloatRange(min=0, min_open=True))
-@click.option("--exchange", default=None, help="Defaults to SMART, IDEALPRO, or PAXOS")
+@click.option("--exchange", default=None, help="IBKR exchange override for stocks or forex")
 @click.option("--currency", default="USD", show_default=True)
 @click.option(
     "--time-in-force",
@@ -147,7 +147,7 @@ def train(asset: str, timeframe: str, model: str, start: str | None, end: str | 
 @click.option(
     "--submit",
     is_flag=True,
-    help="Transmit the order to IBKR. Without this flag, only preview it.",
+    help="Transmit the order to the broker. Without this flag, only preview it.",
 )
 def trade(
     side: str,
@@ -162,8 +162,8 @@ def trade(
     outside_rth: bool,
     submit: bool,
 ) -> None:
-    """Preview or submit a BUY/SELL order through IBKR."""
-    from tradex.execution.ibkr import IBKRBroker, OrderRequest
+    """Preview or submit an order through IBKR or Kraken."""
+    from tradex.execution import IBKRBroker, KrakenBroker, OrderRequest
 
     try:
         request = OrderRequest(
@@ -181,25 +181,30 @@ def trade(
     except ValueError as exc:
         raise click.BadParameter(str(exc)) from exc
 
-    broker = IBKRBroker()
-    contract = broker.build_contract(request)
+    if request.asset_type == "CRYPTO":
+        broker = KrakenBroker()
+        venue = f"Kraken ({broker.symbol_for(request)})"
+    else:
+        broker = IBKRBroker()
+        venue = f"IBKR ({broker.build_contract(request).exchange})"
+
     console.print(
         f"[bold]{request.side}[/bold] {request.quantity:g} {request.symbol} "
-        f"as a {request.order_type} order on {contract.exchange}"
+        f"as a {request.order_type} order on {venue}"
     )
 
     if not submit:
-        console.print("[yellow]Preview only. Add --submit to transmit this order to IBKR.[/yellow]")
+        console.print("[yellow]Preview only. Add --submit to transmit this order.[/yellow]")
         return
 
     try:
         with broker:
             result = broker.submit(request)
     except Exception as exc:
-        raise click.ClickException(f"IBKR order failed: {exc}") from exc
+        raise click.ClickException(f"Order failed: {exc}") from exc
 
     console.print(
-        f"[green]Order {result.order_id} submitted[/green]: "
+        f"[green]{result.broker} order {result.order_id} submitted[/green]: "
         f"{result.status}, filled {result.filled:g}, remaining {result.remaining:g}"
     )
 
