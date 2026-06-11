@@ -31,9 +31,9 @@ class RandomForestModel(BaseModel):
         X_arr, y_arr = self._to_numpy(X, y)
         self._model.fit(X_arr, y_arr)
 
-    def predict_proba(self, X: pd.DataFrame) -> float:
+    def predict_probabilities(self, X: pd.DataFrame) -> np.ndarray:
         X_arr = self._to_numpy(X)
-        return float(self._model.predict_proba(X_arr)[-1, 1])
+        return self._model.predict_proba(X_arr)[:, 1]
 
     def evaluate(self, X: pd.DataFrame, y: pd.Series) -> dict[str, float]:
         X_arr, y_arr = self._to_numpy(X, y)

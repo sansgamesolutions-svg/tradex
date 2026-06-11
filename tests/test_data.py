@@ -19,6 +19,13 @@ def test_make_target_binary(ohlcv_df):
     assert set(target.unique()).issubset({0, 1})
 
 
+def test_make_target_removes_unavailable_future_rows(ohlcv_df):
+    target = make_target(ohlcv_df, horizon=3)
+
+    assert len(target) == len(ohlcv_df) - 3
+    assert target.index[-1] == ohlcv_df.index[-4]
+
+
 def test_train_test_split_proportions(ohlcv_df):
     X = build_features(ohlcv_df)
     y = make_target(ohlcv_df)

@@ -1,0 +1,4031 @@
+{
+  "constituents": [
+    {
+      "date_added": "2000-06-05",
+      "sector": "Health Care",
+      "security": "Agilent Technologies",
+      "sub_industry": "Life Sciences Tools & Services",
+      "symbol": "A",
+      "yahoo_symbol": "A"
+    },
+    {
+      "date_added": "1982-11-30",
+      "sector": "Information Technology",
+      "security": "Apple Inc.",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "symbol": "AAPL",
+      "yahoo_symbol": "AAPL"
+    },
+    {
+      "date_added": "2012-12-31",
+      "sector": "Health Care",
+      "security": "AbbVie",
+      "sub_industry": "Biotechnology",
+      "symbol": "ABBV",
+      "yahoo_symbol": "ABBV"
+    },
+    {
+      "date_added": "2023-09-18",
+      "sector": "Consumer Discretionary",
+      "security": "Airbnb",
+      "sub_industry": "Hotels, Resorts & Cruise Lines",
+      "symbol": "ABNB",
+      "yahoo_symbol": "ABNB"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Health Care",
+      "security": "Abbott Laboratories",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "ABT",
+      "yahoo_symbol": "ABT"
+    },
+    {
+      "date_added": "2022-11-01",
+      "sector": "Financials",
+      "security": "Arch Capital Group",
+      "sub_industry": "Property & Casualty Insurance",
+      "symbol": "ACGL",
+      "yahoo_symbol": "ACGL"
+    },
+    {
+      "date_added": "2011-07-06",
+      "sector": "Information Technology",
+      "security": "Accenture",
+      "sub_industry": "IT Consulting & Other Services",
+      "symbol": "ACN",
+      "yahoo_symbol": "ACN"
+    },
+    {
+      "date_added": "1997-05-05",
+      "sector": "Information Technology",
+      "security": "Adobe Inc.",
+      "sub_industry": "Application Software",
+      "symbol": "ADBE",
+      "yahoo_symbol": "ADBE"
+    },
+    {
+      "date_added": "1999-10-12",
+      "sector": "Information Technology",
+      "security": "Analog Devices",
+      "sub_industry": "Semiconductors",
+      "symbol": "ADI",
+      "yahoo_symbol": "ADI"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Consumer Staples",
+      "security": "Archer Daniels Midland",
+      "sub_industry": "Agricultural Products & Services",
+      "symbol": "ADM",
+      "yahoo_symbol": "ADM"
+    },
+    {
+      "date_added": "1981-03-31",
+      "sector": "Industrials",
+      "security": "Automatic Data Processing",
+      "sub_industry": "Human Resource & Employment Services",
+      "symbol": "ADP",
+      "yahoo_symbol": "ADP"
+    },
+    {
+      "date_added": "1989-12-01",
+      "sector": "Information Technology",
+      "security": "Autodesk",
+      "sub_industry": "Application Software",
+      "symbol": "ADSK",
+      "yahoo_symbol": "ADSK"
+    },
+    {
+      "date_added": "1991-09-19",
+      "sector": "Utilities",
+      "security": "Ameren",
+      "sub_industry": "Multi-Utilities",
+      "symbol": "AEE",
+      "yahoo_symbol": "AEE"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Utilities",
+      "security": "American Electric Power",
+      "sub_industry": "Electric Utilities",
+      "symbol": "AEP",
+      "yahoo_symbol": "AEP"
+    },
+    {
+      "date_added": "1998-10-02",
+      "sector": "Utilities",
+      "security": "AES Corporation",
+      "sub_industry": "Independent Power Producers & Energy Traders",
+      "symbol": "AES",
+      "yahoo_symbol": "AES"
+    },
+    {
+      "date_added": "1999-05-28",
+      "sector": "Financials",
+      "security": "Aflac",
+      "sub_industry": "Life & Health Insurance",
+      "symbol": "AFL",
+      "yahoo_symbol": "AFL"
+    },
+    {
+      "date_added": "1980-03-31",
+      "sector": "Financials",
+      "security": "American International Group",
+      "sub_industry": "Multi-line Insurance",
+      "symbol": "AIG",
+      "yahoo_symbol": "AIG"
+    },
+    {
+      "date_added": "2007-04-10",
+      "sector": "Financials",
+      "security": "Assurant",
+      "sub_industry": "Multi-line Insurance",
+      "symbol": "AIZ",
+      "yahoo_symbol": "AIZ"
+    },
+    {
+      "date_added": "2016-05-31",
+      "sector": "Financials",
+      "security": "Arthur J. Gallagher & Co.",
+      "sub_industry": "Insurance Brokers",
+      "symbol": "AJG",
+      "yahoo_symbol": "AJG"
+    },
+    {
+      "date_added": "2007-07-12",
+      "sector": "Information Technology",
+      "security": "Akamai Technologies",
+      "sub_industry": "Internet Services & Infrastructure",
+      "symbol": "AKAM",
+      "yahoo_symbol": "AKAM"
+    },
+    {
+      "date_added": "2016-07-01",
+      "sector": "Materials",
+      "security": "Albemarle Corporation",
+      "sub_industry": "Specialty Chemicals",
+      "symbol": "ALB",
+      "yahoo_symbol": "ALB"
+    },
+    {
+      "date_added": "2017-06-19",
+      "sector": "Health Care",
+      "security": "Align Technology",
+      "sub_industry": "Health Care Supplies",
+      "symbol": "ALGN",
+      "yahoo_symbol": "ALGN"
+    },
+    {
+      "date_added": "1995-07-13",
+      "sector": "Financials",
+      "security": "Allstate",
+      "sub_industry": "Property & Casualty Insurance",
+      "symbol": "ALL",
+      "yahoo_symbol": "ALL"
+    },
+    {
+      "date_added": "2013-12-02",
+      "sector": "Industrials",
+      "security": "Allegion",
+      "sub_industry": "Building Products",
+      "symbol": "ALLE",
+      "yahoo_symbol": "ALLE"
+    },
+    {
+      "date_added": "1995-03-16",
+      "sector": "Information Technology",
+      "security": "Applied Materials",
+      "sub_industry": "Semiconductor Materials & Equipment",
+      "symbol": "AMAT",
+      "yahoo_symbol": "AMAT"
+    },
+    {
+      "date_added": "2019-06-07",
+      "sector": "Materials",
+      "security": "Amcor",
+      "sub_industry": "Paper & Plastic Packaging Products & Materials",
+      "symbol": "AMCR",
+      "yahoo_symbol": "AMCR"
+    },
+    {
+      "date_added": "2017-03-20",
+      "sector": "Information Technology",
+      "security": "Advanced Micro Devices",
+      "sub_industry": "Semiconductors",
+      "symbol": "AMD",
+      "yahoo_symbol": "AMD"
+    },
+    {
+      "date_added": "2013-09-23",
+      "sector": "Industrials",
+      "security": "Ametek",
+      "sub_industry": "Electrical Components & Equipment",
+      "symbol": "AME",
+      "yahoo_symbol": "AME"
+    },
+    {
+      "date_added": "1992-01-02",
+      "sector": "Health Care",
+      "security": "Amgen",
+      "sub_industry": "Biotechnology",
+      "symbol": "AMGN",
+      "yahoo_symbol": "AMGN"
+    },
+    {
+      "date_added": "2005-10-03",
+      "sector": "Financials",
+      "security": "Ameriprise Financial",
+      "sub_industry": "Asset Management & Custody Banks",
+      "symbol": "AMP",
+      "yahoo_symbol": "AMP"
+    },
+    {
+      "date_added": "2007-11-19",
+      "sector": "Real Estate",
+      "security": "American Tower",
+      "sub_industry": "Telecom Tower REITs",
+      "symbol": "AMT",
+      "yahoo_symbol": "AMT"
+    },
+    {
+      "date_added": "2005-11-18",
+      "sector": "Consumer Discretionary",
+      "security": "Amazon",
+      "sub_industry": "Broadline Retail",
+      "symbol": "AMZN",
+      "yahoo_symbol": "AMZN"
+    },
+    {
+      "date_added": "2018-08-28",
+      "sector": "Information Technology",
+      "security": "Arista Networks",
+      "sub_industry": "Communications Equipment",
+      "symbol": "ANET",
+      "yahoo_symbol": "ANET"
+    },
+    {
+      "date_added": "1996-04-23",
+      "sector": "Financials",
+      "security": "Aon plc",
+      "sub_industry": "Insurance Brokers",
+      "symbol": "AON",
+      "yahoo_symbol": "AON"
+    },
+    {
+      "date_added": "2017-07-26",
+      "sector": "Industrials",
+      "security": "A. O. Smith",
+      "sub_industry": "Building Products",
+      "symbol": "AOS",
+      "yahoo_symbol": "AOS"
+    },
+    {
+      "date_added": "1997-07-28",
+      "sector": "Energy",
+      "security": "APA Corporation",
+      "sub_industry": "Oil & Gas Exploration & Production",
+      "symbol": "APA",
+      "yahoo_symbol": "APA"
+    },
+    {
+      "date_added": "1985-04-30",
+      "sector": "Materials",
+      "security": "Air Products",
+      "sub_industry": "Industrial Gases",
+      "symbol": "APD",
+      "yahoo_symbol": "APD"
+    },
+    {
+      "date_added": "2008-09-30",
+      "sector": "Information Technology",
+      "security": "Amphenol",
+      "sub_industry": "Electronic Components",
+      "symbol": "APH",
+      "yahoo_symbol": "APH"
+    },
+    {
+      "date_added": "2024-12-23",
+      "sector": "Financials",
+      "security": "Apollo Global Management",
+      "sub_industry": "Asset Management & Custody Banks",
+      "symbol": "APO",
+      "yahoo_symbol": "APO"
+    },
+    {
+      "date_added": "2025-09-22",
+      "sector": "Information Technology",
+      "security": "AppLovin",
+      "sub_industry": "Application Software",
+      "symbol": "APP",
+      "yahoo_symbol": "APP"
+    },
+    {
+      "date_added": "2012-12-24",
+      "sector": "Consumer Discretionary",
+      "security": "Aptiv",
+      "sub_industry": "Automotive Parts & Equipment",
+      "symbol": "APTV",
+      "yahoo_symbol": "APTV"
+    },
+    {
+      "date_added": "2017-03-20",
+      "sector": "Real Estate",
+      "security": "Alexandria Real Estate Equities",
+      "sub_industry": "Office REITs",
+      "symbol": "ARE",
+      "yahoo_symbol": "ARE"
+    },
+    {
+      "date_added": "2025-12-11",
+      "sector": "Financials",
+      "security": "Ares Management",
+      "sub_industry": "Asset Management & Custody Banks",
+      "symbol": "ARES",
+      "yahoo_symbol": "ARES"
+    },
+    {
+      "date_added": "2019-02-15",
+      "sector": "Utilities",
+      "security": "Atmos Energy",
+      "sub_industry": "Gas Utilities",
+      "symbol": "ATO",
+      "yahoo_symbol": "ATO"
+    },
+    {
+      "date_added": "2007-01-10",
+      "sector": "Real Estate",
+      "security": "AvalonBay Communities",
+      "sub_industry": "Multi-Family Residential REITs",
+      "symbol": "AVB",
+      "yahoo_symbol": "AVB"
+    },
+    {
+      "date_added": "2014-05-08",
+      "sector": "Information Technology",
+      "security": "Broadcom",
+      "sub_industry": "Semiconductors",
+      "symbol": "AVGO",
+      "yahoo_symbol": "AVGO"
+    },
+    {
+      "date_added": "1987-12-31",
+      "sector": "Materials",
+      "security": "Avery Dennison",
+      "sub_industry": "Paper & Plastic Packaging Products & Materials",
+      "symbol": "AVY",
+      "yahoo_symbol": "AVY"
+    },
+    {
+      "date_added": "2016-03-04",
+      "sector": "Utilities",
+      "security": "American Water Works",
+      "sub_industry": "Water Utilities",
+      "symbol": "AWK",
+      "yahoo_symbol": "AWK"
+    },
+    {
+      "date_added": "2023-05-04",
+      "sector": "Industrials",
+      "security": "Axon Enterprise",
+      "sub_industry": "Aerospace & Defense",
+      "symbol": "AXON",
+      "yahoo_symbol": "AXON"
+    },
+    {
+      "date_added": "1976-06-30",
+      "sector": "Financials",
+      "security": "American Express",
+      "sub_industry": "Consumer Finance",
+      "symbol": "AXP",
+      "yahoo_symbol": "AXP"
+    },
+    {
+      "date_added": "1997-01-02",
+      "sector": "Consumer Discretionary",
+      "security": "AutoZone",
+      "sub_industry": "Automotive Retail",
+      "symbol": "AZO",
+      "yahoo_symbol": "AZO"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "Boeing",
+      "sub_industry": "Aerospace & Defense",
+      "symbol": "BA",
+      "yahoo_symbol": "BA"
+    },
+    {
+      "date_added": "1976-06-30",
+      "sector": "Financials",
+      "security": "Bank of America",
+      "sub_industry": "Diversified Banks",
+      "symbol": "BAC",
+      "yahoo_symbol": "BAC"
+    },
+    {
+      "date_added": "1984-10-31",
+      "sector": "Materials",
+      "security": "Ball Corporation",
+      "sub_industry": "Metal, Glass & Plastic Containers",
+      "symbol": "BALL",
+      "yahoo_symbol": "BALL"
+    },
+    {
+      "date_added": "1972-09-30",
+      "sector": "Health Care",
+      "security": "Baxter International",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "BAX",
+      "yahoo_symbol": "BAX"
+    },
+    {
+      "date_added": "1999-06-29",
+      "sector": "Consumer Discretionary",
+      "security": "Best Buy",
+      "sub_industry": "Computer & Electronics Retail",
+      "symbol": "BBY",
+      "yahoo_symbol": "BBY"
+    },
+    {
+      "date_added": "1972-09-30",
+      "sector": "Health Care",
+      "security": "Becton Dickinson",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "BDX",
+      "yahoo_symbol": "BDX"
+    },
+    {
+      "date_added": "1998-04-30",
+      "sector": "Financials",
+      "security": "Franklin Resources",
+      "sub_industry": "Asset Management & Custody Banks",
+      "symbol": "BEN",
+      "yahoo_symbol": "BEN"
+    },
+    {
+      "date_added": "1982-10-31",
+      "sector": "Consumer Staples",
+      "security": "Brown\u2013Forman",
+      "sub_industry": "Distillers & Vintners",
+      "symbol": "BF.B",
+      "yahoo_symbol": "BF-B"
+    },
+    {
+      "date_added": "2023-03-15",
+      "sector": "Consumer Staples",
+      "security": "Bunge Global",
+      "sub_industry": "Agricultural Products & Services",
+      "symbol": "BG",
+      "yahoo_symbol": "BG"
+    },
+    {
+      "date_added": "2003-11-13",
+      "sector": "Health Care",
+      "security": "Biogen",
+      "sub_industry": "Biotechnology",
+      "symbol": "BIIB",
+      "yahoo_symbol": "BIIB"
+    },
+    {
+      "date_added": "2009-11-06",
+      "sector": "Consumer Discretionary",
+      "security": "Booking Holdings",
+      "sub_industry": "Hotels, Resorts & Cruise Lines",
+      "symbol": "BKNG",
+      "yahoo_symbol": "BKNG"
+    },
+    {
+      "date_added": "2017-07-07",
+      "sector": "Energy",
+      "security": "Baker Hughes",
+      "sub_industry": "Oil & Gas Equipment & Services",
+      "symbol": "BKR",
+      "yahoo_symbol": "BKR"
+    },
+    {
+      "date_added": "2023-12-18",
+      "sector": "Industrials",
+      "security": "Builders FirstSource",
+      "sub_industry": "Building Products",
+      "symbol": "BLDR",
+      "yahoo_symbol": "BLDR"
+    },
+    {
+      "date_added": "2011-04-04",
+      "sector": "Financials",
+      "security": "BlackRock",
+      "sub_industry": "Asset Management & Custody Banks",
+      "symbol": "BLK",
+      "yahoo_symbol": "BLK"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Health Care",
+      "security": "Bristol Myers Squibb",
+      "sub_industry": "Pharmaceuticals",
+      "symbol": "BMY",
+      "yahoo_symbol": "BMY"
+    },
+    {
+      "date_added": "1995-03-31",
+      "sector": "Financials",
+      "security": "BNY Mellon",
+      "sub_industry": "Asset Management & Custody Banks",
+      "symbol": "BNY",
+      "yahoo_symbol": "BNY"
+    },
+    {
+      "date_added": "2018-06-18",
+      "sector": "Industrials",
+      "security": "Broadridge Financial Solutions",
+      "sub_industry": "Data Processing & Outsourced Services",
+      "symbol": "BR",
+      "yahoo_symbol": "BR"
+    },
+    {
+      "date_added": "2010-02-16",
+      "sector": "Financials",
+      "security": "Berkshire Hathaway",
+      "sub_industry": "Multi-Sector Holdings",
+      "symbol": "BRK.B",
+      "yahoo_symbol": "BRK-B"
+    },
+    {
+      "date_added": "2021-09-20",
+      "sector": "Financials",
+      "security": "Brown & Brown",
+      "sub_industry": "Insurance Brokers",
+      "symbol": "BRO",
+      "yahoo_symbol": "BRO"
+    },
+    {
+      "date_added": "1995-02-24",
+      "sector": "Health Care",
+      "security": "Boston Scientific",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "BSX",
+      "yahoo_symbol": "BSX"
+    },
+    {
+      "date_added": "2023-09-18",
+      "sector": "Financials",
+      "security": "Blackstone Inc.",
+      "sub_industry": "Asset Management & Custody Banks",
+      "symbol": "BX",
+      "yahoo_symbol": "BX"
+    },
+    {
+      "date_added": "2006-04-03",
+      "sector": "Real Estate",
+      "security": "BXP, Inc.",
+      "sub_industry": "Office REITs",
+      "symbol": "BXP",
+      "yahoo_symbol": "BXP"
+    },
+    {
+      "date_added": "1988-05-31",
+      "sector": "Financials",
+      "security": "Citigroup",
+      "sub_industry": "Diversified Banks",
+      "symbol": "C",
+      "yahoo_symbol": "C"
+    },
+    {
+      "date_added": "1983-08-31",
+      "sector": "Consumer Staples",
+      "security": "Conagra Brands",
+      "sub_industry": "Packaged Foods & Meats",
+      "symbol": "CAG",
+      "yahoo_symbol": "CAG"
+    },
+    {
+      "date_added": "1997-05-27",
+      "sector": "Health Care",
+      "security": "Cardinal Health",
+      "sub_industry": "Health Care Distributors",
+      "symbol": "CAH",
+      "yahoo_symbol": "CAH"
+    },
+    {
+      "date_added": "2020-04-03",
+      "sector": "Industrials",
+      "security": "Carrier Global",
+      "sub_industry": "Building Products",
+      "symbol": "CARR",
+      "yahoo_symbol": "CARR"
+    },
+    {
+      "date_added": "2026-04-09",
+      "sector": "Consumer Staples",
+      "security": "Casey's",
+      "sub_industry": "Food Retail",
+      "symbol": "CASY",
+      "yahoo_symbol": "CASY"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "Caterpillar Inc.",
+      "sub_industry": "Construction Machinery & Heavy Transportation Equipment",
+      "symbol": "CAT",
+      "yahoo_symbol": "CAT"
+    },
+    {
+      "date_added": "2010-07-15",
+      "sector": "Financials",
+      "security": "Chubb Limited",
+      "sub_industry": "Property & Casualty Insurance",
+      "symbol": "CB",
+      "yahoo_symbol": "CB"
+    },
+    {
+      "date_added": "2017-03-01",
+      "sector": "Financials",
+      "security": "Cboe Global Markets",
+      "sub_industry": "Financial Exchanges & Data",
+      "symbol": "CBOE",
+      "yahoo_symbol": "CBOE"
+    },
+    {
+      "date_added": "2006-11-10",
+      "sector": "Real Estate",
+      "security": "CBRE Group",
+      "sub_industry": "Real Estate Services",
+      "symbol": "CBRE",
+      "yahoo_symbol": "CBRE"
+    },
+    {
+      "date_added": "2012-03-14",
+      "sector": "Real Estate",
+      "security": "Crown Castle",
+      "sub_industry": "Telecom Tower REITs",
+      "symbol": "CCI",
+      "yahoo_symbol": "CCI"
+    },
+    {
+      "date_added": "1998-12-22",
+      "sector": "Consumer Discretionary",
+      "security": "Carnival Corporation",
+      "sub_industry": "Hotels, Resorts & Cruise Lines",
+      "symbol": "CCL",
+      "yahoo_symbol": "CCL"
+    },
+    {
+      "date_added": "2017-09-18",
+      "sector": "Information Technology",
+      "security": "Cadence Design Systems",
+      "sub_industry": "Application Software",
+      "symbol": "CDNS",
+      "yahoo_symbol": "CDNS"
+    },
+    {
+      "date_added": "2019-09-23",
+      "sector": "Information Technology",
+      "security": "CDW Corporation",
+      "sub_industry": "Technology Distributors",
+      "symbol": "CDW",
+      "yahoo_symbol": "CDW"
+    },
+    {
+      "date_added": "2022-02-02",
+      "sector": "Utilities",
+      "security": "Constellation Energy",
+      "sub_industry": "Electric Utilities",
+      "symbol": "CEG",
+      "yahoo_symbol": "CEG"
+    },
+    {
+      "date_added": "2008-08-27",
+      "sector": "Materials",
+      "security": "CF Industries",
+      "sub_industry": "Fertilizers & Agricultural Chemicals",
+      "symbol": "CF",
+      "yahoo_symbol": "CF"
+    },
+    {
+      "date_added": "2016-01-29",
+      "sector": "Financials",
+      "security": "Citizens Financial Group",
+      "sub_industry": "Regional Banks",
+      "symbol": "CFG",
+      "yahoo_symbol": "CFG"
+    },
+    {
+      "date_added": "2015-12-29",
+      "sector": "Consumer Staples",
+      "security": "Church & Dwight",
+      "sub_industry": "Household Products",
+      "symbol": "CHD",
+      "yahoo_symbol": "CHD"
+    },
+    {
+      "date_added": "2007-03-02",
+      "sector": "Industrials",
+      "security": "C.H. Robinson",
+      "sub_industry": "Air Freight & Logistics",
+      "symbol": "CHRW",
+      "yahoo_symbol": "CHRW"
+    },
+    {
+      "date_added": "2016-09-08",
+      "sector": "Communication Services",
+      "security": "Charter Communications",
+      "sub_industry": "Cable & Satellite",
+      "symbol": "CHTR",
+      "yahoo_symbol": "CHTR"
+    },
+    {
+      "date_added": "1976-06-30",
+      "sector": "Health Care",
+      "security": "Cigna",
+      "sub_industry": "Health Care Services",
+      "symbol": "CI",
+      "yahoo_symbol": "CI"
+    },
+    {
+      "date_added": "2026-02-09",
+      "sector": "Information Technology",
+      "security": "Ciena",
+      "sub_industry": "Communications Equipment",
+      "symbol": "CIEN",
+      "yahoo_symbol": "CIEN"
+    },
+    {
+      "date_added": "1997-12-18",
+      "sector": "Financials",
+      "security": "Cincinnati Financial",
+      "sub_industry": "Property & Casualty Insurance",
+      "symbol": "CINF",
+      "yahoo_symbol": "CINF"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Consumer Staples",
+      "security": "Colgate-Palmolive",
+      "sub_industry": "Household Products",
+      "symbol": "CL",
+      "yahoo_symbol": "CL"
+    },
+    {
+      "date_added": "1969-03-31",
+      "sector": "Consumer Staples",
+      "security": "Clorox",
+      "sub_industry": "Household Products",
+      "symbol": "CLX",
+      "yahoo_symbol": "CLX"
+    },
+    {
+      "date_added": "2002-11-19",
+      "sector": "Communication Services",
+      "security": "Comcast",
+      "sub_industry": "Cable & Satellite",
+      "symbol": "CMCSA",
+      "yahoo_symbol": "CMCSA"
+    },
+    {
+      "date_added": "2006-08-11",
+      "sector": "Financials",
+      "security": "CME Group",
+      "sub_industry": "Financial Exchanges & Data",
+      "symbol": "CME",
+      "yahoo_symbol": "CME"
+    },
+    {
+      "date_added": "2011-04-28",
+      "sector": "Consumer Discretionary",
+      "security": "Chipotle Mexican Grill",
+      "sub_industry": "Restaurants",
+      "symbol": "CMG",
+      "yahoo_symbol": "CMG"
+    },
+    {
+      "date_added": "1965-03-31",
+      "sector": "Industrials",
+      "security": "Cummins",
+      "sub_industry": "Construction Machinery & Heavy Transportation Equipment",
+      "symbol": "CMI",
+      "yahoo_symbol": "CMI"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Utilities",
+      "security": "CMS Energy",
+      "sub_industry": "Multi-Utilities",
+      "symbol": "CMS",
+      "yahoo_symbol": "CMS"
+    },
+    {
+      "date_added": "2016-03-30",
+      "sector": "Health Care",
+      "security": "Centene Corporation",
+      "sub_industry": "Managed Health Care",
+      "symbol": "CNC",
+      "yahoo_symbol": "CNC"
+    },
+    {
+      "date_added": "1985-07-31",
+      "sector": "Utilities",
+      "security": "CenterPoint Energy",
+      "sub_industry": "Multi-Utilities",
+      "symbol": "CNP",
+      "yahoo_symbol": "CNP"
+    },
+    {
+      "date_added": "1998-07-01",
+      "sector": "Financials",
+      "security": "Capital One",
+      "sub_industry": "Consumer Finance",
+      "symbol": "COF",
+      "yahoo_symbol": "COF"
+    },
+    {
+      "date_added": "2026-03-23",
+      "sector": "Information Technology",
+      "security": "Coherent Corp.",
+      "sub_industry": "Electronic Components",
+      "symbol": "COHR",
+      "yahoo_symbol": "COHR"
+    },
+    {
+      "date_added": "2025-05-19",
+      "sector": "Financials",
+      "security": "Coinbase",
+      "sub_industry": "Financial Exchanges & Data",
+      "symbol": "COIN",
+      "yahoo_symbol": "COIN"
+    },
+    {
+      "date_added": "2016-09-23",
+      "sector": "Health Care",
+      "security": "Cooper Companies (The)",
+      "sub_industry": "Health Care Supplies",
+      "symbol": "COO",
+      "yahoo_symbol": "COO"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Energy",
+      "security": "ConocoPhillips",
+      "sub_industry": "Oil & Gas Exploration & Production",
+      "symbol": "COP",
+      "yahoo_symbol": "COP"
+    },
+    {
+      "date_added": "2001-08-30",
+      "sector": "Health Care",
+      "security": "Cencora",
+      "sub_industry": "Health Care Distributors",
+      "symbol": "COR",
+      "yahoo_symbol": "COR"
+    },
+    {
+      "date_added": "1993-10-01",
+      "sector": "Consumer Staples",
+      "security": "Costco",
+      "sub_industry": "Consumer Staples Merchandise Retail",
+      "symbol": "COST",
+      "yahoo_symbol": "COST"
+    },
+    {
+      "date_added": "2018-06-20",
+      "sector": "Financials",
+      "security": "Corpay",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "symbol": "CPAY",
+      "yahoo_symbol": "CPAY"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Consumer Staples",
+      "security": "Campbell's Company (The)",
+      "sub_industry": "Packaged Foods & Meats",
+      "symbol": "CPB",
+      "yahoo_symbol": "CPB"
+    },
+    {
+      "date_added": "2018-07-02",
+      "sector": "Industrials",
+      "security": "Copart",
+      "sub_industry": "Diversified Support Services",
+      "symbol": "CPRT",
+      "yahoo_symbol": "CPRT"
+    },
+    {
+      "date_added": "2022-04-04",
+      "sector": "Real Estate",
+      "security": "Camden Property Trust",
+      "sub_industry": "Multi-Family Residential REITs",
+      "symbol": "CPT",
+      "yahoo_symbol": "CPT"
+    },
+    {
+      "date_added": "2025-12-22",
+      "sector": "Materials",
+      "security": "CRH plc",
+      "sub_industry": "Construction Materials",
+      "symbol": "CRH",
+      "yahoo_symbol": "CRH"
+    },
+    {
+      "date_added": "2021-05-14",
+      "sector": "Health Care",
+      "security": "Charles River Laboratories",
+      "sub_industry": "Life Sciences Tools & Services",
+      "symbol": "CRL",
+      "yahoo_symbol": "CRL"
+    },
+    {
+      "date_added": "2008-09-15",
+      "sector": "Information Technology",
+      "security": "Salesforce",
+      "sub_industry": "Application Software",
+      "symbol": "CRM",
+      "yahoo_symbol": "CRM"
+    },
+    {
+      "date_added": "2024-06-24",
+      "sector": "Information Technology",
+      "security": "CrowdStrike",
+      "sub_industry": "Systems Software",
+      "symbol": "CRWD",
+      "yahoo_symbol": "CRWD"
+    },
+    {
+      "date_added": "1993-12-01",
+      "sector": "Information Technology",
+      "security": "Cisco",
+      "sub_industry": "Communications Equipment",
+      "symbol": "CSCO",
+      "yahoo_symbol": "CSCO"
+    },
+    {
+      "date_added": "2022-09-19",
+      "sector": "Real Estate",
+      "security": "CoStar Group",
+      "sub_industry": "Real Estate Services",
+      "symbol": "CSGP",
+      "yahoo_symbol": "CSGP"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "CSX Corporation",
+      "sub_industry": "Rail Transportation",
+      "symbol": "CSX",
+      "yahoo_symbol": "CSX"
+    },
+    {
+      "date_added": "2001-03-01",
+      "sector": "Industrials",
+      "security": "Cintas",
+      "sub_industry": "Diversified Support Services",
+      "symbol": "CTAS",
+      "yahoo_symbol": "CTAS"
+    },
+    {
+      "date_added": "2006-11-17",
+      "sector": "Information Technology",
+      "security": "Cognizant",
+      "sub_industry": "IT Consulting & Other Services",
+      "symbol": "CTSH",
+      "yahoo_symbol": "CTSH"
+    },
+    {
+      "date_added": "2019-06-03",
+      "sector": "Materials",
+      "security": "Corteva",
+      "sub_industry": "Fertilizers & Agricultural Chemicals",
+      "symbol": "CTVA",
+      "yahoo_symbol": "CTVA"
+    },
+    {
+      "date_added": "2025-12-22",
+      "sector": "Consumer Discretionary",
+      "security": "Carvana",
+      "sub_industry": "Automotive Retail",
+      "symbol": "CVNA",
+      "yahoo_symbol": "CVNA"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Health Care",
+      "security": "CVS Health",
+      "sub_industry": "Health Care Services",
+      "symbol": "CVS",
+      "yahoo_symbol": "CVS"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Energy",
+      "security": "Chevron Corporation",
+      "sub_industry": "Integrated Oil & Gas",
+      "symbol": "CVX",
+      "yahoo_symbol": "CVX"
+    },
+    {
+      "date_added": "2016-11-30",
+      "sector": "Utilities",
+      "security": "Dominion Energy",
+      "sub_industry": "Multi-Utilities",
+      "symbol": "D",
+      "yahoo_symbol": "D"
+    },
+    {
+      "date_added": "2013-09-11",
+      "sector": "Industrials",
+      "security": "Delta Air Lines",
+      "sub_industry": "Passenger Airlines",
+      "symbol": "DAL",
+      "yahoo_symbol": "DAL"
+    },
+    {
+      "date_added": "2025-03-24",
+      "sector": "Consumer Discretionary",
+      "security": "DoorDash",
+      "sub_industry": "Specialized Consumer Services",
+      "symbol": "DASH",
+      "yahoo_symbol": "DASH"
+    },
+    {
+      "date_added": "2019-06-03",
+      "sector": "Materials",
+      "security": "DuPont",
+      "sub_industry": "Specialty Chemicals",
+      "symbol": "DD",
+      "yahoo_symbol": "DD"
+    },
+    {
+      "date_added": "2025-07-09",
+      "sector": "Information Technology",
+      "security": "Datadog",
+      "sub_industry": "Application Software",
+      "symbol": "DDOG",
+      "yahoo_symbol": "DDOG"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "Deere & Company",
+      "sub_industry": "Agricultural & Farm Machinery",
+      "symbol": "DE",
+      "yahoo_symbol": "DE"
+    },
+    {
+      "date_added": "2024-03-18",
+      "sector": "Consumer Discretionary",
+      "security": "Deckers Brands",
+      "sub_industry": "Footwear",
+      "symbol": "DECK",
+      "yahoo_symbol": "DECK"
+    },
+    {
+      "date_added": "2024-09-23",
+      "sector": "Information Technology",
+      "security": "Dell Technologies",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "symbol": "DELL",
+      "yahoo_symbol": "DELL"
+    },
+    {
+      "date_added": "2012-12-03",
+      "sector": "Consumer Staples",
+      "security": "Dollar General",
+      "sub_industry": "Consumer Staples Merchandise Retail",
+      "symbol": "DG",
+      "yahoo_symbol": "DG"
+    },
+    {
+      "date_added": "2002-12-12",
+      "sector": "Health Care",
+      "security": "Quest Diagnostics",
+      "sub_industry": "Health Care Services",
+      "symbol": "DGX",
+      "yahoo_symbol": "DGX"
+    },
+    {
+      "date_added": "2005-06-22",
+      "sector": "Consumer Discretionary",
+      "security": "D. R. Horton",
+      "sub_industry": "Homebuilding",
+      "symbol": "DHI",
+      "yahoo_symbol": "DHI"
+    },
+    {
+      "date_added": "1998-11-18",
+      "sector": "Health Care",
+      "security": "Danaher Corporation",
+      "sub_industry": "Life Sciences Tools & Services",
+      "symbol": "DHR",
+      "yahoo_symbol": "DHR"
+    },
+    {
+      "date_added": "1976-06-30",
+      "sector": "Communication Services",
+      "security": "Walt Disney Company (The)",
+      "sub_industry": "Movies & Entertainment",
+      "symbol": "DIS",
+      "yahoo_symbol": "DIS"
+    },
+    {
+      "date_added": "2016-05-18",
+      "sector": "Real Estate",
+      "security": "Digital Realty",
+      "sub_industry": "Data Center REITs",
+      "symbol": "DLR",
+      "yahoo_symbol": "DLR"
+    },
+    {
+      "date_added": "2011-12-19",
+      "sector": "Consumer Staples",
+      "security": "Dollar Tree",
+      "sub_industry": "Consumer Staples Merchandise Retail",
+      "symbol": "DLTR",
+      "yahoo_symbol": "DLTR"
+    },
+    {
+      "date_added": "2008-03-31",
+      "sector": "Real Estate",
+      "security": "Healthpeak Properties",
+      "sub_industry": "Health Care REITs",
+      "symbol": "DOC",
+      "yahoo_symbol": "DOC"
+    },
+    {
+      "date_added": "1985-10-31",
+      "sector": "Industrials",
+      "security": "Dover Corporation",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "DOV",
+      "yahoo_symbol": "DOV"
+    },
+    {
+      "date_added": "2019-04-01",
+      "sector": "Materials",
+      "security": "Dow Inc.",
+      "sub_industry": "Commodity Chemicals",
+      "symbol": "DOW",
+      "yahoo_symbol": "DOW"
+    },
+    {
+      "date_added": "2020-05-12",
+      "sector": "Consumer Discretionary",
+      "security": "Domino's",
+      "sub_industry": "Restaurants",
+      "symbol": "DPZ",
+      "yahoo_symbol": "DPZ"
+    },
+    {
+      "date_added": "1995-05-31",
+      "sector": "Consumer Discretionary",
+      "security": "Darden Restaurants",
+      "sub_industry": "Restaurants",
+      "symbol": "DRI",
+      "yahoo_symbol": "DRI"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Utilities",
+      "security": "DTE Energy",
+      "sub_industry": "Multi-Utilities",
+      "symbol": "DTE",
+      "yahoo_symbol": "DTE"
+    },
+    {
+      "date_added": "1976-06-30",
+      "sector": "Utilities",
+      "security": "Duke Energy",
+      "sub_industry": "Electric Utilities",
+      "symbol": "DUK",
+      "yahoo_symbol": "DUK"
+    },
+    {
+      "date_added": "2008-07-31",
+      "sector": "Health Care",
+      "security": "DaVita",
+      "sub_industry": "Health Care Services",
+      "symbol": "DVA",
+      "yahoo_symbol": "DVA"
+    },
+    {
+      "date_added": "2000-08-30",
+      "sector": "Energy",
+      "security": "Devon Energy",
+      "sub_industry": "Oil & Gas Exploration & Production",
+      "symbol": "DVN",
+      "yahoo_symbol": "DVN"
+    },
+    {
+      "date_added": "2020-05-12",
+      "sector": "Health Care",
+      "security": "Dexcom",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "DXCM",
+      "yahoo_symbol": "DXCM"
+    },
+    {
+      "date_added": "2002-07-22",
+      "sector": "Communication Services",
+      "security": "Electronic Arts",
+      "sub_industry": "Interactive Home Entertainment",
+      "symbol": "EA",
+      "yahoo_symbol": "EA"
+    },
+    {
+      "date_added": "2002-07-22",
+      "sector": "Consumer Discretionary",
+      "security": "eBay Inc.",
+      "sub_industry": "Broadline Retail",
+      "symbol": "EBAY",
+      "yahoo_symbol": "EBAY"
+    },
+    {
+      "date_added": "1989-01-31",
+      "sector": "Materials",
+      "security": "Ecolab",
+      "sub_industry": "Specialty Chemicals",
+      "symbol": "ECL",
+      "yahoo_symbol": "ECL"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Utilities",
+      "security": "Consolidated Edison",
+      "sub_industry": "Multi-Utilities",
+      "symbol": "ED",
+      "yahoo_symbol": "ED"
+    },
+    {
+      "date_added": "1997-06-19",
+      "sector": "Industrials",
+      "security": "Equifax",
+      "sub_industry": "Research & Consulting Services",
+      "symbol": "EFX",
+      "yahoo_symbol": "EFX"
+    },
+    {
+      "date_added": "2017-06-19",
+      "sector": "Financials",
+      "security": "Everest Group",
+      "sub_industry": "Reinsurance",
+      "symbol": "EG",
+      "yahoo_symbol": "EG"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Utilities",
+      "security": "Edison International",
+      "sub_industry": "Electric Utilities",
+      "symbol": "EIX",
+      "yahoo_symbol": "EIX"
+    },
+    {
+      "date_added": "2006-01-05",
+      "sector": "Consumer Staples",
+      "security": "Est\u00e9e Lauder Companies (The)",
+      "sub_industry": "Personal Care Products",
+      "symbol": "EL",
+      "yahoo_symbol": "EL"
+    },
+    {
+      "date_added": "2002-07-25",
+      "sector": "Health Care",
+      "security": "Elevance Health",
+      "sub_industry": "Managed Health Care",
+      "symbol": "ELV",
+      "yahoo_symbol": "ELV"
+    },
+    {
+      "date_added": "2025-09-22",
+      "sector": "Industrials",
+      "security": "Emcor",
+      "sub_industry": "Construction & Engineering",
+      "symbol": "EME",
+      "yahoo_symbol": "EME"
+    },
+    {
+      "date_added": "1965-03-31",
+      "sector": "Industrials",
+      "security": "Emerson Electric",
+      "sub_industry": "Electrical Components & Equipment",
+      "symbol": "EMR",
+      "yahoo_symbol": "EMR"
+    },
+    {
+      "date_added": "2000-11-02",
+      "sector": "Energy",
+      "security": "EOG Resources",
+      "sub_industry": "Oil & Gas Exploration & Production",
+      "symbol": "EOG",
+      "yahoo_symbol": "EOG"
+    },
+    {
+      "date_added": "2015-03-20",
+      "sector": "Real Estate",
+      "security": "Equinix",
+      "sub_industry": "Data Center REITs",
+      "symbol": "EQIX",
+      "yahoo_symbol": "EQIX"
+    },
+    {
+      "date_added": "2001-12-03",
+      "sector": "Real Estate",
+      "security": "Equity Residential",
+      "sub_industry": "Multi-Family Residential REITs",
+      "symbol": "EQR",
+      "yahoo_symbol": "EQR"
+    },
+    {
+      "date_added": "2022-10-03",
+      "sector": "Energy",
+      "security": "EQT Corporation",
+      "sub_industry": "Oil & Gas Exploration & Production",
+      "symbol": "EQT",
+      "yahoo_symbol": "EQT"
+    },
+    {
+      "date_added": "2024-09-23",
+      "sector": "Financials",
+      "security": "Erie Indemnity",
+      "sub_industry": "Insurance Brokers",
+      "symbol": "ERIE",
+      "yahoo_symbol": "ERIE"
+    },
+    {
+      "date_added": "2009-07-24",
+      "sector": "Utilities",
+      "security": "Eversource Energy",
+      "sub_industry": "Electric Utilities",
+      "symbol": "ES",
+      "yahoo_symbol": "ES"
+    },
+    {
+      "date_added": "2014-04-02",
+      "sector": "Real Estate",
+      "security": "Essex Property Trust",
+      "sub_industry": "Multi-Family Residential REITs",
+      "symbol": "ESS",
+      "yahoo_symbol": "ESS"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "Eaton Corporation",
+      "sub_industry": "Electrical Components & Equipment",
+      "symbol": "ETN",
+      "yahoo_symbol": "ETN"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Utilities",
+      "security": "Entergy",
+      "sub_industry": "Electric Utilities",
+      "symbol": "ETR",
+      "yahoo_symbol": "ETR"
+    },
+    {
+      "date_added": "2018-06-05",
+      "sector": "Utilities",
+      "security": "Evergy",
+      "sub_industry": "Electric Utilities",
+      "symbol": "EVRG",
+      "yahoo_symbol": "EVRG"
+    },
+    {
+      "date_added": "2011-04-01",
+      "sector": "Health Care",
+      "security": "Edwards Lifesciences",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "EW",
+      "yahoo_symbol": "EW"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Utilities",
+      "security": "Exelon",
+      "sub_industry": "Electric Utilities",
+      "symbol": "EXC",
+      "yahoo_symbol": "EXC"
+    },
+    {
+      "date_added": "2025-03-24",
+      "sector": "Energy",
+      "security": "Expand Energy",
+      "sub_industry": "Oil & Gas Exploration & Production",
+      "symbol": "EXE",
+      "yahoo_symbol": "EXE"
+    },
+    {
+      "date_added": "2007-10-10",
+      "sector": "Industrials",
+      "security": "Expeditors International",
+      "sub_industry": "Air Freight & Logistics",
+      "symbol": "EXPD",
+      "yahoo_symbol": "EXPD"
+    },
+    {
+      "date_added": "2007-10-02",
+      "sector": "Consumer Discretionary",
+      "security": "Expedia Group",
+      "sub_industry": "Hotels, Resorts & Cruise Lines",
+      "symbol": "EXPE",
+      "yahoo_symbol": "EXPE"
+    },
+    {
+      "date_added": "2016-01-19",
+      "sector": "Real Estate",
+      "security": "Extra Space Storage",
+      "sub_industry": "Self-Storage REITs",
+      "symbol": "EXR",
+      "yahoo_symbol": "EXR"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Consumer Discretionary",
+      "security": "Ford Motor Company",
+      "sub_industry": "Automobile Manufacturers",
+      "symbol": "F",
+      "yahoo_symbol": "F"
+    },
+    {
+      "date_added": "2018-12-03",
+      "sector": "Energy",
+      "security": "Diamondback Energy",
+      "sub_industry": "Oil & Gas Exploration & Production",
+      "symbol": "FANG",
+      "yahoo_symbol": "FANG"
+    },
+    {
+      "date_added": "2008-09-15",
+      "sector": "Industrials",
+      "security": "Fastenal",
+      "sub_industry": "Trading Companies & Distributors",
+      "symbol": "FAST",
+      "yahoo_symbol": "FAST"
+    },
+    {
+      "date_added": "2011-07-01",
+      "sector": "Materials",
+      "security": "Freeport-McMoRan",
+      "sub_industry": "Copper",
+      "symbol": "FCX",
+      "yahoo_symbol": "FCX"
+    },
+    {
+      "date_added": "2021-12-20",
+      "sector": "Financials",
+      "security": "FactSet",
+      "sub_industry": "Financial Exchanges & Data",
+      "symbol": "FDS",
+      "yahoo_symbol": "FDS"
+    },
+    {
+      "date_added": "1980-12-31",
+      "sector": "Industrials",
+      "security": "FedEx",
+      "sub_industry": "Air Freight & Logistics",
+      "symbol": "FDX",
+      "yahoo_symbol": "FDX"
+    },
+    {
+      "date_added": "2026-06-01",
+      "sector": "Industrials",
+      "security": "FedEx Freight",
+      "sub_industry": "Cargo Ground Transportation",
+      "symbol": "FDXF",
+      "yahoo_symbol": "FDXF"
+    },
+    {
+      "date_added": "1997-11-28",
+      "sector": "Utilities",
+      "security": "FirstEnergy",
+      "sub_industry": "Electric Utilities",
+      "symbol": "FE",
+      "yahoo_symbol": "FE"
+    },
+    {
+      "date_added": "2010-12-20",
+      "sector": "Information Technology",
+      "security": "F5, Inc.",
+      "sub_industry": "Communications Equipment",
+      "symbol": "FFIV",
+      "yahoo_symbol": "FFIV"
+    },
+    {
+      "date_added": "2023-03-20",
+      "sector": "Information Technology",
+      "security": "Fair Isaac",
+      "sub_industry": "Application Software",
+      "symbol": "FICO",
+      "yahoo_symbol": "FICO"
+    },
+    {
+      "date_added": "2006-11-10",
+      "sector": "Financials",
+      "security": "Fidelity National Information Services",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "symbol": "FIS",
+      "yahoo_symbol": "FIS"
+    },
+    {
+      "date_added": "2001-04-02",
+      "sector": "Financials",
+      "security": "Fiserv",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "symbol": "FISV",
+      "yahoo_symbol": "FISV"
+    },
+    {
+      "date_added": "1996-03-29",
+      "sector": "Financials",
+      "security": "Fifth Third Bancorp",
+      "sub_industry": "Regional Banks",
+      "symbol": "FITB",
+      "yahoo_symbol": "FITB"
+    },
+    {
+      "date_added": "2025-12-22",
+      "sector": "Industrials",
+      "security": "Comfort Systems USA",
+      "sub_industry": "Construction & Engineering",
+      "symbol": "FIX",
+      "yahoo_symbol": "FIX"
+    },
+    {
+      "date_added": "2019-03-19",
+      "sector": "Communication Services",
+      "security": "Fox Corporation (Class B)",
+      "sub_industry": "Broadcasting",
+      "symbol": "FOX",
+      "yahoo_symbol": "FOX"
+    },
+    {
+      "date_added": "2019-03-19",
+      "sector": "Communication Services",
+      "security": "Fox Corporation (Class A)",
+      "sub_industry": "Broadcasting",
+      "symbol": "FOXA",
+      "yahoo_symbol": "FOXA"
+    },
+    {
+      "date_added": "2016-02-01",
+      "sector": "Real Estate",
+      "security": "Federal Realty Investment Trust",
+      "sub_industry": "Retail REITs",
+      "symbol": "FRT",
+      "yahoo_symbol": "FRT"
+    },
+    {
+      "date_added": "2022-12-19",
+      "sector": "Information Technology",
+      "security": "First Solar",
+      "sub_industry": "Semiconductors",
+      "symbol": "FSLR",
+      "yahoo_symbol": "FSLR"
+    },
+    {
+      "date_added": "2018-10-11",
+      "sector": "Information Technology",
+      "security": "Fortinet",
+      "sub_industry": "Systems Software",
+      "symbol": "FTNT",
+      "yahoo_symbol": "FTNT"
+    },
+    {
+      "date_added": "2016-07-01",
+      "sector": "Industrials",
+      "security": "Fortive",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "FTV",
+      "yahoo_symbol": "FTV"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "General Dynamics",
+      "sub_industry": "Aerospace & Defense",
+      "symbol": "GD",
+      "yahoo_symbol": "GD"
+    },
+    {
+      "date_added": "2024-06-24",
+      "sector": "Information Technology",
+      "security": "GoDaddy",
+      "sub_industry": "Internet Services & Infrastructure",
+      "symbol": "GDDY",
+      "yahoo_symbol": "GDDY"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "GE Aerospace",
+      "sub_industry": "Aerospace & Defense",
+      "symbol": "GE",
+      "yahoo_symbol": "GE"
+    },
+    {
+      "date_added": "2023-01-04",
+      "sector": "Health Care",
+      "security": "GE HealthCare",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "GEHC",
+      "yahoo_symbol": "GEHC"
+    },
+    {
+      "date_added": "2003-03-25",
+      "sector": "Information Technology",
+      "security": "Gen Digital",
+      "sub_industry": "Systems Software",
+      "symbol": "GEN",
+      "yahoo_symbol": "GEN"
+    },
+    {
+      "date_added": "2024-04-02",
+      "sector": "Industrials",
+      "security": "GE Vernova",
+      "sub_industry": "Heavy Electrical Equipment",
+      "symbol": "GEV",
+      "yahoo_symbol": "GEV"
+    },
+    {
+      "date_added": "2004-07-01",
+      "sector": "Health Care",
+      "security": "Gilead Sciences",
+      "sub_industry": "Biotechnology",
+      "symbol": "GILD",
+      "yahoo_symbol": "GILD"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Consumer Staples",
+      "security": "General Mills",
+      "sub_industry": "Packaged Foods & Meats",
+      "symbol": "GIS",
+      "yahoo_symbol": "GIS"
+    },
+    {
+      "date_added": "1989-04-30",
+      "sector": "Financials",
+      "security": "Globe Life",
+      "sub_industry": "Life & Health Insurance",
+      "symbol": "GL",
+      "yahoo_symbol": "GL"
+    },
+    {
+      "date_added": "1995-02-27",
+      "sector": "Information Technology",
+      "security": "Corning Inc.",
+      "sub_industry": "Electronic Components",
+      "symbol": "GLW",
+      "yahoo_symbol": "GLW"
+    },
+    {
+      "date_added": "2013-06-06",
+      "sector": "Consumer Discretionary",
+      "security": "General Motors",
+      "sub_industry": "Automobile Manufacturers",
+      "symbol": "GM",
+      "yahoo_symbol": "GM"
+    },
+    {
+      "date_added": "2021-03-22",
+      "sector": "Industrials",
+      "security": "Generac",
+      "sub_industry": "Electrical Components & Equipment",
+      "symbol": "GNRC",
+      "yahoo_symbol": "GNRC"
+    },
+    {
+      "date_added": "2014-04-03",
+      "sector": "Communication Services",
+      "security": "Alphabet Inc. (Class C)",
+      "sub_industry": "Interactive Media & Services",
+      "symbol": "GOOG",
+      "yahoo_symbol": "GOOG"
+    },
+    {
+      "date_added": "2006-04-03",
+      "sector": "Communication Services",
+      "security": "Alphabet Inc. (Class A)",
+      "sub_industry": "Interactive Media & Services",
+      "symbol": "GOOGL",
+      "yahoo_symbol": "GOOGL"
+    },
+    {
+      "date_added": "1973-12-31",
+      "sector": "Consumer Discretionary",
+      "security": "Genuine Parts Company",
+      "sub_industry": "Distributors",
+      "symbol": "GPC",
+      "yahoo_symbol": "GPC"
+    },
+    {
+      "date_added": "2016-04-25",
+      "sector": "Financials",
+      "security": "Global Payments",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "symbol": "GPN",
+      "yahoo_symbol": "GPN"
+    },
+    {
+      "date_added": "2012-12-12",
+      "sector": "Consumer Discretionary",
+      "security": "Garmin",
+      "sub_industry": "Consumer Electronics",
+      "symbol": "GRMN",
+      "yahoo_symbol": "GRMN"
+    },
+    {
+      "date_added": "2002-07-22",
+      "sector": "Financials",
+      "security": "Goldman Sachs",
+      "sub_industry": "Investment Banking & Brokerage",
+      "symbol": "GS",
+      "yahoo_symbol": "GS"
+    },
+    {
+      "date_added": "1981-06-30",
+      "sector": "Industrials",
+      "security": "W. W. Grainger",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "GWW",
+      "yahoo_symbol": "GWW"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Energy",
+      "security": "Halliburton",
+      "sub_industry": "Oil & Gas Equipment & Services",
+      "symbol": "HAL",
+      "yahoo_symbol": "HAL"
+    },
+    {
+      "date_added": "1984-09-30",
+      "sector": "Consumer Discretionary",
+      "security": "Hasbro",
+      "sub_industry": "Leisure Products",
+      "symbol": "HAS",
+      "yahoo_symbol": "HAS"
+    },
+    {
+      "date_added": "1997-08-28",
+      "sector": "Financials",
+      "security": "Huntington Bancshares",
+      "sub_industry": "Regional Banks",
+      "symbol": "HBAN",
+      "yahoo_symbol": "HBAN"
+    },
+    {
+      "date_added": "2015-01-27",
+      "sector": "Health Care",
+      "security": "HCA Healthcare",
+      "sub_industry": "Health Care Facilities",
+      "symbol": "HCA",
+      "yahoo_symbol": "HCA"
+    },
+    {
+      "date_added": "1988-03-31",
+      "sector": "Consumer Discretionary",
+      "security": "Home Depot (The)",
+      "sub_industry": "Home Improvement Retail",
+      "symbol": "HD",
+      "yahoo_symbol": "HD"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Financials",
+      "security": "Hartford (The)",
+      "sub_industry": "Property & Casualty Insurance",
+      "symbol": "HIG",
+      "yahoo_symbol": "HIG"
+    },
+    {
+      "date_added": "2018-01-03",
+      "sector": "Industrials",
+      "security": "Huntington Ingalls Industries",
+      "sub_industry": "Aerospace & Defense",
+      "symbol": "HII",
+      "yahoo_symbol": "HII"
+    },
+    {
+      "date_added": "2017-06-19",
+      "sector": "Consumer Discretionary",
+      "security": "Hilton Worldwide",
+      "sub_industry": "Hotels, Resorts & Cruise Lines",
+      "symbol": "HLT",
+      "yahoo_symbol": "HLT"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "Honeywell",
+      "sub_industry": "Industrial Conglomerates",
+      "symbol": "HON",
+      "yahoo_symbol": "HON"
+    },
+    {
+      "date_added": "2025-09-22",
+      "sector": "Financials",
+      "security": "Robinhood Markets",
+      "sub_industry": "Investment Banking & Brokerage",
+      "symbol": "HOOD",
+      "yahoo_symbol": "HOOD"
+    },
+    {
+      "date_added": "2015-11-02",
+      "sector": "Information Technology",
+      "security": "Hewlett Packard Enterprise",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "symbol": "HPE",
+      "yahoo_symbol": "HPE"
+    },
+    {
+      "date_added": "1974-12-31",
+      "sector": "Information Technology",
+      "security": "HP Inc.",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "symbol": "HPQ",
+      "yahoo_symbol": "HPQ"
+    },
+    {
+      "date_added": "2009-03-04",
+      "sector": "Consumer Staples",
+      "security": "Hormel Foods",
+      "sub_industry": "Packaged Foods & Meats",
+      "symbol": "HRL",
+      "yahoo_symbol": "HRL"
+    },
+    {
+      "date_added": "2015-03-17",
+      "sector": "Health Care",
+      "security": "Henry Schein",
+      "sub_industry": "Health Care Distributors",
+      "symbol": "HSIC",
+      "yahoo_symbol": "HSIC"
+    },
+    {
+      "date_added": "2007-03-20",
+      "sector": "Real Estate",
+      "security": "Host Hotels & Resorts",
+      "sub_industry": "Hotel & Resort REITs",
+      "symbol": "HST",
+      "yahoo_symbol": "HST"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Consumer Staples",
+      "security": "Hershey Company (The)",
+      "sub_industry": "Packaged Foods & Meats",
+      "symbol": "HSY",
+      "yahoo_symbol": "HSY"
+    },
+    {
+      "date_added": "2023-10-18",
+      "sector": "Industrials",
+      "security": "Hubbell Incorporated",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "HUBB",
+      "yahoo_symbol": "HUBB"
+    },
+    {
+      "date_added": "2012-12-10",
+      "sector": "Health Care",
+      "security": "Humana",
+      "sub_industry": "Managed Health Care",
+      "symbol": "HUM",
+      "yahoo_symbol": "HUM"
+    },
+    {
+      "date_added": "2016-10-21",
+      "sector": "Industrials",
+      "security": "Howmet Aerospace",
+      "sub_industry": "Aerospace & Defense",
+      "symbol": "HWM",
+      "yahoo_symbol": "HWM"
+    },
+    {
+      "date_added": "2025-08-28",
+      "sector": "Financials",
+      "security": "Interactive Brokers",
+      "sub_industry": "Investment Banking & Brokerage",
+      "symbol": "IBKR",
+      "yahoo_symbol": "IBKR"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Information Technology",
+      "security": "IBM",
+      "sub_industry": "IT Consulting & Other Services",
+      "symbol": "IBM",
+      "yahoo_symbol": "IBM"
+    },
+    {
+      "date_added": "2007-09-26",
+      "sector": "Financials",
+      "security": "Intercontinental Exchange",
+      "sub_industry": "Financial Exchanges & Data",
+      "symbol": "ICE",
+      "yahoo_symbol": "ICE"
+    },
+    {
+      "date_added": "2017-01-05",
+      "sector": "Health Care",
+      "security": "Idexx Laboratories",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "IDXX",
+      "yahoo_symbol": "IDXX"
+    },
+    {
+      "date_added": "2019-08-09",
+      "sector": "Industrials",
+      "security": "IDEX Corporation",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "IEX",
+      "yahoo_symbol": "IEX"
+    },
+    {
+      "date_added": "1976-03-31",
+      "sector": "Materials",
+      "security": "International Flavors & Fragrances",
+      "sub_industry": "Specialty Chemicals",
+      "symbol": "IFF",
+      "yahoo_symbol": "IFF"
+    },
+    {
+      "date_added": "2017-02-28",
+      "sector": "Health Care",
+      "security": "Incyte",
+      "sub_industry": "Biotechnology",
+      "symbol": "INCY",
+      "yahoo_symbol": "INCY"
+    },
+    {
+      "date_added": "1976-12-31",
+      "sector": "Information Technology",
+      "security": "Intel",
+      "sub_industry": "Semiconductors",
+      "symbol": "INTC",
+      "yahoo_symbol": "INTC"
+    },
+    {
+      "date_added": "2000-12-05",
+      "sector": "Information Technology",
+      "security": "Intuit",
+      "sub_industry": "Application Software",
+      "symbol": "INTU",
+      "yahoo_symbol": "INTU"
+    },
+    {
+      "date_added": "2022-09-19",
+      "sector": "Real Estate",
+      "security": "Invitation Homes",
+      "sub_industry": "Single-Family Residential REITs",
+      "symbol": "INVH",
+      "yahoo_symbol": "INVH"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Materials",
+      "security": "International Paper",
+      "sub_industry": "Paper & Plastic Packaging Products & Materials",
+      "symbol": "IP",
+      "yahoo_symbol": "IP"
+    },
+    {
+      "date_added": "2017-08-29",
+      "sector": "Health Care",
+      "security": "IQVIA",
+      "sub_industry": "Life Sciences Tools & Services",
+      "symbol": "IQV",
+      "yahoo_symbol": "IQV"
+    },
+    {
+      "date_added": "2020-03-03",
+      "sector": "Industrials",
+      "security": "Ingersoll Rand",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "IR",
+      "yahoo_symbol": "IR"
+    },
+    {
+      "date_added": "2009-01-06",
+      "sector": "Real Estate",
+      "security": "Iron Mountain",
+      "sub_industry": "Other Specialized REITs",
+      "symbol": "IRM",
+      "yahoo_symbol": "IRM"
+    },
+    {
+      "date_added": "2008-06-02",
+      "sector": "Health Care",
+      "security": "Intuitive Surgical",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "ISRG",
+      "yahoo_symbol": "ISRG"
+    },
+    {
+      "date_added": "2017-04-05",
+      "sector": "Information Technology",
+      "security": "Gartner",
+      "sub_industry": "IT Consulting & Other Services",
+      "symbol": "IT",
+      "yahoo_symbol": "IT"
+    },
+    {
+      "date_added": "1986-02-28",
+      "sector": "Industrials",
+      "security": "Illinois Tool Works",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "ITW",
+      "yahoo_symbol": "ITW"
+    },
+    {
+      "date_added": "2008-08-21",
+      "sector": "Financials",
+      "security": "Invesco",
+      "sub_industry": "Asset Management & Custody Banks",
+      "symbol": "IVZ",
+      "yahoo_symbol": "IVZ"
+    },
+    {
+      "date_added": "2007-10-26",
+      "sector": "Industrials",
+      "security": "Jacobs Solutions",
+      "sub_industry": "Construction & Engineering",
+      "symbol": "J",
+      "yahoo_symbol": "J"
+    },
+    {
+      "date_added": "2015-07-01",
+      "sector": "Industrials",
+      "security": "J.B. Hunt",
+      "sub_industry": "Cargo Ground Transportation",
+      "symbol": "JBHT",
+      "yahoo_symbol": "JBHT"
+    },
+    {
+      "date_added": "2023-12-18",
+      "sector": "Information Technology",
+      "security": "Jabil",
+      "sub_industry": "Electronic Manufacturing Services",
+      "symbol": "JBL",
+      "yahoo_symbol": "JBL"
+    },
+    {
+      "date_added": "2010-08-27",
+      "sector": "Industrials",
+      "security": "Johnson Controls",
+      "sub_industry": "Building Products",
+      "symbol": "JCI",
+      "yahoo_symbol": "JCI"
+    },
+    {
+      "date_added": "2018-11-13",
+      "sector": "Financials",
+      "security": "Jack Henry & Associates",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "symbol": "JKHY",
+      "yahoo_symbol": "JKHY"
+    },
+    {
+      "date_added": "1973-06-30",
+      "sector": "Health Care",
+      "security": "Johnson & Johnson",
+      "sub_industry": "Pharmaceuticals",
+      "symbol": "JNJ",
+      "yahoo_symbol": "JNJ"
+    },
+    {
+      "date_added": "1975-06-30",
+      "sector": "Financials",
+      "security": "JPMorgan Chase",
+      "sub_industry": "Diversified Banks",
+      "symbol": "JPM",
+      "yahoo_symbol": "JPM"
+    },
+    {
+      "date_added": "2022-06-21",
+      "sector": "Consumer Staples",
+      "security": "Keurig Dr Pepper",
+      "sub_industry": "Soft Drinks & Non-alcoholic Beverages",
+      "symbol": "KDP",
+      "yahoo_symbol": "KDP"
+    },
+    {
+      "date_added": "1994-03-01",
+      "sector": "Financials",
+      "security": "KeyCorp",
+      "sub_industry": "Regional Banks",
+      "symbol": "KEY",
+      "yahoo_symbol": "KEY"
+    },
+    {
+      "date_added": "2018-11-06",
+      "sector": "Information Technology",
+      "security": "Keysight Technologies",
+      "sub_industry": "Electronic Equipment & Instruments",
+      "symbol": "KEYS",
+      "yahoo_symbol": "KEYS"
+    },
+    {
+      "date_added": "2015-07-06",
+      "sector": "Consumer Staples",
+      "security": "Kraft Heinz",
+      "sub_industry": "Packaged Foods & Meats",
+      "symbol": "KHC",
+      "yahoo_symbol": "KHC"
+    },
+    {
+      "date_added": "2006-04-04",
+      "sector": "Real Estate",
+      "security": "Kimco Realty",
+      "sub_industry": "Retail REITs",
+      "symbol": "KIM",
+      "yahoo_symbol": "KIM"
+    },
+    {
+      "date_added": "2024-06-24",
+      "sector": "Financials",
+      "security": "KKR & Co.",
+      "sub_industry": "Asset Management & Custody Banks",
+      "symbol": "KKR",
+      "yahoo_symbol": "KKR"
+    },
+    {
+      "date_added": "1997-09-30",
+      "sector": "Information Technology",
+      "security": "KLA Corporation",
+      "sub_industry": "Semiconductor Materials & Equipment",
+      "symbol": "KLAC",
+      "yahoo_symbol": "KLAC"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Consumer Staples",
+      "security": "Kimberly-Clark",
+      "sub_industry": "Household Products",
+      "symbol": "KMB",
+      "yahoo_symbol": "KMB"
+    },
+    {
+      "date_added": "2012-05-25",
+      "sector": "Energy",
+      "security": "Kinder Morgan",
+      "sub_industry": "Oil & Gas Storage & Transportation",
+      "symbol": "KMI",
+      "yahoo_symbol": "KMI"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Consumer Staples",
+      "security": "Coca-Cola Company (The)",
+      "sub_industry": "Soft Drinks & Non-alcoholic Beverages",
+      "symbol": "KO",
+      "yahoo_symbol": "KO"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Consumer Staples",
+      "security": "Kroger",
+      "sub_industry": "Food Retail",
+      "symbol": "KR",
+      "yahoo_symbol": "KR"
+    },
+    {
+      "date_added": "2023-08-25",
+      "sector": "Consumer Staples",
+      "security": "Kenvue",
+      "sub_industry": "Personal Care Products",
+      "symbol": "KVUE",
+      "yahoo_symbol": "KVUE"
+    },
+    {
+      "date_added": "1995-05-31",
+      "sector": "Financials",
+      "security": "Loews Corporation",
+      "sub_industry": "Multi-line Insurance",
+      "symbol": "L",
+      "yahoo_symbol": "L"
+    },
+    {
+      "date_added": "2019-08-09",
+      "sector": "Industrials",
+      "security": "Leidos",
+      "sub_industry": "Diversified Support Services",
+      "symbol": "LDOS",
+      "yahoo_symbol": "LDOS"
+    },
+    {
+      "date_added": "2005-10-04",
+      "sector": "Consumer Discretionary",
+      "security": "Lennar",
+      "sub_industry": "Homebuilding",
+      "symbol": "LEN",
+      "yahoo_symbol": "LEN"
+    },
+    {
+      "date_added": "2004-11-01",
+      "sector": "Health Care",
+      "security": "Labcorp",
+      "sub_industry": "Health Care Services",
+      "symbol": "LH",
+      "yahoo_symbol": "LH"
+    },
+    {
+      "date_added": "2008-09-22",
+      "sector": "Industrials",
+      "security": "L3Harris",
+      "sub_industry": "Aerospace & Defense",
+      "symbol": "LHX",
+      "yahoo_symbol": "LHX"
+    },
+    {
+      "date_added": "2024-12-23",
+      "sector": "Industrials",
+      "security": "Lennox International",
+      "sub_industry": "Building Products",
+      "symbol": "LII",
+      "yahoo_symbol": "LII"
+    },
+    {
+      "date_added": "1992-07-01",
+      "sector": "Materials",
+      "security": "Linde plc",
+      "sub_industry": "Industrial Gases",
+      "symbol": "LIN",
+      "yahoo_symbol": "LIN"
+    },
+    {
+      "date_added": "2026-03-23",
+      "sector": "Information Technology",
+      "security": "Lumentum",
+      "sub_industry": "Communications Equipment",
+      "symbol": "LITE",
+      "yahoo_symbol": "LITE"
+    },
+    {
+      "date_added": "1970-12-31",
+      "sector": "Health Care",
+      "security": "Lilly (Eli)",
+      "sub_industry": "Pharmaceuticals",
+      "symbol": "LLY",
+      "yahoo_symbol": "LLY"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "Lockheed Martin",
+      "sub_industry": "Aerospace & Defense",
+      "symbol": "LMT",
+      "yahoo_symbol": "LMT"
+    },
+    {
+      "date_added": "2016-07-01",
+      "sector": "Utilities",
+      "security": "Alliant Energy",
+      "sub_industry": "Electric Utilities",
+      "symbol": "LNT",
+      "yahoo_symbol": "LNT"
+    },
+    {
+      "date_added": "1984-02-29",
+      "sector": "Consumer Discretionary",
+      "security": "Lowe's",
+      "sub_industry": "Home Improvement Retail",
+      "symbol": "LOW",
+      "yahoo_symbol": "LOW"
+    },
+    {
+      "date_added": "2012-06-29",
+      "sector": "Information Technology",
+      "security": "Lam Research",
+      "sub_industry": "Semiconductor Materials & Equipment",
+      "symbol": "LRCX",
+      "yahoo_symbol": "LRCX"
+    },
+    {
+      "date_added": "2023-10-18",
+      "sector": "Consumer Discretionary",
+      "security": "Lululemon Athletica",
+      "sub_industry": "Apparel, Accessories & Luxury Goods",
+      "symbol": "LULU",
+      "yahoo_symbol": "LULU"
+    },
+    {
+      "date_added": "1994-07-01",
+      "sector": "Industrials",
+      "security": "Southwest Airlines",
+      "sub_industry": "Passenger Airlines",
+      "symbol": "LUV",
+      "yahoo_symbol": "LUV"
+    },
+    {
+      "date_added": "2019-10-03",
+      "sector": "Consumer Discretionary",
+      "security": "Las Vegas Sands",
+      "sub_industry": "Casinos & Gaming",
+      "symbol": "LVS",
+      "yahoo_symbol": "LVS"
+    },
+    {
+      "date_added": "2012-09-05",
+      "sector": "Materials",
+      "security": "LyondellBasell",
+      "sub_industry": "Specialty Chemicals",
+      "symbol": "LYB",
+      "yahoo_symbol": "LYB"
+    },
+    {
+      "date_added": "2019-12-23",
+      "sector": "Communication Services",
+      "security": "Live Nation Entertainment",
+      "sub_industry": "Movies & Entertainment",
+      "symbol": "LYV",
+      "yahoo_symbol": "LYV"
+    },
+    {
+      "date_added": "2008-07-18",
+      "sector": "Financials",
+      "security": "Mastercard",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "symbol": "MA",
+      "yahoo_symbol": "MA"
+    },
+    {
+      "date_added": "2016-12-02",
+      "sector": "Real Estate",
+      "security": "Mid-America Apartment Communities",
+      "sub_industry": "Multi-Family Residential REITs",
+      "symbol": "MAA",
+      "yahoo_symbol": "MAA"
+    },
+    {
+      "date_added": "1998-05-29",
+      "sector": "Consumer Discretionary",
+      "security": "Marriott International",
+      "sub_industry": "Hotels, Resorts & Cruise Lines",
+      "symbol": "MAR",
+      "yahoo_symbol": "MAR"
+    },
+    {
+      "date_added": "1981-06-30",
+      "sector": "Industrials",
+      "security": "Masco",
+      "sub_industry": "Building Products",
+      "symbol": "MAS",
+      "yahoo_symbol": "MAS"
+    },
+    {
+      "date_added": "1970-06-30",
+      "sector": "Consumer Discretionary",
+      "security": "McDonald's",
+      "sub_industry": "Restaurants",
+      "symbol": "MCD",
+      "yahoo_symbol": "MCD"
+    },
+    {
+      "date_added": "2007-09-07",
+      "sector": "Information Technology",
+      "security": "Microchip Technology",
+      "sub_industry": "Semiconductors",
+      "symbol": "MCHP",
+      "yahoo_symbol": "MCHP"
+    },
+    {
+      "date_added": "1999-01-13",
+      "sector": "Health Care",
+      "security": "McKesson Corporation",
+      "sub_industry": "Health Care Distributors",
+      "symbol": "MCK",
+      "yahoo_symbol": "MCK"
+    },
+    {
+      "date_added": "1998-07-01",
+      "sector": "Financials",
+      "security": "Moody's Corporation",
+      "sub_industry": "Financial Exchanges & Data",
+      "symbol": "MCO",
+      "yahoo_symbol": "MCO"
+    },
+    {
+      "date_added": "2012-10-02",
+      "sector": "Consumer Staples",
+      "security": "Mondelez International",
+      "sub_industry": "Packaged Foods & Meats",
+      "symbol": "MDLZ",
+      "yahoo_symbol": "MDLZ"
+    },
+    {
+      "date_added": "1986-10-31",
+      "sector": "Health Care",
+      "security": "Medtronic",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "MDT",
+      "yahoo_symbol": "MDT"
+    },
+    {
+      "date_added": "2000-12-11",
+      "sector": "Financials",
+      "security": "MetLife",
+      "sub_industry": "Life & Health Insurance",
+      "symbol": "MET",
+      "yahoo_symbol": "MET"
+    },
+    {
+      "date_added": "2013-12-23",
+      "sector": "Communication Services",
+      "security": "Meta Platforms",
+      "sub_industry": "Interactive Media & Services",
+      "symbol": "META",
+      "yahoo_symbol": "META"
+    },
+    {
+      "date_added": "2017-07-26",
+      "sector": "Consumer Discretionary",
+      "security": "MGM Resorts",
+      "sub_industry": "Casinos & Gaming",
+      "symbol": "MGM",
+      "yahoo_symbol": "MGM"
+    },
+    {
+      "date_added": "2003-03-20",
+      "sector": "Consumer Staples",
+      "security": "McCormick & Company",
+      "sub_industry": "Packaged Foods & Meats",
+      "symbol": "MKC",
+      "yahoo_symbol": "MKC"
+    },
+    {
+      "date_added": "2014-07-02",
+      "sector": "Materials",
+      "security": "Martin Marietta Materials",
+      "sub_industry": "Construction Materials",
+      "symbol": "MLM",
+      "yahoo_symbol": "MLM"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "3M",
+      "sub_industry": "Industrial Conglomerates",
+      "symbol": "MMM",
+      "yahoo_symbol": "MMM"
+    },
+    {
+      "date_added": "2012-06-28",
+      "sector": "Consumer Staples",
+      "security": "Monster Beverage",
+      "sub_industry": "Soft Drinks & Non-alcoholic Beverages",
+      "symbol": "MNST",
+      "yahoo_symbol": "MNST"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Consumer Staples",
+      "security": "Altria",
+      "sub_industry": "Tobacco",
+      "symbol": "MO",
+      "yahoo_symbol": "MO"
+    },
+    {
+      "date_added": "2011-09-26",
+      "sector": "Materials",
+      "security": "Mosaic Company (The)",
+      "sub_industry": "Fertilizers & Agricultural Chemicals",
+      "symbol": "MOS",
+      "yahoo_symbol": "MOS"
+    },
+    {
+      "date_added": "2011-07-01",
+      "sector": "Energy",
+      "security": "Marathon Petroleum",
+      "sub_industry": "Oil & Gas Refining & Marketing",
+      "symbol": "MPC",
+      "yahoo_symbol": "MPC"
+    },
+    {
+      "date_added": "2021-02-12",
+      "sector": "Information Technology",
+      "security": "Monolithic Power Systems",
+      "sub_industry": "Semiconductors",
+      "symbol": "MPWR",
+      "yahoo_symbol": "MPWR"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Health Care",
+      "security": "Merck & Co.",
+      "sub_industry": "Pharmaceuticals",
+      "symbol": "MRK",
+      "yahoo_symbol": "MRK"
+    },
+    {
+      "date_added": "2021-07-21",
+      "sector": "Health Care",
+      "security": "Moderna",
+      "sub_industry": "Biotechnology",
+      "symbol": "MRNA",
+      "yahoo_symbol": "MRNA"
+    },
+    {
+      "date_added": "1987-08-31",
+      "sector": "Financials",
+      "security": "Marsh McLennan",
+      "sub_industry": "Insurance Brokers",
+      "symbol": "MRSH",
+      "yahoo_symbol": "MRSH"
+    },
+    {
+      "date_added": "1993-07-29",
+      "sector": "Financials",
+      "security": "Morgan Stanley",
+      "sub_industry": "Investment Banking & Brokerage",
+      "symbol": "MS",
+      "yahoo_symbol": "MS"
+    },
+    {
+      "date_added": "2018-04-04",
+      "sector": "Financials",
+      "security": "MSCI Inc.",
+      "sub_industry": "Financial Exchanges & Data",
+      "symbol": "MSCI",
+      "yahoo_symbol": "MSCI"
+    },
+    {
+      "date_added": "1994-06-01",
+      "sector": "Information Technology",
+      "security": "Microsoft",
+      "sub_industry": "Systems Software",
+      "symbol": "MSFT",
+      "yahoo_symbol": "MSFT"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Information Technology",
+      "security": "Motorola Solutions",
+      "sub_industry": "Communications Equipment",
+      "symbol": "MSI",
+      "yahoo_symbol": "MSI"
+    },
+    {
+      "date_added": "2004-02-23",
+      "sector": "Financials",
+      "security": "M&T Bank",
+      "sub_industry": "Regional Banks",
+      "symbol": "MTB",
+      "yahoo_symbol": "MTB"
+    },
+    {
+      "date_added": "2016-09-06",
+      "sector": "Health Care",
+      "security": "Mettler Toledo",
+      "sub_industry": "Life Sciences Tools & Services",
+      "symbol": "MTD",
+      "yahoo_symbol": "MTD"
+    },
+    {
+      "date_added": "1994-09-27",
+      "sector": "Information Technology",
+      "security": "Micron Technology",
+      "sub_industry": "Semiconductors",
+      "symbol": "MU",
+      "yahoo_symbol": "MU"
+    },
+    {
+      "date_added": "2017-10-13",
+      "sector": "Consumer Discretionary",
+      "security": "Norwegian Cruise Line Holdings",
+      "sub_industry": "Hotels, Resorts & Cruise Lines",
+      "symbol": "NCLH",
+      "yahoo_symbol": "NCLH"
+    },
+    {
+      "date_added": "2008-10-22",
+      "sector": "Financials",
+      "security": "Nasdaq, Inc.",
+      "sub_industry": "Financial Exchanges & Data",
+      "symbol": "NDAQ",
+      "yahoo_symbol": "NDAQ"
+    },
+    {
+      "date_added": "2022-02-15",
+      "sector": "Industrials",
+      "security": "Nordson Corporation",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "NDSN",
+      "yahoo_symbol": "NDSN"
+    },
+    {
+      "date_added": "1976-06-30",
+      "sector": "Utilities",
+      "security": "NextEra Energy",
+      "sub_industry": "Multi-Utilities",
+      "symbol": "NEE",
+      "yahoo_symbol": "NEE"
+    },
+    {
+      "date_added": "1969-06-30",
+      "sector": "Materials",
+      "security": "Newmont",
+      "sub_industry": "Gold",
+      "symbol": "NEM",
+      "yahoo_symbol": "NEM"
+    },
+    {
+      "date_added": "2010-12-20",
+      "sector": "Communication Services",
+      "security": "Netflix",
+      "sub_industry": "Movies & Entertainment",
+      "symbol": "NFLX",
+      "yahoo_symbol": "NFLX"
+    },
+    {
+      "date_added": "2000-11-02",
+      "sector": "Utilities",
+      "security": "NiSource",
+      "sub_industry": "Multi-Utilities",
+      "symbol": "NI",
+      "yahoo_symbol": "NI"
+    },
+    {
+      "date_added": "1988-11-30",
+      "sector": "Consumer Discretionary",
+      "security": "Nike, Inc.",
+      "sub_industry": "Apparel, Accessories & Luxury Goods",
+      "symbol": "NKE",
+      "yahoo_symbol": "NKE"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "Northrop Grumman",
+      "sub_industry": "Aerospace & Defense",
+      "symbol": "NOC",
+      "yahoo_symbol": "NOC"
+    },
+    {
+      "date_added": "2019-11-21",
+      "sector": "Information Technology",
+      "security": "ServiceNow",
+      "sub_industry": "Systems Software",
+      "symbol": "NOW",
+      "yahoo_symbol": "NOW"
+    },
+    {
+      "date_added": "2010-01-29",
+      "sector": "Utilities",
+      "security": "NRG Energy",
+      "sub_industry": "Independent Power Producers & Energy Traders",
+      "symbol": "NRG",
+      "yahoo_symbol": "NRG"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "Norfolk Southern",
+      "sub_industry": "Rail Transportation",
+      "symbol": "NSC",
+      "yahoo_symbol": "NSC"
+    },
+    {
+      "date_added": "1999-06-25",
+      "sector": "Information Technology",
+      "security": "NetApp",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "symbol": "NTAP",
+      "yahoo_symbol": "NTAP"
+    },
+    {
+      "date_added": "1998-01-30",
+      "sector": "Financials",
+      "security": "Northern Trust",
+      "sub_industry": "Asset Management & Custody Banks",
+      "symbol": "NTRS",
+      "yahoo_symbol": "NTRS"
+    },
+    {
+      "date_added": "1985-04-30",
+      "sector": "Materials",
+      "security": "Nucor",
+      "sub_industry": "Steel",
+      "symbol": "NUE",
+      "yahoo_symbol": "NUE"
+    },
+    {
+      "date_added": "2001-11-30",
+      "sector": "Information Technology",
+      "security": "Nvidia",
+      "sub_industry": "Semiconductors",
+      "symbol": "NVDA",
+      "yahoo_symbol": "NVDA"
+    },
+    {
+      "date_added": "2019-09-26",
+      "sector": "Consumer Discretionary",
+      "security": "NVR, Inc.",
+      "sub_industry": "Homebuilding",
+      "symbol": "NVR",
+      "yahoo_symbol": "NVR"
+    },
+    {
+      "date_added": "2015-09-18",
+      "sector": "Communication Services",
+      "security": "News Corp (Class B)",
+      "sub_industry": "Publishing",
+      "symbol": "NWS",
+      "yahoo_symbol": "NWS"
+    },
+    {
+      "date_added": "2013-08-01",
+      "sector": "Communication Services",
+      "security": "News Corp (Class A)",
+      "sub_industry": "Publishing",
+      "symbol": "NWSA",
+      "yahoo_symbol": "NWSA"
+    },
+    {
+      "date_added": "2021-03-22",
+      "sector": "Information Technology",
+      "security": "NXP Semiconductors",
+      "sub_industry": "Semiconductors",
+      "symbol": "NXPI",
+      "yahoo_symbol": "NXPI"
+    },
+    {
+      "date_added": "2015-04-07",
+      "sector": "Real Estate",
+      "security": "Realty Income",
+      "sub_industry": "Retail REITs",
+      "symbol": "O",
+      "yahoo_symbol": "O"
+    },
+    {
+      "date_added": "2019-12-09",
+      "sector": "Industrials",
+      "security": "Old Dominion",
+      "sub_industry": "Cargo Ground Transportation",
+      "symbol": "ODFL",
+      "yahoo_symbol": "ODFL"
+    },
+    {
+      "date_added": "2010-03-15",
+      "sector": "Energy",
+      "security": "Oneok",
+      "sub_industry": "Oil & Gas Storage & Transportation",
+      "symbol": "OKE",
+      "yahoo_symbol": "OKE"
+    },
+    {
+      "date_added": "1997-12-31",
+      "sector": "Communication Services",
+      "security": "Omnicom Group",
+      "sub_industry": "Advertising",
+      "symbol": "OMC",
+      "yahoo_symbol": "OMC"
+    },
+    {
+      "date_added": "2022-06-21",
+      "sector": "Information Technology",
+      "security": "ON Semiconductor",
+      "sub_industry": "Semiconductors",
+      "symbol": "ON",
+      "yahoo_symbol": "ON"
+    },
+    {
+      "date_added": "1989-08-31",
+      "sector": "Information Technology",
+      "security": "Oracle Corporation",
+      "sub_industry": "Application Software",
+      "symbol": "ORCL",
+      "yahoo_symbol": "ORCL"
+    },
+    {
+      "date_added": "2009-03-27",
+      "sector": "Consumer Discretionary",
+      "security": "O\u2019Reilly Automotive",
+      "sub_industry": "Automotive Retail",
+      "symbol": "ORLY",
+      "yahoo_symbol": "ORLY"
+    },
+    {
+      "date_added": "2020-04-03",
+      "sector": "Industrials",
+      "security": "Otis Worldwide",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "OTIS",
+      "yahoo_symbol": "OTIS"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Energy",
+      "security": "Occidental Petroleum",
+      "sub_industry": "Oil & Gas Exploration & Production",
+      "symbol": "OXY",
+      "yahoo_symbol": "OXY"
+    },
+    {
+      "date_added": "2023-06-20",
+      "sector": "Information Technology",
+      "security": "Palo Alto Networks",
+      "sub_industry": "Systems Software",
+      "symbol": "PANW",
+      "yahoo_symbol": "PANW"
+    },
+    {
+      "date_added": "1998-10-01",
+      "sector": "Industrials",
+      "security": "Paychex",
+      "sub_industry": "Human Resource & Employment Services",
+      "symbol": "PAYX",
+      "yahoo_symbol": "PAYX"
+    },
+    {
+      "date_added": "1980-12-31",
+      "sector": "Industrials",
+      "security": "Paccar",
+      "sub_industry": "Construction Machinery & Heavy Transportation Equipment",
+      "symbol": "PCAR",
+      "yahoo_symbol": "PCAR"
+    },
+    {
+      "date_added": "2022-10-03",
+      "sector": "Utilities",
+      "security": "PG&E Corporation",
+      "sub_industry": "Multi-Utilities",
+      "symbol": "PCG",
+      "yahoo_symbol": "PCG"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Utilities",
+      "security": "Public Service Enterprise Group",
+      "sub_industry": "Electric Utilities",
+      "symbol": "PEG",
+      "yahoo_symbol": "PEG"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Consumer Staples",
+      "security": "PepsiCo",
+      "sub_industry": "Soft Drinks & Non-alcoholic Beverages",
+      "symbol": "PEP",
+      "yahoo_symbol": "PEP"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Health Care",
+      "security": "Pfizer",
+      "sub_industry": "Pharmaceuticals",
+      "symbol": "PFE",
+      "yahoo_symbol": "PFE"
+    },
+    {
+      "date_added": "2002-07-22",
+      "sector": "Financials",
+      "security": "Principal Financial Group",
+      "sub_industry": "Life & Health Insurance",
+      "symbol": "PFG",
+      "yahoo_symbol": "PFG"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Consumer Staples",
+      "security": "Procter & Gamble",
+      "sub_industry": "Personal Care Products",
+      "symbol": "PG",
+      "yahoo_symbol": "PG"
+    },
+    {
+      "date_added": "1997-08-04",
+      "sector": "Financials",
+      "security": "Progressive Corporation",
+      "sub_industry": "Property & Casualty Insurance",
+      "symbol": "PGR",
+      "yahoo_symbol": "PGR"
+    },
+    {
+      "date_added": "1985-11-30",
+      "sector": "Industrials",
+      "security": "Parker Hannifin",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "PH",
+      "yahoo_symbol": "PH"
+    },
+    {
+      "date_added": "1984-04-30",
+      "sector": "Consumer Discretionary",
+      "security": "PulteGroup",
+      "sub_industry": "Homebuilding",
+      "symbol": "PHM",
+      "yahoo_symbol": "PHM"
+    },
+    {
+      "date_added": "2017-07-26",
+      "sector": "Materials",
+      "security": "Packaging Corporation of America",
+      "sub_industry": "Paper & Plastic Packaging Products & Materials",
+      "symbol": "PKG",
+      "yahoo_symbol": "PKG"
+    },
+    {
+      "date_added": "2003-07-17",
+      "sector": "Real Estate",
+      "security": "Prologis",
+      "sub_industry": "Industrial REITs",
+      "symbol": "PLD",
+      "yahoo_symbol": "PLD"
+    },
+    {
+      "date_added": "2024-09-23",
+      "sector": "Information Technology",
+      "security": "Palantir Technologies",
+      "sub_industry": "Application Software",
+      "symbol": "PLTR",
+      "yahoo_symbol": "PLTR"
+    },
+    {
+      "date_added": "2008-03-31",
+      "sector": "Consumer Staples",
+      "security": "Philip Morris International",
+      "sub_industry": "Tobacco",
+      "symbol": "PM",
+      "yahoo_symbol": "PM"
+    },
+    {
+      "date_added": "1988-04-30",
+      "sector": "Financials",
+      "security": "PNC Financial Services",
+      "sub_industry": "Diversified Banks",
+      "symbol": "PNC",
+      "yahoo_symbol": "PNC"
+    },
+    {
+      "date_added": "2012-10-01",
+      "sector": "Industrials",
+      "security": "Pentair",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "PNR",
+      "yahoo_symbol": "PNR"
+    },
+    {
+      "date_added": "1999-10-04",
+      "sector": "Utilities",
+      "security": "Pinnacle West Capital",
+      "sub_industry": "Multi-Utilities",
+      "symbol": "PNW",
+      "yahoo_symbol": "PNW"
+    },
+    {
+      "date_added": "2023-03-15",
+      "sector": "Health Care",
+      "security": "Insulet Corporation",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "PODD",
+      "yahoo_symbol": "PODD"
+    },
+    {
+      "date_added": "2020-10-07",
+      "sector": "Consumer Discretionary",
+      "security": "Pool Corporation",
+      "sub_industry": "Distributors",
+      "symbol": "POOL",
+      "yahoo_symbol": "POOL"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Materials",
+      "security": "PPG Industries",
+      "sub_industry": "Specialty Chemicals",
+      "symbol": "PPG",
+      "yahoo_symbol": "PPG"
+    },
+    {
+      "date_added": "2001-10-01",
+      "sector": "Utilities",
+      "security": "PPL Corporation",
+      "sub_industry": "Electric Utilities",
+      "symbol": "PPL",
+      "yahoo_symbol": "PPL"
+    },
+    {
+      "date_added": "2002-07-22",
+      "sector": "Financials",
+      "security": "Prudential Financial",
+      "sub_industry": "Life & Health Insurance",
+      "symbol": "PRU",
+      "yahoo_symbol": "PRU"
+    },
+    {
+      "date_added": "2005-08-19",
+      "sector": "Real Estate",
+      "security": "Public Storage",
+      "sub_industry": "Self-Storage REITs",
+      "symbol": "PSA",
+      "yahoo_symbol": "PSA"
+    },
+    {
+      "date_added": "1994-09-30",
+      "sector": "Communication Services",
+      "security": "Paramount Skydance Corporation",
+      "sub_industry": "Movies & Entertainment",
+      "symbol": "PSKY",
+      "yahoo_symbol": "PSKY"
+    },
+    {
+      "date_added": "2012-05-01",
+      "sector": "Energy",
+      "security": "Phillips 66",
+      "sub_industry": "Oil & Gas Refining & Marketing",
+      "symbol": "PSX",
+      "yahoo_symbol": "PSX"
+    },
+    {
+      "date_added": "2021-04-20",
+      "sector": "Information Technology",
+      "security": "PTC Inc.",
+      "sub_industry": "Application Software",
+      "symbol": "PTC",
+      "yahoo_symbol": "PTC"
+    },
+    {
+      "date_added": "2009-07-01",
+      "sector": "Industrials",
+      "security": "Quanta Services",
+      "sub_industry": "Construction & Engineering",
+      "symbol": "PWR",
+      "yahoo_symbol": "PWR"
+    },
+    {
+      "date_added": "2015-07-20",
+      "sector": "Financials",
+      "security": "PayPal",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "symbol": "PYPL",
+      "yahoo_symbol": "PYPL"
+    },
+    {
+      "date_added": "2025-11-03",
+      "sector": "Information Technology",
+      "security": "Qnity Electronics",
+      "sub_industry": "Semiconductor Materials & Equipment",
+      "symbol": "Q",
+      "yahoo_symbol": "Q"
+    },
+    {
+      "date_added": "1999-07-22",
+      "sector": "Information Technology",
+      "security": "Qualcomm",
+      "sub_industry": "Semiconductors",
+      "symbol": "QCOM",
+      "yahoo_symbol": "QCOM"
+    },
+    {
+      "date_added": "2014-12-05",
+      "sector": "Consumer Discretionary",
+      "security": "Royal Caribbean Group",
+      "sub_industry": "Hotels, Resorts & Cruise Lines",
+      "symbol": "RCL",
+      "yahoo_symbol": "RCL"
+    },
+    {
+      "date_added": "2017-03-02",
+      "sector": "Real Estate",
+      "security": "Regency Centers",
+      "sub_industry": "Retail REITs",
+      "symbol": "REG",
+      "yahoo_symbol": "REG"
+    },
+    {
+      "date_added": "2013-05-01",
+      "sector": "Health Care",
+      "security": "Regeneron Pharmaceuticals",
+      "sub_industry": "Biotechnology",
+      "symbol": "REGN",
+      "yahoo_symbol": "REGN"
+    },
+    {
+      "date_added": "1998-08-28",
+      "sector": "Financials",
+      "security": "Regions Financial Corporation",
+      "sub_industry": "Regional Banks",
+      "symbol": "RF",
+      "yahoo_symbol": "RF"
+    },
+    {
+      "date_added": "2017-03-20",
+      "sector": "Financials",
+      "security": "Raymond James Financial",
+      "sub_industry": "Investment Banking & Brokerage",
+      "symbol": "RJF",
+      "yahoo_symbol": "RJF"
+    },
+    {
+      "date_added": "2007-02-02",
+      "sector": "Consumer Discretionary",
+      "security": "Ralph Lauren Corporation",
+      "sub_industry": "Apparel, Accessories & Luxury Goods",
+      "symbol": "RL",
+      "yahoo_symbol": "RL"
+    },
+    {
+      "date_added": "2017-07-26",
+      "sector": "Health Care",
+      "security": "ResMed",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "RMD",
+      "yahoo_symbol": "RMD"
+    },
+    {
+      "date_added": "2000-03-12",
+      "sector": "Industrials",
+      "security": "Rockwell Automation",
+      "sub_industry": "Electrical Components & Equipment",
+      "symbol": "ROK",
+      "yahoo_symbol": "ROK"
+    },
+    {
+      "date_added": "2018-10-01",
+      "sector": "Industrials",
+      "security": "Rollins, Inc.",
+      "sub_industry": "Environmental & Facilities Services",
+      "symbol": "ROL",
+      "yahoo_symbol": "ROL"
+    },
+    {
+      "date_added": "2009-12-23",
+      "sector": "Information Technology",
+      "security": "Roper Technologies",
+      "sub_industry": "Electronic Equipment & Instruments",
+      "symbol": "ROP",
+      "yahoo_symbol": "ROP"
+    },
+    {
+      "date_added": "2009-12-21",
+      "sector": "Consumer Discretionary",
+      "security": "Ross Stores",
+      "sub_industry": "Apparel Retail",
+      "symbol": "ROST",
+      "yahoo_symbol": "ROST"
+    },
+    {
+      "date_added": "2008-12-05",
+      "sector": "Industrials",
+      "security": "Republic Services",
+      "sub_industry": "Environmental & Facilities Services",
+      "symbol": "RSG",
+      "yahoo_symbol": "RSG"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "RTX Corporation",
+      "sub_industry": "Aerospace & Defense",
+      "symbol": "RTX",
+      "yahoo_symbol": "RTX"
+    },
+    {
+      "date_added": "1985-05-31",
+      "sector": "Health Care",
+      "security": "Revvity",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "RVTY",
+      "yahoo_symbol": "RVTY"
+    },
+    {
+      "date_added": "2026-03-23",
+      "sector": "Communication Services",
+      "security": "EchoStar",
+      "sub_industry": "Wireless Telecommunication Services",
+      "symbol": "SATS",
+      "yahoo_symbol": "SATS"
+    },
+    {
+      "date_added": "2017-09-01",
+      "sector": "Real Estate",
+      "security": "SBA Communications",
+      "sub_industry": "Telecom Tower REITs",
+      "symbol": "SBAC",
+      "yahoo_symbol": "SBAC"
+    },
+    {
+      "date_added": "2000-06-07",
+      "sector": "Consumer Discretionary",
+      "security": "Starbucks",
+      "sub_industry": "Restaurants",
+      "symbol": "SBUX",
+      "yahoo_symbol": "SBUX"
+    },
+    {
+      "date_added": "1997-06-02",
+      "sector": "Financials",
+      "security": "Charles Schwab Corporation",
+      "sub_industry": "Investment Banking & Brokerage",
+      "symbol": "SCHW",
+      "yahoo_symbol": "SCHW"
+    },
+    {
+      "date_added": "1964-06-30",
+      "sector": "Materials",
+      "security": "Sherwin-Williams",
+      "sub_industry": "Specialty Chemicals",
+      "symbol": "SHW",
+      "yahoo_symbol": "SHW"
+    },
+    {
+      "date_added": "2008-11-06",
+      "sector": "Consumer Staples",
+      "security": "J.M. Smucker Company (The)",
+      "sub_industry": "Packaged Foods & Meats",
+      "symbol": "SJM",
+      "yahoo_symbol": "SJM"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Energy",
+      "security": "Schlumberger",
+      "sub_industry": "Oil & Gas Equipment & Services",
+      "symbol": "SLB",
+      "yahoo_symbol": "SLB"
+    },
+    {
+      "date_added": "2024-03-18",
+      "sector": "Information Technology",
+      "security": "Supermicro",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "symbol": "SMCI",
+      "yahoo_symbol": "SMCI"
+    },
+    {
+      "date_added": "1982-09-30",
+      "sector": "Industrials",
+      "security": "Snap-on",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "SNA",
+      "yahoo_symbol": "SNA"
+    },
+    {
+      "date_added": "2025-11-28",
+      "sector": "Information Technology",
+      "security": "Sandisk",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "symbol": "SNDK",
+      "yahoo_symbol": "SNDK"
+    },
+    {
+      "date_added": "2017-03-16",
+      "sector": "Information Technology",
+      "security": "Synopsys",
+      "sub_industry": "Application Software",
+      "symbol": "SNPS",
+      "yahoo_symbol": "SNPS"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Utilities",
+      "security": "Southern Company",
+      "sub_industry": "Electric Utilities",
+      "symbol": "SO",
+      "yahoo_symbol": "SO"
+    },
+    {
+      "date_added": "2024-04-01",
+      "sector": "Health Care",
+      "security": "Solventum",
+      "sub_industry": "Health Care Technology",
+      "symbol": "SOLV",
+      "yahoo_symbol": "SOLV"
+    },
+    {
+      "date_added": "2002-06-26",
+      "sector": "Real Estate",
+      "security": "Simon Property Group",
+      "sub_industry": "Retail REITs",
+      "symbol": "SPG",
+      "yahoo_symbol": "SPG"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Financials",
+      "security": "S&P Global",
+      "sub_industry": "Financial Exchanges & Data",
+      "symbol": "SPGI",
+      "yahoo_symbol": "SPGI"
+    },
+    {
+      "date_added": "2017-03-17",
+      "sector": "Utilities",
+      "security": "Sempra",
+      "sub_industry": "Multi-Utilities",
+      "symbol": "SRE",
+      "yahoo_symbol": "SRE"
+    },
+    {
+      "date_added": "2019-12-23",
+      "sector": "Health Care",
+      "security": "Steris",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "STE",
+      "yahoo_symbol": "STE"
+    },
+    {
+      "date_added": "2022-12-22",
+      "sector": "Materials",
+      "security": "Steel Dynamics",
+      "sub_industry": "Steel",
+      "symbol": "STLD",
+      "yahoo_symbol": "STLD"
+    },
+    {
+      "date_added": "2003-03-14",
+      "sector": "Financials",
+      "security": "State Street Corporation",
+      "sub_industry": "Asset Management & Custody Banks",
+      "symbol": "STT",
+      "yahoo_symbol": "STT"
+    },
+    {
+      "date_added": "2012-07-02",
+      "sector": "Information Technology",
+      "security": "Seagate Technology",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "symbol": "STX",
+      "yahoo_symbol": "STX"
+    },
+    {
+      "date_added": "2005-07-01",
+      "sector": "Consumer Staples",
+      "security": "Constellation Brands",
+      "sub_industry": "Distillers & Vintners",
+      "symbol": "STZ",
+      "yahoo_symbol": "STZ"
+    },
+    {
+      "date_added": "2024-07-08",
+      "sector": "Materials",
+      "security": "Smurfit Westrock",
+      "sub_industry": "Paper & Plastic Packaging Products & Materials",
+      "symbol": "SW",
+      "yahoo_symbol": "SW"
+    },
+    {
+      "date_added": "1982-09-30",
+      "sector": "Industrials",
+      "security": "Stanley Black & Decker",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "SWK",
+      "yahoo_symbol": "SWK"
+    },
+    {
+      "date_added": "2015-03-12",
+      "sector": "Information Technology",
+      "security": "Skyworks Solutions",
+      "sub_industry": "Semiconductors",
+      "symbol": "SWKS",
+      "yahoo_symbol": "SWKS"
+    },
+    {
+      "date_added": "2015-11-18",
+      "sector": "Financials",
+      "security": "Synchrony Financial",
+      "sub_industry": "Consumer Finance",
+      "symbol": "SYF",
+      "yahoo_symbol": "SYF"
+    },
+    {
+      "date_added": "2000-12-12",
+      "sector": "Health Care",
+      "security": "Stryker Corporation",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "SYK",
+      "yahoo_symbol": "SYK"
+    },
+    {
+      "date_added": "1986-12-31",
+      "sector": "Consumer Staples",
+      "security": "Sysco",
+      "sub_industry": "Food Distributors",
+      "symbol": "SYY",
+      "yahoo_symbol": "SYY"
+    },
+    {
+      "date_added": "1983-11-30",
+      "sector": "Communication Services",
+      "security": "AT&T",
+      "sub_industry": "Integrated Telecommunication Services",
+      "symbol": "T",
+      "yahoo_symbol": "T"
+    },
+    {
+      "date_added": "1976-06-30",
+      "sector": "Consumer Staples",
+      "security": "Molson Coors Beverage Company",
+      "sub_industry": "Brewers",
+      "symbol": "TAP",
+      "yahoo_symbol": "TAP"
+    },
+    {
+      "date_added": "2016-06-03",
+      "sector": "Industrials",
+      "security": "TransDigm Group",
+      "sub_industry": "Aerospace & Defense",
+      "symbol": "TDG",
+      "yahoo_symbol": "TDG"
+    },
+    {
+      "date_added": "2020-06-22",
+      "sector": "Information Technology",
+      "security": "Teledyne Technologies",
+      "sub_industry": "Electronic Equipment & Instruments",
+      "symbol": "TDY",
+      "yahoo_symbol": "TDY"
+    },
+    {
+      "date_added": "2021-08-30",
+      "sector": "Health Care",
+      "security": "Bio-Techne",
+      "sub_industry": "Life Sciences Tools & Services",
+      "symbol": "TECH",
+      "yahoo_symbol": "TECH"
+    },
+    {
+      "date_added": "2011-10-17",
+      "sector": "Information Technology",
+      "security": "TE Connectivity",
+      "sub_industry": "Electronic Manufacturing Services",
+      "symbol": "TEL",
+      "yahoo_symbol": "TEL"
+    },
+    {
+      "date_added": "2020-09-21",
+      "sector": "Information Technology",
+      "security": "Teradyne",
+      "sub_industry": "Semiconductor Materials & Equipment",
+      "symbol": "TER",
+      "yahoo_symbol": "TER"
+    },
+    {
+      "date_added": "1997-12-04",
+      "sector": "Financials",
+      "security": "Truist Financial",
+      "sub_industry": "Diversified Banks",
+      "symbol": "TFC",
+      "yahoo_symbol": "TFC"
+    },
+    {
+      "date_added": "1976-12-31",
+      "sector": "Consumer Staples",
+      "security": "Target Corporation",
+      "sub_industry": "Consumer Staples Merchandise Retail",
+      "symbol": "TGT",
+      "yahoo_symbol": "TGT"
+    },
+    {
+      "date_added": "1985-09-30",
+      "sector": "Consumer Discretionary",
+      "security": "TJX Companies",
+      "sub_industry": "Apparel Retail",
+      "symbol": "TJX",
+      "yahoo_symbol": "TJX"
+    },
+    {
+      "date_added": "2025-03-24",
+      "sector": "Communication Services",
+      "security": "TKO Group Holdings",
+      "sub_industry": "Movies & Entertainment",
+      "symbol": "TKO",
+      "yahoo_symbol": "TKO"
+    },
+    {
+      "date_added": "2004-08-03",
+      "sector": "Health Care",
+      "security": "Thermo Fisher Scientific",
+      "sub_industry": "Life Sciences Tools & Services",
+      "symbol": "TMO",
+      "yahoo_symbol": "TMO"
+    },
+    {
+      "date_added": "2019-07-15",
+      "sector": "Communication Services",
+      "security": "T-Mobile US",
+      "sub_industry": "Wireless Telecommunication Services",
+      "symbol": "TMUS",
+      "yahoo_symbol": "TMUS"
+    },
+    {
+      "date_added": "2024-11-26",
+      "sector": "Energy",
+      "security": "Texas Pacific Land Corporation",
+      "sub_industry": "Oil & Gas Exploration & Production",
+      "symbol": "TPL",
+      "yahoo_symbol": "TPL"
+    },
+    {
+      "date_added": "2004-09-01",
+      "sector": "Consumer Discretionary",
+      "security": "Tapestry, Inc.",
+      "sub_industry": "Apparel, Accessories & Luxury Goods",
+      "symbol": "TPR",
+      "yahoo_symbol": "TPR"
+    },
+    {
+      "date_added": "2022-10-12",
+      "sector": "Energy",
+      "security": "Targa Resources",
+      "sub_industry": "Oil & Gas Storage & Transportation",
+      "symbol": "TRGP",
+      "yahoo_symbol": "TRGP"
+    },
+    {
+      "date_added": "2021-01-21",
+      "sector": "Information Technology",
+      "security": "Trimble Inc.",
+      "sub_industry": "Application Software",
+      "symbol": "TRMB",
+      "yahoo_symbol": "TRMB"
+    },
+    {
+      "date_added": "2019-07-29",
+      "sector": "Financials",
+      "security": "T. Rowe Price",
+      "sub_industry": "Asset Management & Custody Banks",
+      "symbol": "TROW",
+      "yahoo_symbol": "TROW"
+    },
+    {
+      "date_added": "2002-08-21",
+      "sector": "Financials",
+      "security": "Travelers Companies (The)",
+      "sub_industry": "Property & Casualty Insurance",
+      "symbol": "TRV",
+      "yahoo_symbol": "TRV"
+    },
+    {
+      "date_added": "2014-01-24",
+      "sector": "Consumer Discretionary",
+      "security": "Tractor Supply",
+      "sub_industry": "Other Specialty Retail",
+      "symbol": "TSCO",
+      "yahoo_symbol": "TSCO"
+    },
+    {
+      "date_added": "2020-12-21",
+      "sector": "Consumer Discretionary",
+      "security": "Tesla, Inc.",
+      "sub_industry": "Automobile Manufacturers",
+      "symbol": "TSLA",
+      "yahoo_symbol": "TSLA"
+    },
+    {
+      "date_added": "2005-08-10",
+      "sector": "Consumer Staples",
+      "security": "Tyson Foods",
+      "sub_industry": "Packaged Foods & Meats",
+      "symbol": "TSN",
+      "yahoo_symbol": "TSN"
+    },
+    {
+      "date_added": "2010-11-17",
+      "sector": "Industrials",
+      "security": "Trane Technologies",
+      "sub_industry": "Building Products",
+      "symbol": "TT",
+      "yahoo_symbol": "TT"
+    },
+    {
+      "date_added": "2025-07-18",
+      "sector": "Communication Services",
+      "security": "Trade Desk (The)",
+      "sub_industry": "Advertising",
+      "symbol": "TTD",
+      "yahoo_symbol": "TTD"
+    },
+    {
+      "date_added": "2018-03-19",
+      "sector": "Communication Services",
+      "security": "Take-Two Interactive",
+      "sub_industry": "Interactive Home Entertainment",
+      "symbol": "TTWO",
+      "yahoo_symbol": "TTWO"
+    },
+    {
+      "date_added": "2001-03-12",
+      "sector": "Information Technology",
+      "security": "Texas Instruments",
+      "sub_industry": "Semiconductors",
+      "symbol": "TXN",
+      "yahoo_symbol": "TXN"
+    },
+    {
+      "date_added": "1978-12-31",
+      "sector": "Industrials",
+      "security": "Textron",
+      "sub_industry": "Aerospace & Defense",
+      "symbol": "TXT",
+      "yahoo_symbol": "TXT"
+    },
+    {
+      "date_added": "2020-06-22",
+      "sector": "Information Technology",
+      "security": "Tyler Technologies",
+      "sub_industry": "Application Software",
+      "symbol": "TYL",
+      "yahoo_symbol": "TYL"
+    },
+    {
+      "date_added": "2015-09-03",
+      "sector": "Industrials",
+      "security": "United Airlines Holdings",
+      "sub_industry": "Passenger Airlines",
+      "symbol": "UAL",
+      "yahoo_symbol": "UAL"
+    },
+    {
+      "date_added": "2023-12-18",
+      "sector": "Industrials",
+      "security": "Uber",
+      "sub_industry": "Passenger Ground Transportation",
+      "symbol": "UBER",
+      "yahoo_symbol": "UBER"
+    },
+    {
+      "date_added": "2016-03-07",
+      "sector": "Real Estate",
+      "security": "UDR, Inc.",
+      "sub_industry": "Multi-Family Residential REITs",
+      "symbol": "UDR",
+      "yahoo_symbol": "UDR"
+    },
+    {
+      "date_added": "2014-09-20",
+      "sector": "Health Care",
+      "security": "Universal Health Services",
+      "sub_industry": "Health Care Facilities",
+      "symbol": "UHS",
+      "yahoo_symbol": "UHS"
+    },
+    {
+      "date_added": "2016-04-18",
+      "sector": "Consumer Discretionary",
+      "security": "Ulta Beauty",
+      "sub_industry": "Other Specialty Retail",
+      "symbol": "ULTA",
+      "yahoo_symbol": "ULTA"
+    },
+    {
+      "date_added": "1994-07-01",
+      "sector": "Health Care",
+      "security": "UnitedHealth Group",
+      "sub_industry": "Managed Health Care",
+      "symbol": "UNH",
+      "yahoo_symbol": "UNH"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Industrials",
+      "security": "Union Pacific Corporation",
+      "sub_industry": "Rail Transportation",
+      "symbol": "UNP",
+      "yahoo_symbol": "UNP"
+    },
+    {
+      "date_added": "2002-07-22",
+      "sector": "Industrials",
+      "security": "United Parcel Service",
+      "sub_industry": "Air Freight & Logistics",
+      "symbol": "UPS",
+      "yahoo_symbol": "UPS"
+    },
+    {
+      "date_added": "2014-09-20",
+      "sector": "Industrials",
+      "security": "United Rentals",
+      "sub_industry": "Trading Companies & Distributors",
+      "symbol": "URI",
+      "yahoo_symbol": "URI"
+    },
+    {
+      "date_added": "1999-11-01",
+      "sector": "Financials",
+      "security": "U.S. Bancorp",
+      "sub_industry": "Diversified Banks",
+      "symbol": "USB",
+      "yahoo_symbol": "USB"
+    },
+    {
+      "date_added": "2009-12-21",
+      "sector": "Financials",
+      "security": "Visa Inc.",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "symbol": "V",
+      "yahoo_symbol": "V"
+    },
+    {
+      "date_added": "2026-05-07",
+      "sector": "Health Care",
+      "security": "Veeva Systems",
+      "sub_industry": "Health Care Technology",
+      "symbol": "VEEV",
+      "yahoo_symbol": "VEEV"
+    },
+    {
+      "date_added": "2022-06-08",
+      "sector": "Real Estate",
+      "security": "Vici Properties",
+      "sub_industry": "Hotel & Resort REITs",
+      "symbol": "VICI",
+      "yahoo_symbol": "VICI"
+    },
+    {
+      "date_added": "2002-12-20",
+      "sector": "Energy",
+      "security": "Valero Energy",
+      "sub_industry": "Oil & Gas Refining & Marketing",
+      "symbol": "VLO",
+      "yahoo_symbol": "VLO"
+    },
+    {
+      "date_added": "2023-10-02",
+      "sector": "Industrials",
+      "security": "Veralto",
+      "sub_industry": "Environmental & Facilities Services",
+      "symbol": "VLTO",
+      "yahoo_symbol": "VLTO"
+    },
+    {
+      "date_added": "1999-06-30",
+      "sector": "Materials",
+      "security": "Vulcan Materials Company",
+      "sub_industry": "Construction Materials",
+      "symbol": "VMC",
+      "yahoo_symbol": "VMC"
+    },
+    {
+      "date_added": "2015-10-08",
+      "sector": "Industrials",
+      "security": "Verisk Analytics",
+      "sub_industry": "Research & Consulting Services",
+      "symbol": "VRSK",
+      "yahoo_symbol": "VRSK"
+    },
+    {
+      "date_added": "2006-02-01",
+      "sector": "Information Technology",
+      "security": "Verisign",
+      "sub_industry": "Internet Services & Infrastructure",
+      "symbol": "VRSN",
+      "yahoo_symbol": "VRSN"
+    },
+    {
+      "date_added": "2026-03-23",
+      "sector": "Industrials",
+      "security": "Vertiv",
+      "sub_industry": "Electrical Components & Equipment",
+      "symbol": "VRT",
+      "yahoo_symbol": "VRT"
+    },
+    {
+      "date_added": "2013-09-23",
+      "sector": "Health Care",
+      "security": "Vertex Pharmaceuticals",
+      "sub_industry": "Biotechnology",
+      "symbol": "VRTX",
+      "yahoo_symbol": "VRTX"
+    },
+    {
+      "date_added": "2024-05-08",
+      "sector": "Utilities",
+      "security": "Vistra Corp.",
+      "sub_industry": "Electric Utilities",
+      "symbol": "VST",
+      "yahoo_symbol": "VST"
+    },
+    {
+      "date_added": "2009-03-04",
+      "sector": "Real Estate",
+      "security": "Ventas",
+      "sub_industry": "Health Care REITs",
+      "symbol": "VTR",
+      "yahoo_symbol": "VTR"
+    },
+    {
+      "date_added": "2004-04-23",
+      "sector": "Health Care",
+      "security": "Viatris",
+      "sub_industry": "Pharmaceuticals",
+      "symbol": "VTRS",
+      "yahoo_symbol": "VTRS"
+    },
+    {
+      "date_added": "1983-11-30",
+      "sector": "Communication Services",
+      "security": "Verizon",
+      "sub_industry": "Integrated Telecommunication Services",
+      "symbol": "VZ",
+      "yahoo_symbol": "VZ"
+    },
+    {
+      "date_added": "2019-02-27",
+      "sector": "Industrials",
+      "security": "Wabtec",
+      "sub_industry": "Construction Machinery & Heavy Transportation Equipment",
+      "symbol": "WAB",
+      "yahoo_symbol": "WAB"
+    },
+    {
+      "date_added": "2002-01-02",
+      "sector": "Health Care",
+      "security": "Waters Corporation",
+      "sub_industry": "Life Sciences Tools & Services",
+      "symbol": "WAT",
+      "yahoo_symbol": "WAT"
+    },
+    {
+      "date_added": "2022-04-11",
+      "sector": "Communication Services",
+      "security": "Warner Bros. Discovery",
+      "sub_industry": "Broadcasting",
+      "symbol": "WBD",
+      "yahoo_symbol": "WBD"
+    },
+    {
+      "date_added": "2024-12-23",
+      "sector": "Information Technology",
+      "security": "Workday, Inc.",
+      "sub_industry": "Application Software",
+      "symbol": "WDAY",
+      "yahoo_symbol": "WDAY"
+    },
+    {
+      "date_added": "2009-07-01",
+      "sector": "Information Technology",
+      "security": "Western Digital",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "symbol": "WDC",
+      "yahoo_symbol": "WDC"
+    },
+    {
+      "date_added": "2008-10-31",
+      "sector": "Utilities",
+      "security": "WEC Energy Group",
+      "sub_industry": "Electric Utilities",
+      "symbol": "WEC",
+      "yahoo_symbol": "WEC"
+    },
+    {
+      "date_added": "2009-01-30",
+      "sector": "Real Estate",
+      "security": "Welltower",
+      "sub_industry": "Health Care REITs",
+      "symbol": "WELL",
+      "yahoo_symbol": "WELL"
+    },
+    {
+      "date_added": "1976-06-30",
+      "sector": "Financials",
+      "security": "Wells Fargo",
+      "sub_industry": "Diversified Banks",
+      "symbol": "WFC",
+      "yahoo_symbol": "WFC"
+    },
+    {
+      "date_added": "1998-08-31",
+      "sector": "Industrials",
+      "security": "Waste Management",
+      "sub_industry": "Environmental & Facilities Services",
+      "symbol": "WM",
+      "yahoo_symbol": "WM"
+    },
+    {
+      "date_added": "1975-03-31",
+      "sector": "Energy",
+      "security": "Williams Companies",
+      "sub_industry": "Oil & Gas Storage & Transportation",
+      "symbol": "WMB",
+      "yahoo_symbol": "WMB"
+    },
+    {
+      "date_added": "1982-08-31",
+      "sector": "Consumer Staples",
+      "security": "Walmart",
+      "sub_industry": "Consumer Staples Merchandise Retail",
+      "symbol": "WMT",
+      "yahoo_symbol": "WMT"
+    },
+    {
+      "date_added": "2019-12-05",
+      "sector": "Financials",
+      "security": "W. R. Berkley Corporation",
+      "sub_industry": "Property & Casualty Insurance",
+      "symbol": "WRB",
+      "yahoo_symbol": "WRB"
+    },
+    {
+      "date_added": "2025-03-24",
+      "sector": "Consumer Discretionary",
+      "security": "Williams-Sonoma, Inc.",
+      "sub_industry": "Homefurnishing Retail",
+      "symbol": "WSM",
+      "yahoo_symbol": "WSM"
+    },
+    {
+      "date_added": "2020-05-22",
+      "sector": "Health Care",
+      "security": "West Pharmaceutical Services",
+      "sub_industry": "Health Care Supplies",
+      "symbol": "WST",
+      "yahoo_symbol": "WST"
+    },
+    {
+      "date_added": "2016-01-05",
+      "sector": "Financials",
+      "security": "Willis Towers Watson",
+      "sub_industry": "Insurance Brokers",
+      "symbol": "WTW",
+      "yahoo_symbol": "WTW"
+    },
+    {
+      "date_added": "1979-10-01",
+      "sector": "Real Estate",
+      "security": "Weyerhaeuser",
+      "sub_industry": "Timber REITs",
+      "symbol": "WY",
+      "yahoo_symbol": "WY"
+    },
+    {
+      "date_added": "2008-11-14",
+      "sector": "Consumer Discretionary",
+      "security": "Wynn Resorts",
+      "sub_industry": "Casinos & Gaming",
+      "symbol": "WYNN",
+      "yahoo_symbol": "WYNN"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Utilities",
+      "security": "Xcel Energy",
+      "sub_industry": "Multi-Utilities",
+      "symbol": "XEL",
+      "yahoo_symbol": "XEL"
+    },
+    {
+      "date_added": "1957-03-04",
+      "sector": "Energy",
+      "security": "ExxonMobil",
+      "sub_industry": "Integrated Oil & Gas",
+      "symbol": "XOM",
+      "yahoo_symbol": "XOM"
+    },
+    {
+      "date_added": "2011-11-01",
+      "sector": "Industrials",
+      "security": "Xylem Inc.",
+      "sub_industry": "Industrial Machinery & Supplies & Components",
+      "symbol": "XYL",
+      "yahoo_symbol": "XYL"
+    },
+    {
+      "date_added": "2025-07-23",
+      "sector": "Financials",
+      "security": "Block, Inc.",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "symbol": "XYZ",
+      "yahoo_symbol": "XYZ"
+    },
+    {
+      "date_added": "1997-10-06",
+      "sector": "Consumer Discretionary",
+      "security": "Yum! Brands",
+      "sub_industry": "Restaurants",
+      "symbol": "YUM",
+      "yahoo_symbol": "YUM"
+    },
+    {
+      "date_added": "2001-08-07",
+      "sector": "Health Care",
+      "security": "Zimmer Biomet",
+      "sub_industry": "Health Care Equipment",
+      "symbol": "ZBH",
+      "yahoo_symbol": "ZBH"
+    },
+    {
+      "date_added": "2019-12-23",
+      "sector": "Information Technology",
+      "security": "Zebra Technologies",
+      "sub_industry": "Electronic Equipment & Instruments",
+      "symbol": "ZBRA",
+      "yahoo_symbol": "ZBRA"
+    },
+    {
+      "date_added": "2013-06-21",
+      "sector": "Health Care",
+      "security": "Zoetis",
+      "sub_industry": "Pharmaceuticals",
+      "symbol": "ZTS",
+      "yahoo_symbol": "ZTS"
+    }
+  ],
+  "name": "S&P 500",
+  "retrieved_at": "2026-06-11T19:24:36.686112+00:00",
+  "source_url": "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+}

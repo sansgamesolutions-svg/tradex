@@ -4,6 +4,7 @@ import io
 from abc import ABC, abstractmethod
 
 import joblib
+import numpy as np
 import pandas as pd
 
 
@@ -14,9 +15,16 @@ class BaseModel(ABC):
     def fit(self, X: pd.DataFrame, y: pd.Series) -> None: ...
 
     @abstractmethod
-    def predict_proba(self, X: pd.DataFrame) -> float:
-        """Return probability of an upward move (0–1)."""
+    def predict_probabilities(self, X: pd.DataFrame) -> np.ndarray:
+        """Return upward-move probabilities for all model-ready samples."""
         ...
+
+    def predict_proba(self, X: pd.DataFrame) -> float:
+        """Return the latest probability of an upward move."""
+        probabilities = self.predict_probabilities(X)
+        if len(probabilities) == 0:
+            raise ValueError("Not enough samples to produce a prediction")
+        return float(probabilities[-1])
 
     def predict(self, X: pd.DataFrame) -> int:
         """Return 1 (up) or 0 (down)."""
@@ -35,7 +43,7 @@ class BaseModel(ABC):
         return key
 
     @classmethod
-    def load(cls, asset: str, timeframe: str) -> "BaseModel":
+    def load(cls, asset: str, timeframe: str) -> BaseModel:
         from tradex.storage import get_storage
 
         key = f"models/artifacts/{cls.name}_{asset.replace('/', '_')}_{timeframe}.pkl"

@@ -46,6 +46,21 @@ class Settings:
     # Kraken spot trading
     kraken_timeout: int = 10_000
 
+    # S&P 500 stock qualification
+    stock_min_bars: int = 1_250
+    stock_min_feature_samples: int = 1_000
+    stock_min_price: float = 5.0
+    stock_min_median_dollar_volume: float = 25_000_000.0
+    stock_dollar_volume_window: int = 252
+    stock_max_missing_session_rate: float = 0.01
+    stock_max_stale_sessions: int = 3
+    stock_min_minority_class_rate: float = 0.35
+    stock_walk_forward_folds: int = 4
+    stock_walk_forward_initial_fraction: float = 0.60
+    stock_min_median_roc_auc: float = 0.52
+    stock_min_median_balanced_accuracy: float = 0.51
+    stock_min_folds_beating_baseline: int = 3
+
     @classmethod
     def load(cls) -> Settings:
         cfg_file = ROOT / "config.yaml"
