@@ -1,5 +1,6 @@
-from tradex.indicators.technical import add_indicators, ta_signal
 import pandas as pd
+
+from tradex.indicators.technical import add_indicators, ta_signal
 
 
 def test_add_indicators_appends_columns(ohlcv_df):

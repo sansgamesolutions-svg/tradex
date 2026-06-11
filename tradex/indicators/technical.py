@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import pandas as pd
-import pandas_ta as pta  # registers df.ta accessor
+import pandas_ta  # noqa: F401 - registers the DataFrame .ta accessor
 
 
 def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
@@ -12,11 +12,11 @@ def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
     df.ta.ema(length=20, append=True)
     df.ta.ema(length=50, append=True)
     df.ta.ema(length=200, append=True)
-    df.ta.macd(append=True)          # MACD_12_26_9, MACDh_12_26_9, MACDs_12_26_9
+    df.ta.macd(append=True)  # MACD_12_26_9, MACDh_12_26_9, MACDs_12_26_9
 
     # Momentum
     df.ta.rsi(length=14, append=True)
-    df.ta.stoch(append=True)         # STOCHk_14_3_3, STOCHd_14_3_3
+    df.ta.stoch(append=True)  # STOCHk_14_3_3, STOCHd_14_3_3
 
     # Volatility
     df.ta.bbands(length=20, append=True)

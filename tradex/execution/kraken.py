@@ -77,7 +77,9 @@ class KrakenBroker:
         self.close()
 
     def close(self) -> None:
-        self.client.close()
+        close = getattr(self.client, "close", None)
+        if callable(close):
+            close()
 
     def symbol_for(self, request: OrderRequest) -> str:
         symbol = request.symbol.replace("-", "/")

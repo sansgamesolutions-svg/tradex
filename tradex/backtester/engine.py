@@ -34,9 +34,7 @@ class Backtester:
         self.initial_capital = initial_capital
         self.fee = fee  # round-trip cost applied at entry and exit
 
-    def run(
-        self, features: pd.DataFrame, raw_df: pd.DataFrame | None = None
-    ) -> BacktestResults:
+    def run(self, features: pd.DataFrame, raw_df: pd.DataFrame | None = None) -> BacktestResults:
         combiner = SignalCombiner(self.model_name)
         equity = self.initial_capital
         equity_curve: list[float] = []

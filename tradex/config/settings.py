@@ -61,6 +61,20 @@ class Settings:
     stock_min_median_balanced_accuracy: float = 0.51
     stock_min_folds_beating_baseline: int = 3
 
+    # Kraken USD spot crypto qualification
+    crypto_min_bars: int = 700
+    crypto_min_feature_samples: int = 500
+    crypto_min_median_quote_volume: float = 1_000_000.0
+    crypto_quote_volume_window: int = 90
+    crypto_max_missing_day_rate: float = 0.01
+    crypto_max_stale_days: int = 2
+    crypto_min_minority_class_rate: float = 0.35
+    crypto_walk_forward_folds: int = 4
+    crypto_walk_forward_initial_fraction: float = 0.60
+    crypto_min_median_roc_auc: float = 0.52
+    crypto_min_median_balanced_accuracy: float = 0.51
+    crypto_min_folds_beating_baseline: int = 3
+
     @classmethod
     def load(cls) -> Settings:
         cfg_file = ROOT / "config.yaml"

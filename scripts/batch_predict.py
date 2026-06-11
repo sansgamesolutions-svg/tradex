@@ -12,13 +12,14 @@ Environment variables:
   TRADEX_BATCH_TIMEFRAME Candle timeframe (default: 1d)
   TRADEX_BATCH_MODEL     Model to use (default: xgboost)
 """
+
 from __future__ import annotations
 
 import json
 import logging
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
@@ -55,12 +56,17 @@ def main() -> int:
             logger.error("%-10s  FAILED — %s", asset, exc)
             failed += 1
 
-    print(json.dumps({
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "timeframe": timeframe,
-        "model": model_name,
-        "results": results,
-    }, indent=2))
+    print(
+        json.dumps(
+            {
+                "timestamp": datetime.now(UTC).isoformat(),
+                "timeframe": timeframe,
+                "model": model_name,
+                "results": results,
+            },
+            indent=2,
+        )
+    )
 
     return 1 if failed else 0
 

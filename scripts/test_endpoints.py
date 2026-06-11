@@ -6,6 +6,7 @@ prints results, then shuts the server down.
 Usage:
     uv run python scripts/test_endpoints.py
 """
+
 from __future__ import annotations
 
 import json
@@ -23,9 +24,16 @@ FAIL = "\033[31mFAIL\033[0m"
 def start_server() -> subprocess.Popen:
     proc = subprocess.Popen(
         [
-            "uv", "run", "uvicorn", "tradex.api.app:app",
-            "--host", "127.0.0.1", "--port", "8001",
-            "--log-level", "warning",
+            "uv",
+            "run",
+            "uvicorn",
+            "tradex.api.app:app",
+            "--host",
+            "127.0.0.1",
+            "--port",
+            "8001",
+            "--log-level",
+            "warning",
         ],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.PIPE,
@@ -96,63 +104,87 @@ def main() -> int:
         results.append(check("OpenAPI schema generated", "GET", "/openapi.json"))
 
         # 3 — Predict before training (TA-only fallback)
-        results.append(check(
-            "Predict AAPL  →  no trained model yet; falls back to TA-only",
-            "POST", "/predict",
-            {"asset": "AAPL", "timeframe": "1d", "model": "xgboost"},
-        ))
+        results.append(
+            check(
+                "Predict AAPL  →  no trained model yet; falls back to TA-only",
+                "POST",
+                "/predict",
+                {"asset": "AAPL", "timeframe": "1d", "model": "xgboost"},
+            )
+        )
 
         # 4 — Train
-        results.append(check(
-            "Train XGBoost on AAPL daily data from 2022-01-01  (may take ~30 s)",
-            "POST", "/train",
-            {"asset": "AAPL", "timeframe": "1d", "model": "xgboost", "start": "2022-01-01"},
-        ))
+        results.append(
+            check(
+                "Train XGBoost on AAPL daily data from 2022-01-01  (may take ~30 s)",
+                "POST",
+                "/train",
+                {"asset": "AAPL", "timeframe": "1d", "model": "xgboost", "start": "2022-01-01"},
+            )
+        )
 
         # 5 — Predict after training
-        results.append(check(
-            "Predict AAPL after training  →  hybrid ML + TA signal",
-            "POST", "/predict",
-            {"asset": "AAPL", "timeframe": "1d", "model": "xgboost"},
-        ))
+        results.append(
+            check(
+                "Predict AAPL after training  →  hybrid ML + TA signal",
+                "POST",
+                "/predict",
+                {"asset": "AAPL", "timeframe": "1d", "model": "xgboost"},
+            )
+        )
 
         # 6 — Backtest
-        results.append(check(
-            "Backtest AAPL for calendar year 2023",
-            "POST", "/backtest",
-            {"asset": "AAPL", "timeframe": "1d", "start": "2023-01-01", "end": "2023-12-31"},
-        ))
+        results.append(
+            check(
+                "Backtest AAPL for calendar year 2023",
+                "POST",
+                "/backtest",
+                {"asset": "AAPL", "timeframe": "1d", "start": "2023-01-01", "end": "2023-12-31"},
+            )
+        )
 
         # 7 — Crypto symbol mapping
-        results.append(check(
-            "Predict BTC  →  verifies crypto symbol → BTC-USD mapping",
-            "POST", "/predict",
-            {"asset": "BTC", "timeframe": "1d"},
-        ))
+        results.append(
+            check(
+                "Predict BTC  →  verifies crypto symbol → BTC-USD mapping",
+                "POST",
+                "/predict",
+                {"asset": "BTC", "timeframe": "1d"},
+            )
+        )
 
         # 8 — Error: unknown asset
-        results.append(check(
-            "Unknown asset  →  expect 404",
-            "POST", "/predict",
-            {"asset": "INVALID_ASSET_XYZ_999"},
-            expected=404,
-        ))
+        results.append(
+            check(
+                "Unknown asset  →  expect 404",
+                "POST",
+                "/predict",
+                {"asset": "INVALID_ASSET_XYZ_999"},
+                expected=404,
+            )
+        )
 
         # 9 — Validation error: missing required field
-        results.append(check(
-            "Backtest without required 'start' field  →  expect 422",
-            "POST", "/backtest",
-            {"asset": "AAPL"},
-            expected=422,
-        ))
+        results.append(
+            check(
+                "Backtest without required 'start' field  →  expect 422",
+                "POST",
+                "/backtest",
+                {"asset": "AAPL"},
+                expected=422,
+            )
+        )
 
         # 10 — Wrong model type handled by Pydantic
-        results.append(check(
-            "Invalid model name in predict  →  expect 422",
-            "POST", "/predict",
-            {"asset": "AAPL", "model": "not_a_real_model"},
-            expected=422,
-        ))
+        results.append(
+            check(
+                "Invalid model name in predict  →  expect 422",
+                "POST",
+                "/predict",
+                {"asset": "AAPL", "model": "not_a_real_model"},
+                expected=422,
+            )
+        )
 
     finally:
         server.terminate()

@@ -36,3 +36,17 @@ stock_walk_forward_initial_fraction: 0.60
 stock_min_median_roc_auc: 0.52
 stock_min_median_balanced_accuracy: 0.51
 stock_min_folds_beating_baseline: 3
+
+# Kraken USD spot crypto qualification
+crypto_min_bars: 700
+crypto_min_feature_samples: 500
+crypto_min_median_quote_volume: 1000000
+crypto_quote_volume_window: 90
+crypto_max_missing_day_rate: 0.01
+crypto_max_stale_days: 2
+crypto_min_minority_class_rate: 0.35
+crypto_walk_forward_folds: 4
+crypto_walk_forward_initial_fraction: 0.60
+crypto_min_median_roc_auc: 0.52
+crypto_min_median_balanced_accuracy: 0.51
+crypto_min_folds_beating_baseline: 3

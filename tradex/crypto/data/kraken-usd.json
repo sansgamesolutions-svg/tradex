@@ -1,0 +1,4446 @@
+{
+  "exchange": "kraken",
+  "markets": [
+    {
+      "active": true,
+      "base": "0G",
+      "market_id": "0GUSD",
+      "quote": "USD",
+      "symbol": "0G/USD"
+    },
+    {
+      "active": true,
+      "base": "1INCH",
+      "market_id": "1INCHUSD",
+      "quote": "USD",
+      "symbol": "1INCH/USD"
+    },
+    {
+      "active": true,
+      "base": "2Z",
+      "market_id": "2ZUSD",
+      "quote": "USD",
+      "symbol": "2Z/USD"
+    },
+    {
+      "active": true,
+      "base": "A",
+      "market_id": "AUSD",
+      "quote": "USD",
+      "symbol": "A/USD"
+    },
+    {
+      "active": true,
+      "base": "AAVE",
+      "market_id": "AAVEUSD",
+      "quote": "USD",
+      "symbol": "AAVE/USD"
+    },
+    {
+      "active": true,
+      "base": "AB",
+      "market_id": "ABUSD",
+      "quote": "USD",
+      "symbol": "AB/USD"
+    },
+    {
+      "active": true,
+      "base": "ACA",
+      "market_id": "ACAUSD",
+      "quote": "USD",
+      "symbol": "ACA/USD"
+    },
+    {
+      "active": true,
+      "base": "ACH",
+      "market_id": "ACHUSD",
+      "quote": "USD",
+      "symbol": "ACH/USD"
+    },
+    {
+      "active": true,
+      "base": "ACT",
+      "market_id": "ACTUSD",
+      "quote": "USD",
+      "symbol": "ACT/USD"
+    },
+    {
+      "active": true,
+      "base": "ACU",
+      "market_id": "ACUUSD",
+      "quote": "USD",
+      "symbol": "ACU/USD"
+    },
+    {
+      "active": true,
+      "base": "ACX",
+      "market_id": "ACXUSD",
+      "quote": "USD",
+      "symbol": "ACX/USD"
+    },
+    {
+      "active": true,
+      "base": "ADA",
+      "market_id": "ADAUSD",
+      "quote": "USD",
+      "symbol": "ADA/USD"
+    },
+    {
+      "active": true,
+      "base": "ADI",
+      "market_id": "ADIUSD",
+      "quote": "USD",
+      "symbol": "ADI/USD"
+    },
+    {
+      "active": true,
+      "base": "ADX",
+      "market_id": "ADXUSD",
+      "quote": "USD",
+      "symbol": "ADX/USD"
+    },
+    {
+      "active": true,
+      "base": "AERO",
+      "market_id": "AEROUSD",
+      "quote": "USD",
+      "symbol": "AERO/USD"
+    },
+    {
+      "active": true,
+      "base": "AEVO",
+      "market_id": "AEVOUSD",
+      "quote": "USD",
+      "symbol": "AEVO/USD"
+    },
+    {
+      "active": true,
+      "base": "AI",
+      "market_id": "AIUSD",
+      "quote": "USD",
+      "symbol": "AI/USD"
+    },
+    {
+      "active": true,
+      "base": "AI3",
+      "market_id": "AI3USD",
+      "quote": "USD",
+      "symbol": "AI3/USD"
+    },
+    {
+      "active": true,
+      "base": "AIN",
+      "market_id": "AINUSD",
+      "quote": "USD",
+      "symbol": "AIN/USD"
+    },
+    {
+      "active": true,
+      "base": "AIO",
+      "market_id": "AIOUSD",
+      "quote": "USD",
+      "symbol": "AIO/USD"
+    },
+    {
+      "active": true,
+      "base": "AIOZ",
+      "market_id": "AIOZUSD",
+      "quote": "USD",
+      "symbol": "AIOZ/USD"
+    },
+    {
+      "active": true,
+      "base": "AIXBT",
+      "market_id": "AIXBTUSD",
+      "quote": "USD",
+      "symbol": "AIXBT/USD"
+    },
+    {
+      "active": true,
+      "base": "AKE",
+      "market_id": "AKEUSD",
+      "quote": "USD",
+      "symbol": "AKE/USD"
+    },
+    {
+      "active": true,
+      "base": "AKT",
+      "market_id": "AKTUSD",
+      "quote": "USD",
+      "symbol": "AKT/USD"
+    },
+    {
+      "active": true,
+      "base": "ALCH",
+      "market_id": "ALCHUSD",
+      "quote": "USD",
+      "symbol": "ALCH/USD"
+    },
+    {
+      "active": true,
+      "base": "ALCX",
+      "market_id": "ALCXUSD",
+      "quote": "USD",
+      "symbol": "ALCX/USD"
+    },
+    {
+      "active": true,
+      "base": "ALEO",
+      "market_id": "ALEOUSD",
+      "quote": "USD",
+      "symbol": "ALEO/USD"
+    },
+    {
+      "active": true,
+      "base": "ALGO",
+      "market_id": "ALGOUSD",
+      "quote": "USD",
+      "symbol": "ALGO/USD"
+    },
+    {
+      "active": true,
+      "base": "ALICE",
+      "market_id": "ALICEUSD",
+      "quote": "USD",
+      "symbol": "ALICE/USD"
+    },
+    {
+      "active": true,
+      "base": "ALKIMI",
+      "market_id": "ALKIMIUSD",
+      "quote": "USD",
+      "symbol": "ALKIMI/USD"
+    },
+    {
+      "active": true,
+      "base": "ALLO",
+      "market_id": "ALLOUSD",
+      "quote": "USD",
+      "symbol": "ALLO/USD"
+    },
+    {
+      "active": true,
+      "base": "ALMANAK",
+      "market_id": "ALMANAKUSD",
+      "quote": "USD",
+      "symbol": "ALMANAK/USD"
+    },
+    {
+      "active": true,
+      "base": "ALPHA",
+      "market_id": "ALPHAUSD",
+      "quote": "USD",
+      "symbol": "ALPHA/USD"
+    },
+    {
+      "active": true,
+      "base": "ALT",
+      "market_id": "ALTUSD",
+      "quote": "USD",
+      "symbol": "ALT/USD"
+    },
+    {
+      "active": true,
+      "base": "ALTHEA",
+      "market_id": "ALTHEAUSD",
+      "quote": "USD",
+      "symbol": "ALTHEA/USD"
+    },
+    {
+      "active": true,
+      "base": "AMI",
+      "market_id": "AMIUSD",
+      "quote": "USD",
+      "symbol": "AMI/USD"
+    },
+    {
+      "active": true,
+      "base": "ANIME",
+      "market_id": "ANIMEUSD",
+      "quote": "USD",
+      "symbol": "ANIME/USD"
+    },
+    {
+      "active": true,
+      "base": "ANKR",
+      "market_id": "ANKRUSD",
+      "quote": "USD",
+      "symbol": "ANKR/USD"
+    },
+    {
+      "active": true,
+      "base": "ANON",
+      "market_id": "ANONUSD",
+      "quote": "USD",
+      "symbol": "ANON/USD"
+    },
+    {
+      "active": true,
+      "base": "APE",
+      "market_id": "APEUSD",
+      "quote": "USD",
+      "symbol": "APE/USD"
+    },
+    {
+      "active": true,
+      "base": "APENFT",
+      "market_id": "APENFTUSD",
+      "quote": "USD",
+      "symbol": "APENFT/USD"
+    },
+    {
+      "active": true,
+      "base": "API3",
+      "market_id": "API3USD",
+      "quote": "USD",
+      "symbol": "API3/USD"
+    },
+    {
+      "active": true,
+      "base": "APR",
+      "market_id": "APRUSD",
+      "quote": "USD",
+      "symbol": "APR/USD"
+    },
+    {
+      "active": true,
+      "base": "APT",
+      "market_id": "APTUSD",
+      "quote": "USD",
+      "symbol": "APT/USD"
+    },
+    {
+      "active": true,
+      "base": "APU",
+      "market_id": "APUUSD",
+      "quote": "USD",
+      "symbol": "APU/USD"
+    },
+    {
+      "active": true,
+      "base": "APXUSD",
+      "market_id": "APXUSDUSD",
+      "quote": "USD",
+      "symbol": "APXUSD/USD"
+    },
+    {
+      "active": true,
+      "base": "AR",
+      "market_id": "ARUSD",
+      "quote": "USD",
+      "symbol": "AR/USD"
+    },
+    {
+      "active": true,
+      "base": "ARB",
+      "market_id": "ARBUSD",
+      "quote": "USD",
+      "symbol": "ARB/USD"
+    },
+    {
+      "active": true,
+      "base": "ARC",
+      "market_id": "ARCUSD",
+      "quote": "USD",
+      "symbol": "ARC/USD"
+    },
+    {
+      "active": true,
+      "base": "ARKM",
+      "market_id": "ARKMUSD",
+      "quote": "USD",
+      "symbol": "ARKM/USD"
+    },
+    {
+      "active": true,
+      "base": "ARPA",
+      "market_id": "ARPAUSD",
+      "quote": "USD",
+      "symbol": "ARPA/USD"
+    },
+    {
+      "active": true,
+      "base": "ART",
+      "market_id": "ARTUSD",
+      "quote": "USD",
+      "symbol": "ART/USD"
+    },
+    {
+      "active": true,
+      "base": "ASRR",
+      "market_id": "ASRRUSD",
+      "quote": "USD",
+      "symbol": "ASRR/USD"
+    },
+    {
+      "active": true,
+      "base": "ASSET",
+      "market_id": "ASSETUSD",
+      "quote": "USD",
+      "symbol": "ASSET/USD"
+    },
+    {
+      "active": true,
+      "base": "ASTER",
+      "market_id": "ASTERUSD",
+      "quote": "USD",
+      "symbol": "ASTER/USD"
+    },
+    {
+      "active": true,
+      "base": "ASTR",
+      "market_id": "ASTRUSD",
+      "quote": "USD",
+      "symbol": "ASTR/USD"
+    },
+    {
+      "active": true,
+      "base": "ATH",
+      "market_id": "ATHUSD",
+      "quote": "USD",
+      "symbol": "ATH/USD"
+    },
+    {
+      "active": true,
+      "base": "ATLAS",
+      "market_id": "ATLASUSD",
+      "quote": "USD",
+      "symbol": "ATLAS/USD"
+    },
+    {
+      "active": true,
+      "base": "ATOM",
+      "market_id": "ATOMUSD",
+      "quote": "USD",
+      "symbol": "ATOM/USD"
+    },
+    {
+      "active": true,
+      "base": "AUCTION",
+      "market_id": "AUCTIONUSD",
+      "quote": "USD",
+      "symbol": "AUCTION/USD"
+    },
+    {
+      "active": true,
+      "base": "AUDIO",
+      "market_id": "AUDIOUSD",
+      "quote": "USD",
+      "symbol": "AUDIO/USD"
+    },
+    {
+      "active": true,
+      "base": "AUDX",
+      "market_id": "AUDXUSD",
+      "quote": "USD",
+      "symbol": "AUDX/USD"
+    },
+    {
+      "active": true,
+      "base": "AUSD",
+      "market_id": "AUSDUSD",
+      "quote": "USD",
+      "symbol": "AUSD/USD"
+    },
+    {
+      "active": true,
+      "base": "AVA",
+      "market_id": "AVAUSD",
+      "quote": "USD",
+      "symbol": "AVA/USD"
+    },
+    {
+      "active": true,
+      "base": "AVAAI",
+      "market_id": "AVAAIUSD",
+      "quote": "USD",
+      "symbol": "AVAAI/USD"
+    },
+    {
+      "active": true,
+      "base": "AVAX",
+      "market_id": "AVAXUSD",
+      "quote": "USD",
+      "symbol": "AVAX/USD"
+    },
+    {
+      "active": true,
+      "base": "AVNT",
+      "market_id": "AVNTUSD",
+      "quote": "USD",
+      "symbol": "AVNT/USD"
+    },
+    {
+      "active": true,
+      "base": "AXS",
+      "market_id": "AXSUSD",
+      "quote": "USD",
+      "symbol": "AXS/USD"
+    },
+    {
+      "active": true,
+      "base": "AZTEC",
+      "market_id": "AZTECUSD",
+      "quote": "USD",
+      "symbol": "AZTEC/USD"
+    },
+    {
+      "active": true,
+      "base": "B2",
+      "market_id": "B2USD",
+      "quote": "USD",
+      "symbol": "B2/USD"
+    },
+    {
+      "active": true,
+      "base": "B3",
+      "market_id": "B3USD",
+      "quote": "USD",
+      "symbol": "B3/USD"
+    },
+    {
+      "active": true,
+      "base": "BABY",
+      "market_id": "BABYUSD",
+      "quote": "USD",
+      "symbol": "BABY/USD"
+    },
+    {
+      "active": true,
+      "base": "BABYSHARK",
+      "market_id": "BABYSHARKUSD",
+      "quote": "USD",
+      "symbol": "BABYSHARK/USD"
+    },
+    {
+      "active": true,
+      "base": "BADGER",
+      "market_id": "BADGERUSD",
+      "quote": "USD",
+      "symbol": "BADGER/USD"
+    },
+    {
+      "active": true,
+      "base": "BAL",
+      "market_id": "BALUSD",
+      "quote": "USD",
+      "symbol": "BAL/USD"
+    },
+    {
+      "active": true,
+      "base": "BANANAS31",
+      "market_id": "BANANAS31USD",
+      "quote": "USD",
+      "symbol": "BANANAS31/USD"
+    },
+    {
+      "active": true,
+      "base": "BAND",
+      "market_id": "BANDUSD",
+      "quote": "USD",
+      "symbol": "BAND/USD"
+    },
+    {
+      "active": true,
+      "base": "BASED",
+      "market_id": "BASEDUSD",
+      "quote": "USD",
+      "symbol": "BASED/USD"
+    },
+    {
+      "active": true,
+      "base": "BAT",
+      "market_id": "BATUSD",
+      "quote": "USD",
+      "symbol": "BAT/USD"
+    },
+    {
+      "active": true,
+      "base": "BCH",
+      "market_id": "BCHUSD",
+      "quote": "USD",
+      "symbol": "BCH/USD"
+    },
+    {
+      "active": true,
+      "base": "BDX",
+      "market_id": "BDXUSD",
+      "quote": "USD",
+      "symbol": "BDX/USD"
+    },
+    {
+      "active": true,
+      "base": "BDXN",
+      "market_id": "BDXNUSD",
+      "quote": "USD",
+      "symbol": "BDXN/USD"
+    },
+    {
+      "active": true,
+      "base": "BEAM",
+      "market_id": "BEAMUSD",
+      "quote": "USD",
+      "symbol": "BEAM/USD"
+    },
+    {
+      "active": true,
+      "base": "BERA",
+      "market_id": "BERAUSD",
+      "quote": "USD",
+      "symbol": "BERA/USD"
+    },
+    {
+      "active": true,
+      "base": "BERT",
+      "market_id": "BERTUSD",
+      "quote": "USD",
+      "symbol": "BERT/USD"
+    },
+    {
+      "active": true,
+      "base": "BGB",
+      "market_id": "BGBUSD",
+      "quote": "USD",
+      "symbol": "BGB/USD"
+    },
+    {
+      "active": true,
+      "base": "BICO",
+      "market_id": "BICOUSD",
+      "quote": "USD",
+      "symbol": "BICO/USD"
+    },
+    {
+      "active": true,
+      "base": "BIGTIME",
+      "market_id": "BIGTIMEUSD",
+      "quote": "USD",
+      "symbol": "BIGTIME/USD"
+    },
+    {
+      "active": true,
+      "base": "BILL",
+      "market_id": "BILLUSD",
+      "quote": "USD",
+      "symbol": "BILL/USD"
+    },
+    {
+      "active": true,
+      "base": "BILLY",
+      "market_id": "BILLYUSD",
+      "quote": "USD",
+      "symbol": "BILLY/USD"
+    },
+    {
+      "active": true,
+      "base": "BIO",
+      "market_id": "BIOUSD",
+      "quote": "USD",
+      "symbol": "BIO/USD"
+    },
+    {
+      "active": true,
+      "base": "BKS",
+      "market_id": "BKSUSD",
+      "quote": "USD",
+      "symbol": "BKS/USD"
+    },
+    {
+      "active": true,
+      "base": "BLEND",
+      "market_id": "BLENDUSD",
+      "quote": "USD",
+      "symbol": "BLEND/USD"
+    },
+    {
+      "active": true,
+      "base": "BLESS",
+      "market_id": "BLESSUSD",
+      "quote": "USD",
+      "symbol": "BLESS/USD"
+    },
+    {
+      "active": true,
+      "base": "BLUAI",
+      "market_id": "BLUAIUSD",
+      "quote": "USD",
+      "symbol": "BLUAI/USD"
+    },
+    {
+      "active": true,
+      "base": "BLUE",
+      "market_id": "BLUEUSD",
+      "quote": "USD",
+      "symbol": "BLUE/USD"
+    },
+    {
+      "active": true,
+      "base": "BLUR",
+      "market_id": "BLURUSD",
+      "quote": "USD",
+      "symbol": "BLUR/USD"
+    },
+    {
+      "active": true,
+      "base": "BLZ",
+      "market_id": "BLZUSD",
+      "quote": "USD",
+      "symbol": "BLZ/USD"
+    },
+    {
+      "active": true,
+      "base": "BMB",
+      "market_id": "BMBUSD",
+      "quote": "USD",
+      "symbol": "BMB/USD"
+    },
+    {
+      "active": true,
+      "base": "BMT",
+      "market_id": "BMTUSD",
+      "quote": "USD",
+      "symbol": "BMT/USD"
+    },
+    {
+      "active": true,
+      "base": "BNB",
+      "market_id": "BNBUSD",
+      "quote": "USD",
+      "symbol": "BNB/USD"
+    },
+    {
+      "active": true,
+      "base": "BNC",
+      "market_id": "BNCUSD",
+      "quote": "USD",
+      "symbol": "BNC/USD"
+    },
+    {
+      "active": true,
+      "base": "BNT",
+      "market_id": "BNTUSD",
+      "quote": "USD",
+      "symbol": "BNT/USD"
+    },
+    {
+      "active": true,
+      "base": "BOB",
+      "market_id": "BOBUSD",
+      "quote": "USD",
+      "symbol": "BOB/USD"
+    },
+    {
+      "active": true,
+      "base": "BOBA",
+      "market_id": "BOBAUSD",
+      "quote": "USD",
+      "symbol": "BOBA/USD"
+    },
+    {
+      "active": true,
+      "base": "BODEN",
+      "market_id": "BODENUSD",
+      "quote": "USD",
+      "symbol": "BODEN/USD"
+    },
+    {
+      "active": true,
+      "base": "BONK",
+      "market_id": "BONKUSD",
+      "quote": "USD",
+      "symbol": "BONK/USD"
+    },
+    {
+      "active": true,
+      "base": "BONZO",
+      "market_id": "BONZOUSD",
+      "quote": "USD",
+      "symbol": "BONZO/USD"
+    },
+    {
+      "active": true,
+      "base": "BOS",
+      "market_id": "BOSUSD",
+      "quote": "USD",
+      "symbol": "BOS/USD"
+    },
+    {
+      "active": true,
+      "base": "BREV",
+      "market_id": "BREVUSD",
+      "quote": "USD",
+      "symbol": "BREV/USD"
+    },
+    {
+      "active": true,
+      "base": "BRL1",
+      "market_id": "BRL1USD",
+      "quote": "USD",
+      "symbol": "BRL1/USD"
+    },
+    {
+      "active": true,
+      "base": "BTC",
+      "market_id": "XXBTZUSD",
+      "quote": "USD",
+      "symbol": "BTC/USD"
+    },
+    {
+      "active": true,
+      "base": "BTR",
+      "market_id": "BTRUSD",
+      "quote": "USD",
+      "symbol": "BTR/USD"
+    },
+    {
+      "active": true,
+      "base": "BTT",
+      "market_id": "BTTUSD",
+      "quote": "USD",
+      "symbol": "BTT/USD"
+    },
+    {
+      "active": true,
+      "base": "C98",
+      "market_id": "C98USD",
+      "quote": "USD",
+      "symbol": "C98/USD"
+    },
+    {
+      "active": true,
+      "base": "CAKE",
+      "market_id": "CAKEUSD",
+      "quote": "USD",
+      "symbol": "CAKE/USD"
+    },
+    {
+      "active": true,
+      "base": "CAMP",
+      "market_id": "CAMPUSD",
+      "quote": "USD",
+      "symbol": "CAMP/USD"
+    },
+    {
+      "active": true,
+      "base": "CARV",
+      "market_id": "CARVUSD",
+      "quote": "USD",
+      "symbol": "CARV/USD"
+    },
+    {
+      "active": true,
+      "base": "CASH",
+      "market_id": "CASHUSD",
+      "quote": "USD",
+      "symbol": "CASH/USD"
+    },
+    {
+      "active": true,
+      "base": "CAT",
+      "market_id": "CATUSD",
+      "quote": "USD",
+      "symbol": "CAT/USD"
+    },
+    {
+      "active": true,
+      "base": "CC",
+      "market_id": "CCUSD",
+      "quote": "USD",
+      "symbol": "CC/USD"
+    },
+    {
+      "active": true,
+      "base": "CCD",
+      "market_id": "CCDUSD",
+      "quote": "USD",
+      "symbol": "CCD/USD"
+    },
+    {
+      "active": true,
+      "base": "CELO",
+      "market_id": "CELOUSD",
+      "quote": "USD",
+      "symbol": "CELO/USD"
+    },
+    {
+      "active": true,
+      "base": "CELR",
+      "market_id": "CELRUSD",
+      "quote": "USD",
+      "symbol": "CELR/USD"
+    },
+    {
+      "active": true,
+      "base": "CFG",
+      "market_id": "CFGUSD",
+      "quote": "USD",
+      "symbol": "CFG/USD"
+    },
+    {
+      "active": true,
+      "base": "CFX",
+      "market_id": "CFXUSD",
+      "quote": "USD",
+      "symbol": "CFX/USD"
+    },
+    {
+      "active": true,
+      "base": "CHECK",
+      "market_id": "CHECKUSD",
+      "quote": "USD",
+      "symbol": "CHECK/USD"
+    },
+    {
+      "active": true,
+      "base": "CHEEMS",
+      "market_id": "CHEEMSUSD",
+      "quote": "USD",
+      "symbol": "CHEEMS/USD"
+    },
+    {
+      "active": true,
+      "base": "CHEX",
+      "market_id": "CHEXUSD",
+      "quote": "USD",
+      "symbol": "CHEX/USD"
+    },
+    {
+      "active": true,
+      "base": "CHILLHOUSE",
+      "market_id": "CHILLHOUSEUSD",
+      "quote": "USD",
+      "symbol": "CHILLHOUSE/USD"
+    },
+    {
+      "active": true,
+      "base": "CHIP",
+      "market_id": "CHIPUSD",
+      "quote": "USD",
+      "symbol": "CHIP/USD"
+    },
+    {
+      "active": true,
+      "base": "CHR",
+      "market_id": "CHRUSD",
+      "quote": "USD",
+      "symbol": "CHR/USD"
+    },
+    {
+      "active": true,
+      "base": "CHZ",
+      "market_id": "CHZUSD",
+      "quote": "USD",
+      "symbol": "CHZ/USD"
+    },
+    {
+      "active": true,
+      "base": "CLANKER",
+      "market_id": "CLANKERUSD",
+      "quote": "USD",
+      "symbol": "CLANKER/USD"
+    },
+    {
+      "active": true,
+      "base": "CLOUD",
+      "market_id": "CLOUDUSD",
+      "quote": "USD",
+      "symbol": "CLOUD/USD"
+    },
+    {
+      "active": true,
+      "base": "CLV",
+      "market_id": "CLVUSD",
+      "quote": "USD",
+      "symbol": "CLV/USD"
+    },
+    {
+      "active": true,
+      "base": "CMETH",
+      "market_id": "CMETHUSD",
+      "quote": "USD",
+      "symbol": "CMETH/USD"
+    },
+    {
+      "active": true,
+      "base": "COMP",
+      "market_id": "COMPUSD",
+      "quote": "USD",
+      "symbol": "COMP/USD"
+    },
+    {
+      "active": true,
+      "base": "COOKIE",
+      "market_id": "COOKIEUSD",
+      "quote": "USD",
+      "symbol": "COOKIE/USD"
+    },
+    {
+      "active": true,
+      "base": "COPM",
+      "market_id": "COPMUSD",
+      "quote": "USD",
+      "symbol": "COPM/USD"
+    },
+    {
+      "active": true,
+      "base": "COQ",
+      "market_id": "COQUSD",
+      "quote": "USD",
+      "symbol": "COQ/USD"
+    },
+    {
+      "active": true,
+      "base": "CORN",
+      "market_id": "CORNUSD",
+      "quote": "USD",
+      "symbol": "CORN/USD"
+    },
+    {
+      "active": true,
+      "base": "COTI",
+      "market_id": "COTIUSD",
+      "quote": "USD",
+      "symbol": "COTI/USD"
+    },
+    {
+      "active": true,
+      "base": "COW",
+      "market_id": "COWUSD",
+      "quote": "USD",
+      "symbol": "COW/USD"
+    },
+    {
+      "active": true,
+      "base": "CPOOL",
+      "market_id": "CPOOLUSD",
+      "quote": "USD",
+      "symbol": "CPOOL/USD"
+    },
+    {
+      "active": true,
+      "base": "CQT",
+      "market_id": "CQTUSD",
+      "quote": "USD",
+      "symbol": "CQT/USD"
+    },
+    {
+      "active": true,
+      "base": "CRO",
+      "market_id": "CROUSD",
+      "quote": "USD",
+      "symbol": "CRO/USD"
+    },
+    {
+      "active": true,
+      "base": "CRV",
+      "market_id": "CRVUSD",
+      "quote": "USD",
+      "symbol": "CRV/USD"
+    },
+    {
+      "active": true,
+      "base": "CTC",
+      "market_id": "CTCUSD",
+      "quote": "USD",
+      "symbol": "CTC/USD"
+    },
+    {
+      "active": true,
+      "base": "CTR",
+      "market_id": "CTRUSD",
+      "quote": "USD",
+      "symbol": "CTR/USD"
+    },
+    {
+      "active": true,
+      "base": "CTSI",
+      "market_id": "CTSIUSD",
+      "quote": "USD",
+      "symbol": "CTSI/USD"
+    },
+    {
+      "active": true,
+      "base": "CVC",
+      "market_id": "CVCUSD",
+      "quote": "USD",
+      "symbol": "CVC/USD"
+    },
+    {
+      "active": true,
+      "base": "CVX",
+      "market_id": "CVXUSD",
+      "quote": "USD",
+      "symbol": "CVX/USD"
+    },
+    {
+      "active": true,
+      "base": "CXT",
+      "market_id": "CXTUSD",
+      "quote": "USD",
+      "symbol": "CXT/USD"
+    },
+    {
+      "active": true,
+      "base": "CYBER",
+      "market_id": "CYBERUSD",
+      "quote": "USD",
+      "symbol": "CYBER/USD"
+    },
+    {
+      "active": true,
+      "base": "DAG",
+      "market_id": "DAGUSD",
+      "quote": "USD",
+      "symbol": "DAG/USD"
+    },
+    {
+      "active": true,
+      "base": "DASH",
+      "market_id": "DASHUSD",
+      "quote": "USD",
+      "symbol": "DASH/USD"
+    },
+    {
+      "active": true,
+      "base": "DBR",
+      "market_id": "DBRUSD",
+      "quote": "USD",
+      "symbol": "DBR/USD"
+    },
+    {
+      "active": true,
+      "base": "DCR",
+      "market_id": "DCRUSD",
+      "quote": "USD",
+      "symbol": "DCR/USD"
+    },
+    {
+      "active": true,
+      "base": "DEEP",
+      "market_id": "DEEPUSD",
+      "quote": "USD",
+      "symbol": "DEEP/USD"
+    },
+    {
+      "active": true,
+      "base": "DEGEN",
+      "market_id": "DEGENUSD",
+      "quote": "USD",
+      "symbol": "DEGEN/USD"
+    },
+    {
+      "active": true,
+      "base": "DENT",
+      "market_id": "DENTUSD",
+      "quote": "USD",
+      "symbol": "DENT/USD"
+    },
+    {
+      "active": true,
+      "base": "DMC",
+      "market_id": "DMCUSD",
+      "quote": "USD",
+      "symbol": "DMC/USD"
+    },
+    {
+      "active": true,
+      "base": "DOG",
+      "market_id": "DOGUSD",
+      "quote": "USD",
+      "symbol": "DOG/USD"
+    },
+    {
+      "active": true,
+      "base": "DOGE",
+      "market_id": "XDGUSD",
+      "quote": "USD",
+      "symbol": "DOGE/USD"
+    },
+    {
+      "active": true,
+      "base": "DOGS",
+      "market_id": "DOGSUSD",
+      "quote": "USD",
+      "symbol": "DOGS/USD"
+    },
+    {
+      "active": true,
+      "base": "DOLO",
+      "market_id": "DOLOUSD",
+      "quote": "USD",
+      "symbol": "DOLO/USD"
+    },
+    {
+      "active": true,
+      "base": "DOT",
+      "market_id": "DOTUSD",
+      "quote": "USD",
+      "symbol": "DOT/USD"
+    },
+    {
+      "active": true,
+      "base": "DOVU",
+      "market_id": "DOVUUSD",
+      "quote": "USD",
+      "symbol": "DOVU/USD"
+    },
+    {
+      "active": true,
+      "base": "DRIFT",
+      "market_id": "DRIFTUSD",
+      "quote": "USD",
+      "symbol": "DRIFT/USD"
+    },
+    {
+      "active": true,
+      "base": "DRV",
+      "market_id": "DRVUSD",
+      "quote": "USD",
+      "symbol": "DRV/USD"
+    },
+    {
+      "active": true,
+      "base": "DUAL",
+      "market_id": "DUALUSD",
+      "quote": "USD",
+      "symbol": "DUAL/USD"
+    },
+    {
+      "active": true,
+      "base": "DUCK",
+      "market_id": "DUCKUSD",
+      "quote": "USD",
+      "symbol": "DUCK/USD"
+    },
+    {
+      "active": true,
+      "base": "DYDX",
+      "market_id": "DYDXUSD",
+      "quote": "USD",
+      "symbol": "DYDX/USD"
+    },
+    {
+      "active": true,
+      "base": "DYM",
+      "market_id": "DYMUSD",
+      "quote": "USD",
+      "symbol": "DYM/USD"
+    },
+    {
+      "active": true,
+      "base": "EAT",
+      "market_id": "EATUSD",
+      "quote": "USD",
+      "symbol": "EAT/USD"
+    },
+    {
+      "active": true,
+      "base": "EDGE",
+      "market_id": "EDGEUSD",
+      "quote": "USD",
+      "symbol": "EDGE/USD"
+    },
+    {
+      "active": true,
+      "base": "EDGEX",
+      "market_id": "EDGEXUSD",
+      "quote": "USD",
+      "symbol": "EDGEX/USD"
+    },
+    {
+      "active": true,
+      "base": "EDU",
+      "market_id": "EDUUSD",
+      "quote": "USD",
+      "symbol": "EDU/USD"
+    },
+    {
+      "active": true,
+      "base": "EGLD",
+      "market_id": "EGLDUSD",
+      "quote": "USD",
+      "symbol": "EGLD/USD"
+    },
+    {
+      "active": true,
+      "base": "EIGEN",
+      "market_id": "EIGENUSD",
+      "quote": "USD",
+      "symbol": "EIGEN/USD"
+    },
+    {
+      "active": true,
+      "base": "ELIZAOS",
+      "market_id": "ELIZAOSUSD",
+      "quote": "USD",
+      "symbol": "ELIZAOS/USD"
+    },
+    {
+      "active": true,
+      "base": "ELX",
+      "market_id": "ELXUSD",
+      "quote": "USD",
+      "symbol": "ELX/USD"
+    },
+    {
+      "active": true,
+      "base": "ENA",
+      "market_id": "ENAUSD",
+      "quote": "USD",
+      "symbol": "ENA/USD"
+    },
+    {
+      "active": true,
+      "base": "ENJ",
+      "market_id": "ENJUSD",
+      "quote": "USD",
+      "symbol": "ENJ/USD"
+    },
+    {
+      "active": true,
+      "base": "ENS",
+      "market_id": "ENSUSD",
+      "quote": "USD",
+      "symbol": "ENS/USD"
+    },
+    {
+      "active": true,
+      "base": "ENSO",
+      "market_id": "ENSOUSD",
+      "quote": "USD",
+      "symbol": "ENSO/USD"
+    },
+    {
+      "active": true,
+      "base": "EPT",
+      "market_id": "EPTUSD",
+      "quote": "USD",
+      "symbol": "EPT/USD"
+    },
+    {
+      "active": true,
+      "base": "ES",
+      "market_id": "ESUSD",
+      "quote": "USD",
+      "symbol": "ES/USD"
+    },
+    {
+      "active": true,
+      "base": "ESP",
+      "market_id": "ESPUSD",
+      "quote": "USD",
+      "symbol": "ESP/USD"
+    },
+    {
+      "active": true,
+      "base": "ESPORTS",
+      "market_id": "ESPORTSUSD",
+      "quote": "USD",
+      "symbol": "ESPORTS/USD"
+    },
+    {
+      "active": true,
+      "base": "ESX",
+      "market_id": "ESXUSD",
+      "quote": "USD",
+      "symbol": "ESX/USD"
+    },
+    {
+      "active": true,
+      "base": "ETC",
+      "market_id": "XETCZUSD",
+      "quote": "USD",
+      "symbol": "ETC/USD"
+    },
+    {
+      "active": true,
+      "base": "ETH",
+      "market_id": "XETHZUSD",
+      "quote": "USD",
+      "symbol": "ETH/USD"
+    },
+    {
+      "active": true,
+      "base": "ETHFI",
+      "market_id": "ETHFIUSD",
+      "quote": "USD",
+      "symbol": "ETHFI/USD"
+    },
+    {
+      "active": true,
+      "base": "EUL",
+      "market_id": "EULUSD",
+      "quote": "USD",
+      "symbol": "EUL/USD"
+    },
+    {
+      "active": true,
+      "base": "EURC",
+      "market_id": "EURCUSD",
+      "quote": "USD",
+      "symbol": "EURC/USD"
+    },
+    {
+      "active": true,
+      "base": "EUROP",
+      "market_id": "EUROPUSD",
+      "quote": "USD",
+      "symbol": "EUROP/USD"
+    },
+    {
+      "active": true,
+      "base": "EURQ",
+      "market_id": "EURQUSD",
+      "quote": "USD",
+      "symbol": "EURQ/USD"
+    },
+    {
+      "active": true,
+      "base": "EV",
+      "market_id": "EVUSD",
+      "quote": "USD",
+      "symbol": "EV/USD"
+    },
+    {
+      "active": true,
+      "base": "EVAA",
+      "market_id": "EVAAUSD",
+      "quote": "USD",
+      "symbol": "EVAA/USD"
+    },
+    {
+      "active": true,
+      "base": "EWT",
+      "market_id": "EWTUSD",
+      "quote": "USD",
+      "symbol": "EWT/USD"
+    },
+    {
+      "active": true,
+      "base": "FARTCOIN",
+      "market_id": "FARTCOINUSD",
+      "quote": "USD",
+      "symbol": "FARTCOIN/USD"
+    },
+    {
+      "active": true,
+      "base": "FET",
+      "market_id": "FETUSD",
+      "quote": "USD",
+      "symbol": "FET/USD"
+    },
+    {
+      "active": true,
+      "base": "FF",
+      "market_id": "FFUSD",
+      "quote": "USD",
+      "symbol": "FF/USD"
+    },
+    {
+      "active": true,
+      "base": "FHE",
+      "market_id": "FHEUSD",
+      "quote": "USD",
+      "symbol": "FHE/USD"
+    },
+    {
+      "active": true,
+      "base": "FIDA",
+      "market_id": "FIDAUSD",
+      "quote": "USD",
+      "symbol": "FIDA/USD"
+    },
+    {
+      "active": true,
+      "base": "FIDD",
+      "market_id": "FIDDUSD",
+      "quote": "USD",
+      "symbol": "FIDD/USD"
+    },
+    {
+      "active": true,
+      "base": "FIGHT",
+      "market_id": "FIGHTUSD",
+      "quote": "USD",
+      "symbol": "FIGHT/USD"
+    },
+    {
+      "active": true,
+      "base": "FIL",
+      "market_id": "FILUSD",
+      "quote": "USD",
+      "symbol": "FIL/USD"
+    },
+    {
+      "active": true,
+      "base": "FIS",
+      "market_id": "FISUSD",
+      "quote": "USD",
+      "symbol": "FIS/USD"
+    },
+    {
+      "active": true,
+      "base": "FLOCK",
+      "market_id": "FLOCKUSD",
+      "quote": "USD",
+      "symbol": "FLOCK/USD"
+    },
+    {
+      "active": true,
+      "base": "FLOKI",
+      "market_id": "FLOKIUSD",
+      "quote": "USD",
+      "symbol": "FLOKI/USD"
+    },
+    {
+      "active": true,
+      "base": "FLOW",
+      "market_id": "FLOWUSD",
+      "quote": "USD",
+      "symbol": "FLOW/USD"
+    },
+    {
+      "active": true,
+      "base": "FLR",
+      "market_id": "FLRUSD",
+      "quote": "USD",
+      "symbol": "FLR/USD"
+    },
+    {
+      "active": true,
+      "base": "FLUX",
+      "market_id": "FLUXUSD",
+      "quote": "USD",
+      "symbol": "FLUX/USD"
+    },
+    {
+      "active": true,
+      "base": "FOLKS",
+      "market_id": "FOLKSUSD",
+      "quote": "USD",
+      "symbol": "FOLKS/USD"
+    },
+    {
+      "active": true,
+      "base": "FOREST",
+      "market_id": "FORESTUSD",
+      "quote": "USD",
+      "symbol": "FOREST/USD"
+    },
+    {
+      "active": true,
+      "base": "FORTH",
+      "market_id": "FORTHUSD",
+      "quote": "USD",
+      "symbol": "FORTH/USD"
+    },
+    {
+      "active": true,
+      "base": "FRNT",
+      "market_id": "FRNTUSD",
+      "quote": "USD",
+      "symbol": "FRNT/USD"
+    },
+    {
+      "active": true,
+      "base": "FUN",
+      "market_id": "FUNUSD",
+      "quote": "USD",
+      "symbol": "FUN/USD"
+    },
+    {
+      "active": true,
+      "base": "FWOG",
+      "market_id": "FWOGUSD",
+      "quote": "USD",
+      "symbol": "FWOG/USD"
+    },
+    {
+      "active": true,
+      "base": "FXS",
+      "market_id": "FXSUSD",
+      "quote": "USD",
+      "symbol": "FXS/USD"
+    },
+    {
+      "active": true,
+      "base": "G",
+      "market_id": "GUSD",
+      "quote": "USD",
+      "symbol": "G/USD"
+    },
+    {
+      "active": true,
+      "base": "GAIA",
+      "market_id": "GAIAUSD",
+      "quote": "USD",
+      "symbol": "GAIA/USD"
+    },
+    {
+      "active": true,
+      "base": "GAIB",
+      "market_id": "GAIBUSD",
+      "quote": "USD",
+      "symbol": "GAIB/USD"
+    },
+    {
+      "active": true,
+      "base": "GALA",
+      "market_id": "GALAUSD",
+      "quote": "USD",
+      "symbol": "GALA/USD"
+    },
+    {
+      "active": true,
+      "base": "GAME2",
+      "market_id": "GAME2USD",
+      "quote": "USD",
+      "symbol": "GAME2/USD"
+    },
+    {
+      "active": true,
+      "base": "GAS",
+      "market_id": "GASUSD",
+      "quote": "USD",
+      "symbol": "GAS/USD"
+    },
+    {
+      "active": true,
+      "base": "GENIUS",
+      "market_id": "GENIUSUSD",
+      "quote": "USD",
+      "symbol": "GENIUS/USD"
+    },
+    {
+      "active": true,
+      "base": "GFI",
+      "market_id": "GFIUSD",
+      "quote": "USD",
+      "symbol": "GFI/USD"
+    },
+    {
+      "active": true,
+      "base": "GHIBLI",
+      "market_id": "GHIBLIUSD",
+      "quote": "USD",
+      "symbol": "GHIBLI/USD"
+    },
+    {
+      "active": true,
+      "base": "GHST",
+      "market_id": "GHSTUSD",
+      "quote": "USD",
+      "symbol": "GHST/USD"
+    },
+    {
+      "active": true,
+      "base": "GIB",
+      "market_id": "GIBUSD",
+      "quote": "USD",
+      "symbol": "GIB/USD"
+    },
+    {
+      "active": true,
+      "base": "GIGA",
+      "market_id": "GIGAUSD",
+      "quote": "USD",
+      "symbol": "GIGA/USD"
+    },
+    {
+      "active": true,
+      "base": "GLMR",
+      "market_id": "GLMRUSD",
+      "quote": "USD",
+      "symbol": "GLMR/USD"
+    },
+    {
+      "active": true,
+      "base": "GMT",
+      "market_id": "GMTUSD",
+      "quote": "USD",
+      "symbol": "GMT/USD"
+    },
+    {
+      "active": true,
+      "base": "GMX",
+      "market_id": "GMXUSD",
+      "quote": "USD",
+      "symbol": "GMX/USD"
+    },
+    {
+      "active": true,
+      "base": "GNO",
+      "market_id": "GNOUSD",
+      "quote": "USD",
+      "symbol": "GNO/USD"
+    },
+    {
+      "active": true,
+      "base": "GOAT",
+      "market_id": "GOATUSD",
+      "quote": "USD",
+      "symbol": "GOAT/USD"
+    },
+    {
+      "active": true,
+      "base": "GOMINING",
+      "market_id": "GOMININGUSD",
+      "quote": "USD",
+      "symbol": "GOMINING/USD"
+    },
+    {
+      "active": true,
+      "base": "GRASS",
+      "market_id": "GRASSUSD",
+      "quote": "USD",
+      "symbol": "GRASS/USD"
+    },
+    {
+      "active": true,
+      "base": "GRIFFAIN",
+      "market_id": "GRIFFAINUSD",
+      "quote": "USD",
+      "symbol": "GRIFFAIN/USD"
+    },
+    {
+      "active": true,
+      "base": "GRT",
+      "market_id": "GRTUSD",
+      "quote": "USD",
+      "symbol": "GRT/USD"
+    },
+    {
+      "active": true,
+      "base": "GST",
+      "market_id": "GSTUSD",
+      "quote": "USD",
+      "symbol": "GST/USD"
+    },
+    {
+      "active": true,
+      "base": "GTC",
+      "market_id": "GTCUSD",
+      "quote": "USD",
+      "symbol": "GTC/USD"
+    },
+    {
+      "active": true,
+      "base": "GUN",
+      "market_id": "GUNUSD",
+      "quote": "USD",
+      "symbol": "GUN/USD"
+    },
+    {
+      "active": true,
+      "base": "GWEI",
+      "market_id": "GWEIUSD",
+      "quote": "USD",
+      "symbol": "GWEI/USD"
+    },
+    {
+      "active": true,
+      "base": "HBAR",
+      "market_id": "HBARUSD",
+      "quote": "USD",
+      "symbol": "HBAR/USD"
+    },
+    {
+      "active": true,
+      "base": "HDX",
+      "market_id": "HDXUSD",
+      "quote": "USD",
+      "symbol": "HDX/USD"
+    },
+    {
+      "active": true,
+      "base": "HFT",
+      "market_id": "HFTUSD",
+      "quote": "USD",
+      "symbol": "HFT/USD"
+    },
+    {
+      "active": true,
+      "base": "HIPPO",
+      "market_id": "HIPPOUSD",
+      "quote": "USD",
+      "symbol": "HIPPO/USD"
+    },
+    {
+      "active": true,
+      "base": "HMSTR",
+      "market_id": "HMSTRUSD",
+      "quote": "USD",
+      "symbol": "HMSTR/USD"
+    },
+    {
+      "active": true,
+      "base": "HNT",
+      "market_id": "HNTUSD",
+      "quote": "USD",
+      "symbol": "HNT/USD"
+    },
+    {
+      "active": true,
+      "base": "HOLO",
+      "market_id": "HOLOUSD",
+      "quote": "USD",
+      "symbol": "HOLO/USD"
+    },
+    {
+      "active": true,
+      "base": "HONEY",
+      "market_id": "HONEYUSD",
+      "quote": "USD",
+      "symbol": "HONEY/USD"
+    },
+    {
+      "active": true,
+      "base": "HOUSE",
+      "market_id": "HOUSEUSD",
+      "quote": "USD",
+      "symbol": "HOUSE/USD"
+    },
+    {
+      "active": true,
+      "base": "HPOS10I",
+      "market_id": "HPOS10IUSD",
+      "quote": "USD",
+      "symbol": "HPOS10I/USD"
+    },
+    {
+      "active": true,
+      "base": "HSK",
+      "market_id": "HSKUSD",
+      "quote": "USD",
+      "symbol": "HSK/USD"
+    },
+    {
+      "active": true,
+      "base": "HYPE",
+      "market_id": "HYPEUSD",
+      "quote": "USD",
+      "symbol": "HYPE/USD"
+    },
+    {
+      "active": true,
+      "base": "IAG",
+      "market_id": "IAGUSD",
+      "quote": "USD",
+      "symbol": "IAG/USD"
+    },
+    {
+      "active": true,
+      "base": "ICNT",
+      "market_id": "ICNTUSD",
+      "quote": "USD",
+      "symbol": "ICNT/USD"
+    },
+    {
+      "active": true,
+      "base": "ICP",
+      "market_id": "ICPUSD",
+      "quote": "USD",
+      "symbol": "ICP/USD"
+    },
+    {
+      "active": true,
+      "base": "ICX",
+      "market_id": "ICXUSD",
+      "quote": "USD",
+      "symbol": "ICX/USD"
+    },
+    {
+      "active": true,
+      "base": "IDEX",
+      "market_id": "IDEXUSD",
+      "quote": "USD",
+      "symbol": "IDEX/USD"
+    },
+    {
+      "active": true,
+      "base": "IDOS",
+      "market_id": "IDOSUSD",
+      "quote": "USD",
+      "symbol": "IDOS/USD"
+    },
+    {
+      "active": true,
+      "base": "IMX",
+      "market_id": "IMXUSD",
+      "quote": "USD",
+      "symbol": "IMX/USD"
+    },
+    {
+      "active": true,
+      "base": "IN",
+      "market_id": "INUSD",
+      "quote": "USD",
+      "symbol": "IN/USD"
+    },
+    {
+      "active": true,
+      "base": "INIT",
+      "market_id": "INITUSD",
+      "quote": "USD",
+      "symbol": "INIT/USD"
+    },
+    {
+      "active": true,
+      "base": "INJ",
+      "market_id": "INJUSD",
+      "quote": "USD",
+      "symbol": "INJ/USD"
+    },
+    {
+      "active": true,
+      "base": "INX",
+      "market_id": "INXUSD",
+      "quote": "USD",
+      "symbol": "INX/USD"
+    },
+    {
+      "active": true,
+      "base": "IP",
+      "market_id": "IPUSD",
+      "quote": "USD",
+      "symbol": "IP/USD"
+    },
+    {
+      "active": true,
+      "base": "IR",
+      "market_id": "IRUSD",
+      "quote": "USD",
+      "symbol": "IR/USD"
+    },
+    {
+      "active": true,
+      "base": "JAILSTOOL",
+      "market_id": "JAILSTOOLUSD",
+      "quote": "USD",
+      "symbol": "JAILSTOOL/USD"
+    },
+    {
+      "active": true,
+      "base": "JASMY",
+      "market_id": "JASMYUSD",
+      "quote": "USD",
+      "symbol": "JASMY/USD"
+    },
+    {
+      "active": true,
+      "base": "JITOSOL",
+      "market_id": "JITOSOLUSD",
+      "quote": "USD",
+      "symbol": "JITOSOL/USD"
+    },
+    {
+      "active": true,
+      "base": "JOE",
+      "market_id": "JOEUSD",
+      "quote": "USD",
+      "symbol": "JOE/USD"
+    },
+    {
+      "active": true,
+      "base": "JST",
+      "market_id": "JSTUSD",
+      "quote": "USD",
+      "symbol": "JST/USD"
+    },
+    {
+      "active": true,
+      "base": "JTO",
+      "market_id": "JTOUSD",
+      "quote": "USD",
+      "symbol": "JTO/USD"
+    },
+    {
+      "active": true,
+      "base": "JUNO",
+      "market_id": "JUNOUSD",
+      "quote": "USD",
+      "symbol": "JUNO/USD"
+    },
+    {
+      "active": true,
+      "base": "KAITO",
+      "market_id": "KAITOUSD",
+      "quote": "USD",
+      "symbol": "KAITO/USD"
+    },
+    {
+      "active": true,
+      "base": "KAS",
+      "market_id": "KASUSD",
+      "quote": "USD",
+      "symbol": "KAS/USD"
+    },
+    {
+      "active": true,
+      "base": "KAT",
+      "market_id": "KATUSD",
+      "quote": "USD",
+      "symbol": "KAT/USD"
+    },
+    {
+      "active": true,
+      "base": "KAVA",
+      "market_id": "KAVAUSD",
+      "quote": "USD",
+      "symbol": "KAVA/USD"
+    },
+    {
+      "active": true,
+      "base": "KEEP",
+      "market_id": "KEEPUSD",
+      "quote": "USD",
+      "symbol": "KEEP/USD"
+    },
+    {
+      "active": true,
+      "base": "KERNEL",
+      "market_id": "KERNELUSD",
+      "quote": "USD",
+      "symbol": "KERNEL/USD"
+    },
+    {
+      "active": true,
+      "base": "KEY",
+      "market_id": "KEYUSD",
+      "quote": "USD",
+      "symbol": "KEY/USD"
+    },
+    {
+      "active": true,
+      "base": "KGEN",
+      "market_id": "KGENUSD",
+      "quote": "USD",
+      "symbol": "KGEN/USD"
+    },
+    {
+      "active": true,
+      "base": "KIN",
+      "market_id": "KINUSD",
+      "quote": "USD",
+      "symbol": "KIN/USD"
+    },
+    {
+      "active": true,
+      "base": "KMNO",
+      "market_id": "KMNOUSD",
+      "quote": "USD",
+      "symbol": "KMNO/USD"
+    },
+    {
+      "active": true,
+      "base": "KNC",
+      "market_id": "KNCUSD",
+      "quote": "USD",
+      "symbol": "KNC/USD"
+    },
+    {
+      "active": true,
+      "base": "KNTQ",
+      "market_id": "KNTQUSD",
+      "quote": "USD",
+      "symbol": "KNTQ/USD"
+    },
+    {
+      "active": true,
+      "base": "KOBAN",
+      "market_id": "KOBANUSD",
+      "quote": "USD",
+      "symbol": "KOBAN/USD"
+    },
+    {
+      "active": true,
+      "base": "KP3R",
+      "market_id": "KP3RUSD",
+      "quote": "USD",
+      "symbol": "KP3R/USD"
+    },
+    {
+      "active": true,
+      "base": "KSM",
+      "market_id": "KSMUSD",
+      "quote": "USD",
+      "symbol": "KSM/USD"
+    },
+    {
+      "active": true,
+      "base": "KTA",
+      "market_id": "KTAUSD",
+      "quote": "USD",
+      "symbol": "KTA/USD"
+    },
+    {
+      "active": true,
+      "base": "KULA",
+      "market_id": "KULAUSD",
+      "quote": "USD",
+      "symbol": "KULA/USD"
+    },
+    {
+      "active": true,
+      "base": "L3",
+      "market_id": "L3USD",
+      "quote": "USD",
+      "symbol": "L3/USD"
+    },
+    {
+      "active": true,
+      "base": "LAVA",
+      "market_id": "LAVAUSD",
+      "quote": "USD",
+      "symbol": "LAVA/USD"
+    },
+    {
+      "active": true,
+      "base": "LAYER",
+      "market_id": "LAYERUSD",
+      "quote": "USD",
+      "symbol": "LAYER/USD"
+    },
+    {
+      "active": true,
+      "base": "LCAP",
+      "market_id": "LCAPUSD",
+      "quote": "USD",
+      "symbol": "LCAP/USD"
+    },
+    {
+      "active": true,
+      "base": "LCX",
+      "market_id": "LCXUSD",
+      "quote": "USD",
+      "symbol": "LCX/USD"
+    },
+    {
+      "active": true,
+      "base": "LDO",
+      "market_id": "LDOUSD",
+      "quote": "USD",
+      "symbol": "LDO/USD"
+    },
+    {
+      "active": true,
+      "base": "LINEA",
+      "market_id": "LINEAUSD",
+      "quote": "USD",
+      "symbol": "LINEA/USD"
+    },
+    {
+      "active": true,
+      "base": "LINK",
+      "market_id": "LINKUSD",
+      "quote": "USD",
+      "symbol": "LINK/USD"
+    },
+    {
+      "active": true,
+      "base": "LION",
+      "market_id": "LIONUSD",
+      "quote": "USD",
+      "symbol": "LION/USD"
+    },
+    {
+      "active": true,
+      "base": "LIT",
+      "market_id": "LITUSD",
+      "quote": "USD",
+      "symbol": "LIT/USD"
+    },
+    {
+      "active": true,
+      "base": "LMWR",
+      "market_id": "LMWRUSD",
+      "quote": "USD",
+      "symbol": "LMWR/USD"
+    },
+    {
+      "active": true,
+      "base": "LOCKIN",
+      "market_id": "LOCKINUSD",
+      "quote": "USD",
+      "symbol": "LOCKIN/USD"
+    },
+    {
+      "active": true,
+      "base": "LOFI",
+      "market_id": "LOFIUSD",
+      "quote": "USD",
+      "symbol": "LOFI/USD"
+    },
+    {
+      "active": true,
+      "base": "LPT",
+      "market_id": "LPTUSD",
+      "quote": "USD",
+      "symbol": "LPT/USD"
+    },
+    {
+      "active": true,
+      "base": "LQTY",
+      "market_id": "LQTYUSD",
+      "quote": "USD",
+      "symbol": "LQTY/USD"
+    },
+    {
+      "active": true,
+      "base": "LRC",
+      "market_id": "LRCUSD",
+      "quote": "USD",
+      "symbol": "LRC/USD"
+    },
+    {
+      "active": true,
+      "base": "LSETH",
+      "market_id": "LSETHUSD",
+      "quote": "USD",
+      "symbol": "LSETH/USD"
+    },
+    {
+      "active": true,
+      "base": "LSK",
+      "market_id": "LSKUSD",
+      "quote": "USD",
+      "symbol": "LSK/USD"
+    },
+    {
+      "active": true,
+      "base": "LSSOL",
+      "market_id": "LSSOLUSD",
+      "quote": "USD",
+      "symbol": "LSSOL/USD"
+    },
+    {
+      "active": true,
+      "base": "LTC",
+      "market_id": "XLTCZUSD",
+      "quote": "USD",
+      "symbol": "LTC/USD"
+    },
+    {
+      "active": true,
+      "base": "LUNC",
+      "market_id": "LUNAUSD",
+      "quote": "USD",
+      "symbol": "LUNC/USD"
+    },
+    {
+      "active": true,
+      "base": "M",
+      "market_id": "MUSD",
+      "quote": "USD",
+      "symbol": "M/USD"
+    },
+    {
+      "active": true,
+      "base": "MANA",
+      "market_id": "MANAUSD",
+      "quote": "USD",
+      "symbol": "MANA/USD"
+    },
+    {
+      "active": true,
+      "base": "MANTRA",
+      "market_id": "MANTRAUSD",
+      "quote": "USD",
+      "symbol": "MANTRA/USD"
+    },
+    {
+      "active": true,
+      "base": "MASK",
+      "market_id": "MASKUSD",
+      "quote": "USD",
+      "symbol": "MASK/USD"
+    },
+    {
+      "active": true,
+      "base": "MAT",
+      "market_id": "MATUSD",
+      "quote": "USD",
+      "symbol": "MAT/USD"
+    },
+    {
+      "active": true,
+      "base": "ME",
+      "market_id": "MEUSD",
+      "quote": "USD",
+      "symbol": "ME/USD"
+    },
+    {
+      "active": true,
+      "base": "MEGA",
+      "market_id": "MEGAUSD",
+      "quote": "USD",
+      "symbol": "MEGA/USD"
+    },
+    {
+      "active": true,
+      "base": "MELANIA",
+      "market_id": "MELANIAUSD",
+      "quote": "USD",
+      "symbol": "MELANIA/USD"
+    },
+    {
+      "active": true,
+      "base": "MEME",
+      "market_id": "MEMEUSD",
+      "quote": "USD",
+      "symbol": "MEME/USD"
+    },
+    {
+      "active": true,
+      "base": "MERL",
+      "market_id": "MERLUSD",
+      "quote": "USD",
+      "symbol": "MERL/USD"
+    },
+    {
+      "active": true,
+      "base": "MET",
+      "market_id": "METUSD",
+      "quote": "USD",
+      "symbol": "MET/USD"
+    },
+    {
+      "active": true,
+      "base": "METH",
+      "market_id": "METHUSD",
+      "quote": "USD",
+      "symbol": "METH/USD"
+    },
+    {
+      "active": true,
+      "base": "METIS",
+      "market_id": "METISUSD",
+      "quote": "USD",
+      "symbol": "METIS/USD"
+    },
+    {
+      "active": true,
+      "base": "MEW",
+      "market_id": "MEWUSD",
+      "quote": "USD",
+      "symbol": "MEW/USD"
+    },
+    {
+      "active": true,
+      "base": "MEZO",
+      "market_id": "MEZOUSD",
+      "quote": "USD",
+      "symbol": "MEZO/USD"
+    },
+    {
+      "active": true,
+      "base": "MF",
+      "market_id": "MFUSD",
+      "quote": "USD",
+      "symbol": "MF/USD"
+    },
+    {
+      "active": true,
+      "base": "MIM",
+      "market_id": "MIMUSD",
+      "quote": "USD",
+      "symbol": "MIM/USD"
+    },
+    {
+      "active": true,
+      "base": "MINA",
+      "market_id": "MINAUSD",
+      "quote": "USD",
+      "symbol": "MINA/USD"
+    },
+    {
+      "active": true,
+      "base": "MIR",
+      "market_id": "MIRUSD",
+      "quote": "USD",
+      "symbol": "MIR/USD"
+    },
+    {
+      "active": true,
+      "base": "MIRA",
+      "market_id": "MIRAUSD",
+      "quote": "USD",
+      "symbol": "MIRA/USD"
+    },
+    {
+      "active": true,
+      "base": "MIRROR",
+      "market_id": "MIRRORUSD",
+      "quote": "USD",
+      "symbol": "MIRROR/USD"
+    },
+    {
+      "active": true,
+      "base": "MLN",
+      "market_id": "XMLNZUSD",
+      "quote": "USD",
+      "symbol": "MLN/USD"
+    },
+    {
+      "active": true,
+      "base": "MNGO",
+      "market_id": "MNGOUSD",
+      "quote": "USD",
+      "symbol": "MNGO/USD"
+    },
+    {
+      "active": true,
+      "base": "MNT",
+      "market_id": "MNTUSD",
+      "quote": "USD",
+      "symbol": "MNT/USD"
+    },
+    {
+      "active": true,
+      "base": "MOCA",
+      "market_id": "MOCAUSD",
+      "quote": "USD",
+      "symbol": "MOCA/USD"
+    },
+    {
+      "active": true,
+      "base": "MOG",
+      "market_id": "MOGUSD",
+      "quote": "USD",
+      "symbol": "MOG/USD"
+    },
+    {
+      "active": true,
+      "base": "MON",
+      "market_id": "MONUSD",
+      "quote": "USD",
+      "symbol": "MON/USD"
+    },
+    {
+      "active": true,
+      "base": "MOODENG",
+      "market_id": "MOODENGUSD",
+      "quote": "USD",
+      "symbol": "MOODENG/USD"
+    },
+    {
+      "active": true,
+      "base": "MORPHO",
+      "market_id": "MORPHOUSD",
+      "quote": "USD",
+      "symbol": "MORPHO/USD"
+    },
+    {
+      "active": true,
+      "base": "MOVR",
+      "market_id": "MOVRUSD",
+      "quote": "USD",
+      "symbol": "MOVR/USD"
+    },
+    {
+      "active": true,
+      "base": "MSOL",
+      "market_id": "MSOLUSD",
+      "quote": "USD",
+      "symbol": "MSOL/USD"
+    },
+    {
+      "active": true,
+      "base": "MUBARAK",
+      "market_id": "MUBARAKUSD",
+      "quote": "USD",
+      "symbol": "MUBARAK/USD"
+    },
+    {
+      "active": true,
+      "base": "MULTI",
+      "market_id": "MULTIUSD",
+      "quote": "USD",
+      "symbol": "MULTI/USD"
+    },
+    {
+      "active": true,
+      "base": "MXC",
+      "market_id": "MXCUSD",
+      "quote": "USD",
+      "symbol": "MXC/USD"
+    },
+    {
+      "active": true,
+      "base": "MXNB",
+      "market_id": "MXNBUSD",
+      "quote": "USD",
+      "symbol": "MXNB/USD"
+    },
+    {
+      "active": true,
+      "base": "MYX",
+      "market_id": "MYXUSD",
+      "quote": "USD",
+      "symbol": "MYX/USD"
+    },
+    {
+      "active": true,
+      "base": "NANO",
+      "market_id": "NANOUSD",
+      "quote": "USD",
+      "symbol": "NANO/USD"
+    },
+    {
+      "active": true,
+      "base": "NEAR",
+      "market_id": "NEARUSD",
+      "quote": "USD",
+      "symbol": "NEAR/USD"
+    },
+    {
+      "active": true,
+      "base": "NEIRO",
+      "market_id": "NEIROUSD",
+      "quote": "USD",
+      "symbol": "NEIRO/USD"
+    },
+    {
+      "active": true,
+      "base": "NEO",
+      "market_id": "NEOUSD",
+      "quote": "USD",
+      "symbol": "NEO/USD"
+    },
+    {
+      "active": true,
+      "base": "NEX",
+      "market_id": "NEXUSD",
+      "quote": "USD",
+      "symbol": "NEX/USD"
+    },
+    {
+      "active": true,
+      "base": "NIGHT",
+      "market_id": "NIGHTUSD",
+      "quote": "USD",
+      "symbol": "NIGHT/USD"
+    },
+    {
+      "active": true,
+      "base": "NIL",
+      "market_id": "NILUSD",
+      "quote": "USD",
+      "symbol": "NIL/USD"
+    },
+    {
+      "active": true,
+      "base": "NMR",
+      "market_id": "NMRUSD",
+      "quote": "USD",
+      "symbol": "NMR/USD"
+    },
+    {
+      "active": true,
+      "base": "NOBODY",
+      "market_id": "NOBODYUSD",
+      "quote": "USD",
+      "symbol": "NOBODY/USD"
+    },
+    {
+      "active": true,
+      "base": "NODE",
+      "market_id": "NODEUSD",
+      "quote": "USD",
+      "symbol": "NODE/USD"
+    },
+    {
+      "active": true,
+      "base": "NOS",
+      "market_id": "NOSUSD",
+      "quote": "USD",
+      "symbol": "NOS/USD"
+    },
+    {
+      "active": true,
+      "base": "NOT",
+      "market_id": "NOTUSD",
+      "quote": "USD",
+      "symbol": "NOT/USD"
+    },
+    {
+      "active": true,
+      "base": "NPC",
+      "market_id": "NPCUSD",
+      "quote": "USD",
+      "symbol": "NPC/USD"
+    },
+    {
+      "active": true,
+      "base": "NTRN",
+      "market_id": "NTRNUSD",
+      "quote": "USD",
+      "symbol": "NTRN/USD"
+    },
+    {
+      "active": true,
+      "base": "OBOL",
+      "market_id": "OBOLUSD",
+      "quote": "USD",
+      "symbol": "OBOL/USD"
+    },
+    {
+      "active": true,
+      "base": "OCEAN",
+      "market_id": "OCEANUSD",
+      "quote": "USD",
+      "symbol": "OCEAN/USD"
+    },
+    {
+      "active": true,
+      "base": "ODOS",
+      "market_id": "ODOSUSD",
+      "quote": "USD",
+      "symbol": "ODOS/USD"
+    },
+    {
+      "active": true,
+      "base": "OGN",
+      "market_id": "OGNUSD",
+      "quote": "USD",
+      "symbol": "OGN/USD"
+    },
+    {
+      "active": true,
+      "base": "OKB",
+      "market_id": "OKBUSD",
+      "quote": "USD",
+      "symbol": "OKB/USD"
+    },
+    {
+      "active": true,
+      "base": "OMG",
+      "market_id": "OMGUSD",
+      "quote": "USD",
+      "symbol": "OMG/USD"
+    },
+    {
+      "active": true,
+      "base": "OMI",
+      "market_id": "OMIUSD",
+      "quote": "USD",
+      "symbol": "OMI/USD"
+    },
+    {
+      "active": true,
+      "base": "OMNI",
+      "market_id": "OMNIUSD",
+      "quote": "USD",
+      "symbol": "OMNI/USD"
+    },
+    {
+      "active": true,
+      "base": "ONDO",
+      "market_id": "ONDOUSD",
+      "quote": "USD",
+      "symbol": "ONDO/USD"
+    },
+    {
+      "active": true,
+      "base": "OOB",
+      "market_id": "OOBUSD",
+      "quote": "USD",
+      "symbol": "OOB/USD"
+    },
+    {
+      "active": true,
+      "base": "OP",
+      "market_id": "OPUSD",
+      "quote": "USD",
+      "symbol": "OP/USD"
+    },
+    {
+      "active": true,
+      "base": "OPEN",
+      "market_id": "OPENUSD",
+      "quote": "USD",
+      "symbol": "OPEN/USD"
+    },
+    {
+      "active": true,
+      "base": "OPN",
+      "market_id": "OPNUSD",
+      "quote": "USD",
+      "symbol": "OPN/USD"
+    },
+    {
+      "active": true,
+      "base": "ORCA",
+      "market_id": "ORCAUSD",
+      "quote": "USD",
+      "symbol": "ORCA/USD"
+    },
+    {
+      "active": true,
+      "base": "ORDER",
+      "market_id": "ORDERUSD",
+      "quote": "USD",
+      "symbol": "ORDER/USD"
+    },
+    {
+      "active": true,
+      "base": "OSMO",
+      "market_id": "OSMOUSD",
+      "quote": "USD",
+      "symbol": "OSMO/USD"
+    },
+    {
+      "active": true,
+      "base": "OXT",
+      "market_id": "OXTUSD",
+      "quote": "USD",
+      "symbol": "OXT/USD"
+    },
+    {
+      "active": true,
+      "base": "PACK",
+      "market_id": "PACKUSD",
+      "quote": "USD",
+      "symbol": "PACK/USD"
+    },
+    {
+      "active": true,
+      "base": "PACT",
+      "market_id": "PACTUSD",
+      "quote": "USD",
+      "symbol": "PACT/USD"
+    },
+    {
+      "active": true,
+      "base": "PARTI",
+      "market_id": "PARTIUSD",
+      "quote": "USD",
+      "symbol": "PARTI/USD"
+    },
+    {
+      "active": true,
+      "base": "PEAQ",
+      "market_id": "PEAQUSD",
+      "quote": "USD",
+      "symbol": "PEAQ/USD"
+    },
+    {
+      "active": true,
+      "base": "PENDLE",
+      "market_id": "PENDLEUSD",
+      "quote": "USD",
+      "symbol": "PENDLE/USD"
+    },
+    {
+      "active": true,
+      "base": "PENGU",
+      "market_id": "PENGUUSD",
+      "quote": "USD",
+      "symbol": "PENGU/USD"
+    },
+    {
+      "active": true,
+      "base": "PEP",
+      "market_id": "PEPUSD",
+      "quote": "USD",
+      "symbol": "PEP/USD"
+    },
+    {
+      "active": true,
+      "base": "PEPE",
+      "market_id": "PEPEUSD",
+      "quote": "USD",
+      "symbol": "PEPE/USD"
+    },
+    {
+      "active": true,
+      "base": "PEPECOIN",
+      "market_id": "PEPECOINUSD",
+      "quote": "USD",
+      "symbol": "PEPECOIN/USD"
+    },
+    {
+      "active": true,
+      "base": "PERP",
+      "market_id": "PERPUSD",
+      "quote": "USD",
+      "symbol": "PERP/USD"
+    },
+    {
+      "active": true,
+      "base": "PHA",
+      "market_id": "PHAUSD",
+      "quote": "USD",
+      "symbol": "PHA/USD"
+    },
+    {
+      "active": true,
+      "base": "PI",
+      "market_id": "PIUSD",
+      "quote": "USD",
+      "symbol": "PI/USD"
+    },
+    {
+      "active": true,
+      "base": "PIEVERSE",
+      "market_id": "PIEVERSEUSD",
+      "quote": "USD",
+      "symbol": "PIEVERSE/USD"
+    },
+    {
+      "active": true,
+      "base": "PIPE",
+      "market_id": "PIPEUSD",
+      "quote": "USD",
+      "symbol": "PIPE/USD"
+    },
+    {
+      "active": true,
+      "base": "PLAY",
+      "market_id": "PLAYUSD",
+      "quote": "USD",
+      "symbol": "PLAY/USD"
+    },
+    {
+      "active": true,
+      "base": "PLUME",
+      "market_id": "PLUMEUSD",
+      "quote": "USD",
+      "symbol": "PLUME/USD"
+    },
+    {
+      "active": true,
+      "base": "PNUT",
+      "market_id": "PNUTUSD",
+      "quote": "USD",
+      "symbol": "PNUT/USD"
+    },
+    {
+      "active": true,
+      "base": "POL",
+      "market_id": "POLUSD",
+      "quote": "USD",
+      "symbol": "POL/USD"
+    },
+    {
+      "active": true,
+      "base": "POLIS",
+      "market_id": "POLISUSD",
+      "quote": "USD",
+      "symbol": "POLIS/USD"
+    },
+    {
+      "active": true,
+      "base": "POLS",
+      "market_id": "POLSUSD",
+      "quote": "USD",
+      "symbol": "POLS/USD"
+    },
+    {
+      "active": true,
+      "base": "POND",
+      "market_id": "PONDUSD",
+      "quote": "USD",
+      "symbol": "POND/USD"
+    },
+    {
+      "active": true,
+      "base": "PONKE",
+      "market_id": "PONKEUSD",
+      "quote": "USD",
+      "symbol": "PONKE/USD"
+    },
+    {
+      "active": true,
+      "base": "POPCAT",
+      "market_id": "POPCATUSD",
+      "quote": "USD",
+      "symbol": "POPCAT/USD"
+    },
+    {
+      "active": true,
+      "base": "PORTAL",
+      "market_id": "PORTALUSD",
+      "quote": "USD",
+      "symbol": "PORTAL/USD"
+    },
+    {
+      "active": true,
+      "base": "POWR",
+      "market_id": "POWRUSD",
+      "quote": "USD",
+      "symbol": "POWR/USD"
+    },
+    {
+      "active": true,
+      "base": "PRCL",
+      "market_id": "PRCLUSD",
+      "quote": "USD",
+      "symbol": "PRCL/USD"
+    },
+    {
+      "active": true,
+      "base": "PRIME",
+      "market_id": "PRIMEUSD",
+      "quote": "USD",
+      "symbol": "PRIME/USD"
+    },
+    {
+      "active": true,
+      "base": "PRO",
+      "market_id": "PROUSD",
+      "quote": "USD",
+      "symbol": "PRO/USD"
+    },
+    {
+      "active": true,
+      "base": "PROMPT",
+      "market_id": "PROMPTUSD",
+      "quote": "USD",
+      "symbol": "PROMPT/USD"
+    },
+    {
+      "active": true,
+      "base": "PROS",
+      "market_id": "PROSUSD",
+      "quote": "USD",
+      "symbol": "PROS/USD"
+    },
+    {
+      "active": true,
+      "base": "PROVE",
+      "market_id": "PROVEUSD",
+      "quote": "USD",
+      "symbol": "PROVE/USD"
+    },
+    {
+      "active": true,
+      "base": "PTB",
+      "market_id": "PTBUSD",
+      "quote": "USD",
+      "symbol": "PTB/USD"
+    },
+    {
+      "active": true,
+      "base": "PUFFER",
+      "market_id": "PUFFERUSD",
+      "quote": "USD",
+      "symbol": "PUFFER/USD"
+    },
+    {
+      "active": true,
+      "base": "PUMP",
+      "market_id": "PUMPUSD",
+      "quote": "USD",
+      "symbol": "PUMP/USD"
+    },
+    {
+      "active": true,
+      "base": "PUPS",
+      "market_id": "PUPSUSD",
+      "quote": "USD",
+      "symbol": "PUPS/USD"
+    },
+    {
+      "active": true,
+      "base": "PYTH",
+      "market_id": "PYTHUSD",
+      "quote": "USD",
+      "symbol": "PYTH/USD"
+    },
+    {
+      "active": true,
+      "base": "Q",
+      "market_id": "QUSD",
+      "quote": "USD",
+      "symbol": "Q/USD"
+    },
+    {
+      "active": true,
+      "base": "QCAD",
+      "market_id": "QCADUSD",
+      "quote": "USD",
+      "symbol": "QCAD/USD"
+    },
+    {
+      "active": true,
+      "base": "QI",
+      "market_id": "QIUSD",
+      "quote": "USD",
+      "symbol": "QI/USD"
+    },
+    {
+      "active": true,
+      "base": "QNT",
+      "market_id": "QNTUSD",
+      "quote": "USD",
+      "symbol": "QNT/USD"
+    },
+    {
+      "active": true,
+      "base": "QTUM",
+      "market_id": "QTUMUSD",
+      "quote": "USD",
+      "symbol": "QTUM/USD"
+    },
+    {
+      "active": true,
+      "base": "QUAI",
+      "market_id": "QUAIUSD",
+      "quote": "USD",
+      "symbol": "QUAI/USD"
+    },
+    {
+      "active": true,
+      "base": "RAD",
+      "market_id": "RADUSD",
+      "quote": "USD",
+      "symbol": "RAD/USD"
+    },
+    {
+      "active": true,
+      "base": "RAILS",
+      "market_id": "RAILSUSD",
+      "quote": "USD",
+      "symbol": "RAILS/USD"
+    },
+    {
+      "active": true,
+      "base": "RAIN",
+      "market_id": "RAINUSD",
+      "quote": "USD",
+      "symbol": "RAIN/USD"
+    },
+    {
+      "active": true,
+      "base": "RARE",
+      "market_id": "RAREUSD",
+      "quote": "USD",
+      "symbol": "RARE/USD"
+    },
+    {
+      "active": true,
+      "base": "RARI",
+      "market_id": "RARIUSD",
+      "quote": "USD",
+      "symbol": "RARI/USD"
+    },
+    {
+      "active": true,
+      "base": "RAVE",
+      "market_id": "RAVEUSD",
+      "quote": "USD",
+      "symbol": "RAVE/USD"
+    },
+    {
+      "active": true,
+      "base": "RAY",
+      "market_id": "RAYUSD",
+      "quote": "USD",
+      "symbol": "RAY/USD"
+    },
+    {
+      "active": true,
+      "base": "RBC",
+      "market_id": "RBCUSD",
+      "quote": "USD",
+      "symbol": "RBC/USD"
+    },
+    {
+      "active": true,
+      "base": "RED",
+      "market_id": "REDUSD",
+      "quote": "USD",
+      "symbol": "RED/USD"
+    },
+    {
+      "active": true,
+      "base": "REKT",
+      "market_id": "REKTUSD",
+      "quote": "USD",
+      "symbol": "REKT/USD"
+    },
+    {
+      "active": true,
+      "base": "REN",
+      "market_id": "RENUSD",
+      "quote": "USD",
+      "symbol": "REN/USD"
+    },
+    {
+      "active": true,
+      "base": "RENDER",
+      "market_id": "RENDERUSD",
+      "quote": "USD",
+      "symbol": "RENDER/USD"
+    },
+    {
+      "active": true,
+      "base": "REP",
+      "market_id": "REPV2USD",
+      "quote": "USD",
+      "symbol": "REP/USD"
+    },
+    {
+      "active": true,
+      "base": "REPPO",
+      "market_id": "REPPOUSD",
+      "quote": "USD",
+      "symbol": "REPPO/USD"
+    },
+    {
+      "active": true,
+      "base": "REPV1",
+      "market_id": "XREPZUSD",
+      "quote": "USD",
+      "symbol": "REPV1/USD"
+    },
+    {
+      "active": true,
+      "base": "REQ",
+      "market_id": "REQUSD",
+      "quote": "USD",
+      "symbol": "REQ/USD"
+    },
+    {
+      "active": true,
+      "base": "RETARDIO",
+      "market_id": "RETARDIOUSD",
+      "quote": "USD",
+      "symbol": "RETARDIO/USD"
+    },
+    {
+      "active": true,
+      "base": "REZ",
+      "market_id": "REZUSD",
+      "quote": "USD",
+      "symbol": "REZ/USD"
+    },
+    {
+      "active": true,
+      "base": "RIVER",
+      "market_id": "RIVERUSD",
+      "quote": "USD",
+      "symbol": "RIVER/USD"
+    },
+    {
+      "active": true,
+      "base": "RIZE",
+      "market_id": "RIZEUSD",
+      "quote": "USD",
+      "symbol": "RIZE/USD"
+    },
+    {
+      "active": true,
+      "base": "RLC",
+      "market_id": "RLCUSD",
+      "quote": "USD",
+      "symbol": "RLC/USD"
+    },
+    {
+      "active": true,
+      "base": "RLS",
+      "market_id": "RLSUSD",
+      "quote": "USD",
+      "symbol": "RLS/USD"
+    },
+    {
+      "active": true,
+      "base": "RLUSD",
+      "market_id": "RLUSDUSD",
+      "quote": "USD",
+      "symbol": "RLUSD/USD"
+    },
+    {
+      "active": true,
+      "base": "RNBW",
+      "market_id": "RNBWUSD",
+      "quote": "USD",
+      "symbol": "RNBW/USD"
+    },
+    {
+      "active": true,
+      "base": "ROBO",
+      "market_id": "ROBOUSD",
+      "quote": "USD",
+      "symbol": "ROBO/USD"
+    },
+    {
+      "active": true,
+      "base": "ROLL",
+      "market_id": "ROLLUSD",
+      "quote": "USD",
+      "symbol": "ROLL/USD"
+    },
+    {
+      "active": true,
+      "base": "RPL",
+      "market_id": "RPLUSD",
+      "quote": "USD",
+      "symbol": "RPL/USD"
+    },
+    {
+      "active": true,
+      "base": "RSC",
+      "market_id": "RSCUSD",
+      "quote": "USD",
+      "symbol": "RSC/USD"
+    },
+    {
+      "active": true,
+      "base": "RSR",
+      "market_id": "RSRUSD",
+      "quote": "USD",
+      "symbol": "RSR/USD"
+    },
+    {
+      "active": true,
+      "base": "RUJI",
+      "market_id": "RUJIUSD",
+      "quote": "USD",
+      "symbol": "RUJI/USD"
+    },
+    {
+      "active": true,
+      "base": "RUNE",
+      "market_id": "RUNEUSD",
+      "quote": "USD",
+      "symbol": "RUNE/USD"
+    },
+    {
+      "active": true,
+      "base": "RVV",
+      "market_id": "RVVUSD",
+      "quote": "USD",
+      "symbol": "RVV/USD"
+    },
+    {
+      "active": true,
+      "base": "S",
+      "market_id": "SUSD",
+      "quote": "USD",
+      "symbol": "S/USD"
+    },
+    {
+      "active": true,
+      "base": "SAFE",
+      "market_id": "SAFEUSD",
+      "quote": "USD",
+      "symbol": "SAFE/USD"
+    },
+    {
+      "active": true,
+      "base": "SAGA",
+      "market_id": "SAGAUSD",
+      "quote": "USD",
+      "symbol": "SAGA/USD"
+    },
+    {
+      "active": true,
+      "base": "SAHARA",
+      "market_id": "SAHARAUSD",
+      "quote": "USD",
+      "symbol": "SAHARA/USD"
+    },
+    {
+      "active": true,
+      "base": "SAMO",
+      "market_id": "SAMOUSD",
+      "quote": "USD",
+      "symbol": "SAMO/USD"
+    },
+    {
+      "active": true,
+      "base": "SAND",
+      "market_id": "SANDUSD",
+      "quote": "USD",
+      "symbol": "SAND/USD"
+    },
+    {
+      "active": true,
+      "base": "SAPIEN",
+      "market_id": "SAPIENUSD",
+      "quote": "USD",
+      "symbol": "SAPIEN/USD"
+    },
+    {
+      "active": true,
+      "base": "SAUCE",
+      "market_id": "SAUCEUSD",
+      "quote": "USD",
+      "symbol": "SAUCE/USD"
+    },
+    {
+      "active": true,
+      "base": "SBR",
+      "market_id": "SBRUSD",
+      "quote": "USD",
+      "symbol": "SBR/USD"
+    },
+    {
+      "active": true,
+      "base": "SC",
+      "market_id": "SCUSD",
+      "quote": "USD",
+      "symbol": "SC/USD"
+    },
+    {
+      "active": true,
+      "base": "SCA",
+      "market_id": "SCAUSD",
+      "quote": "USD",
+      "symbol": "SCA/USD"
+    },
+    {
+      "active": true,
+      "base": "SCOR",
+      "market_id": "SCORUSD",
+      "quote": "USD",
+      "symbol": "SCOR/USD"
+    },
+    {
+      "active": true,
+      "base": "SCRT",
+      "market_id": "SCRTUSD",
+      "quote": "USD",
+      "symbol": "SCRT/USD"
+    },
+    {
+      "active": true,
+      "base": "SEI",
+      "market_id": "SEIUSD",
+      "quote": "USD",
+      "symbol": "SEI/USD"
+    },
+    {
+      "active": true,
+      "base": "SENT",
+      "market_id": "SENTUSD",
+      "quote": "USD",
+      "symbol": "SENT/USD"
+    },
+    {
+      "active": true,
+      "base": "SGB",
+      "market_id": "SGBUSD",
+      "quote": "USD",
+      "symbol": "SGB/USD"
+    },
+    {
+      "active": true,
+      "base": "SHAPE",
+      "market_id": "SHAPEUSD",
+      "quote": "USD",
+      "symbol": "SHAPE/USD"
+    },
+    {
+      "active": true,
+      "base": "SHIB",
+      "market_id": "SHIBUSD",
+      "quote": "USD",
+      "symbol": "SHIB/USD"
+    },
+    {
+      "active": true,
+      "base": "SHX",
+      "market_id": "SHXUSD",
+      "quote": "USD",
+      "symbol": "SHX/USD"
+    },
+    {
+      "active": true,
+      "base": "SIDEKICK",
+      "market_id": "SIDEKICKUSD",
+      "quote": "USD",
+      "symbol": "SIDEKICK/USD"
+    },
+    {
+      "active": true,
+      "base": "SIGMA",
+      "market_id": "SIGMAUSD",
+      "quote": "USD",
+      "symbol": "SIGMA/USD"
+    },
+    {
+      "active": true,
+      "base": "SIGN",
+      "market_id": "SIGNUSD",
+      "quote": "USD",
+      "symbol": "SIGN/USD"
+    },
+    {
+      "active": true,
+      "base": "SKR",
+      "market_id": "SKRUSD",
+      "quote": "USD",
+      "symbol": "SKR/USD"
+    },
+    {
+      "active": true,
+      "base": "SKY",
+      "market_id": "SKYUSD",
+      "quote": "USD",
+      "symbol": "SKY/USD"
+    },
+    {
+      "active": true,
+      "base": "SLAY",
+      "market_id": "SLAYUSD",
+      "quote": "USD",
+      "symbol": "SLAY/USD"
+    },
+    {
+      "active": true,
+      "base": "SLX",
+      "market_id": "SLXUSD",
+      "quote": "USD",
+      "symbol": "SLX/USD"
+    },
+    {
+      "active": true,
+      "base": "SNEK",
+      "market_id": "SNEKUSD",
+      "quote": "USD",
+      "symbol": "SNEK/USD"
+    },
+    {
+      "active": true,
+      "base": "SNX",
+      "market_id": "SNXUSD",
+      "quote": "USD",
+      "symbol": "SNX/USD"
+    },
+    {
+      "active": true,
+      "base": "SOGNI",
+      "market_id": "SOGNIUSD",
+      "quote": "USD",
+      "symbol": "SOGNI/USD"
+    },
+    {
+      "active": true,
+      "base": "SOL",
+      "market_id": "SOLUSD",
+      "quote": "USD",
+      "symbol": "SOL/USD"
+    },
+    {
+      "active": true,
+      "base": "SOLV",
+      "market_id": "SOLVUSD",
+      "quote": "USD",
+      "symbol": "SOLV/USD"
+    },
+    {
+      "active": true,
+      "base": "SOMI",
+      "market_id": "SOMIUSD",
+      "quote": "USD",
+      "symbol": "SOMI/USD"
+    },
+    {
+      "active": true,
+      "base": "SONIC",
+      "market_id": "SONICUSD",
+      "quote": "USD",
+      "symbol": "SONIC/USD"
+    },
+    {
+      "active": true,
+      "base": "SOON",
+      "market_id": "SOONUSD",
+      "quote": "USD",
+      "symbol": "SOON/USD"
+    },
+    {
+      "active": true,
+      "base": "SOSO",
+      "market_id": "SOSOUSD",
+      "quote": "USD",
+      "symbol": "SOSO/USD"
+    },
+    {
+      "active": true,
+      "base": "SPACE",
+      "market_id": "SPACEUSD",
+      "quote": "USD",
+      "symbol": "SPACE/USD"
+    },
+    {
+      "active": true,
+      "base": "SPELL",
+      "market_id": "SPELLUSD",
+      "quote": "USD",
+      "symbol": "SPELL/USD"
+    },
+    {
+      "active": true,
+      "base": "SPK",
+      "market_id": "SPKUSD",
+      "quote": "USD",
+      "symbol": "SPK/USD"
+    },
+    {
+      "active": true,
+      "base": "SPX",
+      "market_id": "SPXUSD",
+      "quote": "USD",
+      "symbol": "SPX/USD"
+    },
+    {
+      "active": true,
+      "base": "SRM",
+      "market_id": "SRMUSD",
+      "quote": "USD",
+      "symbol": "SRM/USD"
+    },
+    {
+      "active": true,
+      "base": "SSV",
+      "market_id": "SSVUSD",
+      "quote": "USD",
+      "symbol": "SSV/USD"
+    },
+    {
+      "active": true,
+      "base": "ST",
+      "market_id": "STUSD",
+      "quote": "USD",
+      "symbol": "ST/USD"
+    },
+    {
+      "active": true,
+      "base": "STABLE",
+      "market_id": "STABLEUSD",
+      "quote": "USD",
+      "symbol": "STABLE/USD"
+    },
+    {
+      "active": true,
+      "base": "STBL",
+      "market_id": "STBLUSD",
+      "quote": "USD",
+      "symbol": "STBL/USD"
+    },
+    {
+      "active": true,
+      "base": "STG",
+      "market_id": "STGUSD",
+      "quote": "USD",
+      "symbol": "STG/USD"
+    },
+    {
+      "active": true,
+      "base": "STORJ",
+      "market_id": "STORJUSD",
+      "quote": "USD",
+      "symbol": "STORJ/USD"
+    },
+    {
+      "active": true,
+      "base": "STRK",
+      "market_id": "STRKUSD",
+      "quote": "USD",
+      "symbol": "STRK/USD"
+    },
+    {
+      "active": true,
+      "base": "STX",
+      "market_id": "STXUSD",
+      "quote": "USD",
+      "symbol": "STX/USD"
+    },
+    {
+      "active": true,
+      "base": "SUI",
+      "market_id": "SUIUSD",
+      "quote": "USD",
+      "symbol": "SUI/USD"
+    },
+    {
+      "active": true,
+      "base": "SUKU",
+      "market_id": "SUKUUSD",
+      "quote": "USD",
+      "symbol": "SUKU/USD"
+    },
+    {
+      "active": true,
+      "base": "SUN",
+      "market_id": "SUNUSD",
+      "quote": "USD",
+      "symbol": "SUN/USD"
+    },
+    {
+      "active": true,
+      "base": "SUNDOG",
+      "market_id": "SUNDOGUSD",
+      "quote": "USD",
+      "symbol": "SUNDOG/USD"
+    },
+    {
+      "active": true,
+      "base": "SUPER",
+      "market_id": "SUPERUSD",
+      "quote": "USD",
+      "symbol": "SUPER/USD"
+    },
+    {
+      "active": true,
+      "base": "SUSHI",
+      "market_id": "SUSHIUSD",
+      "quote": "USD",
+      "symbol": "SUSHI/USD"
+    },
+    {
+      "active": true,
+      "base": "SWARMS",
+      "market_id": "SWARMSUSD",
+      "quote": "USD",
+      "symbol": "SWARMS/USD"
+    },
+    {
+      "active": true,
+      "base": "SWEAT",
+      "market_id": "SWEATUSD",
+      "quote": "USD",
+      "symbol": "SWEAT/USD"
+    },
+    {
+      "active": true,
+      "base": "SWELL",
+      "market_id": "SWELLUSD",
+      "quote": "USD",
+      "symbol": "SWELL/USD"
+    },
+    {
+      "active": true,
+      "base": "SXT",
+      "market_id": "SXTUSD",
+      "quote": "USD",
+      "symbol": "SXT/USD"
+    },
+    {
+      "active": true,
+      "base": "SYN",
+      "market_id": "SYNUSD",
+      "quote": "USD",
+      "symbol": "SYN/USD"
+    },
+    {
+      "active": true,
+      "base": "SYND",
+      "market_id": "SYNDUSD",
+      "quote": "USD",
+      "symbol": "SYND/USD"
+    },
+    {
+      "active": true,
+      "base": "T",
+      "market_id": "TUSD",
+      "quote": "USD",
+      "symbol": "T/USD"
+    },
+    {
+      "active": true,
+      "base": "TAC",
+      "market_id": "TACUSD",
+      "quote": "USD",
+      "symbol": "TAC/USD"
+    },
+    {
+      "active": true,
+      "base": "TAKE",
+      "market_id": "TAKEUSD",
+      "quote": "USD",
+      "symbol": "TAKE/USD"
+    },
+    {
+      "active": true,
+      "base": "TANSSI",
+      "market_id": "TANSSIUSD",
+      "quote": "USD",
+      "symbol": "TANSSI/USD"
+    },
+    {
+      "active": true,
+      "base": "TAO",
+      "market_id": "TAOUSD",
+      "quote": "USD",
+      "symbol": "TAO/USD"
+    },
+    {
+      "active": true,
+      "base": "TBTC",
+      "market_id": "TBTCUSD",
+      "quote": "USD",
+      "symbol": "TBTC/USD"
+    },
+    {
+      "active": true,
+      "base": "TEL",
+      "market_id": "TELUSD",
+      "quote": "USD",
+      "symbol": "TEL/USD"
+    },
+    {
+      "active": true,
+      "base": "TGBP",
+      "market_id": "TGBPUSD",
+      "quote": "USD",
+      "symbol": "TGBP/USD"
+    },
+    {
+      "active": true,
+      "base": "THQ",
+      "market_id": "THQUSD",
+      "quote": "USD",
+      "symbol": "THQ/USD"
+    },
+    {
+      "active": true,
+      "base": "TIA",
+      "market_id": "TIAUSD",
+      "quote": "USD",
+      "symbol": "TIA/USD"
+    },
+    {
+      "active": true,
+      "base": "TITCOIN",
+      "market_id": "TITCOINUSD",
+      "quote": "USD",
+      "symbol": "TITCOIN/USD"
+    },
+    {
+      "active": true,
+      "base": "TLM",
+      "market_id": "TLMUSD",
+      "quote": "USD",
+      "symbol": "TLM/USD"
+    },
+    {
+      "active": true,
+      "base": "TNSR",
+      "market_id": "TNSRUSD",
+      "quote": "USD",
+      "symbol": "TNSR/USD"
+    },
+    {
+      "active": true,
+      "base": "TOKE",
+      "market_id": "TOKEUSD",
+      "quote": "USD",
+      "symbol": "TOKE/USD"
+    },
+    {
+      "active": true,
+      "base": "TOKEN",
+      "market_id": "TOKENUSD",
+      "quote": "USD",
+      "symbol": "TOKEN/USD"
+    },
+    {
+      "active": true,
+      "base": "TON",
+      "market_id": "TONUSD",
+      "quote": "USD",
+      "symbol": "TON/USD"
+    },
+    {
+      "active": true,
+      "base": "TOSHI",
+      "market_id": "TOSHIUSD",
+      "quote": "USD",
+      "symbol": "TOSHI/USD"
+    },
+    {
+      "active": true,
+      "base": "TRAC",
+      "market_id": "TRACUSD",
+      "quote": "USD",
+      "symbol": "TRAC/USD"
+    },
+    {
+      "active": true,
+      "base": "TREE",
+      "market_id": "TREEUSD",
+      "quote": "USD",
+      "symbol": "TREE/USD"
+    },
+    {
+      "active": true,
+      "base": "TREMP",
+      "market_id": "TREMPUSD",
+      "quote": "USD",
+      "symbol": "TREMP/USD"
+    },
+    {
+      "active": true,
+      "base": "TRIA",
+      "market_id": "TRIAUSD",
+      "quote": "USD",
+      "symbol": "TRIA/USD"
+    },
+    {
+      "active": true,
+      "base": "TRU",
+      "market_id": "TRUUSD",
+      "quote": "USD",
+      "symbol": "TRU/USD"
+    },
+    {
+      "active": true,
+      "base": "TRUMP",
+      "market_id": "TRUMPUSD",
+      "quote": "USD",
+      "symbol": "TRUMP/USD"
+    },
+    {
+      "active": true,
+      "base": "TRUST",
+      "market_id": "TRUSTUSD",
+      "quote": "USD",
+      "symbol": "TRUST/USD"
+    },
+    {
+      "active": true,
+      "base": "TRX",
+      "market_id": "TRXUSD",
+      "quote": "USD",
+      "symbol": "TRX/USD"
+    },
+    {
+      "active": true,
+      "base": "TURBO",
+      "market_id": "TURBOUSD",
+      "quote": "USD",
+      "symbol": "TURBO/USD"
+    },
+    {
+      "active": true,
+      "base": "TX",
+      "market_id": "TXUSD",
+      "quote": "USD",
+      "symbol": "TX/USD"
+    },
+    {
+      "active": true,
+      "base": "U",
+      "market_id": "UUSD",
+      "quote": "USD",
+      "symbol": "U/USD"
+    },
+    {
+      "active": true,
+      "base": "U2U",
+      "market_id": "U2UUSD",
+      "quote": "USD",
+      "symbol": "U2U/USD"
+    },
+    {
+      "active": true,
+      "base": "UAI",
+      "market_id": "UAIUSD",
+      "quote": "USD",
+      "symbol": "UAI/USD"
+    },
+    {
+      "active": true,
+      "base": "UFD",
+      "market_id": "UFDUSD",
+      "quote": "USD",
+      "symbol": "UFD/USD"
+    },
+    {
+      "active": true,
+      "base": "UMA",
+      "market_id": "UMAUSD",
+      "quote": "USD",
+      "symbol": "UMA/USD"
+    },
+    {
+      "active": true,
+      "base": "UMXM",
+      "market_id": "UMXMUSD",
+      "quote": "USD",
+      "symbol": "UMXM/USD"
+    },
+    {
+      "active": true,
+      "base": "UNFI",
+      "market_id": "UNFIUSD",
+      "quote": "USD",
+      "symbol": "UNFI/USD"
+    },
+    {
+      "active": true,
+      "base": "UNI",
+      "market_id": "UNIUSD",
+      "quote": "USD",
+      "symbol": "UNI/USD"
+    },
+    {
+      "active": true,
+      "base": "UNITAS",
+      "market_id": "UNITASUSD",
+      "quote": "USD",
+      "symbol": "UNITAS/USD"
+    },
+    {
+      "active": true,
+      "base": "UNITE",
+      "market_id": "UNITEUSD",
+      "quote": "USD",
+      "symbol": "UNITE/USD"
+    },
+    {
+      "active": true,
+      "base": "US",
+      "market_id": "USUSD",
+      "quote": "USD",
+      "symbol": "US/USD"
+    },
+    {
+      "active": true,
+      "base": "USAT",
+      "market_id": "USATUSD",
+      "quote": "USD",
+      "symbol": "USAT/USD"
+    },
+    {
+      "active": true,
+      "base": "USD1",
+      "market_id": "USD1USD",
+      "quote": "USD",
+      "symbol": "USD1/USD"
+    },
+    {
+      "active": true,
+      "base": "USDD",
+      "market_id": "USDDUSD",
+      "quote": "USD",
+      "symbol": "USDD/USD"
+    },
+    {
+      "active": true,
+      "base": "USDE",
+      "market_id": "USDEUSD",
+      "quote": "USD",
+      "symbol": "USDE/USD"
+    },
+    {
+      "active": true,
+      "base": "USDG",
+      "market_id": "USDGUSD",
+      "quote": "USD",
+      "symbol": "USDG/USD"
+    },
+    {
+      "active": true,
+      "base": "USDQ",
+      "market_id": "USDQUSD",
+      "quote": "USD",
+      "symbol": "USDQ/USD"
+    },
+    {
+      "active": true,
+      "base": "USDS",
+      "market_id": "USDSUSD",
+      "quote": "USD",
+      "symbol": "USDS/USD"
+    },
+    {
+      "active": true,
+      "base": "USDUC",
+      "market_id": "USDUCUSD",
+      "quote": "USD",
+      "symbol": "USDUC/USD"
+    },
+    {
+      "active": true,
+      "base": "USELESS",
+      "market_id": "USELESSUSD",
+      "quote": "USD",
+      "symbol": "USELESS/USD"
+    },
+    {
+      "active": true,
+      "base": "USUAL",
+      "market_id": "USUALUSD",
+      "quote": "USD",
+      "symbol": "USUAL/USD"
+    },
+    {
+      "active": true,
+      "base": "UXLINK",
+      "market_id": "UXLINKUSD",
+      "quote": "USD",
+      "symbol": "UXLINK/USD"
+    },
+    {
+      "active": true,
+      "base": "VANRY",
+      "market_id": "VANRYUSD",
+      "quote": "USD",
+      "symbol": "VANRY/USD"
+    },
+    {
+      "active": true,
+      "base": "VELO",
+      "market_id": "VELOUSD",
+      "quote": "USD",
+      "symbol": "VELO/USD"
+    },
+    {
+      "active": true,
+      "base": "VELODROME",
+      "market_id": "VELODROMEUSD",
+      "quote": "USD",
+      "symbol": "VELODROME/USD"
+    },
+    {
+      "active": true,
+      "base": "VELVET",
+      "market_id": "VELVETUSD",
+      "quote": "USD",
+      "symbol": "VELVET/USD"
+    },
+    {
+      "active": true,
+      "base": "VERSE",
+      "market_id": "VERSEUSD",
+      "quote": "USD",
+      "symbol": "VERSE/USD"
+    },
+    {
+      "active": true,
+      "base": "VET",
+      "market_id": "VETUSD",
+      "quote": "USD",
+      "symbol": "VET/USD"
+    },
+    {
+      "active": true,
+      "base": "VFY",
+      "market_id": "VFYUSD",
+      "quote": "USD",
+      "symbol": "VFY/USD"
+    },
+    {
+      "active": true,
+      "base": "VINE",
+      "market_id": "VINEUSD",
+      "quote": "USD",
+      "symbol": "VINE/USD"
+    },
+    {
+      "active": true,
+      "base": "VIRTUAL",
+      "market_id": "VIRTUALUSD",
+      "quote": "USD",
+      "symbol": "VIRTUAL/USD"
+    },
+    {
+      "active": true,
+      "base": "VOOI",
+      "market_id": "VOOIUSD",
+      "quote": "USD",
+      "symbol": "VOOI/USD"
+    },
+    {
+      "active": true,
+      "base": "VSN",
+      "market_id": "VSNUSD",
+      "quote": "USD",
+      "symbol": "VSN/USD"
+    },
+    {
+      "active": true,
+      "base": "VTHO",
+      "market_id": "VTHOUSD",
+      "quote": "USD",
+      "symbol": "VTHO/USD"
+    },
+    {
+      "active": true,
+      "base": "VULT",
+      "market_id": "VULTUSD",
+      "quote": "USD",
+      "symbol": "VULT/USD"
+    },
+    {
+      "active": true,
+      "base": "VVV",
+      "market_id": "VVVUSD",
+      "quote": "USD",
+      "symbol": "VVV/USD"
+    },
+    {
+      "active": true,
+      "base": "W",
+      "market_id": "WUSD",
+      "quote": "USD",
+      "symbol": "W/USD"
+    },
+    {
+      "active": true,
+      "base": "WAL",
+      "market_id": "WALUSD",
+      "quote": "USD",
+      "symbol": "WAL/USD"
+    },
+    {
+      "active": true,
+      "base": "WAR",
+      "market_id": "WARUSD",
+      "quote": "USD",
+      "symbol": "WAR/USD"
+    },
+    {
+      "active": true,
+      "base": "WARD",
+      "market_id": "WARDUSD",
+      "quote": "USD",
+      "symbol": "WARD/USD"
+    },
+    {
+      "active": true,
+      "base": "WAXL",
+      "market_id": "WAXLUSD",
+      "quote": "USD",
+      "symbol": "WAXL/USD"
+    },
+    {
+      "active": true,
+      "base": "WBT",
+      "market_id": "WBTUSD",
+      "quote": "USD",
+      "symbol": "WBT/USD"
+    },
+    {
+      "active": true,
+      "base": "WCT",
+      "market_id": "WCTUSD",
+      "quote": "USD",
+      "symbol": "WCT/USD"
+    },
+    {
+      "active": true,
+      "base": "WELL",
+      "market_id": "WELLUSD",
+      "quote": "USD",
+      "symbol": "WELL/USD"
+    },
+    {
+      "active": true,
+      "base": "WEN",
+      "market_id": "WENUSD",
+      "quote": "USD",
+      "symbol": "WEN/USD"
+    },
+    {
+      "active": true,
+      "base": "WFB",
+      "market_id": "WFBUSD",
+      "quote": "USD",
+      "symbol": "WFB/USD"
+    },
+    {
+      "active": true,
+      "base": "WIF",
+      "market_id": "WIFUSD",
+      "quote": "USD",
+      "symbol": "WIF/USD"
+    },
+    {
+      "active": true,
+      "base": "WIN",
+      "market_id": "WINUSD",
+      "quote": "USD",
+      "symbol": "WIN/USD"
+    },
+    {
+      "active": true,
+      "base": "WINGS",
+      "market_id": "WINGSUSD",
+      "quote": "USD",
+      "symbol": "WINGS/USD"
+    },
+    {
+      "active": true,
+      "base": "WLD",
+      "market_id": "WLDUSD",
+      "quote": "USD",
+      "symbol": "WLD/USD"
+    },
+    {
+      "active": true,
+      "base": "WLFI",
+      "market_id": "WLFIUSD",
+      "quote": "USD",
+      "symbol": "WLFI/USD"
+    },
+    {
+      "active": true,
+      "base": "WMTX",
+      "market_id": "WMTXUSD",
+      "quote": "USD",
+      "symbol": "WMTX/USD"
+    },
+    {
+      "active": true,
+      "base": "WOO",
+      "market_id": "WOOUSD",
+      "quote": "USD",
+      "symbol": "WOO/USD"
+    },
+    {
+      "active": true,
+      "base": "XAN",
+      "market_id": "XANUSD",
+      "quote": "USD",
+      "symbol": "XAN/USD"
+    },
+    {
+      "active": true,
+      "base": "XCN",
+      "market_id": "XCNUSD",
+      "quote": "USD",
+      "symbol": "XCN/USD"
+    },
+    {
+      "active": true,
+      "base": "XDC",
+      "market_id": "XDCUSD",
+      "quote": "USD",
+      "symbol": "XDC/USD"
+    },
+    {
+      "active": true,
+      "base": "XION",
+      "market_id": "XIONUSD",
+      "quote": "USD",
+      "symbol": "XION/USD"
+    },
+    {
+      "active": true,
+      "base": "XL1",
+      "market_id": "XL1USD",
+      "quote": "USD",
+      "symbol": "XL1/USD"
+    },
+    {
+      "active": true,
+      "base": "XLM",
+      "market_id": "XXLMZUSD",
+      "quote": "USD",
+      "symbol": "XLM/USD"
+    },
+    {
+      "active": true,
+      "base": "XMN",
+      "market_id": "XMNUSD",
+      "quote": "USD",
+      "symbol": "XMN/USD"
+    },
+    {
+      "active": true,
+      "base": "XMR",
+      "market_id": "XXMRZUSD",
+      "quote": "USD",
+      "symbol": "XMR/USD"
+    },
+    {
+      "active": true,
+      "base": "XNY",
+      "market_id": "XNYUSD",
+      "quote": "USD",
+      "symbol": "XNY/USD"
+    },
+    {
+      "active": true,
+      "base": "XPL",
+      "market_id": "XPLUSD",
+      "quote": "USD",
+      "symbol": "XPL/USD"
+    },
+    {
+      "active": true,
+      "base": "XRP",
+      "market_id": "XXRPZUSD",
+      "quote": "USD",
+      "symbol": "XRP/USD"
+    },
+    {
+      "active": true,
+      "base": "XRT",
+      "market_id": "XRTUSD",
+      "quote": "USD",
+      "symbol": "XRT/USD"
+    },
+    {
+      "active": true,
+      "base": "XTER",
+      "market_id": "XTERUSD",
+      "quote": "USD",
+      "symbol": "XTER/USD"
+    },
+    {
+      "active": true,
+      "base": "XTZ",
+      "market_id": "XTZUSD",
+      "quote": "USD",
+      "symbol": "XTZ/USD"
+    },
+    {
+      "active": true,
+      "base": "XYO",
+      "market_id": "XYOUSD",
+      "quote": "USD",
+      "symbol": "XYO/USD"
+    },
+    {
+      "active": true,
+      "base": "YALA",
+      "market_id": "YALAUSD",
+      "quote": "USD",
+      "symbol": "YALA/USD"
+    },
+    {
+      "active": true,
+      "base": "YB",
+      "market_id": "YBUSD",
+      "quote": "USD",
+      "symbol": "YB/USD"
+    },
+    {
+      "active": true,
+      "base": "YFI",
+      "market_id": "YFIUSD",
+      "quote": "USD",
+      "symbol": "YFI/USD"
+    },
+    {
+      "active": true,
+      "base": "YGG",
+      "market_id": "YGGUSD",
+      "quote": "USD",
+      "symbol": "YGG/USD"
+    },
+    {
+      "active": true,
+      "base": "YOM",
+      "market_id": "YOMUSD",
+      "quote": "USD",
+      "symbol": "YOM/USD"
+    },
+    {
+      "active": true,
+      "base": "ZAMA",
+      "market_id": "ZAMAUSD",
+      "quote": "USD",
+      "symbol": "ZAMA/USD"
+    },
+    {
+      "active": true,
+      "base": "ZBCN",
+      "market_id": "ZBCNUSD",
+      "quote": "USD",
+      "symbol": "ZBCN/USD"
+    },
+    {
+      "active": true,
+      "base": "ZBT",
+      "market_id": "ZBTUSD",
+      "quote": "USD",
+      "symbol": "ZBT/USD"
+    },
+    {
+      "active": true,
+      "base": "ZEC",
+      "market_id": "XZECZUSD",
+      "quote": "USD",
+      "symbol": "ZEC/USD"
+    },
+    {
+      "active": true,
+      "base": "ZEREBRO",
+      "market_id": "ZEREBROUSD",
+      "quote": "USD",
+      "symbol": "ZEREBRO/USD"
+    },
+    {
+      "active": true,
+      "base": "ZETA",
+      "market_id": "ZETAUSD",
+      "quote": "USD",
+      "symbol": "ZETA/USD"
+    },
+    {
+      "active": true,
+      "base": "ZEUS",
+      "market_id": "ZEUSUSD",
+      "quote": "USD",
+      "symbol": "ZEUS/USD"
+    },
+    {
+      "active": true,
+      "base": "ZEX",
+      "market_id": "ZEXUSD",
+      "quote": "USD",
+      "symbol": "ZEX/USD"
+    },
+    {
+      "active": true,
+      "base": "ZIG",
+      "market_id": "ZIGUSD",
+      "quote": "USD",
+      "symbol": "ZIG/USD"
+    },
+    {
+      "active": true,
+      "base": "ZK",
+      "market_id": "ZKUSD",
+      "quote": "USD",
+      "symbol": "ZK/USD"
+    },
+    {
+      "active": true,
+      "base": "ZKP",
+      "market_id": "ZKPUSD",
+      "quote": "USD",
+      "symbol": "ZKP/USD"
+    },
+    {
+      "active": true,
+      "base": "ZORA",
+      "market_id": "ZORAUSD",
+      "quote": "USD",
+      "symbol": "ZORA/USD"
+    },
+    {
+      "active": true,
+      "base": "ZRC",
+      "market_id": "ZRCUSD",
+      "quote": "USD",
+      "symbol": "ZRC/USD"
+    },
+    {
+      "active": true,
+      "base": "ZRO",
+      "market_id": "ZROUSD",
+      "quote": "USD",
+      "symbol": "ZRO/USD"
+    },
+    {
+      "active": true,
+      "base": "ZRX",
+      "market_id": "ZRXUSD",
+      "quote": "USD",
+      "symbol": "ZRX/USD"
+    }
+  ],
+  "name": "Kraken USD Spot",
+  "retrieved_at": "2026-06-11T19:39:54.767330+00:00",
+  "source": "kraken:public/AssetPairs"
+}
