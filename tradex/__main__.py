@@ -216,6 +216,94 @@ def train_approved(report) -> None:
     )
 
 
+@cli.group()
+def crypto() -> None:
+    """Screen and train daily Kraken USD spot models."""
+
+
+@crypto.command("refresh-universe")
+@click.option(
+    "--output",
+    type=click.Path(path_type=Path),
+    default=None,
+    help="Snapshot JSON path (default: packaged Kraken USD snapshot)",
+)
+def refresh_crypto_universe(output) -> None:
+    """Refresh the versioned Kraken USD spot market snapshot."""
+    from tradex.crypto.universe import DEFAULT_SNAPSHOT_PATH, refresh_universe
+
+    path = output or DEFAULT_SNAPSHOT_PATH
+    universe = refresh_universe(path)
+    console.print(f"[green]Saved {len(universe.markets)} markets to {path}[/green]")
+
+
+@crypto.command("qualify")
+@click.option(
+    "--model",
+    default="xgboost",
+    show_default=True,
+    type=click.Choice(["xgboost", "random_forest"]),
+)
+@click.option(
+    "--report",
+    type=click.Path(path_type=Path),
+    default=None,
+    help="Output JSON report path",
+)
+@click.option(
+    "--universe",
+    "universe_path",
+    type=click.Path(path_type=Path),
+    default=None,
+    help="Universe snapshot path",
+)
+def qualify_crypto(model: str, report, universe_path) -> None:
+    """Screen Kraken USD spot markets and run walk-forward qualification."""
+    from datetime import UTC, datetime
+
+    from tradex.config.settings import ROOT
+    from tradex.crypto import CryptoQualificationPipeline
+    from tradex.crypto.universe import DEFAULT_SNAPSHOT_PATH, load_universe
+
+    snapshot = load_universe(universe_path or DEFAULT_SNAPSHOT_PATH)
+    report_path = report or (
+        ROOT / "reports" / f"crypto-qualification-{datetime.now(UTC):%Y%m%dT%H%M%SZ}.json"
+    )
+    console.print(
+        f"[bold blue]Qualifying {len(snapshot.markets)} Kraken USD spot markets...[/bold blue]"
+    )
+    result = CryptoQualificationPipeline().qualify(snapshot, model_name=model)
+    result.write_json(Path(report_path))
+    result.write_csv(Path(report_path).with_suffix(".csv"))
+    console.print(
+        f"[green]Approved {len(result.approved_symbols)} of {len(result.results)} markets[/green]"
+    )
+    console.print(f"JSON: {report_path}")
+    console.print(f"CSV:  {Path(report_path).with_suffix('.csv')}")
+
+
+@crypto.command("train-approved")
+@click.option(
+    "--report",
+    required=True,
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+)
+def train_approved_crypto_cmd(report) -> None:
+    """Train final artifacts for approved Kraken crypto markets."""
+    from tradex.crypto import CryptoQualificationReport, train_approved_crypto
+
+    qualification = CryptoQualificationReport.read_json(report)
+    outcomes = train_approved_crypto(qualification)
+    failures = {symbol: value for symbol, value in outcomes.items() if value.startswith("ERROR:")}
+    for symbol, outcome in outcomes.items():
+        color = "red" if outcome.startswith("ERROR:") else "green"
+        console.print(f"[{color}]{symbol}: {outcome}[/{color}]")
+    console.print(
+        f"Trained {len(outcomes) - len(failures)} of "
+        f"{len(qualification.approved_symbols)} approved crypto markets"
+    )
+
+
 @cli.command()
 @click.option("--side", required=True, type=click.Choice(["BUY", "SELL"], case_sensitive=False))
 @click.option("--asset", required=True, help="Symbol such as AAPL, EURUSD, or BTC")
