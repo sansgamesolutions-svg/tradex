@@ -144,6 +144,7 @@ def train(asset: str, timeframe: str, model: str, start: str | None, end: str | 
     type=click.Choice(["DAY", "GTC"], case_sensitive=False),
 )
 @click.option("--outside-rth", is_flag=True, help="Allow execution outside regular trading hours")
+@click.option("--platform", default=None, help="Override the default platform, e.g. ibkr or kraken")
 @click.option(
     "--submit",
     is_flag=True,
@@ -160,10 +161,11 @@ def trade(
     currency: str,
     time_in_force: str,
     outside_rth: bool,
+    platform: str | None,
     submit: bool,
 ) -> None:
-    """Preview or submit an order through IBKR or Kraken."""
-    from tradex.execution import IBKRBroker, KrakenBroker, OrderRequest
+    """Preview or submit an order through a registered trading platform."""
+    from tradex.execution import OrderRequest, platforms
 
     try:
         request = OrderRequest(
@@ -181,16 +183,16 @@ def trade(
     except ValueError as exc:
         raise click.BadParameter(str(exc)) from exc
 
-    if request.asset_type == "CRYPTO":
-        broker = KrakenBroker()
-        venue = f"Kraken ({broker.symbol_for(request)})"
-    else:
-        broker = IBKRBroker()
-        venue = f"IBKR ({broker.build_contract(request).exchange})"
+    try:
+        broker = platforms.create(request, platform)
+        preview = broker.preview(request)
+    except ValueError as exc:
+        raise click.BadParameter(str(exc), param_hint="--platform") from exc
 
     console.print(
         f"[bold]{request.side}[/bold] {request.quantity:g} {request.symbol} "
-        f"as a {request.order_type} order on {venue}"
+        f"as a {request.order_type} order on "
+        f"{preview.platform.upper()} ({preview.venue}: {preview.symbol})"
     )
 
     if not submit:
@@ -198,10 +200,11 @@ def trade(
         return
 
     try:
-        with broker:
-            result = broker.submit(request)
+        result = broker.submit(request)
     except Exception as exc:
         raise click.ClickException(f"Order failed: {exc}") from exc
+    finally:
+        broker.close()
 
     console.print(
         f"[green]{result.broker} order {result.order_id} submitted[/green]: "

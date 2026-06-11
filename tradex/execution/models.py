@@ -77,3 +77,14 @@ class OrderResult:
     remaining: float
     average_fill_price: float
     broker: str
+
+
+@dataclass(frozen=True)
+class OrderPreview:
+    platform: str
+    venue: str
+    symbol: str
+    side: Side
+    quantity: float
+    order_type: OrderType
+    limit_price: float | None = None

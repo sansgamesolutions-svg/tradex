@@ -25,6 +25,7 @@ dependencies = [
     # Scheduler
     "apscheduler>=3.10,<4.0",
     "ib-async>=2.1.0",
+    "python-dotenv>=1.0",
 ]
 
 [dependency-groups]

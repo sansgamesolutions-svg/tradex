@@ -14,10 +14,10 @@ ta_weight: 0.4
 ibkr_host: "127.0.0.1"
 ibkr_port: 7497
 ibkr_client_id: 10
-ibkr_account: ""
 ibkr_timeout: 4.0
 
 # Kraken spot trading
-kraken_api_key: ""
-kraken_api_secret: ""
 kraken_timeout: 10000
+
+# Secrets do not belong in this file. Use environment variables, an ignored
+# .env file, or TRADEX_<PLATFORM>_<FIELD>_FILE mounted secret paths.

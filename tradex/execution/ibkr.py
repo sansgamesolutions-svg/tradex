@@ -1,12 +1,13 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any, Protocol
 
 from ib_async import IB, Forex, LimitOrder, MarketOrder, Stock
 
+from tradex.config.secrets import SecretResolver, secrets
 from tradex.config.settings import settings
-from tradex.execution.models import OrderRequest, OrderResult
+from tradex.execution.models import AssetType, OrderPreview, OrderRequest, OrderResult
 
 
 class IBClient(Protocol):
@@ -26,22 +27,26 @@ class IBKRConfig:
     host: str = "127.0.0.1"
     port: int = 7497
     client_id: int = 10
-    account: str = ""
+    account: str = field(default="", repr=False)
     timeout: float = 4.0
 
     @classmethod
-    def from_settings(cls) -> IBKRConfig:
+    def from_settings(cls, resolver: SecretResolver | None = None) -> IBKRConfig:
+        resolver = resolver or secrets
         return cls(
             host=settings.ibkr_host,
             port=int(settings.ibkr_port),
             client_id=int(settings.ibkr_client_id),
-            account=settings.ibkr_account,
+            account=resolver.get("ibkr", "account"),
             timeout=float(settings.ibkr_timeout),
         )
 
 
 class IBKRBroker:
     """Submit validated orders to TWS or IB Gateway through ib_async."""
+
+    name = "ibkr"
+    supported_asset_types: frozenset[AssetType] = frozenset(("STOCK", "FOREX"))
 
     def __init__(
         self,
@@ -103,6 +108,18 @@ class IBKRBroker:
             )
         return MarketOrder(request.side, request.quantity, **kwargs)
 
+    def preview(self, request: OrderRequest) -> OrderPreview:
+        contract = self.build_contract(request)
+        return OrderPreview(
+            platform=self.name,
+            venue=contract.exchange,
+            symbol=request.symbol,
+            side=request.side,
+            quantity=request.quantity,
+            order_type=request.order_type,
+            limit_price=request.limit_price,
+        )
+
     def submit(self, request: OrderRequest) -> OrderResult:
         self.connect()
         contract = self.build_contract(request)
@@ -123,7 +140,7 @@ class IBKRBroker:
             filled=float(status.filled),
             remaining=float(status.remaining),
             average_fill_price=float(status.avgFillPrice),
-            broker="IBKR",
+            broker=self.name.upper(),
         )
 
     def buy(self, symbol: str, quantity: float, **kwargs: Any) -> OrderResult:
