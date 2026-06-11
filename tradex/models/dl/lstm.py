@@ -71,12 +71,12 @@ class LSTMModel(BaseModel):
                 criterion(self._net(xb), yb).backward()
                 optimizer.step()
 
-    def predict_proba(self, X: pd.DataFrame) -> float:
+    def predict_probabilities(self, X: pd.DataFrame) -> np.ndarray:
         assert self._net is not None, "Call fit() before predict_proba()."
         seqs = self._to_sequences(X)
         self._net.eval()
         with torch.no_grad():
-            return float(self._net(torch.from_numpy(seqs[-1:])).item())
+            return self._net(torch.from_numpy(seqs)).squeeze(1).numpy()
 
     def evaluate(self, X: pd.DataFrame, y: pd.Series) -> dict[str, float]:
         assert self._net is not None

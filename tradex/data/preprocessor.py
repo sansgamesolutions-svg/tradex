@@ -28,7 +28,8 @@ def make_target(df: pd.DataFrame, horizon: int | None = None) -> pd.Series:
     """Binary target: 1 if close is higher *horizon* candles ahead, else 0."""
     h = horizon or settings.prediction_horizon
     future = df["close"].shift(-h)
-    return (future > df["close"]).astype(int).dropna()
+    valid = future.notna()
+    return (future.loc[valid] > df.loc[valid, "close"]).astype(int)
 
 
 def train_test_split(

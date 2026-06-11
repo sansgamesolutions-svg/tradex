@@ -1,7 +1,8 @@
 import pytest
+
+from tradex.models import get_model
 from tradex.models.ml.random_forest import RandomForestModel
 from tradex.models.ml.xgboost_model import XGBoostModel
-from tradex.models import get_model
 
 
 def test_random_forest_predict_proba(feature_df, binary_target):

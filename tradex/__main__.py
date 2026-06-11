@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import click
 from rich.console import Console
 
@@ -116,6 +118,102 @@ def train(asset: str, timeframe: str, model: str, start: str | None, end: str | 
     console.print(f"[green]Saved to {path}[/green]")
     for k, v in metrics.items():
         console.print(f"  {k}: {v:.4f}")
+
+
+@cli.group()
+def stocks() -> None:
+    """Screen and train daily S&P 500 stock models."""
+
+
+@stocks.command("refresh-universe")
+@click.option(
+    "--output",
+    type=click.Path(path_type=Path),
+    default=None,
+    help="Snapshot JSON path (default: packaged S&P 500 snapshot)",
+)
+def refresh_stock_universe(output) -> None:
+    """Refresh the versioned S&P 500 constituent snapshot."""
+    from tradex.stocks.universe import DEFAULT_SNAPSHOT_PATH, refresh_universe
+
+    path = output or DEFAULT_SNAPSHOT_PATH
+    universe = refresh_universe(path)
+    console.print(f"[green]Saved {len(universe.constituents)} constituents to {path}[/green]")
+
+
+@stocks.command("qualify")
+@click.option(
+    "--model",
+    default="xgboost",
+    show_default=True,
+    type=click.Choice(["xgboost", "random_forest", "lstm"]),
+)
+@click.option(
+    "--report",
+    type=click.Path(path_type=Path),
+    default=None,
+    help="Output JSON report path",
+)
+@click.option(
+    "--universe",
+    "universe_path",
+    type=click.Path(path_type=Path),
+    default=None,
+    help="Universe snapshot path",
+)
+@click.option("--start", default=None, help="Training history start date YYYY-MM-DD")
+def qualify_stocks(model: str, report, universe_path, start: str | None) -> None:
+    """Screen S&P 500 stocks and run walk-forward model qualification."""
+    from datetime import UTC, datetime
+
+    from tradex.config.settings import ROOT
+    from tradex.stocks import StockQualificationPipeline
+    from tradex.stocks.universe import (
+        DEFAULT_SNAPSHOT_PATH,
+        load_universe,
+    )
+
+    snapshot = load_universe(universe_path or DEFAULT_SNAPSHOT_PATH)
+    report_path = report or (
+        ROOT / "reports" / f"stock-qualification-{datetime.now(UTC):%Y%m%dT%H%M%SZ}.json"
+    )
+    console.print(
+        f"[bold blue]Qualifying {len(snapshot.constituents)} S&P 500 stocks...[/bold blue]"
+    )
+    result = StockQualificationPipeline().qualify(
+        snapshot,
+        model_name=model,
+        training_start=start,
+    )
+    result.write_json(Path(report_path))
+    result.write_csv(Path(report_path).with_suffix(".csv"))
+    console.print(
+        f"[green]Approved {len(result.approved_symbols)} of {len(result.results)} stocks[/green]"
+    )
+    console.print(f"JSON: {report_path}")
+    console.print(f"CSV:  {Path(report_path).with_suffix('.csv')}")
+
+
+@stocks.command("train-approved")
+@click.option(
+    "--report",
+    required=True,
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+)
+def train_approved(report) -> None:
+    """Train final artifacts for every stock approved by a qualification report."""
+    from tradex.stocks import QualificationReport, train_approved_stocks
+
+    qualification = QualificationReport.read_json(report)
+    outcomes = train_approved_stocks(qualification)
+    failures = {symbol: value for symbol, value in outcomes.items() if value.startswith("ERROR:")}
+    for symbol, outcome in outcomes.items():
+        color = "red" if outcome.startswith("ERROR:") else "green"
+        console.print(f"[{color}]{symbol}: {outcome}[/{color}]")
+    console.print(
+        f"Trained {len(outcomes) - len(failures)} of "
+        f"{len(qualification.approved_symbols)} approved stocks"
+    )
 
 
 @cli.command()
