@@ -17,6 +17,9 @@ services:
       # Schedule daily predictions for these assets (empty = disabled)
       TRADEX_SCHEDULE_ASSETS: ""
       TRADEX_SCHEDULE_HOUR: "9"
+      TRADEX_DRILL_DATA_DIR: /app/data/drill
+    volumes:
+      - drill_data:/app/data/drill
     depends_on:
       minio-init:
         condition: service_completed_successfully
@@ -57,3 +60,4 @@ services:
 
 volumes:
   minio_data:
+  drill_data:

@@ -1,4 +1,5 @@
 """Diagnostic script — print data shapes and label distributions for AAPL training."""
+
 from tradex.data.fetcher import fetch
 from tradex.data.preprocessor import build_features, make_target, train_test_split
 from tradex.indicators.technical import add_indicators
