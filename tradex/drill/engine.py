@@ -38,11 +38,7 @@ class DrillEngine:
         self.store = store or DrillStore(data_dir / "tradex-drill.sqlite3")
         self.market_data = market_data or LiveDrillMarketData()
         self.clock = clock or (lambda: datetime.now(UTC))
-        self.signals = DrillSignalService(
-            self.store,
-            self.market_data,
-            data_dir / "artifacts",
-        )
+        self.signals = DrillSignalService(self.store, self.market_data)
 
     def prepare(self, session_date: date) -> int:
         config = DrillConfig.from_settings(session_date)

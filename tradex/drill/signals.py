@@ -3,7 +3,6 @@ from __future__ import annotations
 import io
 from collections.abc import Callable
 from datetime import UTC, date, datetime
-from pathlib import Path
 
 import joblib
 import pandas as pd
@@ -40,13 +39,11 @@ class DrillSignalService:
         self,
         store: DrillStore,
         market_data: DrillMarketData,
-        artifact_dir: Path,
         *,
         model_factory: ModelFactory = get_model,
     ) -> None:
         self.store = store
         self.market_data = market_data
-        self.artifact_dir = artifact_dir
         self.model_factory = model_factory
 
     def prepare(self, drill_id: int, config: DrillConfig) -> None:
@@ -168,16 +165,13 @@ class DrillSignalService:
         symbol: str,
         model: BaseModel,
     ) -> str:
-        path = (
-            self.artifact_dir
-            / str(drill_id)
-            / f"{portfolio.lower()}_{symbol.replace('/', '_')}_1d.pkl"
-        )
-        path.parent.mkdir(parents=True, exist_ok=True)
+        from tradex.storage import get_storage
+
+        key = f"drill/artifacts/{drill_id}/{portfolio.lower()}_{symbol.replace('/', '_')}_1d.pkl"
         buffer = io.BytesIO()
         joblib.dump(model, buffer)
-        path.write_bytes(buffer.getvalue())
-        return str(path)
+        get_storage().put(key, buffer.getvalue())
+        return key
 
     def decide(
         self,
@@ -202,7 +196,10 @@ class DrillSignalService:
 
         if preparation and preparation["approved"] and preparation["artifact_path"]:
             try:
-                model = joblib.load(preparation["artifact_path"])
+                from tradex.storage import get_storage
+
+                data = get_storage().get(preparation["artifact_path"])
+                model = joblib.load(io.BytesIO(data))
                 ml_probability = float(model.predict_proba(features))
                 fused = settings.model_weight * ml_probability + settings.ta_weight * ta_probability
                 source = "ML_TA"
