@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 import logging.config
 from contextlib import asynccontextmanager
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from fastapi import FastAPI, HTTPException
@@ -18,17 +18,22 @@ from tradex.api.schemas import (
 )
 from tradex.config.settings import settings
 
-logging.config.dictConfig({
-    "version": 1,
-    "disable_existing_loggers": False,
-    "formatters": {
-        "json": {
-            "format": '{"time":"%(asctime)s","level":"%(levelname)s","name":"%(name)s","msg":%(message)s}',
-        }
-    },
-    "handlers": {"console": {"class": "logging.StreamHandler", "formatter": "json"}},
-    "root": {"level": "INFO", "handlers": ["console"]},
-})
+logging.config.dictConfig(
+    {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "json": {
+                "format": (
+                    '{"time":"%(asctime)s","level":"%(levelname)s",'
+                    '"name":"%(name)s","msg":%(message)s}'
+                ),
+            }
+        },
+        "handlers": {"console": {"class": "logging.StreamHandler", "formatter": "json"}},
+        "root": {"level": "INFO", "handlers": ["console"]},
+    }
+)
 logger = logging.getLogger(__name__)
 
 _scheduler = AsyncIOScheduler()
@@ -77,7 +82,7 @@ def predict(req: PredictRequest) -> PredictResponse:
             asset=req.asset,
             timeframe=req.timeframe,
             signal=signal,
-            timestamp=datetime.now(timezone.utc),
+            timestamp=datetime.now(UTC),
         )
     except ValueError as exc:
         raise HTTPException(status_code=404, detail=str(exc))
