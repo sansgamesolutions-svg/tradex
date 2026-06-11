@@ -2,7 +2,13 @@ from types import SimpleNamespace
 
 import pytest
 
-from tradex.execution.ibkr import IBKRBroker, IBKRConfig, OrderRequest
+from tradex.execution import (
+    IBKRBroker,
+    IBKRConfig,
+    KrakenBroker,
+    KrakenConfig,
+    OrderRequest,
+)
 
 
 class FakeIB:
@@ -52,8 +58,9 @@ def test_submit_stock_market_buy():
     assert order.action == "BUY"
     assert order.orderType == "MKT"
     assert order.account == "DU123"
-    assert result.order_id == 42
+    assert result.order_id == "42"
     assert result.status == "PendingSubmit"
+    assert result.broker == "IBKR"
 
 
 def test_submit_forex_limit_sell():
@@ -81,19 +88,11 @@ def test_submit_forex_limit_sell():
     assert order.tif == "GTC"
 
 
-def test_crypto_uses_paxos_by_default():
-    request = OrderRequest(
-        symbol="BTC",
-        side="BUY",
-        quantity=0.01,
-        asset_type="CRYPTO",
-    )
+def test_ibkr_rejects_crypto():
+    request = OrderRequest(symbol="BTC", side="BUY", quantity=0.01, asset_type="CRYPTO")
 
-    contract = IBKRBroker(client=FakeIB()).build_contract(request)
-
-    assert contract.secType == "CRYPTO"
-    assert contract.exchange == "PAXOS"
-    assert contract.currency == "USD"
+    with pytest.raises(ValueError, match="Kraken"):
+        IBKRBroker(client=FakeIB()).build_contract(request)
 
 
 @pytest.mark.parametrize("quantity", [0, -1, float("inf"), float("nan")])
@@ -110,3 +109,113 @@ def test_limit_order_requires_price():
             quantity=1,
             order_type="LIMIT",
         )
+
+
+class FakeKraken:
+    def __init__(self) -> None:
+        self.loaded = False
+        self.created = None
+        self.closed = False
+
+    def load_markets(self):
+        self.loaded = True
+        return {}
+
+    def market(self, symbol):
+        return {"symbol": symbol, "spot": True}
+
+    def amount_to_precision(self, symbol, amount):
+        return f"{amount:.6f}"
+
+    def price_to_precision(self, symbol, price):
+        return f"{price:.2f}"
+
+    def create_order(self, symbol, order_type, side, amount, price=None, params=None):
+        self.created = (symbol, order_type, side, amount, price, params)
+        return {
+            "id": "ORDER-123",
+            "status": "open",
+            "symbol": symbol,
+            "side": side,
+            "amount": amount,
+            "filled": 0,
+            "remaining": amount,
+            "average": None,
+        }
+
+    def close(self):
+        self.closed = True
+
+
+def test_kraken_market_buy_uses_spot_pair():
+    client = FakeKraken()
+    broker = KrakenBroker(
+        config=KrakenConfig(api_key="key", api_secret="secret"),
+        client=client,
+    )
+    request = OrderRequest(
+        symbol="btc",
+        side="BUY",
+        quantity=0.01234567,
+        asset_type="CRYPTO",
+    )
+
+    result = broker.submit(request)
+
+    assert client.loaded
+    assert client.created == ("BTC/USD", "market", "buy", 0.012346, None, {})
+    assert result.order_id == "ORDER-123"
+    assert result.broker == "KRAKEN"
+
+
+def test_kraken_limit_sell_applies_precision():
+    client = FakeKraken()
+    broker = KrakenBroker(
+        config=KrakenConfig(api_key="key", api_secret="secret"),
+        client=client,
+    )
+    request = OrderRequest(
+        symbol="ETH/USD",
+        side="SELL",
+        quantity=1.2345678,
+        asset_type="CRYPTO",
+        order_type="LIMIT",
+        limit_price=3456.789,
+    )
+
+    broker.submit(request)
+
+    assert client.created == (
+        "ETH/USD",
+        "limit",
+        "sell",
+        1.234568,
+        3456.79,
+        {"timeInForce": "GTC"},
+    )
+
+
+def test_kraken_requires_credentials_before_network_call():
+    client = FakeKraken()
+    broker = KrakenBroker(config=KrakenConfig(), client=client)
+    request = OrderRequest(symbol="BTC", side="BUY", quantity=0.1, asset_type="CRYPTO")
+
+    with pytest.raises(ValueError, match="TRADEX_KRAKEN_API_KEY"):
+        broker.submit(request)
+
+    assert not client.loaded
+
+
+@pytest.mark.parametrize(
+    ("input_symbol", "expected"),
+    [("BTC", "BTC/USD"), ("BTCUSD", "BTC/USD"), ("BTC-USD", "BTC/USD")],
+)
+def test_kraken_symbol_normalization(input_symbol, expected):
+    request = OrderRequest(
+        symbol=input_symbol,
+        side="BUY",
+        quantity=0.1,
+        asset_type="CRYPTO",
+    )
+
+    assert KrakenBroker(client=FakeKraken()).symbol_for(request) == expected

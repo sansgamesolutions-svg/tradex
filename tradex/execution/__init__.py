@@ -1,8 +1,15 @@
 from tradex.execution.ibkr import (
     IBKRBroker,
     IBKRConfig,
-    OrderRequest,
-    OrderResult,
 )
+from tradex.execution.kraken import KrakenBroker, KrakenConfig
+from tradex.execution.models import OrderRequest, OrderResult
 
-__all__ = ["IBKRBroker", "IBKRConfig", "OrderRequest", "OrderResult"]
+__all__ = [
+    "IBKRBroker",
+    "IBKRConfig",
+    "KrakenBroker",
+    "KrakenConfig",
+    "OrderRequest",
+    "OrderResult",
+]
