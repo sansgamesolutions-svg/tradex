@@ -41,12 +41,9 @@ class Settings:
     ibkr_host: str = "127.0.0.1"
     ibkr_port: int = 7497
     ibkr_client_id: int = 10
-    ibkr_account: str = ""
     ibkr_timeout: float = 4.0
 
     # Kraken spot trading
-    kraken_api_key: str = ""
-    kraken_api_secret: str = ""
     kraken_timeout: int = 10_000
 
     @classmethod

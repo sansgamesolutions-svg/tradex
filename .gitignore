@@ -17,6 +17,11 @@ models/artifacts/
 
 # Config overrides (copy config.yaml.example → config.yaml to customize)
 config.yaml
+.env
+.env.*
+!.env.example
+secrets/
+*.secret
 
 # Editors / tools
 .vscode/
