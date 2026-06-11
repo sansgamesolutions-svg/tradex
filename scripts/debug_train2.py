@@ -1,4 +1,5 @@
 """Reproduce the exact train endpoint logic and print full traceback."""
+
 import traceback
 
 from tradex.data.fetcher import fetch

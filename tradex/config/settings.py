@@ -75,6 +75,20 @@ class Settings:
     crypto_min_median_balanced_accuracy: float = 0.51
     crypto_min_folds_beating_baseline: int = 3
 
+    # One-day automated trading drill
+    drill_data_dir: Path = field(default_factory=lambda: ROOT / "data" / "drill")
+    drill_initial_capital: float = 5_000.0
+    drill_max_position_cost: float = 500.0
+    drill_max_open_positions: int = 2
+    drill_stop_loss_rate: float = 0.01
+    drill_take_profit_rate: float = 0.02
+    drill_max_drawdown_rate: float = 0.01
+    drill_max_price_age_minutes: int = 10
+    drill_stock_slippage_rate: float = 0.0002
+    drill_stock_fixed_fee: float = 0.35
+    drill_crypto_slippage_rate: float = 0.0005
+    drill_crypto_fee_rate: float = 0.004
+
     @classmethod
     def load(cls) -> Settings:
         cfg_file = ROOT / "config.yaml"
@@ -94,6 +108,10 @@ class Settings:
             data["schedule_assets"] = [
                 a.strip() for a in data["schedule_assets"].split(",") if a.strip()
             ]
+
+        if "drill_data_dir" in data:
+            path = Path(data["drill_data_dir"])
+            data["drill_data_dir"] = path if path.is_absolute() else ROOT / path
 
         return cls(**{k: v for k, v in data.items() if k in field_names})
 

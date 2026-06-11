@@ -13,6 +13,7 @@ htmlcov/
 
 # Project artifacts
 data/cache/
+data/drill/
 models/artifacts/
 
 # Config overrides (copy config.yaml.example → config.yaml to customize)

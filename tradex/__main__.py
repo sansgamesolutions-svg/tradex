@@ -304,6 +304,93 @@ def train_approved_crypto_cmd(report) -> None:
     )
 
 
+@cli.group()
+def drill() -> None:
+    """Run the isolated one-day automated paper-trading drill."""
+
+
+@drill.command("prepare")
+@click.option("--date", "session_date", required=True, type=click.DateTime(["%Y-%m-%d"]))
+def prepare_drill(session_date) -> None:
+    """Fetch daily data, validate models, and prepare drill artifacts."""
+    from tradex.drill.engine import default_engine
+
+    engine = default_engine()
+    drill_id = engine.prepare(session_date.date())
+    console.print(f"[green]Prepared drill {drill_id} for {session_date:%Y-%m-%d}[/green]")
+
+
+@drill.command("run")
+@click.option("--date", "session_date", required=True, type=click.DateTime(["%Y-%m-%d"]))
+def run_drill(session_date) -> None:
+    """Run the blocking five-minute drill scheduler for one session."""
+    from tradex.drill.engine import default_engine
+
+    engine = default_engine()
+    console.print(
+        f"[bold blue]Starting internal paper drill for {session_date:%Y-%m-%d}[/bold blue]"
+    )
+    drill_id = engine.run_live(session_date.date())
+    console.print(f"[green]Drill {drill_id} scheduler finished[/green]")
+
+
+@drill.command("status")
+def drill_status_cmd() -> None:
+    """Print the latest drill state."""
+    from tradex.drill.engine import default_engine
+
+    engine = default_engine()
+    drill_id = engine.store.latest_drill_id()
+    if drill_id is None:
+        raise click.ClickException("No drill has been created")
+    console.print_json(data=engine.status(drill_id))
+
+
+@drill.command("halt")
+@click.option("--yes", is_flag=True, help="Skip the interactive confirmation")
+def halt_drill_cmd(yes: bool) -> None:
+    """Emergency-stop all new drill activity."""
+    from tradex.drill.engine import default_engine
+
+    if not yes and not click.confirm("Halt the latest automated drill?"):
+        raise click.Abort()
+    engine = default_engine()
+    drill_id = engine.store.latest_drill_id()
+    if drill_id is None:
+        raise click.ClickException("No drill has been created")
+    engine.halt(drill_id)
+    console.print(f"[yellow]Drill {drill_id} halted[/yellow]")
+
+
+@drill.command("report")
+@click.option(
+    "--format",
+    "output_format",
+    type=click.Choice(["json", "html"]),
+    default="json",
+    show_default=True,
+)
+@click.option("--output", type=click.Path(path_type=Path), default=None)
+def drill_report_cmd(output_format: str, output: Path | None) -> None:
+    """Generate a report for the latest drill."""
+    from tradex.config.settings import settings
+    from tradex.drill.engine import default_engine
+    from tradex.drill.report import build_report, write_report
+
+    engine = default_engine()
+    drill_id = engine.store.latest_drill_id()
+    if drill_id is None:
+        raise click.ClickException("No drill has been created")
+    drill_record = engine.store.drill(drill_id)
+    destination = output or (
+        Path(settings.drill_data_dir)
+        / "reports"
+        / f"drill-{drill_record['session_date']}.{output_format}"
+    )
+    path = write_report(build_report(engine.store, drill_id), destination, output_format)
+    console.print(f"[green]Saved drill report to {path}[/green]")
+
+
 @cli.command()
 @click.option("--side", required=True, type=click.Choice(["BUY", "SELL"], case_sensitive=False))
 @click.option("--asset", required=True, help="Symbol such as AAPL, EURUSD, or BTC")

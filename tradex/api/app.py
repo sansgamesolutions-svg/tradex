@@ -17,6 +17,7 @@ from tradex.api.schemas import (
     TrainResponse,
 )
 from tradex.config.settings import settings
+from tradex.drill.dashboard import router as drill_router
 
 logging.config.dictConfig(
     {
@@ -58,6 +59,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="TradeX API", version="0.1.0", lifespan=lifespan)
+app.include_router(drill_router)
 
 
 @app.get("/health")

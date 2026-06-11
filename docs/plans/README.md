@@ -11,6 +11,7 @@ validation, and extension boundaries for one area of the system.
 | [Platform Registry and Secrets](03-platform-registry-and-secrets-plan.md) | Implemented | [Secrets and Platforms](../secrets-and-platforms.md) |
 | [S&P 500 Training Pipeline](04-sp500-training-plan.md) | Implemented | [Stock Training](../stock-training.md) |
 | [Kraken Crypto Training Pipeline](05-kraken-crypto-training-plan.md) | Implemented | [Crypto Training](../crypto-training.md) |
+| [One-Day Automated Trading Drill](06-automated-trading-drill-plan.md) | Implemented | [Trading Drill](../automated-trading-drill.md) |
 
 The supporting guides are operator-focused. The plans in this directory focus
 on architecture, implementation scope, acceptance criteria, and future

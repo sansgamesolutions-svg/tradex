@@ -1,0 +1,706 @@
+from __future__ import annotations
+
+import json
+import sqlite3
+from collections.abc import Iterator
+from contextlib import contextmanager
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
+
+from tradex.drill.types import DrillConfig, PriceQuote, SignalDecision
+
+
+class DrillStore:
+    """SQLite-backed source of truth for simulated drill state."""
+
+    def __init__(self, path: Path) -> None:
+        self.path = path
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self._initialize()
+
+    @contextmanager
+    def connection(self) -> Iterator[sqlite3.Connection]:
+        connection = sqlite3.connect(self.path, timeout=30)
+        connection.row_factory = sqlite3.Row
+        connection.execute("PRAGMA foreign_keys = ON")
+        try:
+            yield connection
+            connection.commit()
+        except Exception:
+            connection.rollback()
+            raise
+        finally:
+            connection.close()
+
+    def _initialize(self) -> None:
+        with self.connection() as db:
+            db.executescript(
+                """
+                PRAGMA journal_mode = WAL;
+
+                CREATE TABLE IF NOT EXISTS drills (
+                    id INTEGER PRIMARY KEY,
+                    session_date TEXT NOT NULL UNIQUE,
+                    status TEXT NOT NULL,
+                    config_json TEXT NOT NULL,
+                    created_at TEXT NOT NULL,
+                    updated_at TEXT NOT NULL,
+                    halt_reason TEXT NOT NULL DEFAULT ''
+                );
+
+                CREATE TABLE IF NOT EXISTS portfolios (
+                    drill_id INTEGER NOT NULL,
+                    kind TEXT NOT NULL,
+                    initial_capital REAL NOT NULL,
+                    cash REAL NOT NULL,
+                    realized_pnl REAL NOT NULL DEFAULT 0,
+                    fees REAL NOT NULL DEFAULT 0,
+                    slippage REAL NOT NULL DEFAULT 0,
+                    peak_equity REAL NOT NULL,
+                    halted INTEGER NOT NULL DEFAULT 0,
+                    data_failures INTEGER NOT NULL DEFAULT 0,
+                    PRIMARY KEY (drill_id, kind),
+                    FOREIGN KEY (drill_id) REFERENCES drills(id)
+                );
+
+                CREATE TABLE IF NOT EXISTS model_preparations (
+                    drill_id INTEGER NOT NULL,
+                    portfolio TEXT NOT NULL,
+                    symbol TEXT NOT NULL,
+                    approved INTEGER NOT NULL,
+                    source TEXT NOT NULL,
+                    artifact_path TEXT,
+                    metrics_json TEXT NOT NULL,
+                    reason TEXT NOT NULL,
+                    prepared_at TEXT NOT NULL,
+                    PRIMARY KEY (drill_id, portfolio, symbol),
+                    FOREIGN KEY (drill_id) REFERENCES drills(id)
+                );
+
+                CREATE TABLE IF NOT EXISTS prices (
+                    id INTEGER PRIMARY KEY,
+                    drill_id INTEGER NOT NULL,
+                    portfolio TEXT NOT NULL,
+                    symbol TEXT NOT NULL,
+                    price REAL NOT NULL,
+                    source TEXT NOT NULL,
+                    source_timestamp TEXT NOT NULL,
+                    captured_at TEXT NOT NULL,
+                    FOREIGN KEY (drill_id) REFERENCES drills(id)
+                );
+
+                CREATE TABLE IF NOT EXISTS signals (
+                    id INTEGER PRIMARY KEY,
+                    drill_id INTEGER NOT NULL,
+                    portfolio TEXT NOT NULL,
+                    symbol TEXT NOT NULL,
+                    signal TEXT NOT NULL,
+                    source TEXT NOT NULL,
+                    ml_probability REAL,
+                    ta_probability REAL,
+                    reason TEXT NOT NULL,
+                    decided_at TEXT NOT NULL,
+                    UNIQUE (drill_id, portfolio, symbol, decided_at),
+                    FOREIGN KEY (drill_id) REFERENCES drills(id)
+                );
+
+                CREATE TABLE IF NOT EXISTS orders (
+                    id INTEGER PRIMARY KEY,
+                    drill_id INTEGER NOT NULL,
+                    portfolio TEXT NOT NULL,
+                    symbol TEXT NOT NULL,
+                    side TEXT NOT NULL,
+                    quantity REAL NOT NULL,
+                    reason TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    idempotency_key TEXT NOT NULL UNIQUE,
+                    created_at TEXT NOT NULL,
+                    filled_at TEXT,
+                    FOREIGN KEY (drill_id) REFERENCES drills(id)
+                );
+
+                CREATE TABLE IF NOT EXISTS fills (
+                    id INTEGER PRIMARY KEY,
+                    drill_id INTEGER NOT NULL,
+                    order_id INTEGER NOT NULL UNIQUE,
+                    portfolio TEXT NOT NULL,
+                    symbol TEXT NOT NULL,
+                    side TEXT NOT NULL,
+                    quantity REAL NOT NULL,
+                    market_price REAL NOT NULL,
+                    fill_price REAL NOT NULL,
+                    fee REAL NOT NULL,
+                    slippage REAL NOT NULL,
+                    filled_at TEXT NOT NULL,
+                    FOREIGN KEY (drill_id) REFERENCES drills(id),
+                    FOREIGN KEY (order_id) REFERENCES orders(id)
+                );
+
+                CREATE TABLE IF NOT EXISTS positions (
+                    id INTEGER PRIMARY KEY,
+                    drill_id INTEGER NOT NULL,
+                    portfolio TEXT NOT NULL,
+                    symbol TEXT NOT NULL,
+                    quantity REAL NOT NULL,
+                    entry_price REAL NOT NULL,
+                    stop_price REAL NOT NULL,
+                    take_profit_price REAL NOT NULL,
+                    entry_fee REAL NOT NULL,
+                    entry_slippage REAL NOT NULL,
+                    opened_at TEXT NOT NULL,
+                    exit_price REAL,
+                    exit_fee REAL NOT NULL DEFAULT 0,
+                    exit_slippage REAL NOT NULL DEFAULT 0,
+                    closed_at TEXT,
+                    realized_pnl REAL,
+                    close_reason TEXT NOT NULL DEFAULT '',
+                    FOREIGN KEY (drill_id) REFERENCES drills(id)
+                );
+
+                CREATE UNIQUE INDEX IF NOT EXISTS one_open_position
+                ON positions(drill_id, portfolio, symbol)
+                WHERE closed_at IS NULL;
+
+                CREATE TABLE IF NOT EXISTS events (
+                    id INTEGER PRIMARY KEY,
+                    drill_id INTEGER NOT NULL,
+                    category TEXT NOT NULL,
+                    level TEXT NOT NULL,
+                    message TEXT NOT NULL,
+                    details_json TEXT NOT NULL,
+                    occurred_at TEXT NOT NULL,
+                    FOREIGN KEY (drill_id) REFERENCES drills(id)
+                );
+
+                CREATE TABLE IF NOT EXISTS equity_points (
+                    id INTEGER PRIMARY KEY,
+                    drill_id INTEGER NOT NULL,
+                    portfolio TEXT NOT NULL,
+                    equity REAL NOT NULL,
+                    cash REAL NOT NULL,
+                    recorded_at TEXT NOT NULL,
+                    UNIQUE (drill_id, portfolio, recorded_at),
+                    FOREIGN KEY (drill_id) REFERENCES drills(id)
+                );
+                """
+            )
+
+    @staticmethod
+    def _now() -> str:
+        return datetime.now(UTC).isoformat()
+
+    @staticmethod
+    def _rows(rows: list[sqlite3.Row]) -> list[dict[str, Any]]:
+        return [dict(row) for row in rows]
+
+    def create_drill(self, config: DrillConfig) -> int:
+        now = self._now()
+        with self.connection() as db:
+            db.execute(
+                """
+                INSERT INTO drills(session_date, status, config_json, created_at, updated_at)
+                VALUES (?, 'CREATED', ?, ?, ?)
+                ON CONFLICT(session_date) DO NOTHING
+                """,
+                (config.session_date.isoformat(), json.dumps(config.to_dict()), now, now),
+            )
+            row = db.execute(
+                "SELECT id FROM drills WHERE session_date = ?",
+                (config.session_date.isoformat(),),
+            ).fetchone()
+            drill_id = int(row["id"])
+            for kind in ("STOCK", "CRYPTO"):
+                db.execute(
+                    """
+                    INSERT INTO portfolios(
+                        drill_id, kind, initial_capital, cash, peak_equity
+                    ) VALUES (?, ?, ?, ?, ?)
+                    ON CONFLICT(drill_id, kind) DO NOTHING
+                    """,
+                    (
+                        drill_id,
+                        kind,
+                        config.initial_capital,
+                        config.initial_capital,
+                        config.initial_capital,
+                    ),
+                )
+        return drill_id
+
+    def latest_drill_id(self) -> int | None:
+        with self.connection() as db:
+            row = db.execute("SELECT id FROM drills ORDER BY id DESC LIMIT 1").fetchone()
+        return int(row["id"]) if row else None
+
+    def drill(self, drill_id: int) -> dict[str, Any]:
+        with self.connection() as db:
+            row = db.execute("SELECT * FROM drills WHERE id = ?", (drill_id,)).fetchone()
+        if row is None:
+            raise ValueError(f"Unknown drill {drill_id}")
+        result = dict(row)
+        result["config"] = json.loads(result.pop("config_json"))
+        return result
+
+    def set_status(self, drill_id: int, status: str, halt_reason: str = "") -> None:
+        with self.connection() as db:
+            db.execute(
+                """
+                UPDATE drills
+                SET status = ?, halt_reason = ?, updated_at = ?
+                WHERE id = ?
+                """,
+                (status, halt_reason, self._now(), drill_id),
+            )
+
+    def record_preparation(
+        self,
+        drill_id: int,
+        portfolio: str,
+        symbol: str,
+        *,
+        approved: bool,
+        source: str,
+        metrics: dict[str, Any],
+        reason: str,
+        artifact_path: str | None = None,
+    ) -> None:
+        with self.connection() as db:
+            db.execute(
+                """
+                INSERT INTO model_preparations(
+                    drill_id, portfolio, symbol, approved, source, artifact_path,
+                    metrics_json, reason, prepared_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(drill_id, portfolio, symbol) DO UPDATE SET
+                    approved = excluded.approved,
+                    source = excluded.source,
+                    artifact_path = excluded.artifact_path,
+                    metrics_json = excluded.metrics_json,
+                    reason = excluded.reason,
+                    prepared_at = excluded.prepared_at
+                """,
+                (
+                    drill_id,
+                    portfolio,
+                    symbol,
+                    int(approved),
+                    source,
+                    artifact_path,
+                    json.dumps(metrics, allow_nan=False),
+                    reason,
+                    self._now(),
+                ),
+            )
+
+    def preparation(self, drill_id: int, portfolio: str, symbol: str) -> dict | None:
+        with self.connection() as db:
+            row = db.execute(
+                """
+                SELECT * FROM model_preparations
+                WHERE drill_id = ? AND portfolio = ? AND symbol = ?
+                """,
+                (drill_id, portfolio, symbol),
+            ).fetchone()
+        if row is None:
+            return None
+        result = dict(row)
+        result["metrics"] = json.loads(result.pop("metrics_json"))
+        return result
+
+    def record_price(self, drill_id: int, quote: PriceQuote) -> int:
+        with self.connection() as db:
+            cursor = db.execute(
+                """
+                INSERT INTO prices(
+                    drill_id, portfolio, symbol, price, source,
+                    source_timestamp, captured_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    drill_id,
+                    quote.portfolio,
+                    quote.symbol,
+                    quote.price,
+                    quote.source,
+                    quote.source_timestamp.isoformat(),
+                    quote.captured_at.isoformat(),
+                ),
+            )
+            return int(cursor.lastrowid)
+
+    def latest_price(self, drill_id: int, portfolio: str, symbol: str) -> dict | None:
+        with self.connection() as db:
+            row = db.execute(
+                """
+                SELECT * FROM prices
+                WHERE drill_id = ? AND portfolio = ? AND symbol = ?
+                ORDER BY captured_at DESC, id DESC LIMIT 1
+                """,
+                (drill_id, portfolio, symbol),
+            ).fetchone()
+        return dict(row) if row else None
+
+    def record_signal(self, drill_id: int, decision: SignalDecision) -> None:
+        with self.connection() as db:
+            db.execute(
+                """
+                INSERT OR IGNORE INTO signals(
+                    drill_id, portfolio, symbol, signal, source, ml_probability,
+                    ta_probability, reason, decided_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    drill_id,
+                    decision.portfolio,
+                    decision.symbol,
+                    decision.signal,
+                    decision.source,
+                    decision.ml_probability,
+                    decision.ta_probability,
+                    decision.reason,
+                    decision.decided_at.isoformat(),
+                ),
+            )
+
+    def create_order(
+        self,
+        drill_id: int,
+        portfolio: str,
+        symbol: str,
+        side: str,
+        quantity: float,
+        reason: str,
+        idempotency_key: str,
+        created_at: datetime,
+    ) -> int:
+        with self.connection() as db:
+            db.execute(
+                """
+                INSERT INTO orders(
+                    drill_id, portfolio, symbol, side, quantity, reason,
+                    status, idempotency_key, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, 'PENDING', ?, ?)
+                ON CONFLICT(idempotency_key) DO NOTHING
+                """,
+                (
+                    drill_id,
+                    portfolio,
+                    symbol,
+                    side,
+                    quantity,
+                    reason,
+                    idempotency_key,
+                    created_at.isoformat(),
+                ),
+            )
+            row = db.execute(
+                "SELECT id FROM orders WHERE idempotency_key = ?",
+                (idempotency_key,),
+            ).fetchone()
+            return int(row["id"])
+
+    def pending_orders(self, drill_id: int) -> list[dict]:
+        with self.connection() as db:
+            rows = db.execute(
+                """
+                SELECT * FROM orders
+                WHERE drill_id = ? AND status = 'PENDING'
+                ORDER BY id
+                """,
+                (drill_id,),
+            ).fetchall()
+        return self._rows(rows)
+
+    def portfolio(self, drill_id: int, kind: str) -> dict:
+        with self.connection() as db:
+            row = db.execute(
+                "SELECT * FROM portfolios WHERE drill_id = ? AND kind = ?",
+                (drill_id, kind),
+            ).fetchone()
+        if row is None:
+            raise ValueError(f"Missing {kind} portfolio for drill {drill_id}")
+        return dict(row)
+
+    def portfolios(self, drill_id: int) -> list[dict]:
+        with self.connection() as db:
+            rows = db.execute(
+                "SELECT * FROM portfolios WHERE drill_id = ? ORDER BY kind",
+                (drill_id,),
+            ).fetchall()
+        return self._rows(rows)
+
+    def set_portfolio_halted(self, drill_id: int, kind: str, halted: bool) -> None:
+        with self.connection() as db:
+            db.execute(
+                "UPDATE portfolios SET halted = ? WHERE drill_id = ? AND kind = ?",
+                (int(halted), drill_id, kind),
+            )
+
+    def update_data_failures(self, drill_id: int, kind: str, failures: int) -> None:
+        with self.connection() as db:
+            db.execute(
+                """
+                UPDATE portfolios SET data_failures = ?
+                WHERE drill_id = ? AND kind = ?
+                """,
+                (failures, drill_id, kind),
+            )
+
+    def open_positions(self, drill_id: int, portfolio: str | None = None) -> list[dict]:
+        sql = "SELECT * FROM positions WHERE drill_id = ? AND closed_at IS NULL"
+        params: list[Any] = [drill_id]
+        if portfolio:
+            sql += " AND portfolio = ?"
+            params.append(portfolio)
+        sql += " ORDER BY id"
+        with self.connection() as db:
+            rows = db.execute(sql, params).fetchall()
+        return self._rows(rows)
+
+    def positions(self, drill_id: int) -> list[dict]:
+        with self.connection() as db:
+            rows = db.execute(
+                "SELECT * FROM positions WHERE drill_id = ? ORDER BY id",
+                (drill_id,),
+            ).fetchall()
+        return self._rows(rows)
+
+    def symbol_was_closed(self, drill_id: int, portfolio: str, symbol: str) -> bool:
+        with self.connection() as db:
+            row = db.execute(
+                """
+                SELECT 1 FROM positions
+                WHERE drill_id = ? AND portfolio = ? AND symbol = ?
+                  AND closed_at IS NOT NULL
+                LIMIT 1
+                """,
+                (drill_id, portfolio, symbol),
+            ).fetchone()
+        return row is not None
+
+    def apply_buy_fill(
+        self,
+        order: dict,
+        *,
+        market_price: float,
+        fill_price: float,
+        fee: float,
+        slippage: float,
+        stop_price: float,
+        take_profit_price: float,
+        filled_at: datetime,
+    ) -> None:
+        notional = fill_price * order["quantity"]
+        total = notional + fee
+        with self.connection() as db:
+            portfolio = db.execute(
+                """
+                SELECT cash FROM portfolios
+                WHERE drill_id = ? AND kind = ?
+                """,
+                (order["drill_id"], order["portfolio"]),
+            ).fetchone()
+            if portfolio is None or float(portfolio["cash"]) + 1e-9 < total:
+                raise ValueError("insufficient simulated cash")
+            db.execute(
+                """
+                UPDATE portfolios
+                SET cash = cash - ?, fees = fees + ?, slippage = slippage + ?
+                WHERE drill_id = ? AND kind = ?
+                """,
+                (total, fee, slippage, order["drill_id"], order["portfolio"]),
+            )
+            db.execute(
+                """
+                INSERT INTO positions(
+                    drill_id, portfolio, symbol, quantity, entry_price,
+                    stop_price, take_profit_price, entry_fee, entry_slippage,
+                    opened_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    order["drill_id"],
+                    order["portfolio"],
+                    order["symbol"],
+                    order["quantity"],
+                    fill_price,
+                    stop_price,
+                    take_profit_price,
+                    fee,
+                    slippage,
+                    filled_at.isoformat(),
+                ),
+            )
+            self._insert_fill(db, order, market_price, fill_price, fee, slippage, filled_at)
+
+    def apply_sell_fill(
+        self,
+        order: dict,
+        position: dict,
+        *,
+        market_price: float,
+        fill_price: float,
+        fee: float,
+        slippage: float,
+        filled_at: datetime,
+    ) -> None:
+        proceeds = fill_price * order["quantity"] - fee
+        pnl = (
+            (fill_price - position["entry_price"]) * order["quantity"] - position["entry_fee"] - fee
+        )
+        with self.connection() as db:
+            db.execute(
+                """
+                UPDATE portfolios
+                SET cash = cash + ?, realized_pnl = realized_pnl + ?,
+                    fees = fees + ?, slippage = slippage + ?
+                WHERE drill_id = ? AND kind = ?
+                """,
+                (
+                    proceeds,
+                    pnl,
+                    fee,
+                    slippage,
+                    order["drill_id"],
+                    order["portfolio"],
+                ),
+            )
+            db.execute(
+                """
+                UPDATE positions
+                SET exit_price = ?, exit_fee = ?, exit_slippage = ?,
+                    closed_at = ?, realized_pnl = ?, close_reason = ?
+                WHERE id = ?
+                """,
+                (
+                    fill_price,
+                    fee,
+                    slippage,
+                    filled_at.isoformat(),
+                    pnl,
+                    order["reason"],
+                    position["id"],
+                ),
+            )
+            self._insert_fill(db, order, market_price, fill_price, fee, slippage, filled_at)
+
+    @staticmethod
+    def _insert_fill(
+        db: sqlite3.Connection,
+        order: dict,
+        market_price: float,
+        fill_price: float,
+        fee: float,
+        slippage: float,
+        filled_at: datetime,
+    ) -> None:
+        db.execute(
+            """
+            INSERT INTO fills(
+                drill_id, order_id, portfolio, symbol, side, quantity,
+                market_price, fill_price, fee, slippage, filled_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                order["drill_id"],
+                order["id"],
+                order["portfolio"],
+                order["symbol"],
+                order["side"],
+                order["quantity"],
+                market_price,
+                fill_price,
+                fee,
+                slippage,
+                filled_at.isoformat(),
+            ),
+        )
+        db.execute(
+            "UPDATE orders SET status = 'FILLED', filled_at = ? WHERE id = ?",
+            (filled_at.isoformat(), order["id"]),
+        )
+
+    def record_event(
+        self,
+        drill_id: int,
+        category: str,
+        message: str,
+        *,
+        level: str = "INFO",
+        details: dict[str, Any] | None = None,
+        occurred_at: datetime | None = None,
+    ) -> None:
+        with self.connection() as db:
+            db.execute(
+                """
+                INSERT INTO events(
+                    drill_id, category, level, message, details_json, occurred_at
+                ) VALUES (?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    drill_id,
+                    category,
+                    level,
+                    message,
+                    json.dumps(details or {}, default=str),
+                    (occurred_at or datetime.now(UTC)).isoformat(),
+                ),
+            )
+
+    def record_equity(
+        self,
+        drill_id: int,
+        portfolio: str,
+        equity: float,
+        cash: float,
+        recorded_at: datetime,
+    ) -> None:
+        with self.connection() as db:
+            db.execute(
+                """
+                INSERT OR REPLACE INTO equity_points(
+                    drill_id, portfolio, equity, cash, recorded_at
+                ) VALUES (?, ?, ?, ?, ?)
+                """,
+                (drill_id, portfolio, equity, cash, recorded_at.isoformat()),
+            )
+            db.execute(
+                """
+                UPDATE portfolios
+                SET peak_equity = MAX(peak_equity, ?)
+                WHERE drill_id = ? AND kind = ?
+                """,
+                (equity, drill_id, portfolio),
+            )
+
+    def table(self, name: str, drill_id: int) -> list[dict]:
+        allowed = {
+            "signals",
+            "orders",
+            "fills",
+            "positions",
+            "events",
+            "equity_points",
+            "prices",
+            "model_preparations",
+        }
+        if name not in allowed:
+            raise ValueError(f"Unsupported table {name}")
+        with self.connection() as db:
+            rows = db.execute(
+                f"SELECT * FROM {name} WHERE drill_id = ? ORDER BY id"
+                if name != "model_preparations"
+                else """
+                    SELECT * FROM model_preparations
+                    WHERE drill_id = ? ORDER BY portfolio, symbol
+                """,
+                (drill_id,),
+            ).fetchall()
+        results = self._rows(rows)
+        for item in results:
+            if "details_json" in item:
+                item["details"] = json.loads(item.pop("details_json"))
+            if "metrics_json" in item:
+                item["metrics"] = json.loads(item.pop("metrics_json"))
+        return results
