@@ -7,8 +7,10 @@ lookback_periods: 60
 prediction_horizon: 1
 train_test_split: 0.8
 signal_threshold: 0.55
+ta_only_signal_threshold: 0.65
 model_weight: 0.6
 ta_weight: 0.4
+decision_policy_version: "2.0"
 
 # Interactive Brokers TWS paper trading defaults
 ibkr_host: "127.0.0.1"
@@ -60,6 +62,9 @@ drill_stop_loss_rate: 0.01
 drill_take_profit_rate: 0.02
 drill_max_drawdown_rate: 0.01
 drill_max_price_age_minutes: 10
+drill_max_future_seconds: 60
+drill_min_quote_coverage: 0.60
+drill_max_symbol_failures: 3
 drill_stock_slippage_rate: 0.0002
 drill_stock_fixed_fee: 0.35
 drill_crypto_slippage_rate: 0.0005

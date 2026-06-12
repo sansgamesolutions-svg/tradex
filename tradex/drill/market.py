@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 from typing import Any, Protocol
 
 import ccxt
@@ -85,15 +85,27 @@ class LiveDrillMarketData:
             )
             if frame.empty:
                 raise ValueError(f"No five-minute Yahoo quote returned for {symbol}")
-            source_timestamp = pd.Timestamp(frame.index[-1]).to_pydatetime()
-            if source_timestamp.tzinfo is None:
-                source_timestamp = source_timestamp.replace(tzinfo=UTC)
+            starts = [pd.Timestamp(value).to_pydatetime() for value in frame.index]
+            starts = [
+                value.replace(tzinfo=UTC) if value.tzinfo is None else value.astimezone(UTC)
+                for value in starts
+            ]
+            completed = [
+                (index, start, start + timedelta(minutes=5))
+                for index, start in enumerate(starts)
+                if start + timedelta(minutes=5) <= captured_at.astimezone(UTC)
+            ]
+            if not completed:
+                raise ValueError(f"No completed five-minute Yahoo bar returned for {symbol}")
+            index, period_start, period_end = completed[-1]
             return PriceQuote(
                 symbol=symbol,
                 portfolio=portfolio,
-                price=float(frame["Close"].iloc[-1]),
+                price=float(frame["Close"].iloc[index]),
                 source="yahoo:5m",
-                source_timestamp=source_timestamp.astimezone(UTC),
+                source_timestamp=period_end,
+                period_start=period_start,
+                period_end=period_end,
                 captured_at=captured_at.astimezone(UTC),
             )
 
@@ -103,13 +115,25 @@ class LiveDrillMarketData:
         rows = self.kraken.fetch_ohlcv(symbol, timeframe="5m", limit=2)
         if not rows:
             raise ValueError(f"No five-minute Kraken quote returned for {symbol}")
-        latest = rows[-1]
+        completed = [
+            row
+            for row in rows
+            if datetime.fromtimestamp(float(row[0]) / 1000, tz=UTC) + timedelta(minutes=5)
+            <= captured_at.astimezone(UTC)
+        ]
+        if not completed:
+            raise ValueError(f"No completed five-minute Kraken bar returned for {symbol}")
+        latest = completed[-1]
+        period_start = datetime.fromtimestamp(float(latest[0]) / 1000, tz=UTC)
+        period_end = period_start + timedelta(minutes=5)
         return PriceQuote(
             symbol=symbol,
             portfolio=portfolio,
             price=float(latest[4]),
             source="kraken:5m",
-            source_timestamp=datetime.fromtimestamp(float(latest[0]) / 1000, tz=UTC),
+            source_timestamp=period_end,
+            period_start=period_start,
+            period_end=period_end,
             captured_at=captured_at.astimezone(UTC),
         )
 

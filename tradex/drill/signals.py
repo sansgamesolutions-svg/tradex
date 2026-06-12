@@ -14,7 +14,7 @@ from tradex.decision import DecisionEngine
 from tradex.drill.market import DrillMarketData
 from tradex.drill.store import DrillStore
 from tradex.drill.types import DrillConfig, PortfolioKind, SignalDecision
-from tradex.indicators.technical import add_indicators, ta_signal
+from tradex.indicators.technical import add_indicators, assess_technical
 from tradex.models import BaseModel, get_model
 from tradex.stocks.pipeline import (
     aligned_training_data,
@@ -23,8 +23,6 @@ from tradex.stocks.pipeline import (
     evaluate_walk_forward,
 )
 from tradex.stocks.types import StockThresholds
-
-_engine = DecisionEngine()
 
 ModelFactory = Callable[[str], BaseModel]
 
@@ -49,7 +47,10 @@ class DrillSignalService:
         self.model_factory = model_factory
 
     def prepare(self, drill_id: int, config: DrillConfig) -> None:
-        benchmark = self.market_data.fetch_daily("STOCK", "SPY", config.session_date)
+        benchmark = completed_before(
+            self.market_data.fetch_daily("STOCK", "SPY", config.session_date),
+            config.session_date,
+        )
         for portfolio, symbols in (
             ("STOCK", config.stock_symbols),
             ("CRYPTO", config.crypto_symbols),
@@ -169,7 +170,9 @@ class DrillSignalService:
     ) -> str:
         from tradex.storage import get_storage
 
-        key = f"drill/artifacts/{drill_id}/{portfolio.lower()}_{symbol.replace('/', '_')}_1d.pkl"
+        key = (
+            f"data/drill/artifacts/{drill_id}/{portfolio.lower()}_{symbol.replace('/', '_')}_1d.pkl"
+        )
         buffer = io.BytesIO()
         joblib.dump(model, buffer)
         get_storage().put(key, buffer.getvalue())
@@ -189,8 +192,7 @@ class DrillSignalService:
         )
         enriched = add_indicators(raw)
         features = build_features(enriched)
-        score = float(ta_signal(enriched))
-        ta_probability = (score + 1.0) / 2.0
+        assessment = assess_technical(enriched)
         preparation = self.store.preparation(drill_id, portfolio, symbol)
         ml_probability: float | None = None
 
@@ -211,7 +213,17 @@ class DrillSignalService:
                     occurred_at=decided_at,
                 )
 
-        decision = _engine.decide(ml_probability=ml_probability, ta_probability=ta_probability)
+        decision = DecisionEngine(
+            signal_threshold=config.ml_ta_signal_threshold,
+            ta_only_threshold=config.ta_only_signal_threshold,
+            policy_version=config.decision_policy_version,
+        ).decide(
+            ml_probability=ml_probability,
+            ta_probability=assessment.probability,
+            bullish_confirmed=assessment.bullish_confirmed,
+            bearish_confirmed=assessment.bearish_confirmed,
+            confirmation_details=assessment.confirmations,
+        )
         return SignalDecision(
             symbol=symbol,
             portfolio=portfolio,
@@ -220,5 +232,10 @@ class DrillSignalService:
             decided_at=decided_at,
             ml_probability=decision.ml_probability,
             ta_probability=decision.ta_probability,
+            fused_probability=decision.fused_probability,
+            confidence=decision.confidence,
+            threshold_used=decision.threshold_used,
+            policy_version=decision.policy_version,
+            confirmation_details=decision.confirmation_details,
             reason=decision.reason,
         )

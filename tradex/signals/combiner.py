@@ -3,7 +3,7 @@ from __future__ import annotations
 import pandas as pd
 
 from tradex.decision import DecisionEngine
-from tradex.indicators.technical import ta_signal
+from tradex.indicators.technical import assess_technical
 from tradex.models.base import BaseModel
 
 _engine = DecisionEngine()
@@ -38,6 +38,13 @@ class SignalCombiner:
         TA-only when no trained model artifact is available.
         """
         ml_prob = self._model.predict_proba(features) if self._model is not None else None
-        ta_score = ta_signal(raw_df) if raw_df is not None else 0.0
-        ta_prob = (ta_score + 1) / 2  # scale [-1, 1] → [0, 1]
-        return _engine.decide(ml_probability=ml_prob, ta_probability=ta_prob).signal
+        assessment = (
+            assess_technical(raw_df) if raw_df is not None else assess_technical(pd.DataFrame())
+        )
+        return _engine.decide(
+            ml_probability=ml_prob,
+            ta_probability=assessment.probability,
+            bullish_confirmed=assessment.bullish_confirmed,
+            bearish_confirmed=assessment.bearish_confirmed,
+            confirmation_details=assessment.confirmations,
+        ).signal
