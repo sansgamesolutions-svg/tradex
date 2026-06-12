@@ -7,10 +7,10 @@ from datetime import UTC, date, datetime
 import joblib
 import pandas as pd
 
-from tradex.config.settings import settings
 from tradex.crypto.pipeline import evaluate_crypto_eligibility
 from tradex.crypto.types import CryptoThresholds
 from tradex.data.preprocessor import build_features
+from tradex.decision import DecisionEngine
 from tradex.drill.market import DrillMarketData
 from tradex.drill.store import DrillStore
 from tradex.drill.types import DrillConfig, PortfolioKind, SignalDecision
@@ -23,6 +23,8 @@ from tradex.stocks.pipeline import (
     evaluate_walk_forward,
 )
 from tradex.stocks.types import StockThresholds
+
+_engine = DecisionEngine()
 
 ModelFactory = Callable[[str], BaseModel]
 
@@ -191,8 +193,6 @@ class DrillSignalService:
         ta_probability = (score + 1.0) / 2.0
         preparation = self.store.preparation(drill_id, portfolio, symbol)
         ml_probability: float | None = None
-        source = "TA_ONLY"
-        fused = ta_probability
 
         if preparation and preparation["approved"] and preparation["artifact_path"]:
             try:
@@ -201,8 +201,6 @@ class DrillSignalService:
                 data = get_storage().get(preparation["artifact_path"])
                 model = joblib.load(io.BytesIO(data))
                 ml_probability = float(model.predict_proba(features))
-                fused = settings.model_weight * ml_probability + settings.ta_weight * ta_probability
-                source = "ML_TA"
             except Exception as exc:
                 self.store.record_event(
                     drill_id,
@@ -213,19 +211,14 @@ class DrillSignalService:
                     occurred_at=decided_at,
                 )
 
-        if fused >= settings.signal_threshold:
-            signal = "BUY"
-        elif fused <= 1.0 - settings.signal_threshold:
-            signal = "SELL"
-        else:
-            signal = "HOLD"
+        decision = _engine.decide(ml_probability=ml_probability, ta_probability=ta_probability)
         return SignalDecision(
             symbol=symbol,
             portfolio=portfolio,
-            signal=signal,
-            source=source,
+            signal=decision.signal,
+            source=decision.source,
             decided_at=decided_at,
-            ml_probability=ml_probability,
-            ta_probability=ta_probability,
-            reason=f"fused probability {fused:.4f}",
+            ml_probability=decision.ml_probability,
+            ta_probability=decision.ta_probability,
+            reason=decision.reason,
         )
