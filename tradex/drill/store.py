@@ -86,6 +86,8 @@ class DrillStore:
                     price REAL NOT NULL,
                     source TEXT NOT NULL,
                     source_timestamp TEXT NOT NULL,
+                    period_start TEXT,
+                    period_end TEXT,
                     captured_at TEXT NOT NULL,
                     FOREIGN KEY (drill_id) REFERENCES drills(id)
                 );
@@ -99,6 +101,11 @@ class DrillStore:
                     source TEXT NOT NULL,
                     ml_probability REAL,
                     ta_probability REAL,
+                    fused_probability REAL NOT NULL DEFAULT 0.5,
+                    confidence REAL NOT NULL DEFAULT 0,
+                    threshold_used REAL NOT NULL DEFAULT 0.5,
+                    policy_version TEXT NOT NULL DEFAULT '',
+                    confirmation_json TEXT NOT NULL DEFAULT '{}',
                     reason TEXT NOT NULL,
                     decided_at TEXT NOT NULL,
                     UNIQUE (drill_id, portfolio, symbol, decided_at),
@@ -183,8 +190,45 @@ class DrillStore:
                     UNIQUE (drill_id, portfolio, recorded_at),
                     FOREIGN KEY (drill_id) REFERENCES drills(id)
                 );
+
+                CREATE TABLE IF NOT EXISTS entry_states (
+                    drill_id INTEGER NOT NULL,
+                    portfolio TEXT NOT NULL,
+                    symbol TEXT NOT NULL,
+                    state TEXT NOT NULL DEFAULT 'PENDING',
+                    failures INTEGER NOT NULL DEFAULT 0,
+                    reason TEXT NOT NULL DEFAULT '',
+                    updated_at TEXT NOT NULL,
+                    PRIMARY KEY (drill_id, portfolio, symbol),
+                    FOREIGN KEY (drill_id) REFERENCES drills(id)
+                );
+
+                CREATE TABLE IF NOT EXISTS symbol_health (
+                    drill_id INTEGER NOT NULL,
+                    portfolio TEXT NOT NULL,
+                    symbol TEXT NOT NULL,
+                    consecutive_failures INTEGER NOT NULL DEFAULT 0,
+                    disabled INTEGER NOT NULL DEFAULT 0,
+                    last_error TEXT NOT NULL DEFAULT '',
+                    updated_at TEXT NOT NULL,
+                    PRIMARY KEY (drill_id, portfolio, symbol),
+                    FOREIGN KEY (drill_id) REFERENCES drills(id)
+                );
                 """
             )
+            self._add_column(db, "prices", "period_start", "TEXT")
+            self._add_column(db, "prices", "period_end", "TEXT")
+            self._add_column(db, "signals", "fused_probability", "REAL NOT NULL DEFAULT 0.5")
+            self._add_column(db, "signals", "confidence", "REAL NOT NULL DEFAULT 0")
+            self._add_column(db, "signals", "threshold_used", "REAL NOT NULL DEFAULT 0.5")
+            self._add_column(db, "signals", "policy_version", "TEXT NOT NULL DEFAULT ''")
+            self._add_column(db, "signals", "confirmation_json", "TEXT NOT NULL DEFAULT '{}'")
+
+    @staticmethod
+    def _add_column(db: sqlite3.Connection, table: str, column: str, declaration: str) -> None:
+        columns = {row["name"] for row in db.execute(f"PRAGMA table_info({table})")}
+        if column not in columns:
+            db.execute(f"ALTER TABLE {table} ADD COLUMN {column} {declaration}")
 
     @staticmethod
     def _now() -> str:
@@ -226,7 +270,76 @@ class DrillStore:
                         config.initial_capital,
                     ),
                 )
+            self._initialize_symbol_state(db, drill_id, config)
         return drill_id
+
+    def _initialize_symbol_state(
+        self, db: sqlite3.Connection, drill_id: int, config: DrillConfig
+    ) -> None:
+        now = self._now()
+        for portfolio, symbols in (
+            ("STOCK", config.stock_symbols),
+            ("CRYPTO", config.crypto_symbols),
+        ):
+            for symbol in symbols:
+                db.execute(
+                    """
+                    INSERT OR IGNORE INTO entry_states(
+                        drill_id, portfolio, symbol, state, updated_at
+                    ) VALUES (?, ?, ?, 'PENDING', ?)
+                    """,
+                    (drill_id, portfolio, symbol, now),
+                )
+                db.execute(
+                    """
+                    INSERT OR IGNORE INTO symbol_health(
+                        drill_id, portfolio, symbol, updated_at
+                    ) VALUES (?, ?, ?, ?)
+                    """,
+                    (drill_id, portfolio, symbol, now),
+                )
+
+    def has_fills(self, drill_id: int) -> bool:
+        with self.connection() as db:
+            row = db.execute(
+                "SELECT 1 FROM fills WHERE drill_id = ? LIMIT 1", (drill_id,)
+            ).fetchone()
+        return row is not None
+
+    def reset_for_preparation(self, drill_id: int, config: DrillConfig) -> None:
+        if self.has_fills(drill_id):
+            raise ValueError("cannot force-prepare a drill that already has fills")
+        with self.connection() as db:
+            for table in (
+                "model_preparations",
+                "signals",
+                "orders",
+                "positions",
+                "prices",
+                "equity_points",
+                "entry_states",
+                "symbol_health",
+            ):
+                db.execute(f"DELETE FROM {table} WHERE drill_id = ?", (drill_id,))
+            db.execute(
+                """
+                UPDATE portfolios
+                SET cash = initial_capital, realized_pnl = 0, fees = 0,
+                    slippage = 0, peak_equity = initial_capital, halted = 0,
+                    data_failures = 0
+                WHERE drill_id = ?
+                """,
+                (drill_id,),
+            )
+            db.execute(
+                """
+                UPDATE drills
+                SET status = 'CREATED', config_json = ?, halt_reason = '', updated_at = ?
+                WHERE id = ?
+                """,
+                (json.dumps(config.to_dict()), self._now(), drill_id),
+            )
+            self._initialize_symbol_state(db, drill_id, config)
 
     def latest_drill_id(self) -> int | None:
         with self.connection() as db:
@@ -314,8 +427,8 @@ class DrillStore:
                 """
                 INSERT INTO prices(
                     drill_id, portfolio, symbol, price, source,
-                    source_timestamp, captured_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                    source_timestamp, period_start, period_end, captured_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     drill_id,
@@ -324,6 +437,8 @@ class DrillStore:
                     quote.price,
                     quote.source,
                     quote.source_timestamp.isoformat(),
+                    quote.period_start.isoformat(),
+                    quote.period_end.isoformat(),
                     quote.captured_at.isoformat(),
                 ),
             )
@@ -347,8 +462,9 @@ class DrillStore:
                 """
                 INSERT OR IGNORE INTO signals(
                     drill_id, portfolio, symbol, signal, source, ml_probability,
-                    ta_probability, reason, decided_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ta_probability, fused_probability, confidence, threshold_used,
+                    policy_version, confirmation_json, reason, decided_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     drill_id,
@@ -358,10 +474,136 @@ class DrillStore:
                     decision.source,
                     decision.ml_probability,
                     decision.ta_probability,
+                    decision.fused_probability,
+                    decision.confidence,
+                    decision.threshold_used,
+                    decision.policy_version,
+                    json.dumps(decision.confirmation_details, sort_keys=True),
                     decision.reason,
                     decision.decided_at.isoformat(),
                 ),
             )
+
+    def entry_states(self, drill_id: int, state: str | None = None) -> list[dict]:
+        sql = "SELECT * FROM entry_states WHERE drill_id = ?"
+        params: list[Any] = [drill_id]
+        if state:
+            sql += " AND state = ?"
+            params.append(state)
+        sql += " ORDER BY portfolio, symbol"
+        with self.connection() as db:
+            return self._rows(db.execute(sql, params).fetchall())
+
+    def set_entry_state(
+        self,
+        drill_id: int,
+        portfolio: str,
+        symbol: str,
+        state: str,
+        reason: str = "",
+    ) -> None:
+        with self.connection() as db:
+            db.execute(
+                """
+                UPDATE entry_states
+                SET state = ?, reason = ?, updated_at = ?
+                WHERE drill_id = ? AND portfolio = ? AND symbol = ?
+                """,
+                (state, reason, self._now(), drill_id, portfolio, symbol),
+            )
+
+    def record_entry_failure(
+        self,
+        drill_id: int,
+        portfolio: str,
+        symbol: str,
+        reason: str,
+        max_failures: int,
+    ) -> int:
+        with self.connection() as db:
+            db.execute(
+                """
+                UPDATE entry_states
+                SET failures = failures + 1, reason = ?, updated_at = ?
+                WHERE drill_id = ? AND portfolio = ? AND symbol = ?
+                """,
+                (reason, self._now(), drill_id, portfolio, symbol),
+            )
+            row = db.execute(
+                """
+                SELECT failures FROM entry_states
+                WHERE drill_id = ? AND portfolio = ? AND symbol = ?
+                """,
+                (drill_id, portfolio, symbol),
+            ).fetchone()
+            failures = int(row["failures"])
+            if failures >= max_failures:
+                db.execute(
+                    """
+                    UPDATE entry_states SET state = 'EXPIRED', updated_at = ?
+                    WHERE drill_id = ? AND portfolio = ? AND symbol = ?
+                    """,
+                    (self._now(), drill_id, portfolio, symbol),
+                )
+        return failures
+
+    def symbol_health(self, drill_id: int) -> list[dict]:
+        with self.connection() as db:
+            rows = db.execute(
+                """
+                SELECT * FROM symbol_health
+                WHERE drill_id = ? ORDER BY portfolio, symbol
+                """,
+                (drill_id,),
+            ).fetchall()
+        return self._rows(rows)
+
+    def record_symbol_success(self, drill_id: int, portfolio: str, symbol: str) -> None:
+        with self.connection() as db:
+            db.execute(
+                """
+                UPDATE symbol_health
+                SET consecutive_failures = 0, last_error = '', updated_at = ?
+                WHERE drill_id = ? AND portfolio = ? AND symbol = ?
+                """,
+                (self._now(), drill_id, portfolio, symbol),
+            )
+
+    def record_symbol_failure(
+        self,
+        drill_id: int,
+        portfolio: str,
+        symbol: str,
+        error: str,
+        max_failures: int,
+    ) -> int:
+        with self.connection() as db:
+            db.execute(
+                """
+                UPDATE symbol_health
+                SET consecutive_failures = consecutive_failures + 1,
+                    last_error = ?, updated_at = ?
+                WHERE drill_id = ? AND portfolio = ? AND symbol = ?
+                """,
+                (error, self._now(), drill_id, portfolio, symbol),
+            )
+            row = db.execute(
+                """
+                SELECT consecutive_failures FROM symbol_health
+                WHERE drill_id = ? AND portfolio = ? AND symbol = ?
+                """,
+                (drill_id, portfolio, symbol),
+            ).fetchone()
+            failures = int(row["consecutive_failures"])
+            if failures >= max_failures:
+                db.execute(
+                    """
+                    UPDATE symbol_health SET disabled = 1, updated_at = ?
+                    WHERE drill_id = ? AND portfolio = ? AND symbol = ?
+                    """,
+                    (self._now(), drill_id, portfolio, symbol),
+                )
+        return failures
 
     def create_order(
         self,
@@ -684,23 +926,27 @@ class DrillStore:
             "equity_points",
             "prices",
             "model_preparations",
+            "entry_states",
+            "symbol_health",
         }
         if name not in allowed:
             raise ValueError(f"Unsupported table {name}")
         with self.connection() as db:
-            rows = db.execute(
-                f"SELECT * FROM {name} WHERE drill_id = ? ORDER BY id"
-                if name != "model_preparations"
-                else """
+            if name in {"model_preparations", "entry_states", "symbol_health"}:
+                sql = """
                     SELECT * FROM model_preparations
                     WHERE drill_id = ? ORDER BY portfolio, symbol
-                """,
-                (drill_id,),
-            ).fetchall()
+                """
+                sql = sql.replace("model_preparations", name)
+            else:
+                sql = f"SELECT * FROM {name} WHERE drill_id = ? ORDER BY id"
+            rows = db.execute(sql, (drill_id,)).fetchall()
         results = self._rows(rows)
         for item in results:
             if "details_json" in item:
                 item["details"] = json.loads(item.pop("details_json"))
             if "metrics_json" in item:
                 item["metrics"] = json.loads(item.pop("metrics_json"))
+            if "confirmation_json" in item:
+                item["confirmation_details"] = json.loads(item.pop("confirmation_json"))
         return results

@@ -311,12 +311,20 @@ def drill() -> None:
 
 @drill.command("prepare")
 @click.option("--date", "session_date", required=True, type=click.DateTime(["%Y-%m-%d"]))
-def prepare_drill(session_date) -> None:
+@click.option(
+    "--force",
+    is_flag=True,
+    help="Re-prepare an existing drill only when it has no fills.",
+)
+def prepare_drill(session_date, force: bool) -> None:
     """Fetch daily data, validate models, and prepare drill artifacts."""
     from tradex.drill.engine import default_engine
 
     engine = default_engine()
-    drill_id = engine.prepare(session_date.date())
+    try:
+        drill_id = engine.prepare(session_date.date(), force=force)
+    except ValueError as exc:
+        raise click.ClickException(str(exc)) from exc
     console.print(f"[green]Prepared drill {drill_id} for {session_date:%Y-%m-%d}[/green]")
 
 

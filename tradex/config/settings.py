@@ -23,8 +23,10 @@ class Settings:
     prediction_horizon: int = 1
     train_test_split: float = 0.8
     signal_threshold: float = 0.55
+    ta_only_signal_threshold: float = 0.65
     model_weight: float = 0.6
     ta_weight: float = 0.4
+    decision_policy_version: str = "2.0"
 
     # Storage backend: "local" or "s3"
     storage_backend: str = "local"
@@ -84,6 +86,9 @@ class Settings:
     drill_take_profit_rate: float = 0.02
     drill_max_drawdown_rate: float = 0.01
     drill_max_price_age_minutes: int = 10
+    drill_max_future_seconds: int = 60
+    drill_min_quote_coverage: float = 0.60
+    drill_max_symbol_failures: int = 3
     drill_stock_slippage_rate: float = 0.0002
     drill_stock_fixed_fee: float = 0.35
     drill_crypto_slippage_rate: float = 0.0005

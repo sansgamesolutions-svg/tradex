@@ -40,10 +40,13 @@ class DrillEngine:
         self.clock = clock or (lambda: datetime.now(UTC))
         self.signals = DrillSignalService(self.store, self.market_data)
 
-    def prepare(self, session_date: date) -> int:
+    def prepare(self, session_date: date, *, force: bool = False) -> int:
         config = DrillConfig.from_settings(session_date)
         drill_id = self.store.create_drill(config)
         drill = self.store.drill(drill_id)
+        if force:
+            self.store.reset_for_preparation(drill_id, config)
+            drill = self.store.drill(drill_id)
         if drill["status"] in {"PREPARED", "RUNNING", "COMPLETED"}:
             return drill_id
         self.store.record_event(drill_id, "OPERATIONS", "Model preparation started")
@@ -74,16 +77,10 @@ class DrillEngine:
         self._fill_pending_orders(drill_id, config, quotes, current)
         self._evaluate_exits(drill_id, config, quotes, current)
 
-        if config.entries_at <= local < config.stop_entries_at and not self._entries_evaluated(
-            drill_id
-        ):
+        if config.entries_at <= local <= config.entry_retry_deadline:
             self._evaluate_entries(drill_id, config, quotes, current)
-            self.store.record_event(
-                drill_id,
-                "ENTRY_EVALUATED",
-                "Daily entry signals evaluated",
-                occurred_at=current,
-            )
+        elif local > config.entry_retry_deadline:
+            self._expire_unresolved_entries(drill_id, current)
 
         if local >= config.force_close_at:
             self._force_close(drill_id, config, current)
@@ -152,6 +149,8 @@ class DrillEngine:
             "equity_curve": self.store.table("equity_points", drill_id),
             "preparations": self.store.table("model_preparations", drill_id),
             "prices": self.store.table("prices", drill_id)[-50:],
+            "entry_states": self.store.entry_states(drill_id),
+            "symbol_health": self.store.symbol_health(drill_id),
         }
 
     def _capture_quotes(
@@ -165,32 +164,51 @@ class DrillEngine:
             ("STOCK", config.stock_symbols),
             ("CRYPTO", config.crypto_symbols),
         ):
-            failures = 0
+            if not symbols:
+                self.store.update_data_failures(drill_id, kind, 0)
+                continue
+            valid = 0
+            health = {
+                item["symbol"]: item
+                for item in self.store.symbol_health(drill_id)
+                if item["portfolio"] == kind
+            }
             for symbol in symbols:
+                if health.get(symbol, {}).get("disabled"):
+                    continue
                 try:
                     quote = self.market_data.fetch_quote(kind, symbol, now)
+                    self._validate_quote(quote, config, now)
                     self.store.record_price(drill_id, quote)
+                    self.store.record_symbol_success(drill_id, kind, symbol)
                     quotes[(kind, symbol)] = quote
+                    valid += 1
                 except Exception as exc:
-                    failures += 1
+                    failures = self.store.record_symbol_failure(
+                        drill_id, kind, symbol, str(exc), config.max_symbol_failures
+                    )
                     self.store.record_event(
                         drill_id,
                         "DATA",
                         f"{kind} {symbol} quote failed",
                         level="WARNING",
-                        details={"error": str(exc)},
+                        details={"error": str(exc), "consecutive_failures": failures},
                         occurred_at=now,
                     )
             portfolio = self.store.portfolio(drill_id, kind)
-            consecutive = int(portfolio["data_failures"]) + 1 if failures else 0
+            coverage = valid / len(symbols)
+            consecutive = (
+                int(portfolio["data_failures"]) + 1 if coverage < config.min_quote_coverage else 0
+            )
             self.store.update_data_failures(drill_id, kind, consecutive)
             if consecutive >= 3:
                 self.store.set_portfolio_halted(drill_id, kind, True)
                 self.store.record_event(
                     drill_id,
                     "RISK",
-                    f"{kind} entries halted after repeated market-data failures",
+                    f"{kind} entries halted after repeated low quote coverage",
                     level="WARNING",
+                    details={"coverage": coverage},
                     occurred_at=now,
                 )
         return quotes
@@ -207,7 +225,20 @@ class DrillEngine:
             ("CRYPTO", config.crypto_symbols),
         ):
             decisions = []
+            pending = {
+                item["symbol"]
+                for item in self.store.entry_states(drill_id, "PENDING")
+                if item["portfolio"] == kind
+            }
             for symbol in symbols:
+                if symbol not in pending:
+                    continue
+                quote = quotes.get((kind, symbol))
+                if quote is None:
+                    self._entry_failure(
+                        drill_id, config, kind, symbol, "fresh quote unavailable", now
+                    )
+                    continue
                 try:
                     decision = self.signals.decide(drill_id, config, kind, symbol, now)
                 except Exception as exc:
@@ -219,22 +250,21 @@ class DrillEngine:
                         details={"error": str(exc)},
                         occurred_at=now,
                     )
+                    self._entry_failure(
+                        drill_id, config, kind, symbol, f"signal failed: {exc}", now
+                    )
                     continue
                 self.store.record_signal(drill_id, decision)
+                if decision.signal != "BUY":
+                    self.store.set_entry_state(drill_id, kind, symbol, "NO_TRADE", decision.signal)
                 decisions.append(decision)
 
             ranked = sorted(
-                decisions,
-                key=lambda item: (
-                    item.ml_probability
-                    if item.ml_probability is not None
-                    else item.ta_probability or 0.0
-                ),
+                (item for item in decisions if item.signal == "BUY"),
+                key=lambda item: (item.fused_probability, item.confidence),
                 reverse=True,
             )
             for decision in ranked:
-                if decision.signal != "BUY":
-                    continue
                 quote = quotes.get((kind, decision.symbol))
                 risk = self._entry_risk(
                     drill_id,
@@ -252,8 +282,11 @@ class DrillEngine:
                         details={"estimated_all_in_cost": risk.estimated_all_in_cost},
                         occurred_at=now,
                     )
+                    self.store.set_entry_state(
+                        drill_id, kind, decision.symbol, "REJECTED", risk.reason
+                    )
                     continue
-                order_id = self.store.create_order(
+                self.store.create_order(
                     drill_id,
                     kind,
                     decision.symbol,
@@ -263,7 +296,9 @@ class DrillEngine:
                     f"{drill_id}:{kind}:{decision.symbol}:ENTRY",
                     now,
                 )
-                self._fill_order_with_fresh_quote(order_id, drill_id, config, kind, now)
+                self.store.set_entry_state(
+                    drill_id, kind, decision.symbol, "ORDER_CREATED", "accepted"
+                )
 
     def _entry_risk(
         self,
@@ -279,11 +314,17 @@ class DrillEngine:
             return RiskDecision(False, "portfolio is halted")
         if quote is None:
             return RiskDecision(False, "no current price")
-        age = now.astimezone(UTC) - quote.source_timestamp.astimezone(UTC)
-        if age > timedelta(minutes=config.max_price_age_minutes):
-            return RiskDecision(False, "price is stale")
+        try:
+            self._validate_quote(quote, config, now)
+        except ValueError as exc:
+            return RiskDecision(False, str(exc))
         open_positions = self.store.open_positions(drill_id, kind)
-        if len(open_positions) >= config.max_open_positions:
+        pending_entries = [
+            order
+            for order in self.store.pending_orders(drill_id)
+            if order["portfolio"] == kind and order["side"] == "BUY"
+        ]
+        if len(open_positions) + len(pending_entries) >= config.max_open_positions:
             return RiskDecision(False, "maximum open positions reached")
         if any(position["symbol"] == symbol for position in open_positions):
             return RiskDecision(False, "symbol already has an open position")
@@ -320,7 +361,7 @@ class DrillEngine:
             elif quote.price >= position["take_profit_price"]:
                 reason = "TAKE_PROFIT"
             if reason:
-                order_id = self.store.create_order(
+                self.store.create_order(
                     drill_id,
                     position["portfolio"],
                     position["symbol"],
@@ -330,17 +371,10 @@ class DrillEngine:
                     f"{drill_id}:{position['portfolio']}:{position['symbol']}:{reason}",
                     now,
                 )
-                self._fill_order_with_fresh_quote(
-                    order_id,
-                    drill_id,
-                    config,
-                    position["portfolio"],
-                    now,
-                )
 
     def _force_close(self, drill_id: int, config: DrillConfig, now: datetime) -> None:
         for position in self.store.open_positions(drill_id):
-            order_id = self.store.create_order(
+            self.store.create_order(
                 drill_id,
                 position["portfolio"],
                 position["symbol"],
@@ -348,13 +382,6 @@ class DrillEngine:
                 position["quantity"],
                 "SESSION_CLOSE",
                 f"{drill_id}:{position['portfolio']}:{position['symbol']}:SESSION_CLOSE",
-                now,
-            )
-            self._fill_order_with_fresh_quote(
-                order_id,
-                drill_id,
-                config,
-                position["portfolio"],
                 now,
             )
 
@@ -367,37 +394,30 @@ class DrillEngine:
     ) -> None:
         for order in self.store.pending_orders(drill_id):
             quote = quotes.get((order["portfolio"], order["symbol"]))
-            if quote and quote.captured_at.isoformat() > order["created_at"]:
-                self._apply_fill(order, config, quote, now)
-
-    def _fill_order_with_fresh_quote(
-        self,
-        order_id: int,
-        drill_id: int,
-        config: DrillConfig,
-        kind: PortfolioKind,
-        now: datetime,
-    ) -> None:
-        order = next(
-            (item for item in self.store.pending_orders(drill_id) if item["id"] == order_id),
-            None,
-        )
-        if order is None:
-            return
-        captured_at = max(self.clock().astimezone(UTC), now + timedelta(microseconds=1))
-        try:
-            quote = self.market_data.fetch_quote(kind, order["symbol"], captured_at)
-            self.store.record_price(drill_id, quote)
-            self._apply_fill(order, config, quote, captured_at)
-        except Exception as exc:
-            self.store.record_event(
-                drill_id,
-                "EXECUTION",
-                f"{kind} {order['symbol']} simulated fill deferred",
-                level="WARNING",
-                details={"error": str(exc)},
-                occurred_at=now,
-            )
+            if quote is None:
+                continue
+            created_at = datetime.fromisoformat(order["created_at"]).astimezone(UTC)
+            if quote.period_end.astimezone(UTC) <= created_at:
+                self.store.record_event(
+                    drill_id,
+                    "EXECUTION",
+                    f"{order['portfolio']} {order['symbol']} simulated fill deferred",
+                    details={"reason": "no completed bar after order creation"},
+                    occurred_at=now,
+                )
+                continue
+            try:
+                self._validate_quote(quote, config, now)
+                self._apply_fill(order, config, quote, quote.period_end)
+            except Exception as exc:
+                self.store.record_event(
+                    drill_id,
+                    "EXECUTION",
+                    f"{order['portfolio']} {order['symbol']} simulated fill deferred",
+                    level="WARNING",
+                    details={"error": str(exc)},
+                    occurred_at=now,
+                )
 
     def _apply_fill(
         self,
@@ -406,7 +426,9 @@ class DrillEngine:
         quote: PriceQuote,
         filled_at: datetime,
     ) -> None:
-        if quote.captured_at.isoformat() <= order["created_at"]:
+        if quote.period_end.astimezone(UTC) <= datetime.fromisoformat(
+            order["created_at"]
+        ).astimezone(UTC):
             return
         costs = self._costs(config, order["portfolio"])
         fill_price = costs.fill_price(quote.price, order["side"])
@@ -507,14 +529,64 @@ class DrillEngine:
             fee_rate=config.crypto_fee_rate,
         )
 
-    def _entries_evaluated(self, drill_id: int) -> bool:
-        return any(
-            event["category"] == "ENTRY_EVALUATED" for event in self.store.table("events", drill_id)
+    def _entry_failure(
+        self,
+        drill_id: int,
+        config: DrillConfig,
+        kind: PortfolioKind,
+        symbol: str,
+        reason: str,
+        now: datetime,
+    ) -> None:
+        failures = self.store.record_entry_failure(
+            drill_id, kind, symbol, reason, config.max_symbol_failures
         )
+        if failures >= config.max_symbol_failures:
+            self.store.record_event(
+                drill_id,
+                "SIGNAL",
+                f"{kind} {symbol} entry evaluation expired after repeated failures",
+                level="WARNING",
+                details={"reason": reason, "failures": failures},
+                occurred_at=now,
+            )
+
+    def _expire_unresolved_entries(self, drill_id: int, now: datetime) -> None:
+        for item in self.store.entry_states(drill_id, "PENDING"):
+            self.store.set_entry_state(
+                drill_id,
+                item["portfolio"],
+                item["symbol"],
+                "EXPIRED",
+                "entry retry deadline passed",
+            )
+            self.store.record_event(
+                drill_id,
+                "SIGNAL",
+                f"{item['portfolio']} {item['symbol']} entry evaluation expired",
+                occurred_at=now,
+            )
+
+    @staticmethod
+    def _validate_quote(quote: PriceQuote, config: DrillConfig, now: datetime) -> None:
+        if not math.isfinite(quote.price) or quote.price <= 0:
+            raise ValueError("price must be finite and positive")
+        source = quote.source_timestamp.astimezone(UTC)
+        current = now.astimezone(UTC)
+        if source - current > timedelta(seconds=config.max_future_seconds):
+            raise ValueError("price timestamp is excessively future-dated")
+        if current - source > timedelta(minutes=config.max_price_age_minutes):
+            raise ValueError("price is stale")
+        if quote.period_start >= quote.period_end:
+            raise ValueError("quote period is invalid")
+        if quote.period_end.astimezone(UTC) > current:
+            raise ValueError("quote bar is not completed")
 
     @staticmethod
     def _config(drill: dict) -> DrillConfig:
-        payload = dict(drill["config"])
+        session_date = date.fromisoformat(drill["session_date"])
+        payload = DrillConfig.from_settings(session_date).to_dict()
+        payload.update(drill["config"])
         payload["session_date"] = date.fromisoformat(payload["session_date"])
         payload["stock_symbols"] = tuple(payload["stock_symbols"])
         payload["crypto_symbols"] = tuple(payload["crypto_symbols"])

@@ -32,11 +32,17 @@ class DrillConfig:
     take_profit_rate: float = 0.02
     max_drawdown_rate: float = 0.01
     max_price_age_minutes: int = 10
+    max_future_seconds: int = 60
+    min_quote_coverage: float = 0.60
+    max_symbol_failures: int = 3
     stock_slippage_rate: float = 0.0002
     stock_fixed_fee: float = 0.35
     crypto_slippage_rate: float = 0.0005
     crypto_fee_rate: float = 0.004
     model_name: str = "xgboost"
+    ml_ta_signal_threshold: float = 0.55
+    ta_only_signal_threshold: float = 0.65
+    decision_policy_version: str = "2.0"
 
     @classmethod
     def from_settings(cls, session_date: date) -> DrillConfig:
@@ -49,10 +55,16 @@ class DrillConfig:
             take_profit_rate=float(settings.drill_take_profit_rate),
             max_drawdown_rate=float(settings.drill_max_drawdown_rate),
             max_price_age_minutes=int(settings.drill_max_price_age_minutes),
+            max_future_seconds=int(settings.drill_max_future_seconds),
+            min_quote_coverage=float(settings.drill_min_quote_coverage),
+            max_symbol_failures=int(settings.drill_max_symbol_failures),
             stock_slippage_rate=float(settings.drill_stock_slippage_rate),
             stock_fixed_fee=float(settings.drill_stock_fixed_fee),
             crypto_slippage_rate=float(settings.drill_crypto_slippage_rate),
             crypto_fee_rate=float(settings.drill_crypto_fee_rate),
+            ml_ta_signal_threshold=float(settings.signal_threshold),
+            ta_only_signal_threshold=float(settings.ta_only_signal_threshold),
+            decision_policy_version=str(settings.decision_policy_version),
         )
 
     def at(self, value: time) -> datetime:
@@ -75,6 +87,10 @@ class DrillConfig:
         return self.at(time(15, 50))
 
     @property
+    def entry_retry_deadline(self) -> datetime:
+        return self.at(time(10, 0))
+
+    @property
     def force_close_at(self) -> datetime:
         return self.at(time(15, 55))
 
@@ -95,6 +111,8 @@ class PriceQuote:
     price: float
     source: str
     source_timestamp: datetime
+    period_start: datetime
+    period_end: datetime
     captured_at: datetime
 
 
@@ -107,6 +125,11 @@ class SignalDecision:
     decided_at: datetime
     ml_probability: float | None = None
     ta_probability: float | None = None
+    fused_probability: float = 0.5
+    confidence: float = 0.0
+    threshold_used: float = 0.5
+    policy_version: str = ""
+    confirmation_details: dict[str, bool] = field(default_factory=dict)
     reason: str = ""
 
 

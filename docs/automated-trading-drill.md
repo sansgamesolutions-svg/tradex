@@ -10,6 +10,7 @@ Prepare the fixed watchlists before `9:20 a.m. ET`:
 
 ```powershell
 uv run python -m tradex drill prepare --date 2026-06-12
+uv run python -m tradex drill prepare --date 2026-06-12 --force
 ```
 
 Start the blocking session scheduler before the `9:30 a.m. ET` open:
@@ -26,9 +27,13 @@ uv run uvicorn tradex.api.app:app --host 127.0.0.1 --port 8000
 
 Open `http://127.0.0.1:8000/drill`.
 
-The scheduler evaluates entries once at `9:35 a.m.`, monitors prices and exits
-every five minutes, stops new entries at `3:50 p.m.`, closes remaining positions
-at `3:55 p.m.`, and writes reports after `4:00 p.m. ET`.
+The scheduler begins entry evaluation at `9:35 a.m.`, retries only unresolved
+symbols every five minutes through `10:00 a.m.`, monitors prices and exits every
+five minutes, stops new entries at `3:50 p.m.`, closes remaining positions at
+`3:55 p.m.`, and writes reports after `4:00 p.m. ET`.
+
+`--force` safely refreshes an existing preparation and is refused after any
+simulated fill has been recorded.
 
 ## Other Commands
 
@@ -50,8 +55,18 @@ SQLite database is the source of truth after a restart.
 - Long-only with no leverage and no re-entry
 - 1% stop loss and 2% take profit
 - New-entry halt at a 1% portfolio drawdown
-- New-entry halt after three consecutive quote-failure cycles
+- Per-symbol disablement after three consecutive quote failures
+- Portfolio entry halt after quote coverage stays below 60% for three cycles
 - Entry rejection for prices more than ten minutes stale
+
+TA-only fallback uses policy version `2.0` and requires EMA20 above EMA50, a
+positive MACD histogram, RSI below 70, and TA probability of at least `0.65`.
+Bearish reports use the symmetric confirmation policy. ML+TA decisions retain
+the `0.55` fused threshold.
+
+Orders cannot fill from the bar used to create them. A 9:35 order can first
+fill from the completed bar ending at 9:40. This rule also applies to stop,
+target, and session-close orders.
 
 Stock simulation uses two basis points of adverse slippage and `$0.35` per
 order. Crypto uses five basis points of adverse slippage and a 0.40% taker fee.
