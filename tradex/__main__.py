@@ -36,10 +36,11 @@ def predict(asset: str, timeframe: str, model: str) -> None:
     features = build_features(raw_df)
 
     combiner = SignalCombiner(model_name=model, asset=asset, timeframe=timeframe)
-    signal = combiner.predict(features, raw_df)
+    decision = combiner.predict(features, raw_df)
 
-    color = {"BUY": "green", "SELL": "red", "HOLD": "yellow"}[signal]
-    console.print(f"Signal for [bold]{asset}[/bold]: [{color}]{signal}[/{color}]")
+    color = {"BUY": "green", "SELL": "red", "HOLD": "yellow"}[decision.signal]
+    console.print(f"Signal for [bold]{asset}[/bold]: [{color}]{decision.signal}[/{color}]")
+    console.print(f"  Confidence: {decision.confidence:.2%}  Source: {decision.source}  Reason: {decision.reason}")
 
 
 @cli.command()
@@ -65,7 +66,7 @@ def backtest(asset: str, timeframe: str, start: str, end: str | None, model: str
     raw_df = add_indicators(raw_df)
     features = build_features(raw_df)
 
-    bt = Backtester(model_name=model)
+    bt = Backtester(model_name=model, asset=asset, timeframe=timeframe)
     results = bt.run(features, raw_df)
     bt.print_report(results)
 
