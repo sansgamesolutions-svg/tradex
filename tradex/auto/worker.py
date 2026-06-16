@@ -37,7 +37,7 @@ class AutoTradingWorker:
             self.scheduler.shutdown(wait=False)
 
     def tick(self) -> None:
-        drill_id = self.engine.store.latest_drill_id()
+        drill_id = self.engine.active_run_id()
         if drill_id is None:
             return
         drill = self.engine.store.drill(drill_id)
@@ -45,7 +45,7 @@ class AutoTradingWorker:
             self.engine.run_cycle(drill_id)
 
     def health(self) -> dict:
-        drill_id = self.engine.store.latest_drill_id()
+        drill_id = self.engine.active_run_id()
         active = self.engine.store.drill(drill_id) if drill_id is not None else None
         return {
             "running": self.running,

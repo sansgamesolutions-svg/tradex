@@ -1,6 +1,11 @@
 from tradex.auto.broker import BrokerRouter
 from tradex.auto.engine import AutoTradingEngine, default_engine
-from tradex.auto.profiles import available_profiles, get_profile, one_day_drill_profile
+from tradex.auto.profiles import (
+    available_profiles,
+    get_profile,
+    one_day_drill_profile,
+    stocks_only_week_drill_profile,
+)
 from tradex.auto.types import (
     AutoTradingConfig,
     BrokerRoute,
@@ -29,4 +34,5 @@ __all__ = [
     "default_engine",
     "get_profile",
     "one_day_drill_profile",
+    "stocks_only_week_drill_profile",
 ]

@@ -34,7 +34,7 @@ def auto_runs() -> dict:
 @router.get("/api/auto/status")
 def auto_status() -> dict:
     engine = default_engine()
-    drill_id = engine.store.latest_drill_id()
+    drill_id = engine.active_run_id()
     if drill_id is None:
         raise HTTPException(status_code=404, detail="No automation run has been created")
     return engine.status(drill_id)
@@ -45,7 +45,7 @@ def auto_halt(request: HaltRequest) -> dict:
     if request.confirmation != "HALT":
         raise HTTPException(status_code=400, detail="confirmation must be HALT")
     engine = default_engine()
-    drill_id = engine.store.latest_drill_id()
+    drill_id = engine.active_run_id()
     if drill_id is None:
         raise HTTPException(status_code=404, detail="No automation run has been created")
     engine.halt(drill_id, request.reason)

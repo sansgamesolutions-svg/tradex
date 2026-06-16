@@ -5,7 +5,7 @@ from datetime import UTC, date, datetime
 import pytest
 
 from tradex.auto.engine import AutoTradingEngine
-from tradex.auto.profiles import one_day_drill_profile
+from tradex.auto.profiles import one_day_drill_profile, stocks_only_week_drill_profile
 from tradex.auto.types import TradingProfile
 from tradex.drill.store import DrillStore
 from tradex.execution.models import OrderRequest
@@ -89,3 +89,34 @@ def test_status_exposes_profile_execution_and_scheduler_health(tmp_path):
     assert status["profile"]["execution_mode"] == "SIMULATED"
     assert status["automation"]["broker_execution_enabled"] is False
     assert "scheduler_health" in status
+
+
+def test_stock_only_profile_creates_only_stock_portfolio(tmp_path):
+    profile = stocks_only_week_drill_profile()
+    engine = AutoTradingEngine(profile=profile, store=DrillStore(tmp_path / "auto.sqlite3"))
+    engine.signals.prepare = lambda drill_id, config: None
+
+    drill_id = engine.prepare(date(2026, 6, 17), force=True)
+
+    drill = engine.store.drill(drill_id)
+    portfolios = engine.store.portfolios(drill_id)
+    assert drill["profile_name"] == "stocks-only-week-drill"
+    assert drill["config"]["crypto_symbols"] == []
+    assert [portfolio["kind"] for portfolio in portfolios] == ["STOCK"]
+
+
+def test_active_run_id_selects_earliest_future_prepared_run(tmp_path):
+    profile = stocks_only_week_drill_profile()
+    store = DrillStore(tmp_path / "auto.sqlite3")
+    engine = AutoTradingEngine(
+        profile=profile,
+        store=store,
+        clock=lambda: datetime(2026, 6, 16, 16, 0, tzinfo=UTC),
+    )
+    engine.signals.prepare = lambda drill_id, config: None
+
+    later = engine.prepare(date(2026, 6, 19), force=True)
+    earlier = engine.prepare(date(2026, 6, 17), force=True)
+
+    assert engine.active_run_id() == earlier
+    assert later != earlier

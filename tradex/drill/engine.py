@@ -60,7 +60,8 @@ class DrillEngine:
 
     def halt(self, drill_id: int, reason: str = "manual emergency halt") -> None:
         self.store.set_status(drill_id, "HALTED", reason)
-        for kind in ("STOCK", "CRYPTO"):
+        config = self._config(self.store.drill(drill_id))
+        for kind in self._configured_portfolios(config):
             self.store.set_portfolio_halted(drill_id, kind, True)
         self.store.record_event(drill_id, "OPERATIONS", reason, level="WARNING")
 
@@ -141,7 +142,10 @@ class DrillEngine:
     def status(self, drill_id: int) -> dict:
         drill = self.store.drill(drill_id)
         config = self._config(drill)
-        views = [self._portfolio_view(drill_id, kind, config) for kind in ("STOCK", "CRYPTO")]
+        views = [
+            self._portfolio_view(drill_id, kind, config)
+            for kind in self._configured_portfolios(config)
+        ]
         return {
             "drill": drill,
             "portfolios": [view.__dict__ for view in views],
@@ -167,9 +171,6 @@ class DrillEngine:
             ("STOCK", config.stock_symbols),
             ("CRYPTO", config.crypto_symbols),
         ):
-            if not symbols:
-                self.store.update_data_failures(drill_id, kind, 0)
-                continue
             valid = 0
             health = {
                 item["symbol"]: item
@@ -484,7 +485,7 @@ class DrillEngine:
         config: DrillConfig,
         now: datetime,
     ) -> None:
-        for kind in ("STOCK", "CRYPTO"):
+        for kind in self._configured_portfolios(config):
             view = self._portfolio_view(drill_id, kind, config)
             self.store.record_equity(drill_id, kind, view.equity, view.cash, now)
             portfolio = self.store.portfolio(drill_id, kind)
@@ -509,6 +510,15 @@ class DrillEngine:
                     level="WARNING",
                     occurred_at=now,
                 )
+
+    @staticmethod
+    def _configured_portfolios(config: DrillConfig) -> tuple[PortfolioKind, ...]:
+        kinds: list[PortfolioKind] = []
+        if config.stock_symbols:
+            kinds.append("STOCK")
+        if config.crypto_symbols:
+            kinds.append("CRYPTO")
+        return tuple(kinds)
 
     def _portfolio_view(
         self,

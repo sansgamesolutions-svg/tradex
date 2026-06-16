@@ -360,6 +360,58 @@ def auto_prepare_cmd(profile_name: str, session_date, force: bool) -> None:
     )
 
 
+@auto.command("prepare-week")
+@click.option(
+    "--profile",
+    "profile_name",
+    default="stocks-only-week-drill",
+    show_default=True,
+)
+@click.option("--start", "start_date", required=True, type=click.DateTime(["%Y-%m-%d"]))
+@click.option("--end", "end_date", required=True, type=click.DateTime(["%Y-%m-%d"]))
+@click.option(
+    "--exclude-date",
+    "exclude_dates",
+    multiple=True,
+    type=click.DateTime(["%Y-%m-%d"]),
+    help="Market-closed date to skip. Repeat for multiple dates.",
+)
+@click.option(
+    "--force",
+    is_flag=True,
+    help="Re-prepare existing runs only when they have no fills.",
+)
+def auto_prepare_week_cmd(
+    profile_name: str, start_date, end_date, exclude_dates, force: bool
+) -> None:
+    """Prepare weekday sessions for an automatic paper-trading profile."""
+    from datetime import timedelta
+
+    if end_date.date() < start_date.date():
+        raise click.ClickException("--end must be on or after --start")
+
+    engine = _auto_engine(profile_name)
+    excluded = {value.date() for value in exclude_dates}
+    prepared = []
+    current = start_date.date()
+    while current <= end_date.date():
+        if current.weekday() < 5 and current not in excluded:
+            try:
+                prepared.append((current, engine.prepare(current, force=force)))
+            except ValueError as exc:
+                raise click.ClickException(str(exc)) from exc
+        current += timedelta(days=1)
+
+    if not prepared:
+        raise click.ClickException("No weekday sessions found in the requested range")
+
+    for session_date, run_id in prepared:
+        console.print(
+            f"[green]Prepared auto run {run_id} ({profile_name}) "
+            f"for {session_date:%Y-%m-%d}[/green]"
+        )
+
+
 @auto.command("run")
 @click.option(
     "--profile",
@@ -383,7 +435,7 @@ def auto_run_cmd(profile_name: str, session_date) -> None:
 def auto_status_cmd() -> None:
     """Print the latest automatic trading state."""
     engine = _auto_engine()
-    run_id = engine.store.latest_drill_id()
+    run_id = engine.active_run_id()
     if run_id is None:
         raise click.ClickException("No automatic trading run has been created")
     console.print_json(data=engine.status(run_id))
@@ -396,7 +448,7 @@ def auto_halt_cmd(yes: bool) -> None:
     if not yes and not click.confirm("Halt the latest automatic trading run?"):
         raise click.Abort()
     engine = _auto_engine()
-    run_id = engine.store.latest_drill_id()
+    run_id = engine.active_run_id()
     if run_id is None:
         raise click.ClickException("No automatic trading run has been created")
     engine.halt(run_id)

@@ -18,7 +18,8 @@ class HaltRequest(BaseModel):
 @router.get("/api/drill/status")
 def drill_status() -> dict:
     engine = default_engine()
-    drill_id = engine.store.latest_drill_id()
+    active_run_id = getattr(engine, "active_run_id", engine.store.latest_drill_id)
+    drill_id = active_run_id()
     if drill_id is None:
         raise HTTPException(status_code=404, detail="No drill has been created")
     return engine.status(drill_id)
@@ -29,7 +30,8 @@ def halt_drill(request: HaltRequest) -> dict:
     if request.confirmation != "HALT":
         raise HTTPException(status_code=400, detail="confirmation must be HALT")
     engine = default_engine()
-    drill_id = engine.store.latest_drill_id()
+    active_run_id = getattr(engine, "active_run_id", engine.store.latest_drill_id)
+    drill_id = active_run_id()
     if drill_id is None:
         raise HTTPException(status_code=404, detail="No drill has been created")
     engine.halt(drill_id, request.reason)

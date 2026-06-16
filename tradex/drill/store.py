@@ -284,24 +284,34 @@ class DrillStore:
                 (config.session_date.isoformat(),),
             ).fetchone()
             drill_id = int(row["id"])
-            for kind in ("STOCK", "CRYPTO"):
-                db.execute(
-                    """
-                    INSERT INTO portfolios(
-                        drill_id, kind, initial_capital, cash, peak_equity
-                    ) VALUES (?, ?, ?, ?, ?)
-                    ON CONFLICT(drill_id, kind) DO NOTHING
-                    """,
-                    (
-                        drill_id,
-                        kind,
-                        config.initial_capital,
-                        config.initial_capital,
-                        config.initial_capital,
-                    ),
-                )
+            self._initialize_portfolios(db, drill_id, config)
             self._initialize_symbol_state(db, drill_id, config)
         return drill_id
+
+    def _initialize_portfolios(
+        self, db: sqlite3.Connection, drill_id: int, config: DrillConfig
+    ) -> None:
+        for kind, symbols in (
+            ("STOCK", config.stock_symbols),
+            ("CRYPTO", config.crypto_symbols),
+        ):
+            if not symbols:
+                continue
+            db.execute(
+                """
+                INSERT INTO portfolios(
+                    drill_id, kind, initial_capital, cash, peak_equity
+                ) VALUES (?, ?, ?, ?, ?)
+                ON CONFLICT(drill_id, kind) DO NOTHING
+                """,
+                (
+                    drill_id,
+                    kind,
+                    config.initial_capital,
+                    config.initial_capital,
+                    config.initial_capital,
+                ),
+            )
 
     def _initialize_symbol_state(
         self, db: sqlite3.Connection, drill_id: int, config: DrillConfig
@@ -336,7 +346,15 @@ class DrillStore:
             ).fetchone()
         return row is not None
 
-    def reset_for_preparation(self, drill_id: int, config: DrillConfig) -> None:
+    def reset_for_preparation(
+        self,
+        drill_id: int,
+        config: DrillConfig,
+        *,
+        profile_name: str | None = None,
+        profile_version: str | None = None,
+        execution_mode: str | None = None,
+    ) -> None:
         if self.has_fills(drill_id):
             raise ValueError("cannot force-prepare a drill that already has fills")
         with self.connection() as db:
@@ -349,33 +367,58 @@ class DrillStore:
                 "equity_points",
                 "entry_states",
                 "symbol_health",
+                "portfolios",
             ):
                 db.execute(f"DELETE FROM {table} WHERE drill_id = ?", (drill_id,))
             db.execute(
                 """
-                UPDATE portfolios
-                SET cash = initial_capital, realized_pnl = 0, fees = 0,
-                    slippage = 0, peak_equity = initial_capital, halted = 0,
-                    data_failures = 0
-                WHERE drill_id = ?
-                """,
-                (drill_id,),
-            )
-            db.execute(
-                """
                 UPDATE drills
                 SET status = 'CREATED', config_json = ?, halt_reason = '',
+                    profile_name = COALESCE(?, profile_name),
+                    profile_version = COALESCE(?, profile_version),
+                    execution_mode = COALESCE(?, execution_mode),
                     scheduler_heartbeat_at = NULL, last_cycle_at = NULL,
                     expired_reason = '', updated_at = ?
                 WHERE id = ?
                 """,
-                (json.dumps(config.to_dict()), self._now(), drill_id),
+                (
+                    json.dumps(config.to_dict()),
+                    profile_name,
+                    profile_version,
+                    execution_mode,
+                    self._now(),
+                    drill_id,
+                ),
             )
+            self._initialize_portfolios(db, drill_id, config)
             self._initialize_symbol_state(db, drill_id, config)
 
     def latest_drill_id(self) -> int | None:
         with self.connection() as db:
             row = db.execute("SELECT id FROM drills ORDER BY id DESC LIMIT 1").fetchone()
+        return int(row["id"]) if row else None
+
+    def next_actionable_drill_id(self, today: str) -> int | None:
+        with self.connection() as db:
+            row = db.execute(
+                """
+                SELECT id FROM drills
+                WHERE status IN ('CREATED', 'PREPARED', 'RUNNING')
+                  AND session_date >= ?
+                ORDER BY session_date ASC, id ASC
+                LIMIT 1
+                """,
+                (today,),
+            ).fetchone()
+            if row is None:
+                row = db.execute(
+                    """
+                    SELECT id FROM drills
+                    WHERE status IN ('CREATED', 'PREPARED', 'RUNNING')
+                    ORDER BY session_date DESC, id DESC
+                    LIMIT 1
+                    """
+                ).fetchone()
         return int(row["id"]) if row else None
 
     def runs(self) -> list[dict[str, Any]]:

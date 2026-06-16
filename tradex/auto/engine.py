@@ -11,6 +11,7 @@ from tradex.drill.engine import DrillEngine
 from tradex.drill.market import DrillMarketData
 from tradex.drill.report import build_report, write_report
 from tradex.drill.store import DrillStore
+from tradex.drill.types import EASTERN
 from tradex.execution.models import OrderRequest
 
 
@@ -54,7 +55,13 @@ class AutoTradingEngine(DrillEngine):
 
         drill = self.store.drill(drill_id)
         if force:
-            self.store.reset_for_preparation(drill_id, config)
+            self.store.reset_for_preparation(
+                drill_id,
+                config,
+                profile_name=self.profile.name,
+                profile_version=self.profile.version,
+                execution_mode=self.profile.execution_mode,
+            )
             drill = self.store.drill(drill_id)
         if drill["status"] in {"PREPARED", "RUNNING", "COMPLETED", "COMPLETED_NO_RUN"}:
             return drill_id
@@ -106,6 +113,11 @@ class AutoTradingEngine(DrillEngine):
             "expired_reason": drill.get("expired_reason", ""),
         }
         return payload
+
+    def active_run_id(self, now: datetime | None = None) -> int | None:
+        current = (now or self.clock()).astimezone(UTC)
+        today = current.astimezone(EASTERN).date().isoformat()
+        return self.store.next_actionable_drill_id(today) or self.store.latest_drill_id()
 
     def scheduler_health(self, drill_id: int) -> SchedulerHealth:
         drill = self.store.drill(drill_id)
