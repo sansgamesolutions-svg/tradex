@@ -93,14 +93,13 @@ class DecisionEngine:
             )
             source: DecisionSource = "ML_TA"
             threshold = ml_ta_threshold
-            buy_allowed = True
-            sell_allowed = True
         else:
             fused = ta_probability
             source = "TA_ONLY"
             threshold = ta_only_threshold
-            buy_allowed = bullish_confirmed
-            sell_allowed = bearish_confirmed
+
+        buy_allowed = bullish_confirmed
+        sell_allowed = bearish_confirmed
 
         if fused >= threshold and buy_allowed:
             signal: Signal = "BUY"

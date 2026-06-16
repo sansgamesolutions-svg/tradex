@@ -27,6 +27,8 @@ dependencies = [
     "ib-async>=2.1.0",
     "python-dotenv>=1.0",
     "lxml>=5.0",
+    "finnhub-python>=2.4.28",
+    "vadersentiment>=3.3.2",
 ]
 
 [dependency-groups]

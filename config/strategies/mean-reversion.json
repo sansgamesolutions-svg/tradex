@@ -1,0 +1,18 @@
+{
+  "name": "mean-reversion",
+  "version": "1.0",
+  "description": "Buy oversold Bollinger Band touches; sell overbought. Lower thresholds for faster response.",
+  "weights": {"model": 0.4, "ta": 0.6},
+  "thresholds": {"ml_ta": 0.52, "ta_only": 0.60},
+  "timeframes": {"primary": "1d", "confirmation": [], "require_alignment": false},
+  "position_sizing": {"mode": "confidence_scaled", "base_cost": 500, "min_confidence": 0.15, "max_scale": 1.0},
+  "gates": {
+    "ta_confirmation": false,
+    "trend":          {"enabled": false},
+    "momentum":       {"enabled": false},
+    "volume":         {"enabled": false},
+    "volatility":     {"enabled": false},
+    "mean_reversion": {"enabled": true, "require_bb_touch": true, "rsi_oversold": 35, "rsi_overbought": 65},
+    "news":           {"enabled": false}
+  }
+}
