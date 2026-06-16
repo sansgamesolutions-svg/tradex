@@ -79,6 +79,16 @@ class PositionSizingConfig:
 
 
 @dataclass(frozen=True)
+class RiskConfig:
+    stop_loss_rate: float = 0.01          # fraction of entry price
+    take_profit_rate: float = 0.02        # fraction of entry price
+    max_drawdown_rate: float = 0.02       # halt entries when equity drops X% from session peak
+    daily_loss_limit_rate: float = 0.05   # halt entries when total loss > X% of starting capital
+    max_open_positions: int = 2           # per-portfolio concurrent position cap
+    max_position_cost: float = 500.0      # hard cap on per-position all-in cost (dollars)
+
+
+@dataclass(frozen=True)
 class StrategyConfig:
     name: str
     version: str
@@ -89,6 +99,7 @@ class StrategyConfig:
     ta_only_threshold: float = 0.65
     timeframes: TimeframeConfig = field(default_factory=TimeframeConfig)
     position_sizing: PositionSizingConfig = field(default_factory=PositionSizingConfig)
+    risk: RiskConfig = field(default_factory=RiskConfig)
     gates: GatesConfig = field(default_factory=GatesConfig)
 
     def position_scale(self, confidence: float) -> float:
@@ -115,6 +126,7 @@ class StrategyConfig:
         thresholds = d.get("thresholds", {})
         tf = d.get("timeframes", {})
         ps = d.get("position_sizing", {})
+        r = d.get("risk", {})
         g = d.get("gates", {})
 
         return cls(
@@ -135,6 +147,14 @@ class StrategyConfig:
                 base_cost=float(ps.get("base_cost", 500.0)),
                 min_confidence=float(ps.get("min_confidence", 0.0)),
                 max_scale=float(ps.get("max_scale", 1.0)),
+            ),
+            risk=RiskConfig(
+                stop_loss_rate=float(r.get("stop_loss_rate", 0.01)),
+                take_profit_rate=float(r.get("take_profit_rate", 0.02)),
+                max_drawdown_rate=float(r.get("max_drawdown_rate", 0.02)),
+                daily_loss_limit_rate=float(r.get("daily_loss_limit_rate", 0.05)),
+                max_open_positions=int(r.get("max_open_positions", 2)),
+                max_position_cost=float(r.get("max_position_cost", 500.0)),
             ),
             gates=_gates_from_dict(g),
         )

@@ -276,6 +276,7 @@ class DrillEngine:
                     decision.symbol,
                     quote,
                     now,
+                    confidence=decision.confidence,
                 )
                 if not risk.accepted:
                     self.store.record_event(
@@ -311,6 +312,8 @@ class DrillEngine:
         symbol: str,
         quote: PriceQuote | None,
         now: datetime,
+        *,
+        confidence: float = 0.0,
     ) -> RiskDecision:
         portfolio = self.store.portfolio(drill_id, kind)
         if portfolio["halted"]:
@@ -327,15 +330,20 @@ class DrillEngine:
             for order in self.store.pending_orders(drill_id)
             if order["portfolio"] == kind and order["side"] == "BUY"
         ]
-        if len(open_positions) + len(pending_entries) >= config.max_open_positions:
+        risk = self._strategy.risk
+        if len(open_positions) + len(pending_entries) >= risk.max_open_positions:
             return RiskDecision(False, "maximum open positions reached")
         if any(position["symbol"] == symbol for position in open_positions):
             return RiskDecision(False, "symbol already has an open position")
         if self.store.symbol_was_closed(drill_id, kind, symbol):
             return RiskDecision(False, "re-entry is disabled")
 
+        scale = self._strategy.position_scale(confidence)
+        if scale == 0.0:
+            return RiskDecision(False, "confidence below minimum threshold")
+        effective_cost = risk.max_position_cost * scale
         costs = self._costs(config, kind)
-        quantity = (config.max_position_cost - costs.fixed_fee) / (
+        quantity = (effective_cost - costs.fixed_fee) / (
             quote.price * (1 + costs.slippage_rate) * (1 + costs.fee_rate)
         )
         quantity = max(math.floor(quantity * 100_000_000) / 100_000_000, 0.0)
@@ -343,7 +351,7 @@ class DrillEngine:
         all_in = fill_price * quantity + costs.fee(fill_price * quantity)
         if quantity <= 0 or all_in > float(portfolio["cash"]) + 1e-9:
             return RiskDecision(False, "insufficient cash", quantity, all_in)
-        if all_in > config.max_position_cost + 1e-6:
+        if all_in > effective_cost + 1e-6:
             return RiskDecision(False, "position cap exceeded", quantity, all_in)
         return RiskDecision(True, "accepted", quantity, all_in)
 
@@ -445,8 +453,8 @@ class DrillEngine:
                 fill_price=fill_price,
                 fee=fee,
                 slippage=slippage,
-                stop_price=fill_price * (1 - config.stop_loss_rate),
-                take_profit_price=fill_price * (1 + config.take_profit_rate),
+                stop_price=fill_price * (1 - self._strategy.risk.stop_loss_rate),
+                take_profit_price=fill_price * (1 + self._strategy.risk.take_profit_rate),
                 filled_at=filled_at,
             )
         else:
@@ -481,12 +489,23 @@ class DrillEngine:
             self.store.record_equity(drill_id, kind, view.equity, view.cash, now)
             portfolio = self.store.portfolio(drill_id, kind)
             drawdown = (view.equity - portfolio["peak_equity"]) / portfolio["peak_equity"]
-            if drawdown <= -config.max_drawdown_rate and not portfolio["halted"]:
+            risk = self._strategy.risk
+            if drawdown <= -risk.max_drawdown_rate and not portfolio["halted"]:
                 self.store.set_portfolio_halted(drill_id, kind, True)
                 self.store.record_event(
                     drill_id,
                     "RISK",
                     f"{kind} entries halted at {drawdown:.2%} drawdown",
+                    level="WARNING",
+                    occurred_at=now,
+                )
+            session_loss_rate = (view.equity - config.initial_capital) / config.initial_capital
+            if session_loss_rate <= -risk.daily_loss_limit_rate and not portfolio["halted"]:
+                self.store.set_portfolio_halted(drill_id, kind, True)
+                self.store.record_event(
+                    drill_id,
+                    "RISK",
+                    f"{kind} entries halted: daily loss limit reached ({session_loss_rate:.2%})",
                     level="WARNING",
                     occurred_at=now,
                 )

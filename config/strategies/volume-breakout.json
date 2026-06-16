@@ -6,6 +6,14 @@
   "thresholds": {"ml_ta": 0.57, "ta_only": 0.67},
   "timeframes": {"primary": "1d", "confirmation": [], "require_alignment": false},
   "position_sizing": {"mode": "confidence_scaled", "base_cost": 500, "min_confidence": 0.2, "max_scale": 1.4},
+  "risk": {
+    "stop_loss_rate": 0.01,
+    "take_profit_rate": 0.025,
+    "max_drawdown_rate": 0.02,
+    "daily_loss_limit_rate": 0.05,
+    "max_open_positions": 2,
+    "max_position_cost": 500.0
+  },
   "gates": {
     "ta_confirmation": true,
     "trend":          {"enabled": false},
