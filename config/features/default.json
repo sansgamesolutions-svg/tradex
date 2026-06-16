@@ -1,0 +1,87 @@
+{
+  "price": {
+    "returns": {
+      "enabled": true,
+      "description": "1-bar percentage change in close price; primary short-term momentum signal"
+    },
+    "log_returns": {
+      "enabled": true,
+      "description": "Natural log of close/prev_close; better than pct_change for modelling compounding and handles large swings more symmetrically"
+    },
+    "hl_range": {
+      "enabled": true,
+      "description": "(high - low) / close; intraday range normalised by price — high values indicate volatility or indecision, low values indicate calm trending bars"
+    },
+    "oc_range": {
+      "enabled": true,
+      "description": "(close - open) / open; candle body direction and size — positive = bullish bar, negative = bearish bar, magnitude = conviction"
+    }
+  },
+
+  "trend": {
+    "ema_ratio_price_20": {
+      "enabled": true,
+      "description": "close / EMA(20); how stretched price is above or below its 20-bar mean — above 1.0 = overextended bullish, below 1.0 = oversold or bearish"
+    },
+    "ema_ratio_20_50": {
+      "enabled": true,
+      "description": "EMA(20) / EMA(50); short-term vs medium-term trend alignment — above 1.0 means short trend is bullish relative to medium trend"
+    },
+    "ema_ratio_50_200": {
+      "enabled": true,
+      "description": "EMA(50) / EMA(200); medium vs long-term trend — golden cross when crosses above 1.0, death cross when below; the slowest-moving trend signal"
+    },
+    "macd_hist_norm": {
+      "enabled": true,
+      "description": "MACD histogram / close; momentum acceleration normalised by price — positive and rising = strengthening uptrend, negative and falling = strengthening downtrend"
+    },
+    "macd_signal_norm": {
+      "enabled": true,
+      "description": "MACD signal line / close; smoothed momentum baseline — histogram crossing above signal is the classic buy trigger"
+    }
+  },
+
+  "momentum": {
+    "rsi": {
+      "enabled": true,
+      "description": "RSI(14) in [0, 100]; mean-reversion oscillator — below 30 = oversold (potential buy), above 70 = overbought (potential sell), 50 = neutral"
+    },
+    "stoch_k": {
+      "enabled": true,
+      "description": "Stochastic %K(14,3); compares close to the 14-bar high/low range — fast momentum oscillator similar to RSI but more sensitive to recent extremes"
+    },
+    "stoch_d": {
+      "enabled": true,
+      "description": "Stochastic %D; 3-bar SMA of %K — slower line used for crossover signals: %K crossing above %D below 20 is a bullish signal"
+    }
+  },
+
+  "volatility": {
+    "atr_norm": {
+      "enabled": true,
+      "description": "ATR(14) / close (the atrr_14 column); normalised average true range — higher values mean larger expected daily moves; useful for position sizing and stop calibration"
+    },
+    "bb_pct_b": {
+      "enabled": true,
+      "description": "Bollinger %B; 0.0 = price at lower band, 1.0 = at upper band, 0.5 = at midline — values near 0 or 1 signal potential mean reversion; values outside [0,1] signal breakout"
+    },
+    "bb_width": {
+      "enabled": true,
+      "description": "Bollinger bandwidth (upper - lower) / middle; low bandwidth = squeeze (volatility contraction), breakout often follows; high bandwidth = already volatile"
+    }
+  },
+
+  "volume": {
+    "obv_returns": {
+      "enabled": true,
+      "description": "1-bar percentage change in On-Balance Volume; positive and rising = institutional buying pressure confirms price move; divergence from price warns of reversal"
+    }
+  },
+
+  "lags": {
+    "enabled": true,
+    "description": "Lagged copies of fast-moving features give XGBoost short-term sequential context without requiring recurrent architecture",
+    "periods": [1, 2, 3, 5],
+    "features": ["returns", "log_returns", "rsi", "macd_hist_norm", "hl_range", "stoch_k"]
+  }
+}

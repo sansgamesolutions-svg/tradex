@@ -27,15 +27,19 @@ class Backtester:
     def __init__(
         self,
         model_name: str = "xgboost",
+        asset: str | None = None,
+        timeframe: str = "1d",
         initial_capital: float = 10_000.0,
         fee: float = 0.001,
     ):
         self.model_name = model_name
+        self.asset = asset
+        self.timeframe = timeframe
         self.initial_capital = initial_capital
         self.fee = fee  # round-trip cost applied at entry and exit
 
     def run(self, features: pd.DataFrame, raw_df: pd.DataFrame | None = None) -> BacktestResults:
-        combiner = SignalCombiner(self.model_name)
+        combiner = SignalCombiner(self.model_name, asset=self.asset, timeframe=self.timeframe)
         equity = self.initial_capital
         equity_curve: list[float] = []
         in_position = False
@@ -47,7 +51,8 @@ class Backtester:
         for i in range(settings.lookback_periods, len(features)):
             window = features.iloc[:i]
             raw_window = raw_df.iloc[:i] if raw_df is not None else None
-            signal = combiner.predict(window, raw_window)
+            decision = combiner.predict(window, raw_window)
+            signal = decision.signal
 
             if prices is not None:
                 price = prices.iloc[i]
