@@ -1,0 +1,18 @@
+{
+  "name": "volume-breakout",
+  "version": "1.0",
+  "description": "Only act when volume is at least 1.5x the 20-day average and OBV confirms.",
+  "weights": {"model": 0.6, "ta": 0.4},
+  "thresholds": {"ml_ta": 0.57, "ta_only": 0.67},
+  "timeframes": {"primary": "1d", "confirmation": [], "require_alignment": false},
+  "position_sizing": {"mode": "confidence_scaled", "base_cost": 500, "min_confidence": 0.2, "max_scale": 1.4},
+  "gates": {
+    "ta_confirmation": true,
+    "trend":          {"enabled": false},
+    "momentum":       {"enabled": false},
+    "volume":         {"enabled": true, "volume_ratio_min": 1.5, "require_obv_confirmation": true},
+    "volatility":     {"enabled": false},
+    "mean_reversion": {"enabled": false},
+    "news":           {"enabled": false}
+  }
+}

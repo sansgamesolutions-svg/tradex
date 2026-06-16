@@ -20,6 +20,7 @@ from tradex.drill.types import (
     PriceQuote,
     RiskDecision,
 )
+from tradex.strategy.schema import StrategyConfig
 
 Clock = Callable[[], datetime]
 
@@ -33,12 +34,14 @@ class DrillEngine:
         market_data: DrillMarketData | None = None,
         *,
         clock: Clock | None = None,
+        strategy: StrategyConfig | None = None,
     ) -> None:
         data_dir = Path(settings.drill_data_dir)
         self.store = store or DrillStore(data_dir / "tradex-drill.sqlite3")
         self.market_data = market_data or LiveDrillMarketData()
         self.clock = clock or (lambda: datetime.now(UTC))
         self.signals = DrillSignalService(self.store, self.market_data)
+        self._strategy = strategy or StrategyConfig.default()
 
     def prepare(self, session_date: date, *, force: bool = False) -> int:
         config = DrillConfig.from_settings(session_date)
