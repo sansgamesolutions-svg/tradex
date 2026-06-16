@@ -18,7 +18,7 @@ class TrendGateConfig:
 @dataclass(frozen=True)
 class MomentumGateConfig:
     enabled: bool = False
-    indicator: str = "roc"   # "roc" | "macd" | "stoch"
+    indicator: str = "roc"  # "roc" | "macd" | "stoch"
     period: int = 10
     min_value: float = 0.0
 
@@ -33,7 +33,7 @@ class VolumeGateConfig:
 @dataclass(frozen=True)
 class VolatilityGateConfig:
     enabled: bool = False
-    type: str = "breakout"   # "breakout" | "squeeze"
+    type: str = "breakout"  # "breakout" | "squeeze"
     atr_multiplier: float = 1.5
 
 
@@ -72,7 +72,7 @@ class TimeframeConfig:
 
 @dataclass(frozen=True)
 class PositionSizingConfig:
-    mode: str = "fixed"           # "fixed" | "confidence_scaled"
+    mode: str = "fixed"  # "fixed" | "confidence_scaled"
     base_cost: float = 500.0
     min_confidence: float = 0.0
     max_scale: float = 1.0

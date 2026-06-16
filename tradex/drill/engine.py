@@ -596,5 +596,7 @@ class DrillEngine:
         return DrillConfig(**payload)
 
 
-def default_engine() -> DrillEngine:
-    return DrillEngine()
+def default_engine():
+    from tradex.auto.engine import default_engine as default_auto_engine
+
+    return default_auto_engine()

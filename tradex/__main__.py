@@ -305,6 +305,103 @@ def train_approved_crypto_cmd(report) -> None:
 
 
 @cli.group()
+def auto() -> None:
+    """Run reusable automatic paper-trading profiles."""
+
+
+def _auto_engine(profile_name: str = "one-day-drill"):
+    from tradex.auto.engine import AutoTradingEngine
+    from tradex.auto.profiles import get_profile
+
+    return AutoTradingEngine(profile=get_profile(profile_name))
+
+
+@auto.command("profiles")
+def auto_profiles_cmd() -> None:
+    """List available automatic trading profiles."""
+    from tradex.auto.profiles import available_profiles
+
+    rows = [
+        {
+            "name": profile.name,
+            "version": profile.version,
+            "execution_mode": profile.execution_mode,
+            "description": profile.description,
+        }
+        for profile in available_profiles().values()
+    ]
+    console.print_json(data={"profiles": rows})
+
+
+@auto.command("prepare")
+@click.option(
+    "--profile",
+    "profile_name",
+    default="one-day-drill",
+    show_default=True,
+)
+@click.option("--date", "session_date", required=True, type=click.DateTime(["%Y-%m-%d"]))
+@click.option(
+    "--force",
+    is_flag=True,
+    help="Re-prepare an existing run only when it has no fills.",
+)
+def auto_prepare_cmd(profile_name: str, session_date, force: bool) -> None:
+    """Prepare an automatic trading profile for one session."""
+    try:
+        engine = _auto_engine(profile_name)
+        run_id = engine.prepare(session_date.date(), force=force)
+    except ValueError as exc:
+        raise click.ClickException(str(exc)) from exc
+    console.print(
+        f"[green]Prepared auto run {run_id} ({profile_name}) for {session_date:%Y-%m-%d}[/green]"
+    )
+
+
+@auto.command("run")
+@click.option(
+    "--profile",
+    "profile_name",
+    default="one-day-drill",
+    show_default=True,
+)
+@click.option("--date", "session_date", required=True, type=click.DateTime(["%Y-%m-%d"]))
+def auto_run_cmd(profile_name: str, session_date) -> None:
+    """Run the blocking scheduler for an automatic trading profile."""
+    engine = _auto_engine(profile_name)
+    console.print(
+        f"[bold blue]Starting automatic paper trading for "
+        f"{session_date:%Y-%m-%d} ({profile_name})[/bold blue]"
+    )
+    run_id = engine.run_live(session_date.date())
+    console.print(f"[green]Auto run {run_id} scheduler finished[/green]")
+
+
+@auto.command("status")
+def auto_status_cmd() -> None:
+    """Print the latest automatic trading state."""
+    engine = _auto_engine()
+    run_id = engine.store.latest_drill_id()
+    if run_id is None:
+        raise click.ClickException("No automatic trading run has been created")
+    console.print_json(data=engine.status(run_id))
+
+
+@auto.command("halt")
+@click.option("--yes", is_flag=True, help="Skip the interactive confirmation")
+def auto_halt_cmd(yes: bool) -> None:
+    """Emergency-stop all new automatic trading activity."""
+    if not yes and not click.confirm("Halt the latest automatic trading run?"):
+        raise click.Abort()
+    engine = _auto_engine()
+    run_id = engine.store.latest_drill_id()
+    if run_id is None:
+        raise click.ClickException("No automatic trading run has been created")
+    engine.halt(run_id)
+    console.print(f"[yellow]Auto run {run_id} halted[/yellow]")
+
+
+@cli.group()
 def drill() -> None:
     """Run the isolated one-day automated paper-trading drill."""
 
@@ -318,9 +415,7 @@ def drill() -> None:
 )
 def prepare_drill(session_date, force: bool) -> None:
     """Fetch daily data, validate models, and prepare drill artifacts."""
-    from tradex.drill.engine import default_engine
-
-    engine = default_engine()
+    engine = _auto_engine("one-day-drill")
     try:
         drill_id = engine.prepare(session_date.date(), force=force)
     except ValueError as exc:
@@ -332,9 +427,7 @@ def prepare_drill(session_date, force: bool) -> None:
 @click.option("--date", "session_date", required=True, type=click.DateTime(["%Y-%m-%d"]))
 def run_drill(session_date) -> None:
     """Run the blocking five-minute drill scheduler for one session."""
-    from tradex.drill.engine import default_engine
-
-    engine = default_engine()
+    engine = _auto_engine("one-day-drill")
     console.print(
         f"[bold blue]Starting internal paper drill for {session_date:%Y-%m-%d}[/bold blue]"
     )
@@ -345,9 +438,7 @@ def run_drill(session_date) -> None:
 @drill.command("status")
 def drill_status_cmd() -> None:
     """Print the latest drill state."""
-    from tradex.drill.engine import default_engine
-
-    engine = default_engine()
+    engine = _auto_engine("one-day-drill")
     drill_id = engine.store.latest_drill_id()
     if drill_id is None:
         raise click.ClickException("No drill has been created")
@@ -358,11 +449,9 @@ def drill_status_cmd() -> None:
 @click.option("--yes", is_flag=True, help="Skip the interactive confirmation")
 def halt_drill_cmd(yes: bool) -> None:
     """Emergency-stop all new drill activity."""
-    from tradex.drill.engine import default_engine
-
     if not yes and not click.confirm("Halt the latest automated drill?"):
         raise click.Abort()
-    engine = default_engine()
+    engine = _auto_engine("one-day-drill")
     drill_id = engine.store.latest_drill_id()
     if drill_id is None:
         raise click.ClickException("No drill has been created")
@@ -382,10 +471,9 @@ def halt_drill_cmd(yes: bool) -> None:
 def drill_report_cmd(output_format: str, output: Path | None) -> None:
     """Generate a report for the latest drill."""
     from tradex.config.settings import settings
-    from tradex.drill.engine import default_engine
     from tradex.drill.report import build_report, write_report
 
-    engine = default_engine()
+    engine = _auto_engine("one-day-drill")
     drill_id = engine.store.latest_drill_id()
     if drill_id is None:
         raise click.ClickException("No drill has been created")

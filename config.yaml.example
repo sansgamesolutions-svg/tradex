@@ -54,6 +54,7 @@ crypto_min_median_balanced_accuracy: 0.51
 crypto_min_folds_beating_baseline: 3
 
 # One-day automated trading drill
+auto_worker_enabled: true
 drill_data_dir: "data/drill"
 drill_initial_capital: 5000
 drill_max_position_cost: 500

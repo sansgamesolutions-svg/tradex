@@ -72,8 +72,13 @@ def assess_mean_reversion(
 
 class MeanReversionAssessment:
     __slots__ = (
-        "rsi", "bb_touch_lower", "bb_touch_upper", "z_score",
-        "_rsi_oversold", "_rsi_overbought", "_require_bb_touch",
+        "rsi",
+        "bb_touch_lower",
+        "bb_touch_upper",
+        "z_score",
+        "_rsi_oversold",
+        "_rsi_overbought",
+        "_require_bb_touch",
     )
 
     def __init__(

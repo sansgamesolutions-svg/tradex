@@ -41,15 +41,11 @@ def assess_volume(df: pd.DataFrame, cfg: VolumeGateConfig | None = None) -> Volu
         obv_rising = float(obv_series.iloc[-1]) > float(obv_series.iloc[-5])
 
         if len(obv_series) >= 10:
-            price_lower_low = (
-                float(work["close"].iloc[-1]) < float(work["close"].iloc[-10])
-            )
+            price_lower_low = float(work["close"].iloc[-1]) < float(work["close"].iloc[-10])
             obv_higher_low = float(obv_series.iloc[-1]) > float(obv_series.iloc[-10])
             obv_divergence_bull = price_lower_low and obv_higher_low
 
-            price_higher_high = (
-                float(work["close"].iloc[-1]) > float(work["close"].iloc[-10])
-            )
+            price_higher_high = float(work["close"].iloc[-1]) > float(work["close"].iloc[-10])
             obv_lower_high = float(obv_series.iloc[-1]) < float(obv_series.iloc[-10])
             obv_divergence_bear = price_higher_high and obv_lower_high
 
@@ -65,8 +61,12 @@ def assess_volume(df: pd.DataFrame, cfg: VolumeGateConfig | None = None) -> Volu
 
 class VolumeAssessment:
     __slots__ = (
-        "volume_ratio", "obv_rising", "obv_divergence_bull", "obv_divergence_bear",
-        "_volume_ratio_min", "_require_obv",
+        "volume_ratio",
+        "obv_rising",
+        "obv_divergence_bull",
+        "obv_divergence_bear",
+        "_volume_ratio_min",
+        "_require_obv",
     )
 
     def __init__(

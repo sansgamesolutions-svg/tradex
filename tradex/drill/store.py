@@ -46,7 +46,13 @@ class DrillStore:
                     config_json TEXT NOT NULL,
                     created_at TEXT NOT NULL,
                     updated_at TEXT NOT NULL,
-                    halt_reason TEXT NOT NULL DEFAULT ''
+                    halt_reason TEXT NOT NULL DEFAULT '',
+                    profile_name TEXT NOT NULL DEFAULT 'one-day-drill',
+                    profile_version TEXT NOT NULL DEFAULT '1.0',
+                    execution_mode TEXT NOT NULL DEFAULT 'SIMULATED',
+                    scheduler_heartbeat_at TEXT,
+                    last_cycle_at TEXT,
+                    expired_reason TEXT NOT NULL DEFAULT ''
                 );
 
                 CREATE TABLE IF NOT EXISTS portfolios (
@@ -223,6 +229,12 @@ class DrillStore:
             self._add_column(db, "signals", "threshold_used", "REAL NOT NULL DEFAULT 0.5")
             self._add_column(db, "signals", "policy_version", "TEXT NOT NULL DEFAULT ''")
             self._add_column(db, "signals", "confirmation_json", "TEXT NOT NULL DEFAULT '{}'")
+            self._add_column(db, "drills", "profile_name", "TEXT NOT NULL DEFAULT 'one-day-drill'")
+            self._add_column(db, "drills", "profile_version", "TEXT NOT NULL DEFAULT '1.0'")
+            self._add_column(db, "drills", "execution_mode", "TEXT NOT NULL DEFAULT 'SIMULATED'")
+            self._add_column(db, "drills", "scheduler_heartbeat_at", "TEXT")
+            self._add_column(db, "drills", "last_cycle_at", "TEXT")
+            self._add_column(db, "drills", "expired_reason", "TEXT NOT NULL DEFAULT ''")
 
     @staticmethod
     def _add_column(db: sqlite3.Connection, table: str, column: str, declaration: str) -> None:
@@ -238,16 +250,34 @@ class DrillStore:
     def _rows(rows: list[sqlite3.Row]) -> list[dict[str, Any]]:
         return [dict(row) for row in rows]
 
-    def create_drill(self, config: DrillConfig) -> int:
+    def create_drill(
+        self,
+        config: DrillConfig,
+        *,
+        profile_name: str = "one-day-drill",
+        profile_version: str = "1.0",
+        execution_mode: str = "SIMULATED",
+    ) -> int:
         now = self._now()
         with self.connection() as db:
             db.execute(
                 """
-                INSERT INTO drills(session_date, status, config_json, created_at, updated_at)
-                VALUES (?, 'CREATED', ?, ?, ?)
+                INSERT INTO drills(
+                    session_date, status, config_json, created_at, updated_at,
+                    profile_name, profile_version, execution_mode
+                )
+                VALUES (?, 'CREATED', ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(session_date) DO NOTHING
                 """,
-                (config.session_date.isoformat(), json.dumps(config.to_dict()), now, now),
+                (
+                    config.session_date.isoformat(),
+                    json.dumps(config.to_dict()),
+                    now,
+                    now,
+                    profile_name,
+                    profile_version,
+                    execution_mode,
+                ),
             )
             row = db.execute(
                 "SELECT id FROM drills WHERE session_date = ?",
@@ -334,7 +364,9 @@ class DrillStore:
             db.execute(
                 """
                 UPDATE drills
-                SET status = 'CREATED', config_json = ?, halt_reason = '', updated_at = ?
+                SET status = 'CREATED', config_json = ?, halt_reason = '',
+                    scheduler_heartbeat_at = NULL, last_cycle_at = NULL,
+                    expired_reason = '', updated_at = ?
                 WHERE id = ?
                 """,
                 (json.dumps(config.to_dict()), self._now(), drill_id),
@@ -345,6 +377,14 @@ class DrillStore:
         with self.connection() as db:
             row = db.execute("SELECT id FROM drills ORDER BY id DESC LIMIT 1").fetchone()
         return int(row["id"]) if row else None
+
+    def runs(self) -> list[dict[str, Any]]:
+        with self.connection() as db:
+            rows = db.execute("SELECT * FROM drills ORDER BY session_date DESC, id DESC").fetchall()
+        results = self._rows(rows)
+        for result in results:
+            result["config"] = json.loads(result.pop("config_json"))
+        return results
 
     def drill(self, drill_id: int) -> dict[str, Any]:
         with self.connection() as db:
@@ -364,6 +404,39 @@ class DrillStore:
                 WHERE id = ?
                 """,
                 (status, halt_reason, self._now(), drill_id),
+            )
+
+    def set_expired(self, drill_id: int, status: str, reason: str) -> None:
+        with self.connection() as db:
+            db.execute(
+                """
+                UPDATE drills
+                SET status = ?, expired_reason = ?, updated_at = ?
+                WHERE id = ?
+                """,
+                (status, reason, self._now(), drill_id),
+            )
+
+    def record_scheduler_heartbeat(self, drill_id: int, when: datetime) -> None:
+        with self.connection() as db:
+            db.execute(
+                """
+                UPDATE drills
+                SET scheduler_heartbeat_at = ?, updated_at = ?
+                WHERE id = ?
+                """,
+                (when.isoformat(), self._now(), drill_id),
+            )
+
+    def record_cycle(self, drill_id: int, when: datetime) -> None:
+        with self.connection() as db:
+            db.execute(
+                """
+                UPDATE drills
+                SET last_cycle_at = ?, scheduler_heartbeat_at = ?, updated_at = ?
+                WHERE id = ?
+                """,
+                (when.isoformat(), when.isoformat(), self._now(), drill_id),
             )
 
     def record_preparation(

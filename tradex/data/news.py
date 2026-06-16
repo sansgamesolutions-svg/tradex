@@ -1,20 +1,20 @@
 from __future__ import annotations
 
 import json
-import time
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from tradex.storage import get_storage
 
 try:
     import finnhub
+
     _FINNHUB_AVAILABLE = True
 except ImportError:
     _FINNHUB_AVAILABLE = False
 
 
 def _cache_key(symbol: str, lookback_hours: int) -> str:
-    bucket = datetime.now(tz=timezone.utc).strftime("%Y%m%d_%H")
+    bucket = datetime.now(tz=UTC).strftime("%Y%m%d_%H")
     return f"news/cache/{symbol.replace('/', '_')}_{lookback_hours}h_{bucket}.json"
 
 
@@ -31,7 +31,7 @@ def fetch_news(symbol: str, api_key: str, lookback_hours: int = 24) -> list[str]
         return []
 
     client = finnhub.Client(api_key=api_key)
-    to_dt = datetime.now(tz=timezone.utc)
+    to_dt = datetime.now(tz=UTC)
     from_dt = to_dt - timedelta(hours=lookback_hours)
     from_str = from_dt.strftime("%Y-%m-%d")
     to_str = to_dt.strftime("%Y-%m-%d")

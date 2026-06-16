@@ -6,7 +6,9 @@ import pandas_ta  # noqa: F401
 from tradex.strategy.schema import VolatilityGateConfig
 
 
-def assess_volatility(df: pd.DataFrame, cfg: VolatilityGateConfig | None = None) -> VolatilityAssessment:
+def assess_volatility(
+    df: pd.DataFrame, cfg: VolatilityGateConfig | None = None
+) -> VolatilityAssessment:
     if cfg is None:
         cfg = VolatilityGateConfig()
 
@@ -71,9 +73,13 @@ def assess_volatility(df: pd.DataFrame, cfg: VolatilityGateConfig | None = None)
 
 class VolatilityAssessment:
     __slots__ = (
-        "atr", "bb_width", "bb_squeeze",
-        "atr_breakout_bull", "atr_breakout_bear",
-        "_gate_type", "_atr_multiplier",
+        "atr",
+        "bb_width",
+        "bb_squeeze",
+        "atr_breakout_bull",
+        "atr_breakout_bear",
+        "_gate_type",
+        "_atr_multiplier",
     )
 
     def __init__(

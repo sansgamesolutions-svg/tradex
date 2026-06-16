@@ -4,6 +4,7 @@ from tradex.strategy.schema import NewsGateConfig
 
 try:
     from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
     _VADER_AVAILABLE = True
 except ImportError:
     _VADER_AVAILABLE = False
