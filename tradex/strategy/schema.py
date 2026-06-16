@@ -80,12 +80,12 @@ class PositionSizingConfig:
 
 @dataclass(frozen=True)
 class RiskConfig:
-    stop_loss_rate: float = 0.01          # fraction of entry price
-    take_profit_rate: float = 0.02        # fraction of entry price
-    max_drawdown_rate: float = 0.02       # halt entries when equity drops X% from session peak
-    daily_loss_limit_rate: float = 0.05   # halt entries when total loss > X% of starting capital
-    max_open_positions: int = 2           # per-portfolio concurrent position cap
-    max_position_cost: float = 500.0      # hard cap on per-position all-in cost (dollars)
+    stop_loss_rate: float = 0.01  # fraction of entry price
+    take_profit_rate: float = 0.02  # fraction of entry price
+    max_drawdown_rate: float = 0.02  # halt entries when equity drops X% from session peak
+    daily_loss_limit_rate: float = 0.05  # halt entries when total loss > X% of starting capital
+    max_open_positions: int = 2  # per-portfolio concurrent position cap
+    max_position_cost: float = 500.0  # hard cap on per-position all-in cost (dollars)
 
 
 @dataclass(frozen=True)

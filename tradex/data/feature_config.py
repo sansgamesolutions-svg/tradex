@@ -4,7 +4,9 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
-DEFAULT_FEATURE_CONFIG_PATH = Path(__file__).resolve().parents[2] / "config" / "features" / "default.json"
+DEFAULT_FEATURE_CONFIG_PATH = (
+    Path(__file__).resolve().parents[2] / "config" / "features" / "default.json"
+)
 
 _GROUPS = ("price", "trend", "momentum", "volatility", "volume")
 

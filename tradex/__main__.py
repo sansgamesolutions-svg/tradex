@@ -40,7 +40,8 @@ def predict(asset: str, timeframe: str, model: str) -> None:
 
     color = {"BUY": "green", "SELL": "red", "HOLD": "yellow"}[decision.signal]
     console.print(f"Signal for [bold]{asset}[/bold]: [{color}]{decision.signal}[/{color}]")
-    console.print(f"  Confidence: {decision.confidence:.2%}  Source: {decision.source}  Reason: {decision.reason}")
+    console.print(f"  Confidence: {decision.confidence:.2%}  Source: {decision.source}")
+    console.print(f"  Reason: {decision.reason}")
 
 
 @cli.command()
