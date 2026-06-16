@@ -78,6 +78,7 @@ class Settings:
     crypto_min_folds_beating_baseline: int = 3
 
     # One-day automated trading drill
+    auto_worker_enabled: bool = True
     drill_data_dir: Path = field(default_factory=lambda: ROOT / "data" / "drill")
     drill_initial_capital: float = 5_000.0
     drill_max_position_cost: float = 500.0

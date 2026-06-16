@@ -8,7 +8,16 @@ from zoneinfo import ZoneInfo
 from tradex.config.settings import settings
 
 PortfolioKind = Literal["STOCK", "CRYPTO"]
-DrillStatus = Literal["CREATED", "PREPARED", "RUNNING", "HALTED", "COMPLETED", "FAILED"]
+DrillStatus = Literal[
+    "CREATED",
+    "PREPARED",
+    "RUNNING",
+    "HALTED",
+    "COMPLETED",
+    "COMPLETED_NO_RUN",
+    "EXPIRED",
+    "FAILED",
+]
 SignalValue = Literal["BUY", "SELL", "HOLD"]
 
 EASTERN = ZoneInfo("America/New_York")

@@ -5,7 +5,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
-from tradex.drill.engine import default_engine
+from tradex.auto.engine import default_engine
 
 router = APIRouter()
 
@@ -77,8 +77,8 @@ preserveAspectRatio="none" style="width:100%;height:220px"></svg></section>
 const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n||0);
 const pct=n=>`${((n||0)*100).toFixed(2)}%`; const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 async function refresh(){
- try{const r=await fetch('/api/drill/status',{cache:'no-store'});if(!r.ok)throw new Error(await r.text());const d=await r.json();
- document.getElementById('error').innerHTML='';document.getElementById('session').textContent=`${d.drill.session_date} | ${d.drill.status} | policy ${d.drill.config.decision_policy_version} | refreshes every 5 seconds`;
+ try{const r=await fetch('/api/auto/status',{cache:'no-store'});if(!r.ok)throw new Error(await r.text());const d=await r.json();
+ document.getElementById('error').innerHTML='';document.getElementById('session').textContent=`${d.drill.session_date} | ${d.drill.status} | ${d.profile.name} ${d.profile.version} | ${d.profile.execution_mode} | phase ${d.scheduler_health.market_phase} | heartbeat ${esc(d.scheduler_health.scheduler_heartbeat_at||'none')} | policy ${d.drill.config.decision_policy_version} | refreshes every 5 seconds`;
  document.getElementById('portfolios').innerHTML=d.portfolios.map(p=>{const ret=(p.equity-5000)/5000;return `<section class="card"><h2>${esc(p.kind)}</h2><div class="metric ${ret>=0?'positive':'negative'}">${money(p.equity)}</div><p>Return ${pct(ret)} | Cash ${money(p.cash)}</p><p>Realized ${money(p.realized_pnl)} | Unrealized ${money(p.unrealized_pnl)}</p><p>Fees ${money(p.fees)} | Slippage ${money(p.slippage)}</p><p>Open ${p.open_positions} | Data failures ${p.data_failures} | ${p.halted?'HALTED':'ACTIVE'}</p><div class="bar"><span style="width:${Math.max(0,Math.min(100,ret/0.05*100))}%"></span></div><small class="muted">Progress toward informational 5% benchmark</small></section>`}).join('');
  document.getElementById('positions').innerHTML=d.positions.map(p=>`<tr><td>${esc(p.portfolio)}</td><td>${esc(p.symbol)}</td><td>${Number(p.quantity).toFixed(6)}</td><td>${money(p.entry_price)}</td><td>${money(p.stop_price)}</td><td>${money(p.take_profit_price)}</td></tr>`).join('')||'<tr><td colspan="6">No open positions</td></tr>';
  document.getElementById('preparations').innerHTML=d.preparations.map(p=>`<tr><td>${esc(p.portfolio)}</td><td>${esc(p.symbol)}</td><td>${esc(p.source)}</td><td><span class="pill">${p.approved?'APPROVED':'TA FALLBACK'}</span></td></tr>`).join('');

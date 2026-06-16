@@ -86,9 +86,14 @@ def assess_trend(df: pd.DataFrame, cfg: TrendGateConfig | None = None) -> TrendA
 
 class TrendAssessment:
     __slots__ = (
-        "adx", "trend_direction", "supertrend_bullish",
-        "higher_highs", "higher_lows",
-        "_adx_min", "_require_supertrend", "_require_higher_highs",
+        "adx",
+        "trend_direction",
+        "supertrend_bullish",
+        "higher_highs",
+        "higher_lows",
+        "_adx_min",
+        "_require_supertrend",
+        "_require_higher_highs",
     )
 
     def __init__(

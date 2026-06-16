@@ -16,6 +16,8 @@ from tradex.api.schemas import (
     TrainRequest,
     TrainResponse,
 )
+from tradex.auto.api import router as auto_router
+from tradex.auto.worker import worker as auto_worker
 from tradex.config.settings import settings
 from tradex.drill.dashboard import router as drill_router
 
@@ -42,6 +44,9 @@ _scheduler = AsyncIOScheduler()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    if settings.auto_worker_enabled:
+        auto_worker.start()
+        logger.info('"Automatic trading worker started"')
     if settings.schedule_assets:
         _scheduler.add_job(
             _scheduled_run,
@@ -54,11 +59,13 @@ async def lifespan(app: FastAPI):
         _scheduler.start()
         logger.info('"Scheduler started for %s"', settings.schedule_assets)
     yield
+    auto_worker.stop()
     if _scheduler.running:
         _scheduler.shutdown(wait=False)
 
 
 app = FastAPI(title="TradeX API", version="0.1.0", lifespan=lifespan)
+app.include_router(auto_router)
 app.include_router(drill_router)
 
 

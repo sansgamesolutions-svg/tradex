@@ -1,27 +1,27 @@
 from tradex.strategy.schema import (
     DEFAULT_STRATEGY_DIR,
     GatesConfig,
-    MomentumGateConfig,
     MeanReversionGateConfig,
+    MomentumGateConfig,
     NewsGateConfig,
     PositionSizingConfig,
     StrategyConfig,
     TimeframeConfig,
     TrendGateConfig,
-    VolumeGateConfig,
     VolatilityGateConfig,
+    VolumeGateConfig,
 )
 
 __all__ = [
     "DEFAULT_STRATEGY_DIR",
     "GatesConfig",
-    "MomentumGateConfig",
     "MeanReversionGateConfig",
+    "MomentumGateConfig",
     "NewsGateConfig",
     "PositionSizingConfig",
     "StrategyConfig",
     "TimeframeConfig",
     "TrendGateConfig",
-    "VolumeGateConfig",
     "VolatilityGateConfig",
+    "VolumeGateConfig",
 ]

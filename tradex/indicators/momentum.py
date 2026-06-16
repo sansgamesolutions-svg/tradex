@@ -71,8 +71,12 @@ def assess_momentum(df: pd.DataFrame, cfg: MomentumGateConfig | None = None) -> 
 
 class MomentumAssessment:
     __slots__ = (
-        "roc", "macd_rising", "stoch_crossover_bull", "stoch_crossover_bear",
-        "_indicator", "_min_value",
+        "roc",
+        "macd_rising",
+        "stoch_crossover_bull",
+        "stoch_crossover_bear",
+        "_indicator",
+        "_min_value",
     )
 
     def __init__(

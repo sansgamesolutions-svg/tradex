@@ -4,6 +4,10 @@ TradeX can run a one-session simulation using real public prices and completely
 internal execution. It does not read IBKR or Kraken credentials and cannot send
 an order to either platform.
 
+The drill now runs as the `one-day-drill` profile of the reusable automatic
+trading system. See `docs/automatic-trading.md` for the generic `tradex auto`
+commands and FastAPI endpoints.
+
 ## June 12, 2026 Runbook
 
 Prepare the fixed watchlists before `9:20 a.m. ET`:

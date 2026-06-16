@@ -54,6 +54,7 @@ class SignalCombiner:
         # Apply each enabled gate — all must pass for the signal direction
         if cfg.gates.trend.enabled:
             from tradex.indicators.trend import assess_trend
+
             trend = assess_trend(df, cfg.gates.trend)
             bullish = bullish and trend.bullish_gate
             bearish = bearish and trend.bearish_gate
@@ -61,6 +62,7 @@ class SignalCombiner:
 
         if cfg.gates.momentum.enabled:
             from tradex.indicators.momentum import assess_momentum
+
             mom = assess_momentum(df, cfg.gates.momentum)
             bullish = bullish and mom.bullish_gate
             bearish = bearish and mom.bearish_gate
@@ -68,6 +70,7 @@ class SignalCombiner:
 
         if cfg.gates.volume.enabled:
             from tradex.indicators.volume import assess_volume
+
             vol = assess_volume(df, cfg.gates.volume)
             bullish = bullish and vol.bullish_gate
             bearish = bearish and vol.bearish_gate
@@ -75,6 +78,7 @@ class SignalCombiner:
 
         if cfg.gates.volatility.enabled:
             from tradex.indicators.volatility import assess_volatility
+
             vlt = assess_volatility(df, cfg.gates.volatility)
             bullish = bullish and vlt.bullish_gate
             bearish = bearish and vlt.bearish_gate
@@ -82,6 +86,7 @@ class SignalCombiner:
 
         if cfg.gates.mean_reversion.enabled:
             from tradex.indicators.mean_reversion import assess_mean_reversion
+
             mr = assess_mean_reversion(df, cfg.gates.mean_reversion)
             bullish = bullish and mr.bullish_gate
             bearish = bearish and mr.bearish_gate
@@ -91,6 +96,7 @@ class SignalCombiner:
             from tradex.config.settings import settings
             from tradex.data.news import fetch_news
             from tradex.indicators.sentiment import assess_sentiment
+
             headlines = fetch_news(
                 self._asset, settings.finnhub_api_key, cfg.gates.news.lookback_hours
             )
@@ -117,6 +123,7 @@ class SignalCombiner:
         # Multi-timeframe alignment veto (post-decision)
         if cfg.timeframes.require_alignment and decision.signal != "HOLD" and self._asset:
             from tradex.signals.multitf import check_timeframe_alignment
+
             aligned = check_timeframe_alignment(
                 self._asset,
                 decision.signal,
